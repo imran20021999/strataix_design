@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);--sx-danger:oklch(0.7 0.15 25);
+  --red:#ef4444;
+}
+body{margin:0;background:#0f1019;font-family:var(--font-body);color:#e9e9ed;font-size:13px}
+.sec{padding:40px 44px;display:flex;flex-direction:column;gap:22px;width:1440px;box-sizing:border-box}
+.head{font:600 10px var(--font-mono);padding:3px 7px;background:#e9e9ed;color:#161826;border-radius:4px;text-decoration:none}
+.anchor{font:600 10.5px var(--font-mono);padding:3px 7px;background:#292b31;color:#e9e9ed;border-radius:5px}
+.row{display:flex;gap:8px;align-items:baseline;font-size:12px;color:#9397ab}
+.row b{color:#e9e9ed;font-weight:500}
+.lab{font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em}
+.card{background:#161826;border:1px solid #292b31;border-radius:10px}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.mono{font-family:var(--font-mono)}
+
+/* redline */
+.rl-tag{position:absolute;background:var(--red);color:#fff;font:600 10.5px var(--font-mono);padding:2px 6px;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.4);z-index:3}
+.rl-line{position:absolute;background:var(--red);z-index:2}
+.rl-pin{position:absolute;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--red);z-index:3;transform:translate(-50%,-50%);box-shadow:0 2px 6px rgba(0,0,0,.5)}
+.rl-list{background:var(--sx-bg);border:1px solid var(--sx-line);border-radius:10px;padding:14px 16px}
+.rl-item{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--sx-line);font-size:12.5px}
+.rl-item:last-child{border-bottom:0}
+.rl-item .n{font:600 10.5px var(--font-mono);color:#fff;background:var(--red);padding:2px 0;border-radius:4px;text-align:center;line-height:1}
+.rl-item code{font-family:var(--font-mono);background:var(--sx-raised);padding:0 5px;border-radius:3px;color:#fff;font-size:11.5px}
+
+/* voice table */
+.tt{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--sx-line)}
+.tt > div{padding:14px 16px;border-bottom:1px solid var(--sx-line);border-right:1px solid var(--sx-line)}
+.tt > div:nth-child(3n){border-right:0}
+.tt .h{background:var(--sx-raised);font:500 11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em}
+.good{color:var(--sx-ok)}
+.bad{color:var(--sx-danger)}
+</style>
+</helmet>
+
+<!-- HEADER -->
+<section id="t1" class="sec">
+<div class="row" style="align-items:center"><a href="#t1" class="head">1</a><b>Strataix · Handoff — redlines, content, icons</b></div>
+<div style="font-size:12.5px;color:#b2b6ca;max-width:820px;line-height:1.55">Everything an engineer needs to build a pixel-exact Strataix without owning the design file: annotated screens with tokens, voice &amp; tone rules, the final Phosphor icon set, and a short checklist for the first pull request.</div>
+</section>
+
+<!-- 2 · REDLINES · KPI CARD -->
+<section id="t2" class="sec" style="padding-top:0">
+<div class="row"><a href="#t2" class="head">2</a><b>Redlines · KPI card</b></div>
+
+<div style="display:grid;grid-template-columns:1fr 360px;gap:28px">
+
+<div class="card" style="padding:60px 80px 80px;display:flex;align-items:center;justify-content:center;position:relative;background:#08090e">
+
+<!-- SPECIMEN -->
+<div style="position:relative">
+<div style="width:260px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;position:relative">
+<div style="display:flex;align-items:center;gap:6px;color:#9397ab;font-size:12px"><span style="flex:1">Spend</span><i class="ph ph-info" style="font-size:12px;color:#75798c"></i></div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px">
+<span style="font:500 24px/1.1 var(--font-body);font-variant-numeric:tabular-nums;letter-spacing:-.01em">$4,182</span>
+<svg width="72" height="24" viewBox="0 0 72 24"><polyline points="0,18 10,14 20,15 30,10 40,12 50,7 60,5 72,2" fill="none" stroke="#2f6fff" stroke-width="1.5"/></svg>
+</div>
+<div style="font:500 11px var(--font-mono);color:oklch(0.7 0.15 25)">+12.0% <span style="color:#75798c;font-family:var(--font-body);font-weight:400">vs yesterday</span></div>
+</div>
+
+<!-- rl: width -->
+<div class="rl-line" style="top:-18px;left:0;right:0;height:1px"></div>
+<div class="rl-line" style="top:-22px;left:0;width:1px;height:8px"></div>
+<div class="rl-line" style="top:-22px;right:0;width:1px;height:8px"></div>
+<div class="rl-tag" style="top:-32px;left:50%;transform:translateX(-50%)">260 (grid-span 2)</div>
+
+<!-- rl: radius -->
+<div class="rl-pin" style="top:0;left:0"></div>
+<div class="rl-tag" style="top:-10px;left:-80px">① radius 8</div>
+
+<!-- rl: border -->
+<div class="rl-pin" style="top:50%;right:0"></div>
+<div class="rl-tag" style="top:50%;right:-180px;transform:translateY(-50%)">② border 1 · <span class="mono">--sx-line</span></div>
+
+<!-- rl: padding -->
+<div class="rl-line" style="top:12px;bottom:12px;left:-36px;width:1px"></div>
+<div class="rl-line" style="top:12px;left:-40px;width:8px;height:1px"></div>
+<div class="rl-line" style="bottom:12px;left:-40px;width:8px;height:1px"></div>
+<div class="rl-tag" style="top:50%;left:-120px;transform:translateY(-50%)">③ pad-y 12</div>
+
+<div class="rl-line" style="bottom:-18px;left:0;right:0;height:1px"></div>
+<div class="rl-tag" style="bottom:-32px;left:50%;transform:translateX(-50%)">④ pad-x 14</div>
+
+<!-- rl: label font -->
+<div class="rl-pin" style="top:18px;left:26px"></div>
+<div class="rl-tag" style="top:4px;left:60px">⑤ 12 / 400 · <span class="mono">--sx-muted</span></div>
+
+<!-- rl: value -->
+<div class="rl-pin" style="top:52px;left:30px"></div>
+<div class="rl-tag" style="top:36px;left:60px">⑥ 24 / 500 · tabular · <span class="mono">-.01em</span></div>
+
+<!-- rl: delta -->
+<div class="rl-pin" style="bottom:12px;left:30px"></div>
+<div class="rl-tag" style="bottom:-6px;left:60px">⑦ 11 Plex Mono · <span class="mono">--sx-danger</span></div>
+
+<!-- rl: sparkline -->
+<div class="rl-pin" style="top:52px;right:16px"></div>
+<div class="rl-tag" style="top:36px;right:-180px">⑧ 72×24 · stroke 1.5 · <span class="mono">--sx-blue</span></div>
+
+<!-- rl: gap -->
+<div class="rl-tag" style="top:-62px;left:0" title="gap">gap 4px between elements</div>
+
+</div>
+
+</div>
+
+<div class="rl-list">
+<div class="lab" style="margin-bottom:10px">SPECS</div>
+<div class="rl-item"><span class="n">1</span><span><b style="font-weight:500">Radius</b> · <code>8</code> · token <code>--radius-md</code></span></div>
+<div class="rl-item"><span class="n">2</span><span><b style="font-weight:500">Border</b> · <code>1px solid var(--sx-line)</code> (#1a1d26) · emphasis uses <code>--sx-line-2</code></span></div>
+<div class="rl-item"><span class="n">3</span><span><b style="font-weight:500">Padding</b> · 12 × 14 · gap 4 between rows</span></div>
+<div class="rl-item"><span class="n">4</span><span><b style="font-weight:500">Width</b> · grid-column span 2 of 12 (≈260 on 1440 canvas)</span></div>
+<div class="rl-item"><span class="n">5</span><span><b style="font-weight:500">Label</b> · Plex Sans 12 / 400 · color <code>--sx-muted</code></span></div>
+<div class="rl-item"><span class="n">6</span><span><b style="font-weight:500">Value</b> · Plex Sans 24 / 500 · line-height 1.1 · letter-spacing -.01em · <code>font-variant-numeric: tabular-nums</code></span></div>
+<div class="rl-item"><span class="n">7</span><span><b style="font-weight:500">Delta</b> · Plex Mono 11 / 500 · color: positive <code>--sx-ok</code> · negative <code>--sx-danger</code> · neutral <code>--sx-muted</code></span></div>
+<div class="rl-item"><span class="n">8</span><span><b style="font-weight:500">Sparkline</b> · 72×24 · stroke 1.5 · <code>vector-effect:non-scaling-stroke</code> · no fill</span></div>
+</div>
+</div>
+</section>
+
+<!-- 3 · REDLINES · BUTTON -->
+<section id="t3" class="sec" style="padding-top:0">
+<div class="row"><a href="#t3" class="head">3</a><b>Redlines · buttons &amp; focus ring</b></div>
+
+<div style="display:grid;grid-template-columns:1fr 360px;gap:28px">
+
+<div class="card" style="padding:50px;display:flex;align-items:center;gap:30px;justify-content:center;background:#08090e">
+
+<!-- Primary button -->
+<div style="position:relative">
+<button style="font:500 13px/1 var(--font-body);padding:9px 14px;border-radius:8px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:6px"><i class="ph ph-check"></i>Deploy</button>
+
+<div class="rl-line" style="top:-16px;left:0;right:0;height:1px"></div>
+<div class="rl-tag" style="top:-30px;left:50%;transform:translateX(-50%)">w: content + 28</div>
+
+<div class="rl-line" style="top:0;bottom:0;left:-20px;width:1px"></div>
+<div class="rl-tag" style="top:50%;left:-100px;transform:translateY(-50%)">h: 34 (pad 9)</div>
+
+<div class="rl-pin" style="top:0;right:0"></div>
+<div class="rl-tag" style="top:-10px;right:-110px">r: 8</div>
+
+<div class="rl-pin" style="bottom:0;left:40%"></div>
+<div class="rl-tag" style="bottom:-26px;left:30%">gap 6 between icon &amp; text</div>
+</div>
+
+<!-- Primary focused -->
+<div style="position:relative">
+<button style="font:500 13px/1 var(--font-body);padding:9px 14px;border-radius:8px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 0 0 3px var(--sx-blue-tint-2)">Deploy</button>
+<div class="rl-pin" style="top:50%;right:-3px"></div>
+<div class="rl-tag" style="top:-24px;right:-80px">focus: 3px · <span class="mono">--sx-blue-tint-2</span></div>
+</div>
+
+<!-- Secondary + danger -->
+<div style="display:flex;gap:10px;position:relative">
+<button style="font:500 13px/1 var(--font-body);padding:9px 14px;border-radius:8px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Cancel</button>
+<button style="font:500 13px/1 var(--font-body);padding:9px 14px;border-radius:8px;border:1px solid var(--sx-danger);background:var(--sx-danger);color:#fff">Revoke</button>
+<div class="rl-tag" style="top:-26px;left:0">secondary</div>
+<div class="rl-tag" style="top:-26px;right:0">danger</div>
+</div>
+
+</div>
+
+<div class="rl-list">
+<div class="lab" style="margin-bottom:10px">SPECS</div>
+<div class="rl-item"><span class="n">·</span><span><b style="font-weight:500">Height</b> · 34 (pad-y 9) · small variant 28 (pad-y 6)</span></div>
+<div class="rl-item"><span class="n">·</span><span><b style="font-weight:500">Padding-x</b> · 14 default · 11 small · 18 large</span></div>
+<div class="rl-item"><span class="n">·</span><span><b style="font-weight:500">Radius</b> · <code>8</code> everywhere · never a pill</span></div>
+<div class="rl-item"><span class="n">·</span><span><b style="font-weight:500">Font</b> · Plex Sans 13 / 500 / line-height 1</span></div>
+<div class="rl-item"><span class="n">·</span><span><b style="font-weight:500">Icon</b> · 14 or 16 · gap 6 · optical-align baseline</span></div>
+<div class="rl-item"><span class="n">·</span><span><b style="font-weight:500">Focus</b> · <code>box-shadow 0 0 0 3px</code> in matching tint — blue, danger-tint, violet-tint</span></div>
+<div class="rl-item"><span class="n">·</span><span><b style="font-weight:500">Disabled</b> · 40% opacity · <code>cursor:not-allowed</code></span></div>
+<div class="rl-item"><span class="n">·</span><span><b style="font-weight:500">Loading</b> · swap icon for 14px spinner; keep width (anti-jitter)</span></div>
+</div>
+</div>
+</section>
+
+<!-- 4 · VOICE & TONE -->
+<section id="t4" class="sec" style="padding-top:0">
+<div class="row"><a href="#t4" class="head">4</a><b>Voice &amp; tone · how Strataix talks</b></div>
+
+<div class="card" style="padding:20px 22px;display:flex;flex-direction:column;gap:16px">
+<div style="font-size:13px;color:#b2b6ca;max-width:720px;line-height:1.6">Operator tool for developers. Short, factual, present-tense. Numbers first. Blame the system, not the user. Never say "oops" or "oh no." Never use the word "powerful". Michroma stays in display; Plex Sans carries all UI copy.</div>
+
+<div class="card" style="padding:0;overflow:hidden">
+<div class="tt">
+<div class="h">Context</div>
+<div class="h">Say <span class="good">✓</span></div>
+<div class="h">Not <span class="bad">✗</span></div>
+
+<div>Alert · budget</div>
+<div class="good">Budget at 92% · exceeds Nov 27.</div>
+<div class="bad">Heads up! You might go over your budget soon.</div>
+
+<div>Error · auth</div>
+<div class="good">That key was rejected. Create a new one.</div>
+<div class="bad">Oops! Something went wrong authenticating your request.</div>
+
+<div>Empty state</div>
+<div class="good">No requests yet. Point your SDK at <span class="mono">gateway.strataix.in/v1</span>.</div>
+<div class="bad">Nothing to see here! Why not try sending a request?</div>
+
+<div>Success · toast</div>
+<div class="good">Route deployed · v12 · live in 4 regions.</div>
+<div class="bad">Awesome! Your changes have been successfully deployed.</div>
+
+<div>Destructive confirm</div>
+<div class="good">Revoking this key is immediate. Type the name to confirm.</div>
+<div class="bad">Are you absolutely sure you want to do this?</div>
+
+<div>Ask · AI result</div>
+<div class="good">Spend is up 44% on support/triage. Cache hit fell to 12%.</div>
+<div class="bad">I think your spend might be higher than usual — want me to investigate?</div>
+
+<div>Loading</div>
+<div class="good">Streaming response…</div>
+<div class="bad">Please wait while we work our magic</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+<div style="background:var(--sx-bg);border:1px solid var(--sx-line);border-radius:8px;padding:14px"><div class="lab" style="margin-bottom:6px">WORDS WE LIKE</div><div style="font-size:12.5px;color:#b2b6ca;line-height:1.75">route · guardrail · budget · session · fallback · canary · cap · spend · hit · drift</div></div>
+<div style="background:var(--sx-bg);border:1px solid var(--sx-line);border-radius:8px;padding:14px"><div class="lab" style="margin-bottom:6px;color:var(--sx-warn)">WORDS WE AVOID</div><div style="font-size:12.5px;color:#b2b6ca;line-height:1.75">awesome · powerful · seamless · magic · effortless · revolutionary · simply · just · leverage · unlock</div></div>
+<div style="background:var(--sx-bg);border:1px solid var(--sx-line);border-radius:8px;padding:14px"><div class="lab" style="margin-bottom:6px">RULES</div><div style="font-size:12.5px;color:#b2b6ca;line-height:1.75">numbers in Plex Mono · sentence case · Oxford comma · no exclamation marks · dates as "Nov 27" not "27 Nov"</div></div>
+</div>
+</div>
+</section>
+
+<!-- 5 · ICON SET -->
+<section id="t5" class="sec" style="padding-top:0">
+<div class="row"><a href="#t5" class="head">5</a><b>Icon set · Phosphor regular · 38 names</b></div>
+<div class="card" style="padding:22px 24px">
+<div style="font-size:12.5px;color:#b2b6ca;line-height:1.55;margin-bottom:16px;max-width:720px">One weight everywhere · regular · 16px inside controls, 18 in alerts, 20 in nav. Always paired with a text label — never standalone to represent an action.</div>
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px">
+
+<div>
+<div class="lab" style="margin-bottom:10px">NAV &amp; CONCEPTS</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;font-size:11.5px;color:var(--sx-muted)">
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-squares-four" style="font-size:20px;color:var(--sx-text)"></i>overview</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-list-dashes" style="font-size:20px;color:var(--sx-text)"></i>requests</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-tree-structure" style="font-size:20px;color:var(--sx-text)"></i>sessions</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-git-fork" style="font-size:20px;color:var(--sx-text)"></i>routes</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-cloud" style="font-size:20px;color:var(--sx-text)"></i>providers</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-shield-check" style="font-size:20px;color:var(--sx-text)"></i>guardrails</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-key" style="font-size:20px;color:var(--sx-text)"></i>keys</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-wallet" style="font-size:20px;color:var(--sx-text)"></i>budgets</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-bell-simple" style="font-size:20px;color:var(--sx-text)"></i>alerts</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-gear-six" style="font-size:20px;color:var(--sx-text)"></i>settings</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-users-three" style="font-size:20px;color:var(--sx-text)"></i>members</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-plugs-connected" style="font-size:20px;color:var(--sx-text)"></i>integrations</div>
+</div>
+</div>
+
+<div>
+<div class="lab" style="margin-bottom:10px">STATES &amp; ACTIONS</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;font-size:11.5px;color:var(--sx-muted)">
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-check-circle" style="font-size:20px;color:var(--sx-ok)"></i>ok</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-warning" style="font-size:20px;color:var(--sx-warn)"></i>warn</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-warning-circle" style="font-size:20px;color:var(--sx-danger)"></i>critical</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-info" style="font-size:20px;color:var(--sx-text)"></i>info</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-clock-countdown" style="font-size:20px;color:var(--sx-warn)"></i>latency</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-lightning" style="font-size:20px;color:var(--sx-violet)"></i>finding</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-scissors" style="font-size:20px;color:var(--sx-violet)"></i>prune</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-sparkle" style="font-size:20px;color:var(--sx-blue-text)"></i>ask / LLM</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-magnifying-glass" style="font-size:20px;color:var(--sx-text)"></i>search</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-funnel" style="font-size:20px;color:var(--sx-text)"></i>filter</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-plus" style="font-size:20px;color:var(--sx-text)"></i>add</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-arrow-counter-clockwise" style="font-size:20px;color:var(--sx-text)"></i>retry</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-copy" style="font-size:20px;color:var(--sx-text)"></i>copy</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-download-simple" style="font-size:20px;color:var(--sx-text)"></i>export</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-arrow-up-right" style="font-size:20px;color:var(--sx-text)"></i>open</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-dots-three-vertical" style="font-size:20px;color:var(--sx-text)"></i>more</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-caret-down" style="font-size:20px;color:var(--sx-text)"></i>disclosure</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-caret-up-down" style="font-size:20px;color:var(--sx-text)"></i>switcher</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-x" style="font-size:20px;color:var(--sx-text)"></i>dismiss</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-slack-logo" style="font-size:20px;color:var(--sx-text)"></i>slack</div>
+</div>
+</div>
+
+</div>
+<div style="padding:12px 14px;background:var(--sx-bg);border-radius:8px;margin-top:16px;display:flex;align-items:center;gap:10px"><i class="ph ph-info" style="color:var(--sx-blue-text)"></i><span style="font-size:12.5px;color:var(--sx-muted)">Need a glyph not in this set? Open an issue · <span class="mono" style="color:var(--sx-text)">#design-system</span>. Don't ship one-offs.</span></div>
+</div>
+</section>
+
+<!-- 6 · ENGINEERING CHECKLIST -->
+<section id="t6" class="sec" style="padding-top:0;padding-bottom:60px">
+<div class="row"><a href="#t6" class="head">6</a><b>First-PR checklist</b></div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+
+<div class="card" style="padding:20px 22px">
+<div class="lab" style="margin-bottom:10px">BEFORE YOU OPEN THE PR</div>
+<div style="display:flex;flex-direction:column;gap:9px;font-size:13px;color:#b2b6ca">
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Pulls from <code class="mono" style="color:#e9e9ed">--sx-*</code> tokens, not hex</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Renders correctly in both <b style="color:#e9e9ed;font-weight:500">dark</b> and <b style="color:#e9e9ed;font-weight:500">light</b></div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>All text at least 12px · body 13–14</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Numbers use <code class="mono" style="color:#e9e9ed">tabular-nums</code> + Plex Mono where they sit in columns</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Buttons have hover, focus, disabled &amp; loading</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Icons from Phosphor regular (no fill, no bold)</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Empty, loading, error states covered</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Works at 390 (mobile), 810 (tablet) and 1440 (desktop)</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Keyboard: tab order sensible · focus visible · esc dismisses overlays</div>
+</div>
+</div>
+
+<div class="card" style="padding:20px 22px">
+<div class="lab" style="margin-bottom:10px">ACCESSIBILITY · AA</div>
+<div style="display:flex;flex-direction:column;gap:9px;font-size:13px;color:#b2b6ca">
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Text contrast ≥ 4.5 : 1 against its surface (we validated <code class="mono" style="color:#e9e9ed">--sx-text</code>, <code class="mono" style="color:#e9e9ed">--sx-muted</code>, <code class="mono" style="color:#e9e9ed">--sx-blue-text</code>)</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Non-text (chart lines, focus rings): ≥ 3 : 1</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Never color alone: pair status color with an icon or label</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Tap target min 44×44 on mobile, 32×32 on desktop</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Motion respects <code class="mono" style="color:#e9e9ed">prefers-reduced-motion</code></div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>aria-label on icon-only buttons; <code class="mono" style="color:#e9e9ed">role="status"</code> on live regions (streaming, toasts)</div>
+<div style="display:flex;gap:10px"><i class="ph ph-check-square" style="color:var(--sx-ok)"></i>Charts have a text alternative in the nearby copy</div>
+</div>
+</div>
+
+</div>
+
+<div class="card" style="padding:20px 22px;margin-top:14px">
+<div class="lab" style="margin-bottom:10px">SKIM-LIST OF CANVAS PAGES (THIS PROJECT)</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;font-size:12px;color:#b2b6ca;font-family:var(--font-mono)">
+<span>Landing</span><span>Wireframes</span><span>Hi-fi</span><span>Style Guide</span>
+<span>Sitemap</span><span>Onboarding</span><span>Dashboard · Overview</span><span>Requests</span>
+<span>Sessions</span><span>Routes</span><span>Providers</span><span>Guardrails</span>
+<span>Keys</span><span>Budgets</span><span>Alerts</span><span>Settings · Appearance</span>
+<span>Billing</span><span>Members</span><span>Integrations</span><span>Audit log</span>
+<span>States</span><span>Mobile</span><span>Patterns · modals/drawers/forms</span><span>Command palette · ⌘K</span>
+<span>Emails</span><span>Pricing</span><span>Docs</span><span>Changelog</span>
+<span style="color:var(--sx-blue-text)">Handoff · this page</span>
+</div>
+</div>
+
+</section>
+
+</x-dc>
+</body>
+</html>

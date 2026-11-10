@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:13px}
+.nav{display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)}
+.nav i{font-size:16px}
+.nav .flex{flex:1}
+.nav .b{font:500 10.5px var(--font-mono);color:var(--sx-muted)}
+.nav.active{background:var(--sx-blue-tint);color:var(--sx-blue-text);font-weight:500}
+.sub{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;font-size:13px;color:var(--sx-text);cursor:pointer}
+.sub.a{background:var(--sx-raised);color:var(--sx-text);font-weight:500;border-left:2px solid var(--sx-blue);padding-left:8px}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.toggle{width:30px;height:16px;border-radius:999px;position:relative;display:inline-block;flex:none;cursor:pointer}
+.toggle.on{background:var(--sx-blue)}
+.toggle.off{background:var(--sx-line-2)}
+.toggle::after{content:'';position:absolute;top:2px;width:12px;height:12px;border-radius:50%;background:#fff}
+.toggle.on::after{right:2px}
+.toggle.off::after{left:2px}
+.lab{font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em}
+.card{background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px}
+
+/* Theme preview mini-frames */
+.mini{border-radius:10px;overflow:hidden;position:relative;height:160px;cursor:pointer}
+.mini.light{background:#f0f1f5;border:1px solid #cdd0dc;color:#1b1d29}
+.mini.dark{background:#08090e;border:1px solid #262a35;color:#e9e9ed}
+.mini.sys{background:linear-gradient(90deg,#f0f1f5 50%,#08090e 50%);border:1px solid #262a35}
+.mini .side{position:absolute;top:0;bottom:0;left:0;width:30px;background:inherit;border-right:1px solid currentColor;opacity:1}
+.mini .bar{position:absolute;top:8px;height:5px;border-radius:3px}
+.mini .chk{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;background:var(--sx-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px}
+
+/* Accent swatch */
+.acc{width:48px;height:48px;border-radius:12px;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.acc.sel{box-shadow:0 0 0 2px var(--sx-bg),0 0 0 4px currentColor}
+.acc i{color:#fff;font-size:18px;opacity:0}
+.acc.sel i{opacity:1}
+</style>
+</helmet>
+
+<div style="width:1440px;height:900px;display:flex;overflow:hidden">
+
+<!-- MAIN SIDEBAR -->
+<aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
+<div style="padding:4px 8px 18px"><img src="public/brand/wordmark-light.png" alt="Strataix" style="height:13px;display:block"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:8px;margin-bottom:14px">
+<span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span>
+<div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
+<div class="nav"><i class="ph ph-squares-four"></i><span class="flex">Overview</span></div>
+<div class="nav"><i class="ph ph-list-dashes"></i><span class="flex">Requests</span><span class="b">1.24M</span></div>
+<div class="nav"><i class="ph ph-tree-structure"></i><span class="flex">Sessions</span></div>
+<div class="nav"><i class="ph ph-git-fork"></i><span class="flex">Routes</span><span class="b">18</span></div>
+<div class="nav"><i class="ph ph-cloud"></i><span class="flex">Providers</span><span class="b">5</span></div>
+<div class="nav"><i class="ph ph-shield-check"></i><span class="flex">Guardrails</span></div>
+<div class="nav"><i class="ph ph-key"></i><span class="flex">Keys</span><span class="b">7</span></div>
+<div class="nav"><i class="ph ph-wallet"></i><span class="flex">Budgets</span></div>
+<div class="nav"><i class="ph ph-bell-simple"></i><span class="flex">Alerts</span><span class="b">2</span></div>
+<div style="flex:1"></div>
+<div class="nav active"><i class="ph ph-gear-six"></i><span class="flex">Settings</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span></div>
+</aside>
+
+<!-- MAIN -->
+<main style="flex:1;min-width:0;display:flex;flex-direction:column">
+<header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
+<span style="font:400 11px var(--font-display);letter-spacing:.06em">SETTINGS</span>
+<span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">Appearance</span>
+<div style="flex:1"></div>
+<span style="font-size:11.5px;color:var(--sx-muted)">Saved automatically · 2s ago</span>
+</header>
+
+<div style="flex:1;min-height:0;display:flex">
+
+<!-- SUB-NAV -->
+<div style="width:220px;flex:none;border-right:1px solid var(--sx-line);padding:18px 12px;display:flex;flex-direction:column;gap:4px;overflow:auto">
+<div class="lab" style="padding:4px 10px 6px">ACCOUNT</div>
+<div class="sub"><i class="ph ph-user-circle" style="color:var(--sx-muted)"></i>Profile</div>
+<div class="sub a"><i class="ph ph-palette" style="color:var(--sx-blue-text)"></i>Appearance</div>
+<div class="sub"><i class="ph ph-bell" style="color:var(--sx-muted)"></i>Notifications</div>
+<div class="sub"><i class="ph ph-keyboard" style="color:var(--sx-muted)"></i>Shortcuts</div>
+
+<div class="lab" style="padding:14px 10px 6px">ORGANIZATION</div>
+<div class="sub"><i class="ph ph-buildings" style="color:var(--sx-muted)"></i>General</div>
+<div class="sub"><i class="ph ph-users-three" style="color:var(--sx-muted)"></i><span style="flex:1">Members</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">14</span></div>
+<div class="sub"><i class="ph ph-shield-star" style="color:var(--sx-muted)"></i>Roles &amp; SSO</div>
+<div class="sub"><i class="ph ph-credit-card" style="color:var(--sx-muted)"></i>Billing &amp; plan</div>
+<div class="sub"><i class="ph ph-receipt" style="color:var(--sx-muted)"></i>Invoices</div>
+
+<div class="lab" style="padding:14px 10px 6px">PLATFORM</div>
+<div class="sub"><i class="ph ph-plugs-connected" style="color:var(--sx-muted)"></i><span style="flex:1">Integrations</span><span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">4</span></div>
+<div class="sub"><i class="ph ph-webhooks-logo" style="color:var(--sx-muted)"></i>Webhooks</div>
+<div class="sub"><i class="ph ph-database" style="color:var(--sx-muted)"></i>Data retention</div>
+<div class="sub"><i class="ph ph-file-text" style="color:var(--sx-muted)"></i>Audit log</div>
+<div class="sub"><i class="ph ph-code" style="color:var(--sx-muted)"></i>API reference</div>
+</div>
+
+<!-- CONTENT -->
+<div style="flex:1;min-width:0;overflow:auto;padding:22px 28px;display:flex;flex-direction:column;gap:22px">
+
+<div>
+<div style="font:500 20px var(--font-body);margin-bottom:4px">Appearance</div>
+<div style="font-size:12.5px;color:var(--sx-muted);max-width:620px;line-height:1.55">Per-viewer · saved on this device. Your teammates won't see these changes. Charts, KPI cards, buttons and selection states pick up both choices live.</div>
+</div>
+
+<!-- THEME -->
+<section class="card" style="padding:22px 24px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:baseline;gap:10px"><span style="font-weight:500;font-size:15px">Theme</span><span class="lab">matches the dashboard · sidebar · charts</span></div>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+
+<!-- System -->
+<div>
+<div class="mini sys" style="position:relative">
+<div style="position:absolute;top:0;bottom:0;left:0;width:30px;background:#e4e6ed;border-right:1px solid #cdd0dc"></div>
+<div style="position:absolute;top:0;bottom:0;left:50%;width:30px;background:#0e1016;border-right:1px solid #1a1d26"></div>
+<div style="position:absolute;top:14px;left:38px;right:calc(50% + 14px);height:34px;background:#fcfcfe;border:1px solid #cdd0dc;border-radius:5px"></div>
+<div style="position:absolute;top:14px;left:calc(50% + 38px);right:14px;height:34px;background:#0e1016;border:1px solid #1a1d26;border-radius:5px"></div>
+<div style="position:absolute;bottom:14px;left:38px;right:14px;height:60px;border-radius:5px;background:linear-gradient(90deg,#fcfcfe 0%,#fcfcfe 50%,#0e1016 50%);border:1px solid #cdd0dc"></div>
+</div>
+<div style="margin-top:10px;display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--sx-line-2);display:inline-block"></span><span style="font-size:13px">System</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:4px;padding-left:22px">Follow OS setting · right now dark</div>
+</div>
+
+<!-- Light -->
+<div>
+<div class="mini light">
+<div style="position:absolute;top:0;bottom:0;left:0;width:30px;background:#e4e6ed;border-right:1px solid #cdd0dc"></div>
+<div class="bar" style="left:38px;width:40px;background:#cdd0dc"></div>
+<div class="bar" style="left:38px;top:20px;width:60px;background:#1a5fff"></div>
+<div class="bar" style="left:38px;top:32px;width:50px;background:#cdd0dc"></div>
+<div class="bar" style="left:38px;top:44px;width:48px;background:#cdd0dc"></div>
+<div style="position:absolute;top:60px;left:38px;right:12px;height:28px;background:#fcfcfe;border:1px solid #cdd0dc;border-radius:5px;padding:4px 8px;font:500 11px var(--font-mono);color:#1b1d29">$4,182</div>
+<div style="position:absolute;bottom:12px;left:38px;right:12px;height:44px;background:#fcfcfe;border:1px solid #cdd0dc;border-radius:5px;overflow:hidden">
+<svg viewBox="0 0 200 40" preserveAspectRatio="none" style="width:100%;height:100%"><path d="M0,30 L25,24 L50,26 L75,18 L100,20 L125,14 L150,12 L175,8 L200,4" fill="none" stroke="#1a5fff" stroke-width="1.5"/></svg>
+</div>
+</div>
+<div style="margin-top:10px;display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;border-radius:50%;border:2px solid var(--sx-line-2);display:inline-block"></span><span style="font-size:13px">Light</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:4px;padding-left:22px">Neutral-100 background · higher contrast</div>
+</div>
+
+<!-- Dark (selected) -->
+<div>
+<div class="mini dark" style="border-color:var(--sx-blue);box-shadow:0 0 0 2px var(--sx-blue-tint)">
+<div style="position:absolute;top:0;bottom:0;left:0;width:30px;background:#08090e;border-right:1px solid #1a1d26"></div>
+<div class="bar" style="left:38px;width:40px;background:#262a35"></div>
+<div class="bar" style="left:38px;top:20px;width:60px;background:#2f6fff"></div>
+<div class="bar" style="left:38px;top:32px;width:50px;background:#262a35"></div>
+<div class="bar" style="left:38px;top:44px;width:48px;background:#262a35"></div>
+<div style="position:absolute;top:60px;left:38px;right:12px;height:28px;background:#0e1016;border:1px solid #1a1d26;border-radius:5px;padding:4px 8px;font:500 11px var(--font-mono);color:#e9e9ed">$4,182</div>
+<div style="position:absolute;bottom:12px;left:38px;right:12px;height:44px;background:#0e1016;border:1px solid #1a1d26;border-radius:5px;overflow:hidden">
+<svg viewBox="0 0 200 40" preserveAspectRatio="none" style="width:100%;height:100%"><path d="M0,30 L25,24 L50,26 L75,18 L100,20 L125,14 L150,12 L175,8 L200,4" fill="none" stroke="#2f6fff" stroke-width="1.5"/></svg>
+</div>
+<div class="chk"><i class="ph ph-check"></i></div>
+</div>
+<div style="margin-top:10px;display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;border-radius:50%;background:var(--sx-blue);border:4px solid var(--sx-blue);box-shadow:inset 0 0 0 2px var(--sx-panel)"></span><span style="font-size:13px;font-weight:500">Dark</span><span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">current</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:4px;padding-left:22px">Default for operators · easier at night</div>
+</div>
+
+</div>
+
+<div style="display:flex;align-items:center;gap:12px;padding-top:12px;border-top:1px solid var(--sx-line);font-size:12.5px">
+<i class="ph ph-moon" style="color:var(--sx-blue-text)"></i>
+<span style="flex:1"><b style="font-weight:500">Auto dark after sunset</b> · switch to Dark from 18:00 to 06:00 IST, overriding System</span>
+<span class="toggle on"></span>
+</div>
+<div style="display:flex;align-items:center;gap:12px;font-size:12.5px">
+<i class="ph ph-monitor-play" style="color:var(--sx-muted)"></i>
+<span style="flex:1"><b style="font-weight:500">Reduce motion</b> · dim hover, kill chart transitions &amp; loader pulses</span>
+<span class="toggle off"></span>
+</div>
+</section>
+
+<!-- ACCENT -->
+<section class="card" style="padding:22px 24px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;align-items:baseline;gap:10px"><span style="font-weight:500;font-size:15px">Accent</span><span class="lab">primary action · live indicator · series 1 · selection</span></div>
+
+<div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+<div class="acc sel" style="background:#2f6fff;color:#2f6fff"><i class="ph ph-check"></i></div>
+<div class="acc" style="background:#6366f1"></div>
+<div class="acc" style="background:#8b5cf6"></div>
+<div class="acc" style="background:#a855f7"></div>
+<div class="acc" style="background:#d946ef"></div>
+<div class="acc" style="background:#ec4899"></div>
+<div class="acc" style="background:#ef4444"></div>
+<div class="acc" style="background:#f97316"></div>
+<div class="acc" style="background:#eab308"></div>
+<div class="acc" style="background:#84cc16"></div>
+<div class="acc" style="background:#22c55e"></div>
+<div class="acc" style="background:#10b981"></div>
+<div class="acc" style="background:#06b6d4"></div>
+<div class="acc" style="background:#0ea5e9"></div>
+<div class="acc" style="background:#e9e9ed;color:#161826" title="Monochrome"></div>
+<div class="acc" style="background:linear-gradient(135deg,#ff80b5,#9089fc);position:relative"><i class="ph ph-plus" style="opacity:1"></i></div>
+</div>
+
+<div style="display:flex;gap:14px;align-items:center;padding:12px 14px;background:var(--sx-raised);border-radius:8px;font-size:12.5px">
+<span class="lab" style="color:var(--sx-muted)">HEX</span>
+<span style="font-family:var(--font-mono);color:var(--sx-text)">#2F6FFF</span>
+<span class="lab" style="color:var(--sx-muted);margin-left:14px">OKLCH</span>
+<span style="font-family:var(--font-mono);color:var(--sx-text)">0.56 0.22 265</span>
+<div style="flex:1"></div>
+<span style="display:flex;align-items:center;gap:6px;color:var(--sx-ok);font-size:11.5px"><i class="ph ph-check-circle"></i>AA passes on both themes</span>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text);cursor:pointer">Reset to default</button>
+</div>
+
+<div style="display:flex;align-items:center;gap:12px;padding-top:12px;border-top:1px solid var(--sx-line);font-size:12.5px">
+<i class="ph ph-palette" style="color:var(--sx-blue-text)"></i>
+<span style="flex:1"><b style="font-weight:500">Apply to charts</b> · use the accent as series 1 everywhere (otherwise keep neutral charts)</span>
+<span class="toggle on"></span>
+</div>
+<div style="display:flex;align-items:center;gap:12px;font-size:12.5px">
+<i class="ph ph-waveform" style="color:var(--sx-muted)"></i>
+<span style="flex:1"><b style="font-weight:500">Colorblind-safe palette</b> · swap series colors for a deuteranopia-friendly set</span>
+<span class="toggle off"></span>
+</div>
+</section>
+
+<!-- PREVIEW -->
+<section class="card" style="padding:0;overflow:hidden">
+<div style="padding:16px 20px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<span style="font-weight:500;font-size:14px;flex:1">Live preview</span>
+<div style="display:flex;border:1px solid var(--sx-line-2);border-radius:6px;overflow:hidden;font-size:11.5px;font-family:var(--font-mono)">
+<span style="padding:5px 10px;background:var(--sx-raised)">Dashboard</span>
+<span style="padding:5px 10px;color:var(--sx-muted)">Buttons</span>
+<span style="padding:5px 10px;color:var(--sx-muted)">Charts</span>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--sx-line)">
+
+<!-- DARK PREVIEW -->
+<div style="background:#08090e;padding:18px 20px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;justify-content:space-between"><span class="lab" style="color:#75798c">DARK · YOUR CHOICE</span><span class="pill" style="background:#17295e;color:#8fb2ff">applied</span></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<div style="background:#0e1016;border:1px solid #1a1d26;border-radius:8px;padding:10px"><div style="font-size:11px;color:#9397ab">Spend</div><div style="font:500 18px var(--font-body);color:#e9e9ed;margin-top:2px">$4,182</div><div style="font:500 10.5px var(--font-mono);color:#2f6fff">+12.0%</div></div>
+<div style="background:#0e1016;border:1px solid #1a1d26;border-radius:8px;padding:10px"><div style="font-size:11px;color:#9397ab">Requests</div><div style="font:500 18px var(--font-body);color:#e9e9ed;margin-top:2px">1.24M</div><div style="font:500 10.5px var(--font-mono);color:#9397ab">+4.1%</div></div>
+<div style="background:#0e1016;border:1px solid #1a1d26;border-radius:8px;padding:10px"><div style="font-size:11px;color:#9397ab">p95</div><div style="font:500 18px var(--font-body);color:#e9e9ed;margin-top:2px">1.84s</div><div style="font:500 10.5px var(--font-mono);color:#9397ab">−80ms</div></div>
+</div>
+<div style="background:#0e1016;border:1px solid #1a1d26;border-radius:8px;padding:10px 12px">
+<div style="display:flex;align-items:center;gap:10px"><span style="font-size:12px;color:#e9e9ed;font-weight:500">Spend · 24h</span><span style="display:flex;align-items:center;gap:5px;font:11px var(--font-mono);color:#9397ab"><span style="width:7px;height:7px;background:#2f6fff;border-radius:2px"></span>Anthropic</span><span style="display:flex;align-items:center;gap:5px;font:11px var(--font-mono);color:#9397ab"><span style="width:7px;height:7px;background:var(--color-accent);border-radius:2px"></span>OpenAI</span></div>
+<div style="height:80px;margin-top:8px"><svg viewBox="0 0 320 80" preserveAspectRatio="none" style="width:100%;height:100%">
+<path d="M0,66 L40,60 L80,58 L120,46 L160,50 L200,34 L240,30 L280,20 L320,12 L320,80 L0,80 Z" fill="#2f6fff" fill-opacity=".35"/>
+<path d="M0,66 L40,60 L80,58 L120,46 L160,50 L200,34 L240,30 L280,20 L320,12" fill="none" stroke="#2f6fff" stroke-width="1.5"/>
+</svg></div>
+</div>
+<div style="display:flex;gap:8px">
+<button style="font:500 12px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid #2f6fff;background:#2f6fff;color:#fff">Deploy</button>
+<button style="font:500 12px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid #262a35;background:transparent;color:#e9e9ed">Cancel</button>
+<div style="flex:1"></div>
+<span style="display:flex;align-items:center;gap:7px;padding:5px 10px;border:1px solid #2f6fff;border-radius:6px;color:#8fb2ff;font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#2f6fff;box-shadow:0 0 0 3px #17295e"></span>Live</span>
+</div>
+</div>
+
+<!-- LIGHT PREVIEW -->
+<div style="background:#f0f1f5;padding:18px 20px;display:flex;flex-direction:column;gap:12px;color:#1b1d29">
+<div style="display:flex;align-items:center;justify-content:space-between"><span class="lab" style="color:#4a4e62">LIGHT · PREVIEW</span><span class="pill" style="background:#e6edff;color:#1a4fd6">option</span></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<div style="background:#fcfcfe;border:1px solid #cdd0dc;border-radius:8px;padding:10px"><div style="font-size:11px;color:#4a4e62">Spend</div><div style="font:500 18px var(--font-body);color:#1b1d29;margin-top:2px">$4,182</div><div style="font:500 10.5px var(--font-mono);color:#1a5fff">+12.0%</div></div>
+<div style="background:#fcfcfe;border:1px solid #cdd0dc;border-radius:8px;padding:10px"><div style="font-size:11px;color:#4a4e62">Requests</div><div style="font:500 18px var(--font-body);color:#1b1d29;margin-top:2px">1.24M</div><div style="font:500 10.5px var(--font-mono);color:#4a4e62">+4.1%</div></div>
+<div style="background:#fcfcfe;border:1px solid #cdd0dc;border-radius:8px;padding:10px"><div style="font-size:11px;color:#4a4e62">p95</div><div style="font:500 18px var(--font-body);color:#1b1d29;margin-top:2px">1.84s</div><div style="font:500 10.5px var(--font-mono);color:#4a4e62">−80ms</div></div>
+</div>
+<div style="background:#fcfcfe;border:1px solid #cdd0dc;border-radius:8px;padding:10px 12px">
+<div style="display:flex;align-items:center;gap:10px"><span style="font-size:12px;font-weight:500">Spend · 24h</span><span style="display:flex;align-items:center;gap:5px;font:11px var(--font-mono);color:#4a4e62"><span style="width:7px;height:7px;background:#1a5fff;border-radius:2px"></span>Anthropic</span><span style="display:flex;align-items:center;gap:5px;font:11px var(--font-mono);color:#4a4e62"><span style="width:7px;height:7px;background:var(--color-accent-600);border-radius:2px"></span>OpenAI</span></div>
+<div style="height:80px;margin-top:8px"><svg viewBox="0 0 320 80" preserveAspectRatio="none" style="width:100%;height:100%">
+<path d="M0,66 L40,60 L80,58 L120,46 L160,50 L200,34 L240,30 L280,20 L320,12 L320,80 L0,80 Z" fill="#1a5fff" fill-opacity=".18"/>
+<path d="M0,66 L40,60 L80,58 L120,46 L160,50 L200,34 L240,30 L280,20 L320,12" fill="none" stroke="#1a5fff" stroke-width="1.5"/>
+</svg></div>
+</div>
+<div style="display:flex;gap:8px">
+<button style="font:500 12px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid #1a5fff;background:#1a5fff;color:#fff">Deploy</button>
+<button style="font:500 12px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid #cdd0dc;background:transparent;color:#1b1d29">Cancel</button>
+<div style="flex:1"></div>
+<span style="display:flex;align-items:center;gap:7px;padding:5px 10px;border:1px solid #1a5fff;border-radius:6px;color:#1a4fd6;font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#1a5fff;box-shadow:0 0 0 3px #cfdcff"></span>Live</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- Other sections overview -->
+<div style="font:500 15px var(--font-body);margin-top:6px">Other settings</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+
+<div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:12px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><i class="ph ph-users-three" style="font-size:18px;color:var(--sx-blue-text)"></i><span style="font-weight:500;font-size:14px;flex:1">Members</span><i class="ph ph-arrow-up-right" style="color:var(--sx-muted)"></i></div>
+<div style="font-size:11.5px;color:var(--sx-muted)">14 people · 3 pending invites · 2 owners</div>
+<div style="display:flex;gap:-6px">
+<span style="width:24px;height:24px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center;border:2px solid var(--sx-panel)">IM</span>
+<span style="width:24px;height:24px;border-radius:50%;background:#2a3b1d;color:#b6e68a;font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center;margin-left:-6px;border:2px solid var(--sx-panel)">PR</span>
+<span style="width:24px;height:24px;border-radius:50%;background:#3b1d2a;color:#e68ab6;font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center;margin-left:-6px;border:2px solid var(--sx-panel)">DP</span>
+<span style="width:24px;height:24px;border-radius:50%;background:#1d2a3b;color:#8ab6e6;font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center;margin-left:-6px;border:2px solid var(--sx-panel)">NA</span>
+<span style="width:24px;height:24px;border-radius:50%;background:var(--sx-raised);color:var(--sx-muted);font:600 9px var(--font-body);display:flex;align-items:center;justify-content:center;margin-left:-6px;border:2px solid var(--sx-panel)">+10</span>
+</div>
+</div>
+
+<div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><i class="ph ph-credit-card" style="font-size:18px;color:var(--sx-blue-text)"></i><span style="font-weight:500;font-size:14px;flex:1">Billing · plan</span><i class="ph ph-arrow-up-right" style="color:var(--sx-muted)"></i></div>
+<div style="display:flex;align-items:baseline;gap:8px"><span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">Growth</span><span style="font:500 15px var(--font-body);font-variant-numeric:tabular-nums">$499</span><span style="font-size:12px;color:var(--sx-muted)">/mo + usage</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted)">Next invoice <span style="font-family:var(--font-mono);color:var(--sx-text)">Dec 01</span> · est <span style="font-family:var(--font-mono);color:var(--sx-text)">$2,180</span></div>
+<div style="height:3px;background:var(--sx-line-2);border-radius:2px;overflow:hidden;margin-top:2px"><div style="width:69%;height:100%;background:var(--sx-blue)"></div></div>
+</div>
+
+<div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><i class="ph ph-plugs-connected" style="font-size:18px;color:var(--sx-blue-text)"></i><span style="font-weight:500;font-size:14px;flex:1">Integrations</span><i class="ph ph-arrow-up-right" style="color:var(--sx-muted)"></i></div>
+<div style="font-size:11.5px;color:var(--sx-muted)">4 of 11 connected</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<span style="padding:3px 8px;border-radius:5px;background:var(--sx-raised);font:11px var(--font-mono);color:var(--sx-text)"><i class="ph ph-slack-logo"></i> Slack</span>
+<span style="padding:3px 8px;border-radius:5px;background:var(--sx-raised);font:11px var(--font-mono);color:var(--sx-text)"><i class="ph ph-github-logo"></i> GitHub</span>
+<span style="padding:3px 8px;border-radius:5px;background:var(--sx-raised);font:11px var(--font-mono);color:var(--sx-text)">PagerDuty</span>
+<span style="padding:3px 8px;border-radius:5px;background:var(--sx-raised);font:11px var(--font-mono);color:var(--sx-text)">Datadog</span>
+<span style="padding:3px 8px;border-radius:5px;background:transparent;border:1px dashed var(--sx-line-2);font:11px var(--font-mono);color:var(--sx-muted)">+7 available</span>
+</div>
+</div>
+
+<div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><i class="ph ph-shield-star" style="font-size:18px;color:var(--sx-blue-text)"></i><span style="font-weight:500;font-size:14px;flex:1">Roles &amp; SSO</span><i class="ph ph-arrow-up-right" style="color:var(--sx-muted)"></i></div>
+<div style="font-size:11.5px;color:var(--sx-muted)">SAML · Okta · 2FA required</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)"><i class="ph ph-check"></i>SSO on</span>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)"><i class="ph ph-check"></i>2FA on</span>
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">Owner · Admin · Developer · Viewer</span>
+</div>
+</div>
+
+<div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><i class="ph ph-database" style="font-size:18px;color:var(--sx-blue-text)"></i><span style="font-weight:500;font-size:14px;flex:1">Data retention</span><i class="ph ph-arrow-up-right" style="color:var(--sx-muted)"></i></div>
+<div style="font-size:11.5px;color:var(--sx-muted)">Requests 30d · prompts redacted after 7d · archives in us-east</div>
+</div>
+
+<div class="card" style="padding:16px 18px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><i class="ph ph-webhooks-logo" style="font-size:18px;color:var(--sx-blue-text)"></i><span style="font-weight:500;font-size:14px;flex:1">Webhooks</span><i class="ph ph-arrow-up-right" style="color:var(--sx-muted)"></i></div>
+<div style="font-size:11.5px;color:var(--sx-muted)">3 endpoints · 2 healthy · <span style="color:var(--sx-warn)">1 degraded</span></div>
+<div style="font:11px var(--font-mono);color:var(--sx-faint)">on.alert · on.budget · on.key_rotated</div>
+</div>
+
+</div>
+
+<div style="height:24px"></div>
+</div>
+
+</div>
+</main>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:13px}
+.chip{display:flex;align-items:center;gap:6px;padding:4px 9px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:11.5px;color:var(--sx-muted)}
+.chip b{color:var(--sx-text);font-weight:500}
+.chip .x{color:var(--sx-faint);font-size:10px}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+</style>
+</helmet>
+
+<div style="width:1440px;height:900px;display:flex;overflow:hidden">
+
+<!-- SIDEBAR -->
+<aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
+<div style="padding:4px 8px 18px"><img src="public/brand/wordmark-light.png" alt="Strataix" style="height:13px;display:block"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:8px;margin-bottom:14px">
+<span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span>
+<div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)"><i class="ph ph-squares-four" style="font-size:16px"></i><span style="flex:1">Overview</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;background:var(--sx-blue-tint);color:var(--sx-blue-text);font-weight:500"><i class="ph ph-list-dashes" style="font-size:16px"></i><span style="flex:1">Requests</span><span style="font:500 10.5px var(--font-mono)">1.24M</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)"><i class="ph ph-tree-structure" style="font-size:16px"></i><span style="flex:1">Sessions</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)"><i class="ph ph-git-fork" style="font-size:16px"></i><span style="flex:1">Routes</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">18</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)"><i class="ph ph-cloud" style="font-size:16px"></i><span style="flex:1">Providers</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">5</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)"><i class="ph ph-shield-check" style="font-size:16px"></i><span style="flex:1">Guardrails</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)"><i class="ph ph-key" style="font-size:16px"></i><span style="flex:1">Keys</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">7</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)"><i class="ph ph-wallet" style="font-size:16px"></i><span style="flex:1">Budgets</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)"><i class="ph ph-bell-simple" style="font-size:16px"></i><span style="flex:1">Alerts</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">2</span></div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;color:var(--sx-muted)"><i class="ph ph-gear-six" style="font-size:16px"></i>Settings</div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span></div>
+</aside>
+
+<!-- MAIN -->
+<main style="flex:1;min-width:0;display:flex;flex-direction:column">
+
+<!-- TOPBAR -->
+<header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
+<span style="font:400 11px var(--font-display);letter-spacing:.06em">REQUESTS</span>
+<span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">Live log</span>
+<div style="flex:1"></div>
+<div style="width:280px;display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:8px;color:var(--sx-muted)"><i class="ph ph-magnifying-glass"></i><span style="flex:1">req_id, key, route, prompt…</span><span style="font:11px var(--font-mono);padding:0 5px;border:1px solid var(--sx-line-2);border-radius:4px">⌘K</span></div>
+<div style="display:flex;border:1px solid var(--sx-line-2);border-radius:8px;overflow:hidden;font-size:11.5px">
+<span style="padding:6px 10px;font-family:var(--font-mono);color:var(--sx-muted)">1h</span>
+<span style="padding:6px 10px;font-family:var(--font-mono);background:var(--sx-raised)">24h</span>
+<span style="padding:6px 10px;font-family:var(--font-mono);color:var(--sx-muted)">7d</span>
+<span style="padding:6px 10px;font-family:var(--font-mono);color:var(--sx-muted)">30d</span>
+</div>
+<div style="display:flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid var(--sx-blue);border-radius:8px;color:var(--sx-blue-text)"><span style="width:6px;height:6px;border-radius:50%;background:var(--sx-blue);box-shadow:0 0 0 3px var(--sx-blue-tint-2)"></span>Live</div>
+</header>
+
+<!-- FILTER BAR -->
+<div style="padding:12px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--sx-line);flex-wrap:wrap">
+<span class="chip"><i class="ph ph-funnel"></i>Filter</span>
+<span class="chip" style="border-color:var(--sx-blue);color:var(--sx-blue-text);background:var(--sx-blue-tint)">provider <b>= Anthropic</b> <span class="x"><i class="ph ph-x"></i></span></span>
+<span class="chip"><b>model</b> = claude-sonnet-4 <span class="x"><i class="ph ph-x"></i></span></span>
+<span class="chip"><b>status</b> = error <span class="x"><i class="ph ph-x"></i></span></span>
+<span class="chip"><b>latency</b> &gt; 2s <span class="x"><i class="ph ph-x"></i></span></span>
+<span class="chip" style="color:var(--sx-blue-text);border-color:var(--sx-line-2)"><i class="ph ph-plus"></i>Add filter</span>
+<div style="flex:1"></div>
+<span style="font-size:11.5px;color:var(--sx-muted)">1,284 of 1.24M · streaming</span>
+<span class="chip"><i class="ph ph-download-simple"></i>Export</span>
+<span class="chip" style="background:var(--sx-blue);border-color:var(--sx-blue);color:#fff"><i class="ph ph-bookmark-simple"></i>Save view</span>
+</div>
+
+<!-- SPLIT: table + drawer -->
+<div style="flex:1;min-height:0;display:flex">
+
+<!-- TABLE -->
+<div style="flex:1;min-width:0;overflow:hidden;display:flex;flex-direction:column">
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:8px 20px;font-size:11px;color:var(--sx-faint);border-bottom:1px solid var(--sx-line);text-transform:uppercase;letter-spacing:.04em">
+<span>Time</span><span>Request</span><span>Route · prompt</span><span>Model</span><span style="text-align:right">Tokens</span><span style="text-align:right">Latency</span><span style="text-align:right">Cost</span><span>Status</span>
+</div>
+<div style="flex:1;overflow:hidden">
+
+<!-- selected row -->
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;background:var(--sx-raised);border-left:2px solid var(--sx-blue);padding-left:18px">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:58</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KQ2</span>
+<span style="min-width:0"><span style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">support/triage</span> · "my order hasn't arrived and I'm being…"</span></span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">claude-sonnet-4</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">48,210</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-danger)">3.42s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.184</span>
+<span class="pill" style="background:var(--sx-danger-tint);color:var(--sx-danger);justify-self:start">500</span>
+</div>
+
+<!-- other rows -->
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:57</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KQ1</span>
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">copilot/complete</span> · "function debounce(fn, ms) {…"</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">gpt-4o</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">4,128</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-ok)">0.74s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.021</span>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok);justify-self:start">200</span>
+</div>
+
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:55</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KPZ</span>
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">data/extract</span> · "Extract invoice line items from the attachment"</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">gemini-2.5-pro</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">12,041</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-warn)">2.10s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.064</span>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok);justify-self:start">200</span>
+</div>
+
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:52</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KPY</span>
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">support/triage</span> · "I've been charged twice for the same order"</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">claude-sonnet-4</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">49,008</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-danger)">3.18s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.188</span>
+<span class="pill" style="background:var(--sx-danger-tint);color:var(--sx-danger);justify-self:start">500</span>
+</div>
+
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:50</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KPX</span>
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">support/summarize</span> · "Summarize this 14-message thread"</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">gpt-4o-mini</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">8,942</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-ok)">0.52s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.004</span>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok);justify-self:start">200</span>
+</div>
+
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:48</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KPW</span>
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">copilot/complete</span> · "const query = graphql.gql`query {…"</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">gpt-4o</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">3,844</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-ok)">0.68s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.019</span>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok);justify-self:start">200</span>
+</div>
+
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:47</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KPV</span>
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">support/triage</span> · "refund policy on digital goods"</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">claude-sonnet-4</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">46,120</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-warn)">2.84s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.176</span>
+<span class="pill" style="background:var(--sx-danger-tint);color:var(--sx-danger);justify-self:start">500</span>
+</div>
+
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:45</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KPU</span>
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">data/extract</span> · "parse the attached PDF table"</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">gemini-2.5-pro</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">14,208</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-warn)">2.42s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.078</span>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok);justify-self:start">200</span>
+</div>
+
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:42</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KPT</span>
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">support/triage</span> · "my order hasn't arrived"</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">claude-sonnet-4</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">47,012</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-warn)">2.98s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.180</span>
+<span class="pill" style="background:var(--sx-danger-tint);color:var(--sx-danger);justify-self:start">500</span>
+</div>
+
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:40</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KPS</span>
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">copilot/complete</span> · "async function retry(fn, opts) {…"</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">gpt-4o</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">5,214</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-ok)">0.82s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.026</span>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok);justify-self:start">200</span>
+</div>
+
+<div style="display:grid;grid-template-columns:76px 150px 1fr 170px 90px 90px 72px 80px;padding:9px 20px;align-items:center;font-variant-numeric:tabular-nums;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">09:41:38</span>
+<span style="font:11.5px var(--font-mono)">req_01J9X7KPR</span>
+<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span style="color:var(--sx-muted)">support/summarize</span> · "summarize call transcript tkt-1884"</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">gpt-4o-mini</span>
+<span style="text-align:right;font:11.5px var(--font-mono)">10,042</span>
+<span style="text-align:right;font:11.5px var(--font-mono);color:var(--sx-ok)">0.48s</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono)">$0.005</span>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok);justify-self:start">200</span>
+</div>
+
+</div>
+</div>
+
+<!-- DETAIL DRAWER -->
+<aside style="width:460px;flex:none;border-left:1px solid var(--sx-line);background:var(--sx-panel);display:flex;flex-direction:column;overflow:hidden">
+<div style="padding:14px 16px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<span class="pill" style="background:var(--sx-danger-tint);color:var(--sx-danger)">500 · error</span>
+<span style="font:500 13px var(--font-mono)">req_01J9X7KQ2</span>
+<div style="flex:1"></div>
+<i class="ph ph-arrow-up-right" style="color:var(--sx-muted)"></i>
+<i class="ph ph-copy" style="color:var(--sx-muted)"></i>
+<i class="ph ph-x" style="color:var(--sx-muted)"></i>
+</div>
+
+<div style="padding:14px 16px;display:flex;flex-direction:column;gap:14px;overflow:auto;flex:1">
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div><div style="font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">Route</div><div style="font-size:12.5px">support/triage</div></div>
+<div><div style="font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">Model</div><div style="font:12.5px var(--font-mono)">claude-sonnet-4</div></div>
+<div><div style="font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">Provider</div><div style="display:flex;align-items:center;gap:6px;font-size:12.5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-blue)"></span>Anthropic</div></div>
+<div><div style="font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">Key</div><div style="font:12.5px var(--font-mono)">sk_live_prod_support_a2f</div></div>
+<div><div style="font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">Latency</div><div style="font:500 12.5px var(--font-mono);color:var(--sx-danger)">3.42s · p95 1.84s</div></div>
+<div><div style="font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">Cost</div><div style="font:500 12.5px var(--font-mono)">$0.184 · 48.2k tok</div></div>
+</div>
+
+<div style="height:1px;background:var(--sx-line)"></div>
+
+<div>
+<div style="font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Timeline</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:12px">
+<div style="display:flex;justify-content:space-between"><span><i class="ph ph-arrow-right" style="color:var(--sx-muted)"></i> Gateway · received</span><span class="font-mono" style="font-family:var(--font-mono);color:var(--sx-muted)">+0ms</span></div>
+<div style="display:flex;justify-content:space-between"><span><i class="ph ph-shield-check" style="color:var(--sx-ok)"></i> Guardrails · pass</span><span style="font-family:var(--font-mono);color:var(--sx-muted)">+12ms</span></div>
+<div style="display:flex;justify-content:space-between"><span><i class="ph ph-git-fork" style="color:var(--sx-blue-text)"></i> Routed · support/triage</span><span style="font-family:var(--font-mono);color:var(--sx-muted)">+18ms</span></div>
+<div style="display:flex;justify-content:space-between"><span><i class="ph ph-cloud" style="color:var(--sx-muted)"></i> Provider · Anthropic</span><span style="font-family:var(--font-mono);color:var(--sx-muted)">+21ms</span></div>
+<div style="display:flex;justify-content:space-between"><span><i class="ph ph-warning-circle" style="color:var(--sx-danger)"></i> Provider · overloaded_error</span><span style="font-family:var(--font-mono);color:var(--sx-danger)">+3,384ms</span></div>
+<div style="display:flex;justify-content:space-between"><span><i class="ph ph-x-circle" style="color:var(--sx-danger)"></i> Returned · 500</span><span style="font-family:var(--font-mono);color:var(--sx-muted)">+3,420ms</span></div>
+</div>
+</div>
+
+<div style="height:1px;background:var(--sx-line)"></div>
+
+<div>
+<div style="display:flex;align-items:center;margin-bottom:8px"><span style="font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;flex:1">Request</span><span style="font:11px var(--font-mono);color:var(--sx-muted)">6 messages · 47.8k tok in</span></div>
+<div style="background:#050609;border:1px solid var(--sx-line);border-radius:6px;padding:10px 12px;font:11.5px/1.6 var(--font-mono);color:#b2b6ca;max-height:140px;overflow:hidden">
+<span style="color:var(--sx-violet)">system</span>: You are a customer support agent for Acme…<br>
+<span style="color:var(--sx-violet)">user</span>: my order hasn't arrived and I'm being charged again<br>
+<span style="color:var(--sx-violet)">assistant</span>: I'm sorry to hear that. Let me pull up your order…<br>
+<span style="color:var(--sx-violet)">tool</span>: get_order(id="…")  → {"status":"shipped"…}<br>
+<span style="color:var(--sx-violet)">assistant</span>: I can see your order shipped on…
+</div>
+</div>
+
+<div>
+<div style="display:flex;align-items:center;margin-bottom:8px"><span style="font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;flex:1">Response · error</span></div>
+<div style="background:color-mix(in srgb,var(--sx-danger) 10%,#050609);border:1px solid color-mix(in srgb,var(--sx-danger) 30%,var(--sx-line));border-radius:6px;padding:10px 12px;font:11.5px/1.6 var(--font-mono);color:#f3c9c0">
+{<br>
+&nbsp;&nbsp;"type": "error",<br>
+&nbsp;&nbsp;"error": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"type": "overloaded_error",<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"message": "Overloaded"<br>
+&nbsp;&nbsp;}<br>
+}
+</div>
+</div>
+
+</div>
+
+<div style="padding:12px 16px;border-top:1px solid var(--sx-line);display:flex;gap:8px">
+<button style="flex:1;font:500 12.5px var(--font-body);padding:7px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text);cursor:pointer"><i class="ph ph-arrow-counter-clockwise"></i> Replay</button>
+<button style="flex:1;font:500 12.5px var(--font-body);padding:7px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text);cursor:pointer"><i class="ph ph-git-fork"></i> Open route</button>
+<button style="flex:1;font:500 12.5px var(--font-body);padding:7px 10px;border-radius:6px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff;cursor:pointer"><i class="ph ph-shield-plus"></i> Add fallback</button>
+</div>
+</aside>
+
+</div>
+
+</main>
+</div>
+
+</x-dc>
+</body>
+</html>

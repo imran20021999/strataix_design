@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:13px}
+.nav{display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)}
+.nav i{font-size:16px}
+.nav .flex{flex:1}
+.nav .b{font:500 10.5px var(--font-mono);color:var(--sx-muted)}
+.nav.active{background:var(--sx-blue-tint);color:var(--sx-blue-text);font-weight:500}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.span{position:absolute;height:14px;border-radius:3px}
+</style>
+</helmet>
+
+<div style="width:1440px;height:900px;display:flex;overflow:hidden">
+
+<aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
+<div style="padding:4px 8px 18px"><img src="public/brand/wordmark-light.png" alt="Strataix" style="height:13px;display:block"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:8px;margin-bottom:14px">
+<span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span>
+<div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
+<div class="nav"><i class="ph ph-squares-four"></i><span class="flex">Overview</span></div>
+<div class="nav"><i class="ph ph-list-dashes"></i><span class="flex">Requests</span><span class="b">1.24M</span></div>
+<div class="nav active"><i class="ph ph-tree-structure"></i><span class="flex">Sessions</span></div>
+<div class="nav"><i class="ph ph-git-fork"></i><span class="flex">Routes</span><span class="b">18</span></div>
+<div class="nav"><i class="ph ph-cloud"></i><span class="flex">Providers</span><span class="b">5</span></div>
+<div class="nav"><i class="ph ph-shield-check"></i><span class="flex">Guardrails</span></div>
+<div class="nav"><i class="ph ph-key"></i><span class="flex">Keys</span><span class="b">7</span></div>
+<div class="nav"><i class="ph ph-wallet"></i><span class="flex">Budgets</span></div>
+<div class="nav"><i class="ph ph-bell-simple"></i><span class="flex">Alerts</span><span class="b">2</span></div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;color:var(--sx-muted)"><i class="ph ph-gear-six" style="font-size:16px"></i>Settings</div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span></div>
+</aside>
+
+<main style="flex:1;min-width:0;display:flex;flex-direction:column">
+<header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
+<span style="font:400 11px var(--font-display);letter-spacing:.06em">SESSIONS</span>
+<span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">agents/plan · sess_01J9X8A4K</span>
+<div style="flex:1"></div>
+<span style="display:flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font:11.5px var(--font-mono);color:var(--sx-muted)"><i class="ph ph-clock"></i>14.82s · 42 spans</span>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)"><i class="ph ph-arrow-counter-clockwise"></i> Replay</button>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)"><i class="ph ph-share-fat"></i> Share</button>
+</header>
+
+<div style="flex:1;min-height:0;display:flex">
+
+<!-- Left list of sessions -->
+<div style="width:280px;flex:none;border-right:1px solid var(--sx-line);overflow:hidden;display:flex;flex-direction:column">
+<div style="padding:12px 14px;border-bottom:1px solid var(--sx-line);display:flex;gap:6px">
+<div style="flex:1;display:flex;align-items:center;gap:6px;padding:5px 9px;border:1px solid var(--sx-line-2);border-radius:6px;color:var(--sx-muted);font-size:12px"><i class="ph ph-magnifying-glass"></i><span>Filter sessions</span></div>
+</div>
+<div style="flex:1;overflow:auto;padding:6px">
+<div style="padding:10px 10px;border-radius:6px;background:var(--sx-raised);border-left:2px solid var(--sx-blue);margin-bottom:2px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:500">agents/plan</span><span style="font:10.5px var(--font-mono);color:var(--sx-muted)">14.82s</span></div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">sess_01J9X8A4K · 42 spans · $0.164</div>
+<div style="display:flex;gap:4px;margin-top:6px"><span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">tools 8</span><span class="pill" style="background:color-mix(in srgb,var(--sx-warn) 16%,transparent);color:var(--sx-warn)">retried 1</span></div>
+</div>
+
+<div style="padding:10px 10px;border-radius:6px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:500">support/triage</span><span style="font:10.5px var(--font-mono);color:var(--sx-muted)">3.42s</span></div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">sess_01J9X8A3P · 7 spans · $0.184</div>
+<div style="display:flex;gap:4px;margin-top:6px"><span class="pill" style="background:var(--sx-danger-tint);color:var(--sx-danger)">500</span></div>
+</div>
+
+<div style="padding:10px 10px;border-radius:6px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:500">chat/assistant</span><span style="font:10.5px var(--font-mono);color:var(--sx-muted)">6.12s</span></div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">sess_01J9X8A2E · 14 spans · $0.098</div>
+</div>
+
+<div style="padding:10px 10px;border-radius:6px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:500">agents/plan</span><span style="font:10.5px var(--font-mono);color:var(--sx-muted)">22.4s</span></div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">sess_01J9X8A1Z · 68 spans · $0.312</div>
+<div style="display:flex;gap:4px;margin-top:6px"><span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">tools 14</span></div>
+</div>
+
+<div style="padding:10px 10px;border-radius:6px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:500">data/extract</span><span style="font:10.5px var(--font-mono);color:var(--sx-muted)">2.10s</span></div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">sess_01J9X8A0R · 3 spans · $0.064</div>
+</div>
+
+<div style="padding:10px 10px;border-radius:6px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:500">copilot/complete</span><span style="font:10.5px var(--font-mono);color:var(--sx-muted)">0.74s</span></div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">sess_01J9X89ZY · 1 span · $0.021</div>
+</div>
+</div>
+</div>
+
+<!-- Center: trace -->
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;overflow:hidden">
+
+<!-- Summary strip -->
+<div style="padding:14px 20px;border-bottom:1px solid var(--sx-line);display:grid;grid-template-columns:repeat(5,1fr);gap:18px">
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em">Duration</div><div style="font:500 16px var(--font-body);font-variant-numeric:tabular-nums;margin-top:3px">14.82s</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em">LLM calls</div><div style="font:500 16px var(--font-body);font-variant-numeric:tabular-nums;margin-top:3px">6</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em">Tool calls</div><div style="font:500 16px var(--font-body);font-variant-numeric:tabular-nums;margin-top:3px">8</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em">Tokens</div><div style="font:500 16px var(--font-body);font-variant-numeric:tabular-nums;margin-top:3px">54.2k</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em">Cost</div><div style="font:500 16px var(--font-body);font-variant-numeric:tabular-nums;margin-top:3px">$0.164</div></div>
+</div>
+
+<!-- Waterfall -->
+<div style="flex:1;overflow:auto;padding:14px 20px">
+<!-- timeline axis -->
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0;color:var(--sx-faint);font:10.5px var(--font-mono)">
+<span></span>
+<div style="display:flex;justify-content:space-between"><span>0s</span><span>3s</span><span>6s</span><span>9s</span><span>12s</span><span>15s</span></div>
+</div>
+
+<!-- rows -->
+<div style="display:flex;flex-direction:column;gap:2px">
+
+<!-- root -->
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px"><i class="ph ph-caret-down" style="color:var(--sx-muted)"></i><b style="font-weight:500">plan_run</b></div>
+<div style="position:relative;height:14px;background:var(--sx-line);border-radius:2px"><div class="span" style="left:0%;width:100%;background:var(--sx-blue)"></div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;padding-left:16px"><i class="ph ph-caret-down" style="color:var(--sx-muted)"></i><span>guardrails · pass</span></div>
+<div style="position:relative;height:14px"><div class="span" style="left:0%;width:1%;background:var(--sx-ok)"></div><span style="position:absolute;left:1.5%;top:0;font:10px var(--font-mono);color:var(--sx-faint)">12ms</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;padding-left:16px"><i class="ph ph-sparkle" style="color:var(--sx-blue-text)"></i><span>llm · claude-opus-4.7</span></div>
+<div style="position:relative;height:14px"><div class="span" style="left:1%;width:12%;background:var(--sx-blue)"></div><span style="position:absolute;left:13.5%;top:0;font:10px var(--font-mono);color:var(--sx-faint)">1.80s · 8.2k tok</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;padding-left:16px"><i class="ph ph-wrench" style="color:var(--sx-violet)"></i><span>tool · search_tickets</span></div>
+<div style="position:relative;height:14px"><div class="span" style="left:14%;width:5%;background:var(--sx-violet)"></div><span style="position:absolute;left:19.5%;top:0;font:10px var(--font-mono);color:var(--sx-faint)">820ms</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;padding-left:16px"><i class="ph ph-wrench" style="color:var(--sx-violet)"></i><span>tool · get_order</span></div>
+<div style="position:relative;height:14px"><div class="span" style="left:14%;width:4%;background:var(--sx-violet)"></div><span style="position:absolute;left:18.5%;top:0;font:10px var(--font-mono);color:var(--sx-faint)">640ms · parallel</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;padding-left:16px"><i class="ph ph-sparkle" style="color:var(--sx-blue-text)"></i><span>llm · claude-sonnet-4</span></div>
+<div style="position:relative;height:14px"><div class="span" style="left:20%;width:11%;background:var(--sx-blue)"></div><span style="position:absolute;left:31.5%;top:0;font:10px var(--font-mono);color:var(--sx-faint)">1.60s · 12.1k tok</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;padding-left:16px"><i class="ph ph-wrench" style="color:var(--sx-violet)"></i><span>tool · issue_refund</span></div>
+<div style="position:relative;height:14px"><div class="span" style="left:31%;width:6%;background:var(--sx-warn)"></div><span style="position:absolute;left:37.5%;top:0;font:10px var(--font-mono);color:var(--sx-warn)">920ms · retried</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;padding-left:16px"><i class="ph ph-sparkle" style="color:var(--sx-blue-text)"></i><span>llm · claude-sonnet-4</span></div>
+<div style="position:relative;height:14px"><div class="span" style="left:37%;width:16%;background:var(--sx-blue)"></div><span style="position:absolute;left:53.5%;top:0;font:10px var(--font-mono);color:var(--sx-faint)">2.4s · 18.4k tok</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;padding-left:16px"><i class="ph ph-wrench" style="color:var(--sx-violet)"></i><span>tool · send_email</span></div>
+<div style="position:relative;height:14px"><div class="span" style="left:53%;width:3%;background:var(--sx-violet)"></div><span style="position:absolute;left:56.5%;top:0;font:10px var(--font-mono);color:var(--sx-faint)">460ms</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;padding-left:16px"><i class="ph ph-sparkle" style="color:var(--sx-blue-text)"></i><span>llm · claude-sonnet-4 · final</span></div>
+<div style="position:relative;height:14px"><div class="span" style="left:56%;width:40%;background:var(--sx-blue)"></div><span style="position:absolute;left:96%;top:0;font:10px var(--font-mono);color:var(--sx-faint)">5.4s</span></div>
+</div>
+
+<div style="display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center;padding:4px 0">
+<div style="display:flex;align-items:center;gap:6px;font-size:12.5px;padding-left:16px"><i class="ph ph-shield-check" style="color:var(--sx-ok)"></i><span>output guardrail · pass</span></div>
+<div style="position:relative;height:14px"><div class="span" style="left:96%;width:1%;background:var(--sx-ok)"></div></div>
+</div>
+
+</div>
+
+<!-- Insights bar -->
+<div style="margin-top:22px;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px">
+<div style="font-weight:500;font-size:14px">Insights · this session</div>
+<div style="font-size:12.5px;color:#b2b6ca;line-height:1.6">
+<i class="ph ph-clock-countdown" style="color:var(--sx-warn)"></i> Final LLM call took 5.4s · 36% of the whole run — try streaming the answer back as it's generated.<br>
+<i class="ph ph-arrows-counter-clockwise" style="color:var(--sx-warn)"></i> issue_refund retried once · 480ms added — the tool's p95 is 220ms, consider shorter timeout.<br>
+<i class="ph ph-scissors" style="color:var(--sx-violet)"></i> 14 tools exposed · only 4 used · prune unused tools from the system prompt to save ~8.4k input tokens per call.
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</x-dc>
+</body>
+</html>

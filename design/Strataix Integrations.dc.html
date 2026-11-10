@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:13px}
+.nav{display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)}
+.nav i{font-size:16px}
+.nav .flex{flex:1}
+.nav .b{font:500 10.5px var(--font-mono);color:var(--sx-muted)}
+.nav.active{background:var(--sx-blue-tint);color:var(--sx-blue-text);font-weight:500}
+.sub{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;font-size:13px;color:var(--sx-text)}
+.sub.a{background:var(--sx-raised);color:var(--sx-text);font-weight:500;border-left:2px solid var(--sx-blue);padding-left:8px}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.lab{font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em}
+.card{background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px}
+.logo{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font:600 13px var(--font-body);flex:none}
+.item{display:flex;flex-direction:column;gap:12px;padding:16px 18px;position:relative}
+</style>
+</helmet>
+
+<div style="width:1440px;height:900px;display:flex;overflow:hidden">
+
+<aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
+<div style="padding:4px 8px 18px"><img src="public/brand/wordmark-light.png" style="height:13px"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:8px;margin-bottom:14px"><span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span><div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
+<div class="nav"><i class="ph ph-squares-four"></i><span class="flex">Overview</span></div>
+<div class="nav"><i class="ph ph-list-dashes"></i><span class="flex">Requests</span><span class="b">1.24M</span></div>
+<div class="nav"><i class="ph ph-tree-structure"></i><span class="flex">Sessions</span></div>
+<div class="nav"><i class="ph ph-git-fork"></i><span class="flex">Routes</span><span class="b">18</span></div>
+<div class="nav"><i class="ph ph-cloud"></i><span class="flex">Providers</span><span class="b">5</span></div>
+<div class="nav"><i class="ph ph-shield-check"></i><span class="flex">Guardrails</span></div>
+<div class="nav"><i class="ph ph-key"></i><span class="flex">Keys</span><span class="b">7</span></div>
+<div class="nav"><i class="ph ph-wallet"></i><span class="flex">Budgets</span></div>
+<div class="nav"><i class="ph ph-bell-simple"></i><span class="flex">Alerts</span><span class="b">2</span></div>
+<div style="flex:1"></div>
+<div class="nav active"><i class="ph ph-gear-six"></i><span class="flex">Settings</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span></div>
+</aside>
+
+<main style="flex:1;min-width:0;display:flex;flex-direction:column">
+<header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
+<span style="font:400 11px var(--font-display);letter-spacing:.06em">SETTINGS</span>
+<span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">Integrations</span>
+<div style="flex:1"></div>
+<span style="font-size:11.5px;color:var(--sx-muted)">4 connected · 7 available</span>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)"><i class="ph ph-arrow-clockwise"></i> Test all</button>
+</header>
+
+<div style="flex:1;min-height:0;display:flex">
+
+<div style="width:220px;flex:none;border-right:1px solid var(--sx-line);padding:18px 12px;display:flex;flex-direction:column;gap:4px">
+<div class="lab" style="padding:4px 10px 6px">ACCOUNT</div>
+<div class="sub"><i class="ph ph-user-circle" style="color:var(--sx-muted)"></i>Profile</div>
+<div class="sub"><i class="ph ph-palette" style="color:var(--sx-muted)"></i>Appearance</div>
+<div class="sub"><i class="ph ph-bell" style="color:var(--sx-muted)"></i>Notifications</div>
+<div class="sub"><i class="ph ph-keyboard" style="color:var(--sx-muted)"></i>Shortcuts</div>
+<div class="lab" style="padding:14px 10px 6px">ORGANIZATION</div>
+<div class="sub"><i class="ph ph-buildings" style="color:var(--sx-muted)"></i>General</div>
+<div class="sub"><i class="ph ph-users-three" style="color:var(--sx-muted)"></i><span style="flex:1">Members</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">14</span></div>
+<div class="sub"><i class="ph ph-shield-star" style="color:var(--sx-muted)"></i>Roles &amp; SSO</div>
+<div class="sub"><i class="ph ph-credit-card" style="color:var(--sx-muted)"></i>Billing &amp; plan</div>
+<div class="sub"><i class="ph ph-receipt" style="color:var(--sx-muted)"></i>Invoices</div>
+<div class="lab" style="padding:14px 10px 6px">PLATFORM</div>
+<div class="sub a"><i class="ph ph-plugs-connected" style="color:var(--sx-blue-text)"></i><span style="flex:1">Integrations</span><span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">4</span></div>
+<div class="sub"><i class="ph ph-webhooks-logo" style="color:var(--sx-muted)"></i>Webhooks</div>
+<div class="sub"><i class="ph ph-database" style="color:var(--sx-muted)"></i>Data retention</div>
+<div class="sub"><i class="ph ph-file-text" style="color:var(--sx-muted)"></i>Audit log</div>
+</div>
+
+<div style="flex:1;min-width:0;overflow:auto;padding:22px 28px;display:flex;flex-direction:column;gap:22px">
+
+<!-- CONNECTED -->
+<div>
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px"><span style="font:500 15px var(--font-body)">Connected · 4</span><span class="lab">routed events to these in the last 24h</span></div>
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px">
+
+<!-- Slack -->
+<div class="card item">
+<div style="display:flex;align-items:center;gap:12px">
+<span class="logo" style="background:#4a154b;color:#ecb22e;font-size:16px"><i class="ph ph-slack-logo"></i></span>
+<div style="flex:1"><div style="font-weight:500;font-size:14px">Slack</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted)">acme-ai.slack.com · connected by Imran</div></div>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)"><i class="ph ph-check-circle"></i> healthy</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:12px">
+<div style="display:flex;justify-content:space-between"><span>Alerts channel</span><span style="font:11.5px var(--font-mono);color:var(--sx-blue-text)">#ops-alerts</span></div>
+<div style="display:flex;justify-content:space-between"><span>Findings channel</span><span style="font:11.5px var(--font-mono);color:var(--sx-blue-text)">#ai-findings</span></div>
+<div style="display:flex;justify-content:space-between"><span>Daily digest · 09:00 IST</span><span style="font:11.5px var(--font-mono);color:var(--sx-blue-text)">#ai-platform</span></div>
+<div style="display:flex;justify-content:space-between"><span>Events delivered · 24h</span><span style="font:11.5px var(--font-mono)">142</span></div>
+</div>
+<div style="display:flex;gap:8px;margin-top:auto"><button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text);flex:1">Configure</button><button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-muted)">Disconnect</button></div>
+</div>
+
+<!-- PagerDuty -->
+<div class="card item">
+<div style="display:flex;align-items:center;gap:12px">
+<span class="logo" style="background:#06ac38;color:#fff;font-size:18px"><i class="ph ph-alarm"></i></span>
+<div style="flex:1"><div style="font-weight:500;font-size:14px">PagerDuty</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted)">acme.pagerduty.com · routing key set</div></div>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)"><i class="ph ph-check-circle"></i> healthy</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:12px">
+<div style="display:flex;justify-content:space-between"><span>Service</span><span style="font:11.5px var(--font-mono);color:var(--sx-text)">Strataix · AI Platform</span></div>
+<div style="display:flex;justify-content:space-between"><span>Severity floor</span><span class="pill" style="background:var(--sx-danger-tint);color:var(--sx-danger)">critical only</span></div>
+<div style="display:flex;justify-content:space-between"><span>Auto-resolve</span><span style="color:var(--sx-ok)">on</span></div>
+<div style="display:flex;justify-content:space-between"><span>Pages · 24h</span><span style="font:11.5px var(--font-mono)">2</span></div>
+</div>
+<div style="display:flex;gap:8px;margin-top:auto"><button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text);flex:1">Configure</button><button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-muted)">Disconnect</button></div>
+</div>
+
+<!-- GitHub -->
+<div class="card item">
+<div style="display:flex;align-items:center;gap:12px">
+<span class="logo" style="background:#1a1a1a;color:#e9e9ed;font-size:18px"><i class="ph ph-github-logo"></i></span>
+<div style="flex:1"><div style="font-weight:500;font-size:14px">GitHub</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted)">acme-inc · 3 repos · app installed</div></div>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)"><i class="ph ph-check-circle"></i> healthy</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:12px">
+<div style="display:flex;justify-content:space-between"><span>Route changes</span><span>commit to <span style="font-family:var(--font-mono);color:var(--sx-blue-text)">acme-inc/strataix-config</span></span></div>
+<div style="display:flex;justify-content:space-between"><span>PR checks</span><span style="color:var(--sx-ok)">on · guardrails · route lint</span></div>
+<div style="display:flex;justify-content:space-between"><span>Findings as issues</span><span style="color:var(--sx-ok)">on · opt-in by team</span></div>
+</div>
+<div style="display:flex;gap:8px;margin-top:auto"><button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text);flex:1">Configure</button><button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-muted)">Disconnect</button></div>
+</div>
+
+<!-- Datadog (degraded) -->
+<div class="card item" style="border-color:color-mix(in srgb,var(--sx-warn) 30%,var(--sx-line))">
+<div style="display:flex;align-items:center;gap:12px">
+<span class="logo" style="background:#632ca6;color:#fff;font-size:16px">D</span>
+<div style="flex:1"><div style="font-weight:500;font-size:14px">Datadog</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted)">site: datadoghq.com · metrics sink</div></div>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-warn) 16%,transparent);color:var(--sx-warn)"><i class="ph ph-warning"></i> degraded</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:12px">
+<div style="display:flex;justify-content:space-between"><span>Last sync</span><span style="font-family:var(--font-mono);color:var(--sx-warn)">42m ago · 4 errors</span></div>
+<div style="display:flex;justify-content:space-between"><span>Metrics pushed · 24h</span><span style="font-family:var(--font-mono)">112k</span></div>
+<div style="display:flex;justify-content:space-between"><span>Sampling</span><span>10% · requests · 100% · errors</span></div>
+</div>
+<div style="padding:8px 10px;background:color-mix(in srgb,var(--sx-warn) 10%,transparent);border-radius:6px;font-size:11.5px;color:var(--sx-warn)"><i class="ph ph-warning-circle"></i> API key may be rotating · reauthenticate</div>
+<div style="display:flex;gap:8px;margin-top:auto"><button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-warn);background:transparent;color:var(--sx-warn);flex:1">Reconnect</button><button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-muted)">Disconnect</button></div>
+</div>
+</div>
+</div>
+
+<!-- AVAILABLE -->
+<div>
+<div style="display:flex;align-items:baseline;gap:10px;margin-bottom:10px"><span style="font:500 15px var(--font-body)">Available</span><span class="lab">categorized · one-click oauth where supported</span></div>
+
+<!-- group row -->
+<div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+<span style="padding:5px 11px;border:1px solid var(--sx-blue);border-radius:999px;font-size:12px;color:var(--sx-blue-text);background:var(--sx-blue-tint)">All · 11</span>
+<span style="padding:5px 11px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:12px;color:var(--sx-muted)">Alerting</span>
+<span style="padding:5px 11px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:12px;color:var(--sx-muted)">Observability</span>
+<span style="padding:5px 11px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:12px;color:var(--sx-muted)">SIEM</span>
+<span style="padding:5px 11px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:12px;color:var(--sx-muted)">Identity</span>
+<span style="padding:5px 11px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:12px;color:var(--sx-muted)">Automation</span>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+
+<div class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><span class="logo" style="background:#1a1a1a;color:#e9e9ed;font-size:14px;width:28px;height:28px">MS</span><span style="font-weight:500">Microsoft Teams</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5;flex:1">Post alerts and digests to channels; actions right from the card.</div>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Connect</button>
+</div>
+
+<div class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><span class="logo" style="background:#f35828;color:#fff;font-size:14px;width:28px;height:28px">Op</span><span style="font-weight:500">Opsgenie</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5;flex:1">Route pages by severity · schedule-aware escalation.</div>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Connect</button>
+</div>
+
+<div class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><span class="logo" style="background:#ee0000;color:#fff;font-size:14px;width:28px;height:28px">Jr</span><span style="font-weight:500">Jira</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5;flex:1">Open issues from findings · auto-close on resolve.</div>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Connect</button>
+</div>
+
+<div class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><span class="logo" style="background:#000;color:#fff;font-size:14px;width:28px;height:28px">Ln</span><span style="font-weight:500">Linear</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5;flex:1">File findings as issues · sync status via webhooks.</div>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Connect</button>
+</div>
+
+<div class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><span class="logo" style="background:#f06a6a;color:#fff;font-size:14px;width:28px;height:28px">N</span><span style="font-weight:500">New Relic</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5;flex:1">Push Strataix metrics into your dashboards.</div>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Connect</button>
+</div>
+
+<div class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><span class="logo" style="background:#4b32c3;color:#fff;font-size:14px;width:28px;height:28px">El</span><span style="font-weight:500">Elastic</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5;flex:1">Ship request logs to your own cluster.</div>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Connect</button>
+</div>
+
+<div class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><span class="logo" style="background:#f78a2b;color:#fff;font-size:14px;width:28px;height:28px">Sp</span><span style="font-weight:500">Splunk</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5;flex:1">SIEM feed for security teams · HEC endpoint.</div>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Connect</button>
+</div>
+
+<div class="card" style="padding:14px;display:flex;flex-direction:column;gap:10px;cursor:pointer">
+<div style="display:flex;align-items:center;gap:10px"><span class="logo" style="background:#007dc1;color:#fff;font-size:14px;width:28px;height:28px">Ok</span><span style="font-weight:500">Okta SCIM</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5;flex:1">Sync members and groups · deprovision on exit.</div>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Connect</button>
+</div>
+
+</div>
+</div>
+
+<div style="height:24px"></div>
+</div>
+</div>
+</main>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:13px}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.nav{display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)}
+.nav i{font-size:16px}
+.nav .flex{flex:1}
+.nav .b{font:500 10.5px var(--font-mono);color:var(--sx-muted)}
+.nav.active{background:var(--sx-blue-tint);color:var(--sx-blue-text);font-weight:500}
+</style>
+</helmet>
+
+<div style="width:1440px;height:900px;display:flex;overflow:hidden">
+
+<aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
+<div style="padding:4px 8px 18px"><img src="public/brand/wordmark-light.png" alt="Strataix" style="height:13px;display:block"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:8px;margin-bottom:14px">
+<span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span>
+<div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
+<div class="nav"><i class="ph ph-squares-four"></i><span class="flex">Overview</span></div>
+<div class="nav"><i class="ph ph-list-dashes"></i><span class="flex">Requests</span><span class="b">1.24M</span></div>
+<div class="nav"><i class="ph ph-tree-structure"></i><span class="flex">Sessions</span></div>
+<div class="nav active"><i class="ph ph-git-fork"></i><span class="flex">Routes</span><span class="b" style="color:var(--sx-blue-text)">18</span></div>
+<div class="nav"><i class="ph ph-cloud"></i><span class="flex">Providers</span><span class="b">5</span></div>
+<div class="nav"><i class="ph ph-shield-check"></i><span class="flex">Guardrails</span></div>
+<div class="nav"><i class="ph ph-key"></i><span class="flex">Keys</span><span class="b">7</span></div>
+<div class="nav"><i class="ph ph-wallet"></i><span class="flex">Budgets</span></div>
+<div class="nav"><i class="ph ph-bell-simple"></i><span class="flex">Alerts</span><span class="b">2</span></div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;color:var(--sx-muted)"><i class="ph ph-gear-six" style="font-size:16px"></i>Settings</div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span></div>
+</aside>
+
+<main style="flex:1;min-width:0;display:flex;flex-direction:column">
+<header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
+<span style="font:400 11px var(--font-display);letter-spacing:.06em">ROUTES</span>
+<span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">support/triage</span>
+<div style="flex:1"></div>
+<span style="display:flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:var(--sx-ok)"></span>Live · v12</span>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)"><i class="ph ph-clock-counter-clockwise"></i> History</button>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff">Deploy changes</button>
+</header>
+
+<div style="flex:1;min-height:0;display:flex">
+
+<!-- Left route list -->
+<div style="width:280px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column">
+<div style="padding:12px 14px;border-bottom:1px solid var(--sx-line);display:flex;gap:8px;align-items:center">
+<div style="flex:1;display:flex;align-items:center;gap:6px;padding:5px 9px;border:1px solid var(--sx-line-2);border-radius:6px;color:var(--sx-muted);font-size:12px"><i class="ph ph-magnifying-glass"></i><span>Filter routes</span></div>
+<button style="padding:5px 9px;border-radius:6px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff;font-size:12px"><i class="ph ph-plus"></i></button>
+</div>
+<div style="flex:1;overflow:auto;padding:4px 6px">
+<div style="padding:8px 10px;border-radius:6px;background:var(--sx-raised);border-left:2px solid var(--sx-blue);margin-bottom:2px"><div style="font-weight:500">support/triage</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">claude-sonnet-4 · 402k/24h</div></div>
+<div style="padding:8px 10px;border-radius:6px"><div>copilot/complete</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">gpt-4o · 377k/24h</div></div>
+<div style="padding:8px 10px;border-radius:6px"><div>data/extract</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">gemini-2.5-pro · 118k/24h</div></div>
+<div style="padding:8px 10px;border-radius:6px"><div>support/summarize</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">gpt-4o-mini · 296k/24h</div></div>
+<div style="padding:8px 10px;border-radius:6px"><div>chat/assistant</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">claude-sonnet-4 · 44k/24h</div></div>
+<div style="padding:8px 10px;border-radius:6px"><div>agents/plan</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">claude-opus-4.7 · 2.1k/24h</div></div>
+<div style="padding:8px 10px;border-radius:6px;opacity:.5"><div>experimental/translate</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">draft · unused</div></div>
+</div>
+</div>
+
+<!-- Canvas -->
+<div style="flex:1;min-width:0;padding:18px 24px;display:flex;flex-direction:column;gap:14px;overflow:auto">
+
+<div style="display:flex;align-items:center;gap:12px">
+<span style="font:500 18px var(--font-body)">support/triage</span>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">healthy</span>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">402k req / 24h · $1,020 · p95 1.84s</span>
+<div style="flex:1"></div>
+<div style="display:flex;border:1px solid var(--sx-line-2);border-radius:6px;overflow:hidden;font-size:11.5px">
+<span style="padding:5px 10px;background:var(--sx-raised)">Flow</span>
+<span style="padding:5px 10px;color:var(--sx-muted)">Config</span>
+<span style="padding:5px 10px;color:var(--sx-muted)">Traffic</span>
+<span style="padding:5px 10px;color:var(--sx-muted)">History</span>
+</div>
+</div>
+
+<!-- Flow diagram -->
+<div style="flex:1;min-height:0;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:28px 32px;position:relative;background-image:radial-gradient(circle,#1a1d26 1px,transparent 1px);background-size:20px 20px">
+
+<svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none">
+<defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2f6fff"/></marker></defs>
+<!-- lines connecting -->
+<path d="M 180 96 L 300 96" stroke="#2f6fff" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<path d="M 420 96 L 540 96" stroke="#2f6fff" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<path d="M 660 96 C 720 96 720 60 780 60" stroke="#2f6fff" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+<path d="M 660 96 C 720 96 720 132 780 132" stroke="#9397ab" stroke-width="1.2" stroke-dasharray="4 3" fill="none" marker-end="url(#arr)"/>
+<path d="M 660 96 C 720 96 720 204 780 204" stroke="#9397ab" stroke-width="1.2" stroke-dasharray="4 3" fill="none" marker-end="url(#arr)"/>
+<path d="M 920 60 L 1040 60" stroke="#2f6fff" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+</svg>
+
+<!-- entry -->
+<div style="position:absolute;left:32px;top:72px;width:148px;background:var(--sx-raised);border:1px solid var(--sx-line-2);border-radius:8px;padding:10px 12px">
+<div style="font:10px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">ENTRY</div>
+<div style="font-weight:500">POST /v1/triage</div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">any sk_live_prod_*</div>
+</div>
+
+<!-- guardrails -->
+<div style="position:absolute;left:300px;top:72px;width:120px;background:var(--sx-raised);border:1px solid var(--sx-line-2);border-radius:8px;padding:10px 12px">
+<div style="font:10px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">GUARDRAILS</div>
+<div style="font-weight:500;font-size:12.5px">PII redact · tox</div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">block on fail</div>
+</div>
+
+<!-- transform -->
+<div style="position:absolute;left:540px;top:72px;width:120px;background:var(--sx-raised);border:1px solid var(--sx-line-2);border-radius:8px;padding:10px 12px">
+<div style="font:10px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">TRANSFORM</div>
+<div style="font-weight:500;font-size:12.5px">prompt pack</div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">tools: 6 of 37</div>
+</div>
+
+<!-- primary model -->
+<div style="position:absolute;left:780px;top:36px;width:140px;background:var(--sx-blue-tint);border:1px solid var(--sx-blue);border-radius:8px;padding:10px 12px">
+<div style="font:10px var(--font-mono);color:var(--sx-blue-text);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">PRIMARY · 92%</div>
+<div style="font:12.5px var(--font-mono)">claude-sonnet-4</div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">Anthropic · cache on</div>
+</div>
+
+<!-- fallback 1 -->
+<div style="position:absolute;left:780px;top:108px;width:140px;background:var(--sx-raised);border:1px dashed var(--sx-line-2);border-radius:8px;padding:10px 12px">
+<div style="font:10px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">FALLBACK · 7%</div>
+<div style="font:12.5px var(--font-mono)">gpt-4o</div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">on 429 · 5xx</div>
+</div>
+
+<!-- fallback 2 -->
+<div style="position:absolute;left:780px;top:180px;width:140px;background:var(--sx-raised);border:1px dashed var(--sx-line-2);border-radius:8px;padding:10px 12px">
+<div style="font:10px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">FALLBACK · 1%</div>
+<div style="font:12.5px var(--font-mono)">gemini-2.5-pro</div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">on timeout</div>
+</div>
+
+<!-- Response -->
+<div style="position:absolute;left:1040px;top:36px;width:138px;background:var(--sx-raised);border:1px solid var(--sx-line-2);border-radius:8px;padding:10px 12px">
+<div style="font:10px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px">RESPONSE</div>
+<div style="font-weight:500;font-size:12.5px">stream back</div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">log + enrich</div>
+</div>
+
+<!-- Policies strip -->
+<div style="position:absolute;left:32px;right:32px;bottom:22px;display:flex;gap:10px;flex-wrap:wrap">
+<span style="display:flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:11.5px;background:var(--sx-panel)"><i class="ph ph-timer" style="color:var(--sx-warn)"></i>timeout 30s</span>
+<span style="display:flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:11.5px;background:var(--sx-panel)"><i class="ph ph-arrows-counter-clockwise"></i>retry 2× / 500ms backoff</span>
+<span style="display:flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:11.5px;background:var(--sx-panel)"><i class="ph ph-gauge"></i>rate 2k rpm · team=support</span>
+<span style="display:flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:11.5px;background:var(--sx-panel)"><i class="ph ph-database" style="color:var(--sx-blue-text)"></i>cache ttl 10m</span>
+<span style="display:flex;align-items:center;gap:6px;padding:5px 10px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:11.5px;background:var(--sx-panel)"><i class="ph ph-shield-plus"></i>auto-fallback: on</span>
+</div>
+</div>
+
+<!-- A/B + latency row -->
+<div style="display:grid;grid-template-columns:1.2fr 1fr;gap:14px;height:170px">
+<section style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:center;gap:10px"><span style="font-weight:500;font-size:14px;flex:1">A / B split</span><span style="font:11.5px var(--font-mono);color:var(--sx-muted)">running 3 days</span></div>
+<div style="display:flex;gap:14px;align-items:center">
+<div style="flex:1">
+<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>claude-sonnet-4 · 70%</span><span style="font-family:var(--font-mono)">$0.183 · 1.84s</span></div>
+<div style="height:8px;border-radius:4px;background:var(--sx-line-2);overflow:hidden"><div style="width:70%;height:100%;background:var(--sx-blue)"></div></div>
+</div>
+</div>
+<div style="display:flex;gap:14px;align-items:center">
+<div style="flex:1">
+<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>claude-sonnet-4-5 · 30% (canary)</span><span style="font-family:var(--font-mono);color:var(--sx-ok)">$0.171 · 1.52s</span></div>
+<div style="height:8px;border-radius:4px;background:var(--sx-line-2);overflow:hidden"><div style="width:30%;height:100%;background:var(--sx-violet)"></div></div>
+</div>
+</div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px"><i class="ph ph-sparkle" style="color:var(--sx-ok)"></i> Canary wins on cost and p95 — promote?</div>
+</section>
+
+<section style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:10px"><span style="font-weight:500;font-size:14px;flex:1">Health · 24h</span><span style="font:11.5px var(--font-mono);color:var(--sx-muted)">per minute</span></div>
+<div style="flex:1;position:relative">
+<svg viewBox="0 0 400 80" preserveAspectRatio="none" style="width:100%;height:100%">
+<path d="M0,50 L20,48 L40,52 L60,42 L80,46 L100,38 L120,42 L140,30 L160,34 L180,28 L200,32 L220,22 L240,26 L260,18 L280,14 L300,20 L320,16 L340,10 L360,14 L380,8 L400,12" fill="none" stroke="#2f6fff" stroke-width="1.5"></path>
+<line x1="245" x2="245" y1="0" y2="80" stroke="oklch(0.7 0.15 25)" stroke-dasharray="3 3"/>
+</svg>
+<div style="position:absolute;left:62%;top:0;font:10.5px var(--font-mono);color:var(--sx-danger)">deploy v12</div>
+</div>
+</section>
+</div>
+
+</div>
+</div>
+</main>
+</div>
+
+</x-dc>
+</body>
+</html>

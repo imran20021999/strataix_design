@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-ok:oklch(0.76 0.12 165);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:14px;line-height:1.55}
+.lab{font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.btn-p{display:inline-flex;align-items:center;gap:6px;font:500 13px var(--font-body);padding:8px 14px;border-radius:8px;background:var(--sx-blue);color:#fff;text-decoration:none;cursor:pointer;border:1px solid var(--sx-blue)}
+.btn-s{display:inline-flex;align-items:center;gap:6px;font:500 13px var(--font-body);padding:8px 14px;border-radius:8px;background:transparent;color:var(--sx-text);text-decoration:none;cursor:pointer;border:1px solid var(--sx-line-2)}
+.cont{width:1280px;margin:0 auto}
+.check{color:var(--sx-ok);font-size:14px}
+.x{color:var(--sx-faint);font-size:14px}
+</style>
+</helmet>
+
+<div style="width:1440px;background:var(--sx-bg)">
+
+<!-- NAV -->
+<header style="border-bottom:1px solid var(--sx-line)">
+<div class="cont" style="display:flex;align-items:center;gap:28px;padding:18px 0;font-size:13px">
+<img src="public/brand/wordmark-light.png" style="height:16px">
+<a style="color:var(--sx-muted);text-decoration:none">Product</a>
+<a style="color:var(--sx-text);text-decoration:none;font-weight:500">Pricing</a>
+<a style="color:var(--sx-muted);text-decoration:none">Docs</a>
+<a style="color:var(--sx-muted);text-decoration:none">Changelog</a>
+<a style="color:var(--sx-muted);text-decoration:none">Customers</a>
+<div style="flex:1"></div>
+<a class="btn-s">Sign in</a>
+<a class="btn-p">Start free <i class="ph ph-arrow-right"></i></a>
+</div>
+</header>
+
+<!-- HERO -->
+<section style="padding:80px 0 50px">
+<div class="cont" style="text-align:center;display:flex;flex-direction:column;gap:18px;align-items:center">
+<span class="lab" style="color:var(--sx-blue-text)">PRICING</span>
+<h1 style="margin:0;font:400 46px/1.1 Michroma,sans-serif;letter-spacing:-.01em;max-width:780px">One gateway. Pay for what you route.</h1>
+<p style="margin:0;max-width:600px;color:#b2b6ca;font-size:15px">Start free, no card. You pay the provider at their rate — plus a flat platform fee once you're serious about production.</p>
+<div style="display:inline-flex;border:1px solid var(--sx-line-2);border-radius:999px;padding:4px;margin-top:10px">
+<span style="padding:7px 16px;border-radius:999px;background:var(--sx-raised);font-weight:500;font-size:13px">Monthly</span>
+<span style="padding:7px 16px;border-radius:999px;color:var(--sx-muted);font-size:13px">Annual · <span style="color:var(--sx-ok);font-family:var(--font-mono)">save 20%</span></span>
+</div>
+</div>
+</section>
+
+<!-- TIERS -->
+<section style="padding:0 0 60px">
+<div class="cont" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+
+<!-- Starter -->
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:12px">
+<div class="lab">STARTER</div>
+<div style="display:flex;align-items:baseline;gap:6px"><span style="font:500 36px var(--font-body)">$0</span></div>
+<div style="font-size:12.5px;color:var(--sx-muted)">To try it out. Forever free.</div>
+<a class="btn-s" style="justify-content:center;margin-top:4px">Start free</a>
+<ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:13px">
+<li><i class="ph ph-check check"></i>&nbsp; 50k routed requests / mo</li>
+<li><i class="ph ph-check check"></i>&nbsp; 2 providers</li>
+<li><i class="ph ph-check check"></i>&nbsp; 7-day retention</li>
+<li><i class="ph ph-check check"></i>&nbsp; Guardrails · basic</li>
+<li style="color:var(--sx-faint)"><i class="ph ph-x x"></i>&nbsp; No SSO / SLA</li>
+</ul>
+</div>
+
+<!-- Pro -->
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:12px">
+<div class="lab">PRO</div>
+<div style="display:flex;align-items:baseline;gap:6px"><span style="font:500 36px var(--font-body)">$149</span><span style="color:var(--sx-muted);font-size:13px">/mo</span></div>
+<div style="font-size:12.5px;color:var(--sx-muted)">Small teams shipping something real.</div>
+<a class="btn-s" style="justify-content:center;margin-top:4px">Start Pro</a>
+<ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:13px">
+<li><i class="ph ph-check check"></i>&nbsp; 200k requests / mo</li>
+<li><i class="ph ph-check check"></i>&nbsp; 5 providers · 10 keys</li>
+<li><i class="ph ph-check check"></i>&nbsp; 30-day retention</li>
+<li><i class="ph ph-check check"></i>&nbsp; Slack &amp; webhook alerts</li>
+<li><i class="ph ph-check check"></i>&nbsp; Email support</li>
+</ul>
+</div>
+
+<!-- Growth · highlighted -->
+<div style="background:linear-gradient(180deg,var(--sx-blue-tint),var(--sx-panel) 40%);border:1px solid var(--sx-blue);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;position:relative">
+<div style="position:absolute;top:-10px;left:24px"><span class="pill" style="background:var(--sx-blue);color:#fff">MOST POPULAR</span></div>
+<div class="lab" style="color:var(--sx-blue-text)">GROWTH</div>
+<div style="display:flex;align-items:baseline;gap:6px"><span style="font:500 36px var(--font-body)">$499</span><span style="color:var(--sx-muted);font-size:13px">/mo</span></div>
+<div style="font-size:12.5px;color:var(--sx-muted)">Production workloads with SSO and an SLA.</div>
+<a class="btn-p" style="justify-content:center;margin-top:4px">Start Growth</a>
+<ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:13px">
+<li><i class="ph ph-check check"></i>&nbsp; 1M requests / mo</li>
+<li><i class="ph ph-check check"></i>&nbsp; 10 providers · 50 keys</li>
+<li><i class="ph ph-check check"></i>&nbsp; 90-day retention</li>
+<li><i class="ph ph-check check"></i>&nbsp; SSO · audit log · 24h SLA</li>
+<li><i class="ph ph-check check"></i>&nbsp; A/B · canaries · budgets</li>
+<li><i class="ph ph-check check"></i>&nbsp; Priority Slack support</li>
+</ul>
+</div>
+
+<!-- Enterprise -->
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:12px">
+<div class="lab">ENTERPRISE</div>
+<div style="display:flex;align-items:baseline;gap:6px"><span style="font:500 36px var(--font-body)">Custom</span></div>
+<div style="font-size:12.5px;color:var(--sx-muted)">Dedicated region, private deploys, custom SLA.</div>
+<a class="btn-s" style="justify-content:center;margin-top:4px">Talk to sales</a>
+<ul style="margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;font-size:13px">
+<li><i class="ph ph-check check"></i>&nbsp; Unlimited volume</li>
+<li><i class="ph ph-check check"></i>&nbsp; VPC · BYOK vault</li>
+<li><i class="ph ph-check check"></i>&nbsp; SOC2 · HIPAA on request</li>
+<li><i class="ph ph-check check"></i>&nbsp; Dedicated support engineer</li>
+<li><i class="ph ph-check check"></i>&nbsp; 99.99% uptime</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- USAGE EXAMPLES -->
+<section style="padding:30px 0 60px;border-top:1px solid var(--sx-line)">
+<div class="cont" style="padding-top:50px;display:flex;flex-direction:column;gap:24px">
+<div style="text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center">
+<span class="lab" style="color:var(--sx-blue-text)">YOUR BILL</span>
+<h2 style="margin:0;font:500 26px var(--font-body);letter-spacing:-.01em">Provider cost at their price · Strataix at a flat fee</h2>
+<p style="margin:0;max-width:580px;color:#b2b6ca;font-size:14px">Every request lists its provider charge, the overhead we add, and what you saved with routing or caching. Overage above a plan is billed at a rate card in your settings.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px">
+
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:center;gap:10px"><div class="lab" style="flex:1">EARLY-STAGE</div><span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">Pro</span></div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums">$149 <span style="color:var(--sx-muted);font-size:13px">plan</span></div>
+<div style="font-size:12.5px;color:var(--sx-muted);line-height:1.6">~150k requests · 2 providers · 3 engineers<br>Provider cost at list price · we bill $149 flat.</div>
+</div>
+
+<div style="background:var(--sx-panel);border:1px solid var(--sx-blue);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:center;gap:10px"><div class="lab" style="color:var(--sx-blue-text);flex:1">PRODUCTION · ACME</div><span class="pill" style="background:var(--sx-blue);color:#fff">Growth</span></div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums">$499 <span style="color:var(--sx-muted);font-size:13px">plan</span> + <span style="color:var(--sx-text);font-variant-numeric:tabular-nums">$1,443</span></div>
+<div style="font-size:12.5px;color:var(--sx-muted);line-height:1.6">1.24M requests · 5 providers · 14 seats<br>+ 240k overage at $6 /1k · + 14 seats × $12.</div>
+</div>
+
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:center;gap:10px"><div class="lab" style="flex:1">SCALE</div><span class="pill" style="background:var(--sx-violet-tint);color:var(--sx-violet)">Enterprise</span></div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums">From $3k <span style="color:var(--sx-muted);font-size:13px">/mo</span></div>
+<div style="font-size:12.5px;color:var(--sx-muted);line-height:1.6">10M+ requests · dedicated region · 24/7<br>Negotiated per committed volume.</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- COMPARE -->
+<section style="padding:30px 0 60px;border-top:1px solid var(--sx-line)">
+<div class="cont" style="padding-top:50px">
+<div style="text-align:center;margin-bottom:24px"><span class="lab" style="color:var(--sx-blue-text)">COMPARE PLANS</span><h2 style="margin:8px 0 0;font:500 26px var(--font-body)">Everything that's different</h2></div>
+
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:12px;overflow:hidden">
+
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);background:var(--sx-raised);padding:14px 20px;font-size:12.5px;font-weight:500"><span></span><span style="text-align:center">Starter</span><span style="text-align:center">Pro</span><span style="text-align:center;color:var(--sx-blue-text)">Growth</span><span style="text-align:center">Enterprise</span></div>
+
+<!-- group -->
+<div style="padding:10px 20px;background:var(--sx-bg);font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em;border-top:1px solid var(--sx-line);border-bottom:1px solid var(--sx-line)">USAGE</div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Included requests / mo</span><span style="text-align:center;font-family:var(--font-mono)">50k</span><span style="text-align:center;font-family:var(--font-mono)">200k</span><span style="text-align:center;font-family:var(--font-mono)">1M</span><span style="text-align:center;font-family:var(--font-mono)">Custom</span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Overage</span><span style="text-align:center;font-family:var(--font-mono);color:var(--sx-faint)">—</span><span style="text-align:center;font-family:var(--font-mono)">$8 / 1k</span><span style="text-align:center;font-family:var(--font-mono)">$6 / 1k</span><span style="text-align:center;font-family:var(--font-mono)">Negotiated</span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Providers</span><span style="text-align:center;font-family:var(--font-mono)">2</span><span style="text-align:center;font-family:var(--font-mono)">5</span><span style="text-align:center;font-family:var(--font-mono)">10</span><span style="text-align:center;font-family:var(--font-mono)">Unlimited</span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>API keys</span><span style="text-align:center;font-family:var(--font-mono)">3</span><span style="text-align:center;font-family:var(--font-mono)">10</span><span style="text-align:center;font-family:var(--font-mono)">50</span><span style="text-align:center;font-family:var(--font-mono)">Unlimited</span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Retention</span><span style="text-align:center;font-family:var(--font-mono)">7d</span><span style="text-align:center;font-family:var(--font-mono)">30d</span><span style="text-align:center;font-family:var(--font-mono)">90d</span><span style="text-align:center;font-family:var(--font-mono)">Custom</span></div>
+
+<!-- platform -->
+<div style="padding:10px 20px;background:var(--sx-bg);font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em;border-top:1px solid var(--sx-line);border-bottom:1px solid var(--sx-line)">PLATFORM</div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Routing · fallbacks · A/B</span><span style="text-align:center"><i class="ph ph-check check"></i></span><span style="text-align:center"><i class="ph ph-check check"></i></span><span style="text-align:center"><i class="ph ph-check check"></i></span><span style="text-align:center"><i class="ph ph-check check"></i></span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Guardrails · PII · toxicity · injection</span><span style="text-align:center;color:var(--sx-faint)">basic</span><span style="text-align:center"><i class="ph ph-check check"></i></span><span style="text-align:center"><i class="ph ph-check check"></i></span><span style="text-align:center"><i class="ph ph-check check"></i></span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Budgets &amp; overspend policy</span><span style="text-align:center"><i class="ph ph-x x"></i></span><span style="text-align:center"><i class="ph ph-check check"></i></span><span style="text-align:center"><i class="ph ph-check check"></i></span><span style="text-align:center"><i class="ph ph-check check"></i></span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>SSO · SAML · SCIM</span><span style="text-align:center"><i class="ph ph-x x"></i></span><span style="text-align:center"><i class="ph ph-x x"></i></span><span style="text-align:center"><i class="ph ph-check check"></i></span><span style="text-align:center"><i class="ph ph-check check"></i></span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Audit log</span><span style="text-align:center"><i class="ph ph-x x"></i></span><span style="text-align:center;color:var(--sx-faint)">30d</span><span style="text-align:center">365d</span><span style="text-align:center">Custom</span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Data residency</span><span style="text-align:center;color:var(--sx-faint)">us-east</span><span style="text-align:center">us-east · eu-west</span><span style="text-align:center">3 regions</span><span style="text-align:center">BYO region</span></div>
+
+<!-- Support -->
+<div style="padding:10px 20px;background:var(--sx-bg);font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em;border-top:1px solid var(--sx-line);border-bottom:1px solid var(--sx-line)">SUPPORT &amp; SECURITY</div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Uptime SLA</span><span style="text-align:center;color:var(--sx-faint)">—</span><span style="text-align:center">99.9%</span><span style="text-align:center">99.95%</span><span style="text-align:center">99.99%</span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px;border-bottom:1px solid var(--sx-line)"><span>Support</span><span style="text-align:center">Community</span><span style="text-align:center">Email</span><span style="text-align:center">Priority Slack</span><span style="text-align:center">Dedicated SE</span></div>
+<div style="display:grid;grid-template-columns:1.4fr repeat(4,1fr);padding:11px 20px;font-size:13px"><span>SOC2 · HIPAA</span><span style="text-align:center"><i class="ph ph-x x"></i></span><span style="text-align:center">SOC2</span><span style="text-align:center">SOC2</span><span style="text-align:center">SOC2 · HIPAA</span></div>
+
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:30px 0 60px;border-top:1px solid var(--sx-line)">
+<div class="cont" style="padding-top:50px;display:grid;grid-template-columns:1fr 2fr;gap:36px">
+<div><span class="lab" style="color:var(--sx-blue-text)">FAQ</span><h2 style="margin:8px 0 0;font:500 26px var(--font-body);letter-spacing:-.01em">Common questions, in plain words.</h2></div>
+<div style="display:flex;flex-direction:column;gap:14px">
+
+<details open style="padding:16px 18px;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px"><summary style="font-weight:500;cursor:pointer;display:flex;align-items:center"><span style="flex:1">Do you resell provider tokens?</span><i class="ph ph-caret-down" style="color:var(--sx-muted)"></i></summary><div style="padding-top:10px;color:#b2b6ca;font-size:13.5px;line-height:1.65">No. You bring your own provider keys. We pass traffic through at the provider's list price, and bill a flat platform fee. You keep your existing enterprise discounts.</div></details>
+
+<details style="padding:16px 18px;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px"><summary style="font-weight:500;cursor:pointer;display:flex;align-items:center"><span style="flex:1">What counts as a "routed request"?</span><i class="ph ph-caret-down" style="color:var(--sx-muted)"></i></summary><div style="padding-top:10px;color:#b2b6ca;font-size:13.5px;line-height:1.65">One request from your app to our gateway. Fallback retries and cache hits do not count. Internal health checks don't count.</div></details>
+
+<details style="padding:16px 18px;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px"><summary style="font-weight:500;cursor:pointer;display:flex;align-items:center"><span style="flex:1">Can we start on Growth annual and change our mind?</span><i class="ph ph-caret-down" style="color:var(--sx-muted)"></i></summary><div style="padding-top:10px;color:#b2b6ca;font-size:13.5px;line-height:1.65">Yes. Change or cancel any time; we prorate to the day and refund the unused balance to your card or next invoice.</div></details>
+
+<details style="padding:16px 18px;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px"><summary style="font-weight:500;cursor:pointer;display:flex;align-items:center"><span style="flex:1">Is my data used to train models?</span><i class="ph ph-caret-down" style="color:var(--sx-muted)"></i></summary><div style="padding-top:10px;color:#b2b6ca;font-size:13.5px;line-height:1.65">Never. Your prompts are sent to your providers under their data policy. We retain logs only for the window you set (7–365 days) and you can redact PII at the gateway before anything is logged.</div></details>
+
+<details style="padding:16px 18px;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px"><summary style="font-weight:500;cursor:pointer;display:flex;align-items:center"><span style="flex:1">Do you offer a discount for startups or OSS?</span><i class="ph ph-caret-down" style="color:var(--sx-muted)"></i></summary><div style="padding-top:10px;color:#b2b6ca;font-size:13.5px;line-height:1.65">Yes · Growth free for 12 months for early-stage startups (under $3M raised) and recognized OSS projects. <a style="color:var(--sx-blue-text)">Apply →</a></div></details>
+
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section style="padding:70px 0 100px;background:radial-gradient(ellipse at 50% 20%,var(--sx-blue-tint),transparent 60%)">
+<div class="cont" style="text-align:center;display:flex;flex-direction:column;gap:14px;align-items:center">
+<h2 style="margin:0;font:400 36px Michroma,sans-serif;letter-spacing:-.01em;max-width:620px">Ship with providers you choose. Keep the one gateway in front.</h2>
+<p style="margin:0;max-width:540px;color:#b2b6ca;font-size:14px">First request in under 4 minutes. No card.</p>
+<div style="display:flex;gap:10px;margin-top:10px"><a class="btn-p" style="padding:11px 18px">Start free</a><a class="btn-s" style="padding:11px 18px">Book a 20-min demo</a></div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid var(--sx-line);padding:40px 0">
+<div class="cont" style="display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px;font-size:13px">
+<div><img src="public/brand/wordmark-light.png" style="height:14px;display:block;margin-bottom:12px"><div style="color:var(--sx-muted);font-size:12.5px;line-height:1.6;max-width:260px">The control plane for production AI. Strataix Inc · strataix.in</div></div>
+<div style="display:flex;flex-direction:column;gap:10px"><span class="lab">PRODUCT</span><a style="color:var(--sx-muted);text-decoration:none">Overview</a><a style="color:var(--sx-muted);text-decoration:none">Pricing</a><a style="color:var(--sx-muted);text-decoration:none">Changelog</a><a style="color:var(--sx-muted);text-decoration:none">Status</a></div>
+<div style="display:flex;flex-direction:column;gap:10px"><span class="lab">DEVELOPERS</span><a style="color:var(--sx-muted);text-decoration:none">Docs</a><a style="color:var(--sx-muted);text-decoration:none">API reference</a><a style="color:var(--sx-muted);text-decoration:none">SDKs</a><a style="color:var(--sx-muted);text-decoration:none">GitHub</a></div>
+<div style="display:flex;flex-direction:column;gap:10px"><span class="lab">COMPANY</span><a style="color:var(--sx-muted);text-decoration:none">About</a><a style="color:var(--sx-muted);text-decoration:none">Security</a><a style="color:var(--sx-muted);text-decoration:none">Privacy</a><a style="color:var(--sx-muted);text-decoration:none">Contact</a></div>
+</div>
+</footer>
+
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+body{margin:0;background:#0f1019;font-family:"IBM Plex Sans",system-ui,sans-serif;color:#e9e9ed;font-size:13px}
+.node{background:#0e1016;border:1px solid #1a1d26;border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:3px}
+.node.root{background:#17295e;border-color:#2f6fff;color:#8fb2ff}
+.node.active{border-color:#2f6fff}
+.node .l1{font-size:12.5px;font-weight:500}
+.node .l2{font:11px "IBM Plex Mono",monospace;color:#75798c}
+.lab{font:11px "IBM Plex Mono",monospace;color:#75798c;text-transform:uppercase;letter-spacing:.06em}
+.h{font:600 10px "IBM Plex Mono",monospace;padding:3px 7px;background:#e9e9ed;color:#161826;border-radius:4px;text-decoration:none}
+</style>
+</helmet>
+
+<section style="padding:40px 44px;display:flex;flex-direction:column;gap:24px;width:1440px;box-sizing:border-box">
+<div style="display:flex;align-items:baseline;gap:10px"><a href="#t1" class="h">1</a><span style="font-size:13px;font-weight:600">Strataix · Sitemap &amp; information architecture</span></div>
+<div style="font-size:12.5px;color:#b2b6ca;max-width:820px;line-height:1.55">Nine primary sections behind a persistent left nav. Overview is the default landing surface post-auth. Settings holds org, members, billing, and integrations.</div>
+
+<div style="background:#161826;border:1px solid #292b31;border-radius:10px;padding:40px 44px;position:relative">
+
+<!-- Row 1: root -->
+<div style="display:flex;justify-content:center;margin-bottom:28px"><div class="node root" style="min-width:200px;align-items:center"><span class="l1">Strataix</span><span class="l2" style="color:#9dbaff">strataix.in</span></div></div>
+
+<!-- Row 2: nav sections -->
+<div class="lab" style="margin-bottom:12px">OPERATE · what you do day-to-day</div>
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px">
+<div class="node active"><span class="l1"><i class="ph ph-squares-four" style="color:#8fb2ff"></i> Overview</span><span class="l2">live KPIs · spend · latency · alerts</span></div>
+<div class="node"><span class="l1"><i class="ph ph-list-dashes"></i> Requests</span><span class="l2">1.24M log · filters · detail drawer</span></div>
+<div class="node"><span class="l1"><i class="ph ph-tree-structure"></i> Sessions</span><span class="l2">traces · agent runs · conversations</span></div>
+<div class="node"><span class="l1"><i class="ph ph-bell-simple"></i> Alerts</span><span class="l2">open findings · incident history</span></div>
+<div class="node"><span class="l1"><i class="ph ph-wallet"></i> Budgets</span><span class="l2">caps · forecast · overspend policy</span></div>
+</div>
+
+<div class="lab" style="margin-bottom:12px">CONFIGURE · the control plane</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px">
+<div class="node"><span class="l1"><i class="ph ph-git-fork"></i> Routes</span><span class="l2">routing rules · fallbacks · A/B</span></div>
+<div class="node"><span class="l1"><i class="ph ph-cloud"></i> Providers</span><span class="l2">Anthropic · OpenAI · Google · others</span></div>
+<div class="node"><span class="l1"><i class="ph ph-shield-check"></i> Guardrails</span><span class="l2">PII · toxicity · prompt injection</span></div>
+<div class="node"><span class="l1"><i class="ph ph-key"></i> Keys</span><span class="l2">API keys · scopes · rotation</span></div>
+</div>
+
+<div class="lab" style="margin-bottom:12px">ACCOUNT</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+<div class="node"><span class="l1"><i class="ph ph-buildings"></i> Settings · Org</span><span class="l2">name · regions · retention</span></div>
+<div class="node"><span class="l1"><i class="ph ph-users-three"></i> Settings · Members</span><span class="l2">users · roles · SSO</span></div>
+<div class="node"><span class="l1"><i class="ph ph-credit-card"></i> Settings · Billing</span><span class="l2">plan · usage · invoices</span></div>
+<div class="node"><span class="l1"><i class="ph ph-plugs-connected"></i> Settings · Integrations</span><span class="l2">Slack · webhooks · SIEM</span></div>
+</div>
+
+</div>
+
+<!-- Flows -->
+<div style="display:flex;align-items:baseline;gap:10px;margin-top:12px"><a href="#t2" class="h">2</a><span style="font-size:13px;font-weight:600">Core user flows</span></div>
+<div style="background:#161826;border:1px solid #292b31;border-radius:10px;padding:28px 32px;display:flex;flex-direction:column;gap:22px">
+
+<div>
+<div class="lab" style="margin-bottom:10px">2a · Onboarding · first session</div>
+<div style="display:flex;align-items:center;gap:8px;font-size:12px;flex-wrap:wrap">
+<span class="node" style="padding:6px 10px"><span class="l1">Sign up</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Create org</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Connect provider</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Issue first key</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Install SDK</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px;background:#17295e;border-color:#2f6fff;color:#8fb2ff"><span class="l1">First request</span></span>
+</div>
+</div>
+
+<div>
+<div class="lab" style="margin-bottom:10px">2b · Debug a bad request</div>
+<div style="display:flex;align-items:center;gap:8px;font-size:12px;flex-wrap:wrap">
+<span class="node" style="padding:6px 10px"><span class="l1">Alert</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Overview</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Requests · filtered</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Request detail</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Route config</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px;background:#17295e;border-color:#2f6fff;color:#8fb2ff"><span class="l1">Patch &amp; redeploy</span></span>
+</div>
+</div>
+
+<div>
+<div class="lab" style="margin-bottom:10px">2c · Reduce spend</div>
+<div style="display:flex;align-items:center;gap:8px;font-size:12px;flex-wrap:wrap">
+<span class="node" style="padding:6px 10px"><span class="l1">Budget warning</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Top cost drivers</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Finding: unused tools</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px"><span class="l1">Route: swap model</span></span><i class="ph ph-arrow-right" style="color:#9397ab"></i>
+<span class="node" style="padding:6px 10px;background:#17295e;border-color:#2f6fff;color:#8fb2ff"><span class="l1">Save ~29k tok/call</span></span>
+</div>
+</div>
+
+</div>
+
+</section>
+</x-dc>
+</body>
+</html>

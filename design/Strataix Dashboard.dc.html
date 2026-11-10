@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root,[data-sx-theme="dark"]{--font-body:"IBM Plex Sans",system-ui,sans-serif;--font-heading:"IBM Plex Sans",system-ui,sans-serif;--font-display:"Michroma","IBM Plex Sans",sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,monospace;
+--sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;--sx-line:#1a1d26;--sx-line-2:#262a35;--sx-text:var(--color-text);--sx-muted:var(--color-neutral-400);--sx-faint:var(--color-neutral-600);
+--sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;--sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);--sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);--sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);--sx-grid:color-mix(in srgb,var(--color-text) 5%,transparent);--sx-s1:#2f6fff;--sx-s2:var(--color-accent);--sx-s3:var(--color-neutral-600)}
+[data-sx-theme="light"]{--sx-bg:var(--color-neutral-100);--sx-panel:#fcfcfe;--sx-raised:#fcfcfe;--sx-line:var(--color-neutral-200);--sx-line-2:var(--color-neutral-300);--sx-text:#1b1d29;--sx-muted:var(--color-neutral-600);--sx-faint:var(--color-neutral-500);
+--sx-blue:#1a5fff;--sx-blue-text:#1a4fd6;--sx-blue-tint:#e6edff;--sx-blue-tint-2:#cfdcff;--sx-violet:var(--color-accent-600);--sx-violet-tint:var(--color-accent-100);--sx-danger:oklch(0.55 0.17 25);--sx-danger-tint:color-mix(in srgb,oklch(0.55 0.17 25) 10%,transparent);--sx-ok:oklch(0.55 0.12 165);--sx-warn:oklch(0.62 0.13 70);--sx-grid:color-mix(in srgb,#1b1d29 7%,transparent);--sx-s1:#1a5fff;--sx-s2:var(--color-accent-500);--sx-s3:var(--color-neutral-400)}
+</style>
+</helmet>
+<div data-sx-theme="{{ theme }}" style="width:1440px;height:900px;display:flex;background:var(--sx-bg);color:var(--sx-text);font-family:var(--font-body);font-size:13px;overflow:hidden">
+
+<aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
+<div style="padding:4px 8px 18px"><img src="{{ wordmark }}" alt="Strataix" style="height:13px;display:block"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:var(--radius-md);margin-bottom:14px;cursor:pointer">
+<span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span>
+<div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
+<sc-for list="{{ nav }}" as="n" hint-placeholder-count="9"><div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;cursor:pointer;background:{{ n.bg }};color:{{ n.c }};font-weight:{{ n.fw }}" style-hover="background:var(--sx-panel)"><i class="ph {{ n.i }}" style="font-size:16px"></i><span style="flex:1">{{ n.l }}</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">{{ n.badge }}</span></div></sc-for>
+<div style="flex:1"></div>
+<div style="padding:10px;border:1px solid var(--sx-line-2);border-radius:var(--radius-md);display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
+<div style="display:flex;justify-content:space-between;font-size:11.5px"><span style="color:var(--sx-muted)">November budget</span><span style="font-family:var(--font-mono)">69%</span></div>
+<div style="height:4px;border-radius:2px;background:var(--sx-line-2);overflow:hidden"><div style="width:69%;height:100%;background:var(--sx-blue)"></div></div>
+<div style="font-size:11px;color:var(--sx-muted)">$62.4k of $90k · forecast <span style="color:var(--sx-danger)">$94.2k</span></div></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;color:var(--sx-muted)"><i class="ph ph-gear-six" style="font-size:16px"></i>Settings</div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span><i class="ph ph-dots-three" style="color:var(--sx-muted)"></i></div>
+</aside>
+
+<main style="flex:1;min-width:0;display:flex;flex-direction:column">
+<header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
+<span style="font:400 11px var(--font-display);letter-spacing:.06em">OVERVIEW</span>
+<span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">All traffic</span>
+<div style="flex:1"></div>
+<div style="width:280px;display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:var(--radius-md);color:var(--sx-muted)"><i class="ph ph-magnifying-glass"></i><span style="flex:1">Search requests, keys, routes</span><span style="font:11px var(--font-mono);padding:0 5px;border:1px solid var(--sx-line-2);border-radius:4px">⌘K</span></div>
+<div style="display:flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:var(--radius-md)"><i class="ph ph-cloud" style="color:var(--sx-muted)"></i>All providers<i class="ph ph-caret-down" style="color:var(--sx-muted)"></i></div>
+<div style="display:flex;border:1px solid var(--sx-line-2);border-radius:var(--radius-md);overflow:hidden"><sc-for list="{{ ranges }}" as="r" hint-placeholder-count="4"><span style="padding:6px 10px;font-family:var(--font-mono);font-size:11.5px;background:{{ r.bg }};color:{{ r.c }}">{{ r.l }}</span></sc-for></div>
+<div style="display:flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid var(--sx-blue);border-radius:var(--radius-md);color:var(--sx-blue-text)"><span style="width:6px;height:6px;border-radius:50%;background:var(--sx-blue);box-shadow:0 0 0 3px var(--sx-blue-tint-2)"></span>Live</div>
+</header>
+
+<div style="flex:1;min-height:0;padding:16px 20px 20px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr);gap:12px">
+
+<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6"><div style="grid-column:span 2;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:6px;color:var(--sx-muted);font-size:12px"><span style="flex:1">{{ k.k }}</span><i class="ph ph-info" style="font-size:12px;color:var(--sx-faint)"></i></div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px">
+<span style="font:500 24px/1.1 var(--font-body);font-variant-numeric:tabular-nums;letter-spacing:-.01em">{{ k.v }}</span>
+<svg width="72" height="24" viewBox="0 0 72 24" style="flex:none"><polyline points="{{ k.pts }}" fill="none" stroke="{{ k.stroke }}" stroke-width="1.5" stroke-linejoin="round"></polyline></svg></div>
+<div style="font:500 11px var(--font-mono);color:{{ k.dc }}">{{ k.d }} <span style="color:var(--sx-faint);font-family:var(--font-body);font-weight:400">vs yesterday</span></div>
+</div></sc-for>
+
+<section style="grid-column:span 8;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:0">
+<div style="display:flex;align-items:center;gap:14px">
+<span style="font-weight:500;font-size:14px">Spend</span>
+<span style="font:500 13px var(--font-mono)">$4,182.40</span>
+<div style="display:flex;gap:12px;font-size:11.5px;color:var(--sx-muted)"><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-s1)"></span>Anthropic</span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-s2)"></span>OpenAI</span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-s3)"></span>Google · other</span><span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1px dashed var(--sx-danger)"></span>Hourly budget</span></div>
+<div style="flex:1"></div>
+<div style="display:flex;border:1px solid var(--sx-line-2);border-radius:6px;overflow:hidden;font-size:11.5px"><span style="padding:3px 9px;background:var(--sx-raised)">Provider</span><span style="padding:3px 9px;color:var(--sx-muted)">Model</span><span style="padding:3px 9px;color:var(--sx-muted)">Team</span></div>
+</div>
+<div style="flex:1;min-height:0;display:flex;gap:8px">
+<div style="display:flex;flex-direction:column;justify-content:space-between;font:10.5px var(--font-mono);color:var(--sx-faint);padding-bottom:16px;text-align:right;width:30px"><span>$300</span><span>$200</span><span>$100</span><span>$0</span></div>
+<div style="flex:1;display:flex;flex-direction:column;min-width:0">
+<div style="flex:1;position:relative;border-bottom:1px solid var(--sx-line-2);background-image:linear-gradient(var(--sx-grid) 1px,transparent 1px);background-size:100% 33.33%">
+<svg viewBox="0 0 600 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="{{ area3 }}" fill="var(--sx-s3)" fill-opacity=".55"></path>
+<path d="{{ area2 }}" fill="var(--sx-s2)" fill-opacity=".55"></path>
+<path d="{{ area1 }}" fill="var(--sx-s1)" fill-opacity=".7"></path>
+<path d="{{ top1 }}" fill="none" stroke="var(--sx-s1)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+<line x1="0" x2="600" y1="38" y2="38" stroke="var(--sx-danger)" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"></line>
+<line x1="462" x2="462" y1="0" y2="200" stroke="var(--sx-text)" stroke-opacity=".35" vector-effect="non-scaling-stroke"></line>
+</svg>
+<div style="position:absolute;left:calc(77% + 10px);top:14px;background:var(--sx-raised);box-shadow:var(--shadow-md);border-radius:var(--radius-md);padding:9px 11px;display:flex;flex-direction:column;gap:4px;font-size:11.5px;min-width:170px">
+<span style="font:11px var(--font-mono);color:var(--sx-muted)">Nov 6 · 14:00</span>
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:2px;background:var(--sx-s1)"></span>Anthropic</span><span style="font-family:var(--font-mono)">$142.10</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:2px;background:var(--sx-s2)"></span>OpenAI</span><span style="font-family:var(--font-mono)">$88.42</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:2px;background:var(--sx-s3)"></span>Google · other</span><span style="font-family:var(--font-mono)">$31.90</span></div>
+<div style="border-top:1px solid var(--sx-line-2);padding-top:4px;display:flex;justify-content:space-between"><span style="color:var(--sx-muted)">Over budget</span><span style="font-family:var(--font-mono);color:var(--sx-danger)">+$22.42</span></div>
+</div>
+</div>
+<div style="display:flex;justify-content:space-between;font:10.5px var(--font-mono);color:var(--sx-faint);padding-top:5px"><span>Nov 5 18:00</span><span>00:00</span><span>06:00</span><span>12:00</span><span>now</span></div>
+</div></div>
+</section>
+
+<section style="grid-column:span 4;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:0">
+<div style="display:flex;align-items:center"><span style="font-weight:500;font-size:14px;flex:1">Spend by model</span><span style="font-size:11.5px;color:var(--sx-muted)">14 models</span></div>
+<div style="display:grid;grid-template-columns:1fr 64px 52px;font-size:11px;color:var(--sx-faint);padding-bottom:2px"><span>Model</span><span style="text-align:right">Cost</span><span style="text-align:right">Δ</span></div>
+<sc-for list="{{ models }}" as="m" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;gap:5px">
+<div style="display:grid;grid-template-columns:1fr 64px 52px;align-items:baseline"><span style="font:12px var(--font-mono)">{{ m.m }}</span><span style="text-align:right;font:12px var(--font-mono)">{{ m.v }}</span><span style="text-align:right;font:11px var(--font-mono);color:{{ m.dc }}">{{ m.d }}</span></div>
+<div style="height:3px;border-radius:2px;background:var(--sx-line)"><div style="height:100%;border-radius:2px;width:{{ m.w }};background:{{ m.bar }}"></div></div>
+</div></sc-for>
+</section>
+
+<section style="grid-column:span 6;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-height:0">
+<div style="display:flex;align-items:center;gap:14px"><span style="font-weight:500;font-size:14px">Latency</span><div style="display:flex;gap:12px;font-size:11.5px;color:var(--sx-muted)"><span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1.5px solid var(--sx-blue)"></span>p50 0.92s</span><span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1.5px solid var(--sx-violet)"></span>p95 1.84s</span><span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1.5px dashed var(--sx-muted)"></span>p99 3.10s</span></div></div>
+<div style="flex:1;position:relative;border-bottom:1px solid var(--sx-line-2);background-image:linear-gradient(var(--sx-grid) 1px,transparent 1px);background-size:100% 33.33%">
+<svg viewBox="0 0 600 120" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="{{ p99 }}" fill="none" stroke="var(--sx-muted)" stroke-dasharray="3 3" stroke-width="1.2" vector-effect="non-scaling-stroke"></path>
+<path d="{{ p95 }}" fill="none" stroke="var(--sx-violet)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+<path d="{{ p50 }}" fill="none" stroke="var(--sx-blue)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+</svg></div>
+</section>
+
+<section style="grid-column:span 6;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-height:0">
+<div style="display:flex;align-items:center;gap:14px"><span style="font-weight:500;font-size:14px">Traffic</span><span style="font:12px var(--font-mono);color:var(--sx-muted)">862 req/min</span><div style="flex:1"></div><span style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--sx-muted)"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-danger)"></span>errors 0.92%</span></div>
+<div style="flex:1;display:flex;align-items:flex-end;gap:3px;border-bottom:1px solid var(--sx-line-2)">
+<sc-for list="{{ traffic }}" as="t" hint-placeholder-count="48"><div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:{{ t.e }};background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:{{ t.h }};background:var(--sx-blue);opacity:{{ t.o }}"></div></div></sc-for>
+</div>
+</section>
+
+<section style="grid-column:span 8;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+<div style="display:flex;align-items:center;gap:10px;padding:12px 16px 8px"><span style="font-weight:500;font-size:14px">Top cost drivers</span><span style="font-size:11.5px;color:var(--sx-muted)">route × model · 24h</span><div style="flex:1"></div><span style="font-size:12px;color:var(--sx-blue-text);display:flex;align-items:center;gap:4px">Open in Requests<i class="ph ph-arrow-up-right"></i></span></div>
+<div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:6px 16px;font-size:11px;color:var(--sx-faint);border-bottom:1px solid var(--sx-line)"><span>Route</span><span>Model</span><span style="text-align:right">Requests</span><span style="text-align:right">Tokens</span><span style="text-align:right">Cache</span><span style="text-align:right">Cost</span><span style="text-align:right">Δ vs yesterday</span></div>
+<sc-for list="{{ drivers }}" as="d" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:7px 16px;align-items:center;border-bottom:1px solid var(--sx-line);font-variant-numeric:tabular-nums" style-hover="background:var(--sx-raised)">
+<span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:{{ d.dot }}"></span>{{ d.r }}</span><span style="font:12px var(--font-mono);color:var(--sx-muted)">{{ d.m }}</span><span style="text-align:right;font:12px var(--font-mono)">{{ d.q }}</span><span style="text-align:right;font:12px var(--font-mono)">{{ d.t }}</span><span style="text-align:right;font:12px var(--font-mono)">{{ d.ch }}</span><span style="text-align:right;font:500 12px var(--font-mono)">{{ d.c }}</span><span style="text-align:right;font:12px var(--font-mono);color:{{ d.dc }}">{{ d.d }}</span></div></sc-for>
+</section>
+
+<section style="grid-column:span 4;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);display:flex;flex-direction:column;min-height:0;overflow:hidden">
+<div style="display:flex;align-items:center;gap:8px;padding:12px 16px 8px"><span style="font-weight:500;font-size:14px;flex:1">Alerts &amp; findings</span><span style="font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px;background:var(--sx-danger-tint);color:var(--sx-danger)">2 open</span></div>
+<sc-for list="{{ alerts }}" as="a" hint-placeholder-count="4"><div style="display:flex;gap:10px;padding:8px 16px;border-top:1px solid var(--sx-line);align-items:flex-start" style-hover="background:var(--sx-raised)">
+<i class="ph {{ a.i }}" style="font-size:15px;margin-top:1px;color:{{ a.c }}"></i>
+<div style="flex:1;min-width:0"><div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.t }}</div><div style="font-size:11.5px;color:var(--sx-muted)">{{ a.s }}</div></div>
+<span style="font:11px var(--font-mono);color:var(--sx-faint)">{{ a.time }}</span></div></sc-for>
+</section>
+
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark' | 'light'&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const theme = this.props.theme ?? 'dark';
+    const rnd = (i, s) => { const x = Math.sin(i * 12.9898 + s * 78.233) * 43758.5453; return x - Math.floor(x); };
+    const wave = (i, s, a, b) => a + b * (0.5 + 0.5 * Math.sin(i / 4 + s)) + rnd(i, s) * b * 0.35;
+    const N = 48, W = 600, H = 200;
+    const x = i => (i / (N - 1)) * W;
+    const s1 = [], s2 = [], s3 = [];
+    for (let i = 0; i < N; i++) { const day = 0.55 + 0.45 * Math.sin((i - 10) / 7.6); s1.push(day * wave(i, 1, 40, 30) + (i > 36 ? 22 : 0)); s2.push(day * wave(i, 2, 30, 18)); s3.push(day * wave(i, 3, 12, 8)); }
+    const cum = (arrs) => arrs[0].map((_, i) => arrs.reduce((s, a) => s + a[i], 0));
+    const y = v => H - v * 0.62;
+    const line = (vals) => vals.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');
+    const area = (top, bot) => line(top) + top.map((_, i) => `L${x(N - 1 - i).toFixed(1)},${y(bot[N - 1 - i]).toFixed(1)}`).join('') + 'Z';
+    const zero = Array(N).fill(0), c3 = s3, c2 = cum([s3, s2]), c1 = cum([s3, s2, s1]);
+    const L = 60, lx = i => (i / (L - 1)) * 600;
+    const lat = (base, amp, s) => Array.from({ length: L }, (_, i) => `${i ? 'L' : 'M'}${lx(i).toFixed(1)},${(120 - (base + amp * rnd(i, s) + (i > 40 && i < 46 ? amp * 1.4 : 0))).toFixed(1)}`).join('');
+    const spark = (s, up) => Array.from({ length: 14 }, (_, i) => `${(i / 13 * 72).toFixed(1)},${(20 - (up ? i * 0.7 : (13 - i) * 0.5) - rnd(i, s) * 8).toFixed(1)}`).join(' ');
+    const D = 'var(--sx-danger)', G = 'var(--sx-ok)', M = 'var(--sx-muted)', B = 'var(--sx-blue)';
+    const navDef = [['Overview', 'ph-squares-four'], ['Requests', 'ph-list-dashes', '1.24M'], ['Sessions', 'ph-tree-structure'], ['Routes', 'ph-git-fork', '18'], ['Providers', 'ph-cloud', '5'], ['Guardrails', 'ph-shield-check'], ['Keys', 'ph-key', '7'], ['Budgets', 'ph-wallet'], ['Alerts', 'ph-bell-simple', '2']];
+    return {
+      theme,
+      wordmark: theme === 'light' ? 'public/brand/wordmark-dark.png' : 'public/brand/wordmark-light.png',
+      nav: navDef.map(([l, i, badge], k) => ({ l, i, badge: badge || '', bg: k === 0 ? 'var(--sx-blue-tint)' : 'transparent', c: k === 0 ? 'var(--sx-blue-text)' : 'var(--sx-text)', fw: k === 0 ? 500 : 400 })),
+      ranges: ['1h', '24h', '7d', '30d'].map(l => ({ l, bg: l === '24h' ? 'var(--sx-raised)' : 'transparent', c: l === '24h' ? 'var(--sx-text)' : 'var(--sx-muted)' })),
+      kpis: [
+        { k: 'Spend', v: '$4,182', d: '+12.0%', dc: D, up: 1 },
+        { k: 'Requests', v: '1.24M', d: '+4.1%', dc: M, up: 1 },
+        { k: 'p95 latency', v: '1.84s', d: '−80ms', dc: G },
+        { k: 'Error rate', v: '0.92%', d: '+0.10pt', dc: D, up: 1 },
+        { k: 'Cache hit rate', v: '61.4%', d: '+9.2pt', dc: G, up: 1 },
+        { k: 'Guardrail actions', v: '312', d: '+38', dc: M, up: 1 }
+      ].map((k, i) => ({ ...k, pts: spark(i + 2, k.up), stroke: i === 0 ? B : 'var(--sx-muted)' })),
+      area1: area(c1, c2), area2: area(c2, c3), area3: area(c3, zero), top1: line(c1),
+      p50: lat(30, 10, 5), p95: lat(58, 16, 6), p99: lat(84, 22, 7),
+      traffic: Array.from({ length: 48 }, (_, i) => { const v = 30 + 55 * (0.55 + 0.45 * Math.sin((i - 10) / 7.6)) * (0.8 + rnd(i, 9) * 0.25); const e = rnd(i, 10) > 0.88 ? 4 + rnd(i, 11) * 8 : 0.8; return { h: v.toFixed(1) + '%', e: e.toFixed(1) + '%', o: i === 47 ? 1 : 0.75 }; }),
+      models: [
+        ['claude-sonnet-4', '$1,620', '78%', '+$410', D], ['gpt-4o', '$1,104', '54%', '+$92', D], ['gemini-2.5-pro', '$712', '34%', '−$40', G],
+        ['gpt-4o-mini', '$402', '20%', '+$18', D], ['llama-3.1-70b', '$344', '16%', '−$22', G], ['mistral-large', '$212', '10%', '±$0', M]
+      ].map(([m, v, w, d, dc], i) => ({ m, v, w, d, dc, bar: i === 0 ? B : 'var(--sx-muted)' })),
+      drivers: [
+        ['support/triage', 'claude-sonnet-4', '402k', '41.2M', '12%', '$1,020', '+$310 · +44%', D, D],
+        ['copilot/complete', 'gpt-4o', '377k', '28.7M', '71%', '$860', '+$92 · +12%', D, B],
+        ['data/extract', 'gemini-2.5-pro', '118k', '12.1M', '64%', '$640', '−$40 · −6%', G, B],
+        ['support/summarize', 'gpt-4o-mini', '296k', '30.3M', '58%', '$510', '+$18 · +4%', D, B]
+      ].map(([r, m, q, t, ch, c, d, dc, dot]) => ({ r, m, q, t, ch, c, d, dc, dot })),
+      alerts: [
+        { i: 'ph-warning-circle', c: D, t: 'Budget at 92% · team support', s: 'Projected to exceed on Nov 27', time: '4m' },
+        { i: 'ph-lightning', c: 'var(--sx-violet)', t: 'Cache break on support/triage', s: 'System prompt reordered · 84% → 12%', time: '18m' },
+        { i: 'ph-scissors', c: 'var(--sx-violet)', t: '31 unused tools loaded every turn', s: 'Prune to save ~29.9k tokens / call', time: '1h' },
+        { i: 'ph-clock-countdown', c: 'var(--sx-warn)', t: 'p95 > 3s · gemini-2.5-pro', s: 'Resolved after fallback to gpt-4o', time: '2h' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

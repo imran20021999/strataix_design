@@ -1,0 +1,33 @@
+<!-- Strataix · button patterns · copy into your component library -->
+<!-- See design/Strataix Patterns.dc.html §5a for the full spec -->
+
+<!-- Primary -->
+<button class="font-medium text-[13px] px-[14px] py-[9px] rounded-lg bg-sx-blue text-white border border-sx-blue inline-flex items-center gap-1.5 hover:brightness-110">
+  Deploy
+</button>
+
+<!-- Primary + icon -->
+<button class="font-medium text-[13px] px-[14px] py-[9px] rounded-lg bg-sx-blue text-white border border-sx-blue inline-flex items-center gap-1.5">
+  <i class="ph ph-check"></i> Deploy
+</button>
+
+<!-- Secondary / ghost -->
+<button class="font-medium text-[13px] px-[14px] py-[9px] rounded-lg bg-transparent text-sx-text border border-sx-line-2 hover:bg-sx-raised">
+  Cancel
+</button>
+
+<!-- Danger -->
+<button class="font-medium text-[13px] px-[14px] py-[9px] rounded-lg bg-sx-danger text-white border border-sx-danger">
+  Revoke key
+</button>
+
+<!-- Loading (keep width; swap icon for spinner) -->
+<button class="font-medium text-[13px] px-[14px] py-[9px] rounded-lg bg-sx-blue text-white inline-flex items-center gap-2 opacity-90" disabled>
+  <span class="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+  Saving
+</button>
+
+<!-- Disabled -->
+<button class="font-medium text-[13px] px-[14px] py-[9px] rounded-lg border border-sx-line-2 bg-transparent text-sx-muted opacity-50 cursor-not-allowed" disabled>
+  Save
+</button>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);--sx-danger:oklch(0.7 0.15 25);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:14px;line-height:1.6}
+.lab{font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.mono{font-family:var(--font-mono)}
+.cont{max-width:1120px;margin:0 auto;padding:0 32px}
+.kind-new{background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)}
+.kind-imp{background:var(--sx-blue-tint-2);color:var(--sx-blue-text)}
+.kind-fix{background:color-mix(in srgb,var(--sx-warn) 16%,transparent);color:var(--sx-warn)}
+.kind-brk{background:color-mix(in srgb,var(--sx-danger) 16%,transparent);color:var(--sx-danger)}
+.kind-sec{background:var(--sx-violet-tint);color:var(--sx-violet)}
+</style>
+</helmet>
+
+<div style="width:1440px;background:var(--sx-bg)">
+
+<!-- NAV -->
+<header style="border-bottom:1px solid var(--sx-line)">
+<div class="cont" style="display:flex;align-items:center;gap:28px;padding:18px 32px;font-size:13px;max-width:none">
+<img src="public/brand/wordmark-light.png" style="height:14px">
+<a style="color:var(--sx-muted);text-decoration:none">Product</a>
+<a style="color:var(--sx-muted);text-decoration:none">Pricing</a>
+<a style="color:var(--sx-muted);text-decoration:none">Docs</a>
+<a style="color:var(--sx-text);text-decoration:none;font-weight:500">Changelog</a>
+<a style="color:var(--sx-muted);text-decoration:none">Customers</a>
+<div style="flex:1"></div>
+<a style="display:inline-flex;align-items:center;gap:6px;font:500 13px var(--font-body);padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:7px;color:var(--sx-text);text-decoration:none"><i class="ph ph-rss"></i> RSS</a>
+<a style="display:inline-flex;align-items:center;gap:6px;font:500 13px var(--font-body);padding:6px 10px;border-radius:7px;background:var(--sx-blue);color:#fff;text-decoration:none">Dashboard <i class="ph ph-arrow-right"></i></a>
+</div>
+</header>
+
+<!-- HERO -->
+<section style="padding:60px 0 24px">
+<div class="cont">
+<span class="lab" style="color:var(--sx-blue-text)">CHANGELOG</span>
+<h1 style="margin:10px 0 10px;font:400 42px/1.1 Michroma,sans-serif;letter-spacing:-.01em">What's new</h1>
+<p style="margin:0;max-width:640px;color:#b2b6ca;font-size:15px">Every shipped change. Breaking ones are flagged — and the announcement mail reaches you a week before they take effect.</p>
+
+<div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap">
+<span class="pill" style="background:var(--sx-blue-tint);color:var(--sx-blue-text);border:1px solid var(--sx-blue)">All · 48</span>
+<span class="pill kind-new">New · 18</span>
+<span class="pill kind-imp">Improvement · 22</span>
+<span class="pill kind-fix">Fixed · 4</span>
+<span class="pill kind-brk">Breaking · 2</span>
+<span class="pill kind-sec">Security · 2</span>
+</div>
+</div>
+</section>
+
+<!-- v2.14 · hero -->
+<article style="padding:36px 0;border-top:1px solid var(--sx-line)">
+<div class="cont" style="display:grid;grid-template-columns:160px 1fr;gap:40px">
+<aside>
+<span class="pill kind-new">v2.14</span>
+<div style="font:500 13px var(--font-mono);color:var(--sx-text);margin-top:10px">Nov 7, 2026</div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">Imran · Deepak · Nadia</div>
+</aside>
+<div>
+<h2 style="margin:0 0 6px;font:500 24px var(--font-body);letter-spacing:-.01em">Canary promotions &amp; auto-fallback telemetry</h2>
+<p style="margin:0 0 16px;color:#b2b6ca">Canaries that win in A/B can now be promoted straight from the route flow. Fallbacks emit their own metrics so you can tell cheap recoveries from quiet degradations.</p>
+
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;overflow:hidden;margin:0 0 18px">
+<div style="aspect-ratio:21/9;background:linear-gradient(135deg,#1e2a4f,#17295e);display:flex;align-items:center;justify-content:center;position:relative;color:var(--sx-blue-text);font-family:var(--font-mono);font-size:12px;overflow:hidden">
+<svg viewBox="0 0 400 180" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.6">
+<path d="M0,120 L50,116 L100,110 L150,100 L200,96 L250,82 L300,70 L350,60 L400,54" fill="none" stroke="#8fb2ff" stroke-width="1.5"/>
+<path d="M200,80 L250,70 L300,52 L350,38 L400,24" fill="none" stroke="var(--color-accent)" stroke-width="1.5"/>
+</svg>
+<span style="position:relative">canary wins on cost &amp; p95 — promote?</span>
+</div>
+</div>
+
+<ul style="margin:0 0 16px;padding-left:20px;color:#b2b6ca;line-height:1.85">
+<li><b style="color:var(--sx-text);font-weight:500">Promote canary</b> button on the A/B card · one-click shift of traffic + audit entry.</li>
+<li><b style="color:var(--sx-text);font-weight:500">Fallback metrics</b> — <span class="mono">strataix.fallbacks.fired</span>, <span class="mono">.resolved</span>, <span class="mono">.added_latency_ms</span>.</li>
+<li><b style="color:var(--sx-text);font-weight:500">Natural-language ask</b> in <span class="pill" style="background:var(--sx-raised);border:1px solid var(--sx-line-2)">⌘K</span> · explains spikes and suggests fixes.</li>
+<li>Smarter cost delta: cache-hit requests now subtract from the baseline, not add to it.</li>
+</ul>
+
+<div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--sx-muted)">
+<a style="color:var(--sx-blue-text);text-decoration:none">Read the launch post <i class="ph ph-arrow-up-right"></i></a>
+<span>·</span><span>14 min read</span>
+</div>
+</div>
+</div>
+</article>
+
+<!-- v2.13 -->
+<article style="padding:28px 0;border-top:1px solid var(--sx-line)">
+<div class="cont" style="display:grid;grid-template-columns:160px 1fr;gap:40px">
+<aside>
+<span class="pill kind-imp">v2.13</span>
+<div style="font:500 13px var(--font-mono);color:var(--sx-text);margin-top:10px">Oct 29, 2026</div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">Priya · Deepak</div>
+</aside>
+<div>
+<h2 style="margin:0 0 6px;font:500 20px var(--font-body);letter-spacing:-.01em">Datadog metrics &amp; new provider · Fireworks</h2>
+<ul style="margin:0 0 6px;padding-left:20px;color:#b2b6ca;line-height:1.85">
+<li><b style="color:var(--sx-text);font-weight:500">Datadog integration</b> ships 22 metrics (requests, cost, p95, fallbacks, guardrail blocks) with per-route tags.</li>
+<li><b style="color:var(--sx-text);font-weight:500">Fireworks AI</b> connected as a first-party provider · llama-3.1-70b and mixtral-8x22b.</li>
+<li>Audit log: new <span class="mono">integration.degraded</span> event so on-call hears about bad sinks early.</li>
+</ul>
+</div>
+</div>
+</article>
+
+<!-- v2.12 -->
+<article style="padding:28px 0;border-top:1px solid var(--sx-line)">
+<div class="cont" style="display:grid;grid-template-columns:160px 1fr;gap:40px">
+<aside>
+<span class="pill kind-new">v2.12</span>
+<div style="font:500 13px var(--font-mono);color:var(--sx-text);margin-top:10px">Oct 14, 2026</div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">Nadia · Ayesha</div>
+</aside>
+<div>
+<h2 style="margin:0 0 6px;font:500 20px var(--font-body);letter-spacing:-.01em">Session traces · GA</h2>
+<p style="margin:0 0 10px;color:#b2b6ca">Every multi-step agent run is now a trace — LLM calls, tool calls, guardrails and fallbacks as a waterfall. Shareable links, with "why it was slow" callouts.</p>
+<ul style="margin:0;padding-left:20px;color:#b2b6ca;line-height:1.85">
+<li>Replay a trace with new inputs · side-by-side diff of outputs.</li>
+<li>Export OTel spans for your own tracing backend.</li>
+</ul>
+</div>
+</div>
+</article>
+
+<!-- v2.11 BREAKING -->
+<article style="padding:28px 0;border-top:1px solid var(--sx-line)">
+<div class="cont" style="display:grid;grid-template-columns:160px 1fr;gap:40px">
+<aside>
+<span class="pill kind-brk">v2.11</span>
+<div style="font:500 13px var(--font-mono);color:var(--sx-text);margin-top:10px">Oct 1, 2026</div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">Platform</div>
+</aside>
+<div>
+<h2 style="margin:0 0 6px;font:500 20px var(--font-body);letter-spacing:-.01em"><span style="color:var(--sx-danger)">Breaking</span> · route config format v2</h2>
+<p style="margin:0 0 12px;color:#b2b6ca">The route config schema moved to v2 to make fallbacks and A/B first-class. v1 configs auto-migrate on save; the deprecation window closes <b style="color:var(--sx-text);font-weight:500">Dec 1, 2026</b>.</p>
+<div style="padding:12px 14px;background:color-mix(in srgb,var(--sx-danger) 10%,transparent);border:1px solid color-mix(in srgb,var(--sx-danger) 30%,transparent);border-radius:8px;font-size:13px;color:#b2b6ca"><b style="color:var(--sx-text);font-weight:500">Action required</b> · run <span class="mono" style="color:var(--sx-text);background:var(--sx-bg);padding:1px 6px;border-radius:4px">strataix routes migrate</span> or save each route once in the console. Affects 3 of your routes — see <a style="color:var(--sx-blue-text);text-decoration:none">the migration guide</a>.</div>
+</div>
+</div>
+</article>
+
+<!-- v2.10 improvements batch -->
+<article style="padding:28px 0;border-top:1px solid var(--sx-line)">
+<div class="cont" style="display:grid;grid-template-columns:160px 1fr;gap:40px">
+<aside>
+<span class="pill kind-imp">v2.10</span>
+<div style="font:500 13px var(--font-mono);color:var(--sx-text);margin-top:10px">Sep 22, 2026</div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">Imran</div>
+</aside>
+<div>
+<h2 style="margin:0 0 6px;font:500 20px var(--font-body);letter-spacing:-.01em">Budgets with scoped sub-caps</h2>
+<ul style="margin:0;padding-left:20px;color:#b2b6ca;line-height:1.85">
+<li>Set a sub-cap on a route that lives inside a team's budget — prevents one noisy route eating the whole envelope.</li>
+<li>Policy ladder: warn 80 → page 90 → downgrade 100 → hard stop 110.</li>
+<li>Forecast cap-hit date in the sidebar budget card.</li>
+</ul>
+</div>
+</div>
+</article>
+
+<!-- v2.9 fix -->
+<article style="padding:28px 0;border-top:1px solid var(--sx-line)">
+<div class="cont" style="display:grid;grid-template-columns:160px 1fr;gap:40px">
+<aside>
+<span class="pill kind-fix">v2.9.1</span>
+<div style="font:500 13px var(--font-mono);color:var(--sx-text);margin-top:10px">Sep 10, 2026</div>
+</aside>
+<div>
+<h2 style="margin:0 0 6px;font:500 20px var(--font-body);letter-spacing:-.01em">Fixes &amp; small things</h2>
+<ul style="margin:0;padding-left:20px;color:#b2b6ca;line-height:1.85">
+<li><b style="color:var(--sx-text);font-weight:500">Fix</b> · tool-call retries were double-counted in spend. New data; old invoices unchanged.</li>
+<li><b style="color:var(--sx-text);font-weight:500">Fix</b> · <span class="mono">X-Strataix-Route</span> header stripped from fallback responses in some edge cases.</li>
+<li><b style="color:var(--sx-text);font-weight:500">Fix</b> · CSV export of requests dropped the <span class="mono">cache_hit</span> column.</li>
+<li>Minor · dashboard dark theme no longer flashes on first paint.</li>
+</ul>
+</div>
+</div>
+</article>
+
+<!-- v2.9 security -->
+<article style="padding:28px 0;border-top:1px solid var(--sx-line)">
+<div class="cont" style="display:grid;grid-template-columns:160px 1fr;gap:40px">
+<aside>
+<span class="pill kind-sec">v2.9</span>
+<div style="font:500 13px var(--font-mono);color:var(--sx-text);margin-top:10px">Aug 28, 2026</div>
+</aside>
+<div>
+<h2 style="margin:0 0 6px;font:500 20px var(--font-body);letter-spacing:-.01em">Automatic key-leak detection</h2>
+<p style="margin:0;color:#b2b6ca">Strataix watches public GitHub and npm for key fingerprint matches. On a hit, the key is automatically revoked and the owner + security contact get an email within 60s. No action required.</p>
+</div>
+</div>
+</article>
+
+<!-- older list -->
+<section style="padding:40px 0;border-top:1px solid var(--sx-line)">
+<div class="cont">
+<div class="lab" style="margin-bottom:16px">EARLIER</div>
+<div style="display:flex;flex-direction:column">
+<a style="display:grid;grid-template-columns:80px 130px 1fr;gap:16px;padding:10px 0;border-bottom:1px solid var(--sx-line);color:var(--sx-text);text-decoration:none;align-items:center">
+<span class="pill kind-imp" style="justify-self:start">v2.8</span><span class="mono" style="color:var(--sx-muted);font-size:12.5px">Aug 10, 2026</span><span>Prompt management · versions, roles, and one-click rollback on a bad prompt.</span>
+</a>
+<a style="display:grid;grid-template-columns:80px 130px 1fr;gap:16px;padding:10px 0;border-bottom:1px solid var(--sx-line);color:var(--sx-text);text-decoration:none;align-items:center">
+<span class="pill kind-new" style="justify-self:start">v2.7</span><span class="mono" style="color:var(--sx-muted);font-size:12.5px">Jul 22, 2026</span><span>MCP tool calls supported end-to-end with scope-level permissions.</span>
+</a>
+<a style="display:grid;grid-template-columns:80px 130px 1fr;gap:16px;padding:10px 0;border-bottom:1px solid var(--sx-line);color:var(--sx-text);text-decoration:none;align-items:center">
+<span class="pill kind-imp" style="justify-self:start">v2.6</span><span class="mono" style="color:var(--sx-muted);font-size:12.5px">Jul 2, 2026</span><span>Mobile app · on-call alerts and one-tap acknowledge.</span>
+</a>
+<a style="display:grid;grid-template-columns:80px 130px 1fr;gap:16px;padding:10px 0;border-bottom:1px solid var(--sx-line);color:var(--sx-text);text-decoration:none;align-items:center">
+<span class="pill kind-sec" style="justify-self:start">v2.5</span><span class="mono" style="color:var(--sx-muted);font-size:12.5px">Jun 18, 2026</span><span>SOC2 Type II report available · request from the Security page.</span>
+</a>
+<a style="display:grid;grid-template-columns:80px 130px 1fr;gap:16px;padding:10px 0;color:var(--sx-text);text-decoration:none;align-items:center">
+<span class="pill kind-brk" style="justify-self:start">v2.0</span><span class="mono" style="color:var(--sx-muted);font-size:12.5px">May 2, 2026</span><span>Strataix 2.0 · new dashboard, new gateway region, new pricing · migration guide.</span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Subscribe -->
+<section style="padding:50px 0 80px">
+<div class="cont" style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px">
+<h3 style="margin:0;font:500 22px var(--font-body);letter-spacing:-.01em">Get the changelog in your inbox</h3>
+<p style="margin:0;color:var(--sx-muted);font-size:13px">A short email every two weeks. Breaking changes get their own send, a week early.</p>
+<div style="display:flex;gap:8px;margin-top:6px">
+<input style="padding:9px 12px;background:var(--sx-panel);border:1px solid var(--sx-line-2);border-radius:8px;color:var(--sx-text);min-width:260px;font:13px var(--font-body)" placeholder="you@company.com">
+<button style="font:500 13px var(--font-body);padding:9px 16px;border-radius:8px;background:var(--sx-blue);color:#fff;border:1px solid var(--sx-blue);cursor:pointer">Subscribe</button>
+</div>
+</div>
+</section>
+
+</div>
+
+</x-dc>
+</body>
+</html>

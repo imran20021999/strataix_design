@@ -1,0 +1,25 @@
+<!-- Strataix · KPI card · see design/Strataix Handoff.dc.html §2 for redline specs -->
+<!-- Grid-column: span 2 of 12 → ~260px wide on 1440 canvas -->
+
+<div class="bg-sx-panel border border-sx-line rounded-lg p-3 flex flex-col gap-1">
+  <!-- label + info -->
+  <div class="flex items-center gap-1.5 text-sx-muted text-xs">
+    <span class="flex-1">Spend</span>
+    <i class="ph ph-info text-sx-faint text-xs"></i>
+  </div>
+
+  <!-- value + sparkline -->
+  <div class="flex items-end justify-between gap-2">
+    <span class="font-medium text-2xl leading-tight tracking-tight sx-num">$4,182</span>
+    <svg width="72" height="24" viewBox="0 0 72 24" class="flex-none">
+      <polyline points="0,18 10,14 20,15 30,10 40,12 50,7 60,5 72,2"
+                fill="none" stroke="var(--color-sx-blue)" stroke-width="1.5" />
+    </svg>
+  </div>
+
+  <!-- delta -->
+  <div class="font-medium text-[11px] font-mono text-sx-danger">
+    +12.0%
+    <span class="text-sx-faint font-sans font-normal">vs yesterday</span>
+  </div>
+</div>

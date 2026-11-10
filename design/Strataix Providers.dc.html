@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:13px}
+.nav{display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)}
+.nav i{font-size:16px}
+.nav .flex{flex:1}
+.nav .b{font:500 10.5px var(--font-mono);color:var(--sx-muted)}
+.nav.active{background:var(--sx-blue-tint);color:var(--sx-blue-text);font-weight:500}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.prov{background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.logo{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 13px var(--font-body);flex:none}
+</style>
+</helmet>
+
+<div style="width:1440px;height:900px;display:flex;overflow:hidden">
+
+<aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
+<div style="padding:4px 8px 18px"><img src="public/brand/wordmark-light.png" alt="Strataix" style="height:13px;display:block"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:8px;margin-bottom:14px">
+<span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span>
+<div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
+<div class="nav"><i class="ph ph-squares-four"></i><span class="flex">Overview</span></div>
+<div class="nav"><i class="ph ph-list-dashes"></i><span class="flex">Requests</span><span class="b">1.24M</span></div>
+<div class="nav"><i class="ph ph-tree-structure"></i><span class="flex">Sessions</span></div>
+<div class="nav"><i class="ph ph-git-fork"></i><span class="flex">Routes</span><span class="b">18</span></div>
+<div class="nav active"><i class="ph ph-cloud"></i><span class="flex">Providers</span><span class="b" style="color:var(--sx-blue-text)">5</span></div>
+<div class="nav"><i class="ph ph-shield-check"></i><span class="flex">Guardrails</span></div>
+<div class="nav"><i class="ph ph-key"></i><span class="flex">Keys</span><span class="b">7</span></div>
+<div class="nav"><i class="ph ph-wallet"></i><span class="flex">Budgets</span></div>
+<div class="nav"><i class="ph ph-bell-simple"></i><span class="flex">Alerts</span><span class="b">2</span></div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;color:var(--sx-muted)"><i class="ph ph-gear-six" style="font-size:16px"></i>Settings</div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span></div>
+</aside>
+
+<main style="flex:1;min-width:0;display:flex;flex-direction:column">
+<header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
+<span style="font:400 11px var(--font-display);letter-spacing:.06em">PROVIDERS</span>
+<span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">5 connected · 2 available</span>
+<div style="flex:1"></div>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)"><i class="ph ph-arrow-clockwise"></i> Health check</button>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff"><i class="ph ph-plus"></i> Add provider</button>
+</header>
+
+<div style="flex:1;overflow:auto;padding:18px 24px;display:flex;flex-direction:column;gap:18px">
+
+<!-- Summary bar -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:12px 14px">
+<div style="font-size:12px;color:var(--sx-muted)">Spend · 24h</div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums;margin-top:2px">$4,182</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-danger);margin-top:2px">+12.0% vs yesterday</div>
+</div>
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:12px 14px">
+<div style="font-size:12px;color:var(--sx-muted)">Requests · 24h</div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums;margin-top:2px">1.24M</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-muted);margin-top:2px">+4.1%</div>
+</div>
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:12px 14px">
+<div style="font-size:12px;color:var(--sx-muted)">Healthy</div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums;margin-top:2px">4 <span style="font-size:14px;color:var(--sx-muted)">of 5</span></div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-warn);margin-top:2px">1 degraded</div>
+</div>
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:12px 14px">
+<div style="font-size:12px;color:var(--sx-muted)">Cache savings</div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums;margin-top:2px">$1,942</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-ok);margin-top:2px">61.4% hit rate</div>
+</div>
+</div>
+
+<!-- Providers grid -->
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
+
+<!-- Anthropic -->
+<div class="prov">
+<div style="display:flex;align-items:center;gap:12px">
+<span class="logo" style="background:#1a1a1a;color:#e9e9ed">A</span>
+<div style="flex:1"><div style="font-weight:500;font-size:14px">Anthropic</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted)">api.anthropic.com · us-east-1</div></div>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)"><i class="ph ph-check-circle"></i> healthy</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Spend 24h</div><div style="font:500 14px var(--font-body);margin-top:2px">$1,620</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Req / min</div><div style="font:500 14px var(--font-body);margin-top:2px">412</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">p95</div><div style="font:500 14px var(--font-body);margin-top:2px">1.84s</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Errors</div><div style="font:500 14px var(--font-body);margin-top:2px;color:var(--sx-danger)">0.92%</div></div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">claude-sonnet-4</span>
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">claude-sonnet-4-5</span>
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">claude-opus-4.7</span>
+<span class="pill" style="background:var(--sx-raised);color:var(--sx-muted)">+2 more</span>
+</div>
+</div>
+
+<!-- OpenAI -->
+<div class="prov">
+<div style="display:flex;align-items:center;gap:12px">
+<span class="logo" style="background:#0e5c43;color:#e9e9ed">O</span>
+<div style="flex:1"><div style="font-weight:500;font-size:14px">OpenAI</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted)">api.openai.com · us-east-1</div></div>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)"><i class="ph ph-check-circle"></i> healthy</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Spend 24h</div><div style="font:500 14px var(--font-body);margin-top:2px">$1,506</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Req / min</div><div style="font:500 14px var(--font-body);margin-top:2px">298</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">p95</div><div style="font:500 14px var(--font-body);margin-top:2px">1.21s</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Errors</div><div style="font:500 14px var(--font-body);margin-top:2px;color:var(--sx-ok)">0.08%</div></div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">gpt-4o</span>
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">gpt-4o-mini</span>
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">o1-mini</span>
+</div>
+</div>
+
+<!-- Google -->
+<div class="prov">
+<div style="display:flex;align-items:center;gap:12px">
+<span class="logo" style="background:#1a73e8;color:#fff">G</span>
+<div style="flex:1"><div style="font-weight:500;font-size:14px">Google AI</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted)">generativelanguage.googleapis.com</div></div>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-warn) 16%,transparent);color:var(--sx-warn)"><i class="ph ph-warning"></i> degraded</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Spend 24h</div><div style="font:500 14px var(--font-body);margin-top:2px">$712</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Req / min</div><div style="font:500 14px var(--font-body);margin-top:2px">118</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">p95</div><div style="font:500 14px var(--font-body);margin-top:2px;color:var(--sx-warn)">3.08s</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Errors</div><div style="font:500 14px var(--font-body);margin-top:2px">1.42%</div></div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">gemini-2.5-pro</span>
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">gemini-2.5-flash</span>
+</div>
+</div>
+
+<!-- Fireworks -->
+<div class="prov">
+<div style="display:flex;align-items:center;gap:12px">
+<span class="logo" style="background:#5c1f8e;color:#fff">F</span>
+<div style="flex:1"><div style="font-weight:500;font-size:14px">Fireworks AI</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted)">api.fireworks.ai</div></div>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)"><i class="ph ph-check-circle"></i> healthy</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Spend 24h</div><div style="font:500 14px var(--font-body);margin-top:2px">$344</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Req / min</div><div style="font:500 14px var(--font-body);margin-top:2px">24</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">p95</div><div style="font:500 14px var(--font-body);margin-top:2px">0.78s</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Errors</div><div style="font:500 14px var(--font-body);margin-top:2px;color:var(--sx-ok)">0.00%</div></div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">llama-3.1-70b</span>
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">mixtral-8x22b</span>
+</div>
+</div>
+
+<!-- Mistral -->
+<div class="prov">
+<div style="display:flex;align-items:center;gap:12px">
+<span class="logo" style="background:#ff7000;color:#fff">M</span>
+<div style="flex:1"><div style="font-weight:500;font-size:14px">Mistral</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted)">api.mistral.ai · eu-west-1</div></div>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)"><i class="ph ph-check-circle"></i> healthy</span>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Spend 24h</div><div style="font:500 14px var(--font-body);margin-top:2px">$212</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Req / min</div><div style="font:500 14px var(--font-body);margin-top:2px">10</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">p95</div><div style="font:500 14px var(--font-body);margin-top:2px">1.04s</div></div>
+<div><div style="font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase">Errors</div><div style="font:500 14px var(--font-body);margin-top:2px">0.02%</div></div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">mistral-large</span>
+<span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">mistral-small</span>
+</div>
+</div>
+
+<!-- Available to connect -->
+<div class="prov" style="opacity:.75;border-style:dashed;align-items:center;justify-content:center;padding:28px">
+<div style="font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em">AVAILABLE</div>
+<div style="display:flex;gap:10px;align-items:center;margin-top:4px">
+<span class="logo" style="background:var(--sx-raised);color:var(--sx-muted);font-size:11px;width:28px;height:28px">AWS</span>
+<span class="logo" style="background:var(--sx-raised);color:var(--sx-muted);font-size:11px;width:28px;height:28px">Az</span>
+<span class="logo" style="background:var(--sx-raised);color:var(--sx-muted);font-size:11px;width:28px;height:28px">Cf</span>
+</div>
+<div style="font-size:12.5px;color:var(--sx-muted);text-align:center">Bedrock · Azure OpenAI · Cloudflare Workers AI</div>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text);cursor:pointer"><i class="ph ph-plus"></i> Connect</button>
+</div>
+
+</div>
+
+</div>
+</main>
+</div>
+
+</x-dc>
+</body>
+</html>

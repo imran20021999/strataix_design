@@ -1,0 +1,41 @@
+<!-- Strataix · persistent left sidebar · 216px · see Dashboard page for full context -->
+
+<aside class="w-[216px] flex-none border-r border-sx-line flex flex-col p-4 gap-0.5 bg-sx-bg">
+  <!-- wordmark -->
+  <div class="px-2 pt-1 pb-4">
+    <img src="/brand/wordmark-light.png" alt="Strataix" class="h-[13px] block" />
+  </div>
+
+  <!-- org switcher -->
+  <button class="flex items-center gap-2 px-2.5 py-2 border border-sx-line-2 rounded-lg mb-3.5">
+    <span class="w-[18px] h-[18px] rounded-md bg-sx-blue-tint-2 text-sx-blue-text text-[10px] font-semibold flex items-center justify-center">A</span>
+    <div class="flex-1 leading-tight text-left">
+      <div class="font-medium text-sm">acme</div>
+      <div class="text-[11px] text-sx-muted">production</div>
+    </div>
+    <i class="ph ph-caret-up-down text-sx-muted"></i>
+  </button>
+
+  <!-- nav rows -->
+  <a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md bg-sx-blue-tint text-sx-blue-text font-medium">
+    <i class="ph ph-squares-four text-base"></i><span class="flex-1">Overview</span>
+  </a>
+  <a class="flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-sx-text hover:bg-sx-raised">
+    <i class="ph ph-list-dashes text-base"></i>
+    <span class="flex-1">Requests</span>
+    <span class="font-medium text-[10.5px] font-mono text-sx-muted">1.24M</span>
+  </a>
+  <!-- … Routes, Providers, Guardrails, Keys, Budgets, Alerts … -->
+
+  <div class="flex-1"></div>
+
+  <!-- settings + user -->
+  <a class="flex items-center gap-2.5 px-2.5 py-1.5 text-sx-muted">
+    <i class="ph ph-gear-six text-base"></i>Settings
+  </a>
+  <div class="flex items-center gap-2.5 px-2.5 py-1.5">
+    <span class="w-[22px] h-[22px] rounded-full bg-sx-violet-tint text-sx-violet text-[10px] font-semibold flex items-center justify-center">IM</span>
+    <span class="flex-1 text-sm">Imran</span>
+    <i class="ph ph-dots-three text-sx-muted"></i>
+  </div>
+</aside>

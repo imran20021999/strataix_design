@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:13px}
+.nav{display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)}
+.nav i{font-size:16px}
+.nav .flex{flex:1}
+.nav .b{font:500 10.5px var(--font-mono);color:var(--sx-muted)}
+.nav.active{background:var(--sx-blue-tint);color:var(--sx-blue-text);font-weight:500}
+.sub{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;font-size:13px;color:var(--sx-text)}
+.sub.a{background:var(--sx-raised);color:var(--sx-text);font-weight:500;border-left:2px solid var(--sx-blue);padding-left:8px}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.lab{font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em}
+.card{background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px}
+</style>
+</helmet>
+
+<div style="width:1440px;height:900px;display:flex;overflow:hidden">
+
+<aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
+<div style="padding:4px 8px 18px"><img src="public/brand/wordmark-light.png" style="height:13px"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:8px;margin-bottom:14px"><span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span><div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
+<div class="nav"><i class="ph ph-squares-four"></i><span class="flex">Overview</span></div>
+<div class="nav"><i class="ph ph-list-dashes"></i><span class="flex">Requests</span><span class="b">1.24M</span></div>
+<div class="nav"><i class="ph ph-tree-structure"></i><span class="flex">Sessions</span></div>
+<div class="nav"><i class="ph ph-git-fork"></i><span class="flex">Routes</span><span class="b">18</span></div>
+<div class="nav"><i class="ph ph-cloud"></i><span class="flex">Providers</span><span class="b">5</span></div>
+<div class="nav"><i class="ph ph-shield-check"></i><span class="flex">Guardrails</span></div>
+<div class="nav"><i class="ph ph-key"></i><span class="flex">Keys</span><span class="b">7</span></div>
+<div class="nav"><i class="ph ph-wallet"></i><span class="flex">Budgets</span></div>
+<div class="nav"><i class="ph ph-bell-simple"></i><span class="flex">Alerts</span><span class="b">2</span></div>
+<div style="flex:1"></div>
+<div class="nav active"><i class="ph ph-gear-six"></i><span class="flex">Settings</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span></div>
+</aside>
+
+<main style="flex:1;min-width:0;display:flex;flex-direction:column">
+<header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
+<span style="font:400 11px var(--font-display);letter-spacing:.06em">SETTINGS</span>
+<span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">Billing &amp; plan</span>
+<div style="flex:1"></div>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)"><i class="ph ph-download-simple"></i> Download invoices</button>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff">Upgrade plan</button>
+</header>
+
+<div style="flex:1;min-height:0;display:flex">
+
+<div style="width:220px;flex:none;border-right:1px solid var(--sx-line);padding:18px 12px;display:flex;flex-direction:column;gap:4px">
+<div class="lab" style="padding:4px 10px 6px">ACCOUNT</div>
+<div class="sub"><i class="ph ph-user-circle" style="color:var(--sx-muted)"></i>Profile</div>
+<div class="sub"><i class="ph ph-palette" style="color:var(--sx-muted)"></i>Appearance</div>
+<div class="sub"><i class="ph ph-bell" style="color:var(--sx-muted)"></i>Notifications</div>
+<div class="sub"><i class="ph ph-keyboard" style="color:var(--sx-muted)"></i>Shortcuts</div>
+<div class="lab" style="padding:14px 10px 6px">ORGANIZATION</div>
+<div class="sub"><i class="ph ph-buildings" style="color:var(--sx-muted)"></i>General</div>
+<div class="sub"><i class="ph ph-users-three" style="color:var(--sx-muted)"></i><span style="flex:1">Members</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">14</span></div>
+<div class="sub"><i class="ph ph-shield-star" style="color:var(--sx-muted)"></i>Roles &amp; SSO</div>
+<div class="sub a"><i class="ph ph-credit-card" style="color:var(--sx-blue-text)"></i>Billing &amp; plan</div>
+<div class="sub"><i class="ph ph-receipt" style="color:var(--sx-muted)"></i>Invoices</div>
+<div class="lab" style="padding:14px 10px 6px">PLATFORM</div>
+<div class="sub"><i class="ph ph-plugs-connected" style="color:var(--sx-muted)"></i>Integrations</div>
+<div class="sub"><i class="ph ph-webhooks-logo" style="color:var(--sx-muted)"></i>Webhooks</div>
+<div class="sub"><i class="ph ph-database" style="color:var(--sx-muted)"></i>Data retention</div>
+<div class="sub"><i class="ph ph-file-text" style="color:var(--sx-muted)"></i>Audit log</div>
+</div>
+
+<div style="flex:1;min-width:0;overflow:auto;padding:22px 28px;display:flex;flex-direction:column;gap:18px">
+
+<!-- CURRENT PLAN HERO -->
+<section class="card" style="padding:0;overflow:hidden">
+<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:1px;background:var(--sx-line)">
+
+<div style="background:var(--sx-panel);padding:22px 24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;gap:10px"><span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text)">GROWTH</span><span style="font:400 11px var(--font-display);letter-spacing:.06em;color:var(--sx-muted)">YOUR PLAN</span></div>
+<div style="display:flex;align-items:baseline;gap:10px">
+<span style="font:500 36px var(--font-body);letter-spacing:-.01em">$499</span>
+<span style="font-size:14px;color:var(--sx-muted)">/ month · annual billing</span>
+<span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok);margin-left:6px">save $1,188/yr</span>
+</div>
+<div style="font-size:12.5px;color:#b2b6ca;line-height:1.5;max-width:520px">1M routed requests, 10 providers, 50 keys, 90-day retention, SSO, 24h SLA — plus pass-through provider cost.</div>
+<div style="display:flex;gap:10px;margin-top:4px"><button style="font:500 12.5px var(--font-body);padding:7px 11px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Switch to monthly</button><button style="font:500 12.5px var(--font-body);padding:7px 11px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Cancel plan</button></div>
+</div>
+
+<div style="background:var(--sx-panel);padding:22px 24px;display:flex;flex-direction:column;gap:12px">
+<div class="lab">NEXT INVOICE · DEC 01</div>
+<div style="display:flex;flex-direction:column;gap:6px;font-size:12.5px">
+<div style="display:flex;justify-content:space-between"><span>Growth · monthly</span><span style="font-family:var(--font-mono)">$499.00</span></div>
+<div style="display:flex;justify-content:space-between"><span>Usage · routed requests</span><span style="font-family:var(--font-mono)">$1,428.20</span></div>
+<div style="display:flex;justify-content:space-between"><span>Seats · 14 × $12</span><span style="font-family:var(--font-mono)">$168.00</span></div>
+<div style="display:flex;justify-content:space-between"><span>Retention · extended 90d</span><span style="font-family:var(--font-mono)">$85.00</span></div>
+<div style="display:flex;justify-content:space-between;color:var(--sx-ok)"><span>Annual discount</span><span style="font-family:var(--font-mono)">−$99.00</span></div>
+<div style="display:flex;justify-content:space-between;padding-top:8px;border-top:1px solid var(--sx-line);font-weight:500"><span>Estimated total</span><span style="font:500 15px var(--font-mono)">$2,081.20</span></div>
+</div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:4px"><i class="ph ph-info"></i> Provider API cost ($4,182 last 24h) is passed through at your rate card.</div>
+</div>
+
+</div>
+</section>
+
+<!-- USAGE METERS -->
+<section class="card" style="padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center"><span style="font-weight:500;font-size:14px;flex:1">Usage this month</span><span style="font-size:11.5px;color:var(--sx-muted)">day 10 of 30 · resets Dec 1</span></div>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+<div>
+<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span>Routed requests</span><span style="font-family:var(--font-mono)">612k / 1M</span></div>
+<div style="height:4px;border-radius:2px;background:var(--sx-line-2);overflow:hidden"><div style="width:61%;height:100%;background:var(--sx-blue)"></div></div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:4px">on track · 61%</div>
+</div>
+<div>
+<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span>Seats</span><span style="font-family:var(--font-mono)">14 / 25</span></div>
+<div style="height:4px;border-radius:2px;background:var(--sx-line-2);overflow:hidden"><div style="width:56%;height:100%;background:var(--sx-blue)"></div></div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:4px">11 open</div>
+</div>
+<div>
+<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span>Keys</span><span style="font-family:var(--font-mono)">7 / 50</span></div>
+<div style="height:4px;border-radius:2px;background:var(--sx-line-2);overflow:hidden"><div style="width:14%;height:100%;background:var(--sx-blue)"></div></div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:4px">plenty of room</div>
+</div>
+<div>
+<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span>Log retention</span><span style="font-family:var(--font-mono)">90 days</span></div>
+<div style="height:4px;border-radius:2px;background:var(--sx-line-2);overflow:hidden"><div style="width:100%;height:100%;background:var(--sx-violet)"></div></div>
+<div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:4px">extended add-on</div>
+</div>
+</div>
+</section>
+
+<!-- PLAN COMPARE -->
+<div>
+<div style="font:500 15px var(--font-body);margin-bottom:10px">Change plan</div>
+<section class="card" style="padding:0;overflow:hidden">
+<div style="display:grid;grid-template-columns:repeat(4,1fr)">
+
+<div style="padding:18px;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;gap:10px">
+<div class="lab">STARTER</div>
+<div style="display:flex;align-items:baseline;gap:4px"><span style="font:500 22px var(--font-body)">$0</span><span style="font-size:11.5px;color:var(--sx-muted)">free · forever</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5">For getting started. No SLA.</div>
+<div style="display:flex;flex-direction:column;gap:5px;font-size:12px;margin-top:4px">
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> 50k requests / mo</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> 2 providers</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> 7-day retention</span>
+<span style="color:var(--sx-faint)"><i class="ph ph-x" style="color:var(--sx-faint)"></i> SSO</span>
+</div>
+<button style="margin-top:auto;font:500 12.5px var(--font-body);padding:7px 11px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-muted);cursor:not-allowed">Downgrade</button>
+</div>
+
+<div style="padding:18px;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;gap:10px">
+<div class="lab">PRO</div>
+<div style="display:flex;align-items:baseline;gap:4px"><span style="font:500 22px var(--font-body)">$149</span><span style="font-size:11.5px;color:var(--sx-muted)">/ mo</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5">For small teams shipping something.</div>
+<div style="display:flex;flex-direction:column;gap:5px;font-size:12px;margin-top:4px">
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> 200k requests / mo</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> 5 providers · 10 keys</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> 30-day retention</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> Slack · webhooks</span>
+</div>
+<button style="margin-top:auto;font:500 12.5px var(--font-body);padding:7px 11px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)">Downgrade</button>
+</div>
+
+<div style="padding:18px;border-right:1px solid var(--sx-line);background:linear-gradient(180deg,var(--sx-blue-tint),transparent 70%);display:flex;flex-direction:column;gap:10px;position:relative">
+<div style="position:absolute;top:10px;right:10px"><span class="pill" style="background:var(--sx-blue);color:#fff">CURRENT</span></div>
+<div class="lab" style="color:var(--sx-blue-text)">GROWTH</div>
+<div style="display:flex;align-items:baseline;gap:4px"><span style="font:500 22px var(--font-body)">$499</span><span style="font-size:11.5px;color:var(--sx-muted)">/ mo</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5">For production workloads with SSO and SLA.</div>
+<div style="display:flex;flex-direction:column;gap:5px;font-size:12px;margin-top:4px">
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> 1M requests / mo</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> 10 providers · 50 keys</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> 90-day retention</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> SSO · audit log · 24h SLA</span>
+</div>
+<button style="margin-top:auto;font:500 12.5px var(--font-body);padding:7px 11px;border-radius:6px;border:1px solid var(--sx-line-2);background:var(--sx-raised);color:var(--sx-text);cursor:default">Current plan</button>
+</div>
+
+<div style="padding:18px;display:flex;flex-direction:column;gap:10px">
+<div class="lab">ENTERPRISE</div>
+<div style="display:flex;align-items:baseline;gap:4px"><span style="font:500 22px var(--font-body)">Custom</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);line-height:1.5">Private deploys, dedicated region, custom SLA.</div>
+<div style="display:flex;flex-direction:column;gap:5px;font-size:12px;margin-top:4px">
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> Unlimited</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> VPC · BYOK vault</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> Dedicated support</span>
+<span><i class="ph ph-check" style="color:var(--sx-ok)"></i> SOC2 · HIPAA on request</span>
+</div>
+<button style="margin-top:auto;font:500 12.5px var(--font-body);padding:7px 11px;border-radius:6px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff">Talk to sales</button>
+</div>
+
+</div>
+</section>
+</div>
+
+<!-- Payment + invoices -->
+<div style="display:grid;grid-template-columns:1fr 1.4fr;gap:14px">
+
+<!-- Payment method -->
+<section class="card" style="padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center"><span style="font-weight:500;font-size:14px;flex:1">Payment method</span><span style="font-size:11.5px;color:var(--sx-blue-text)">Manage</span></div>
+<div style="background:linear-gradient(135deg,#1e2a4f,#17295e);border:1px solid var(--sx-blue-tint-2);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:22px;height:120px;position:relative">
+<div style="display:flex;align-items:center;justify-content:space-between"><span style="font:11px var(--font-mono);color:#8fb2ff;text-transform:uppercase;letter-spacing:.06em">DEFAULT</span><i class="ph ph-credit-card" style="font-size:20px;color:#8fb2ff"></i></div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between">
+<span style="font:500 15px var(--font-mono);letter-spacing:.08em">•••• •••• •••• 4242</span>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;font:11px var(--font-mono);color:#9dbaff"><span>ACME CORP</span><span>12 / 28</span></div>
+</div>
+<div style="padding:10px 12px;border:1px dashed var(--sx-line-2);border-radius:8px;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--sx-muted);cursor:pointer"><i class="ph ph-plus"></i>Add bank transfer (ACH)</div>
+<div style="padding:10px 12px;border:1px solid var(--sx-line-2);border-radius:8px;display:flex;align-items:center;gap:10px;font-size:12px">
+<span style="width:20px;height:20px;border-radius:5px;background:#f5a623;display:flex;align-items:center;justify-content:center;font:600 10px var(--font-body);color:#000">B</span>
+<div style="flex:1"><div>finance@acme.com</div><div style="font-size:11px;color:var(--sx-muted)">billing emails</div></div>
+<i class="ph ph-pencil-simple" style="color:var(--sx-muted)"></i>
+</div>
+</section>
+
+<!-- Invoices -->
+<section class="card" style="padding:0;overflow:hidden">
+<div style="padding:14px 18px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center"><span style="font-weight:500;font-size:14px;flex:1">Recent invoices</span><span style="font-size:11.5px;color:var(--sx-muted);margin-right:12px">last 6</span><span style="font-size:11.5px;color:var(--sx-blue-text)">View all</span></div>
+
+<div style="display:grid;grid-template-columns:140px 1fr 110px 90px 90px 50px;padding:7px 18px;font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--sx-line)"><span>Date</span><span>Invoice</span><span style="text-align:right">Amount</span><span style="text-align:center">Status</span><span></span><span></span></div>
+
+<div style="display:grid;grid-template-columns:140px 1fr 110px 90px 90px 50px;padding:10px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">Nov 01, 2026</span>
+<div><div style="font-weight:500">INV-2026-11</div><div style="font:11px var(--font-mono);color:var(--sx-muted)">Growth · Oct usage</div></div>
+<span style="text-align:right;font:500 12.5px var(--font-mono)">$1,942.80</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">paid</span>
+<span style="font:11px var(--font-mono);color:var(--sx-muted);text-align:right">Nov 02</span>
+<i class="ph ph-download-simple" style="color:var(--sx-muted);justify-self:end"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:140px 1fr 110px 90px 90px 50px;padding:10px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">Oct 01, 2026</span>
+<div><div style="font-weight:500">INV-2026-10</div><div style="font:11px var(--font-mono);color:var(--sx-muted)">Growth · Sep usage</div></div>
+<span style="text-align:right;font:500 12.5px var(--font-mono)">$1,784.00</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">paid</span>
+<span style="font:11px var(--font-mono);color:var(--sx-muted);text-align:right">Oct 02</span>
+<i class="ph ph-download-simple" style="color:var(--sx-muted);justify-self:end"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:140px 1fr 110px 90px 90px 50px;padding:10px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">Sep 01, 2026</span>
+<div><div style="font-weight:500">INV-2026-09</div><div style="font:11px var(--font-mono);color:var(--sx-muted)">Growth · Aug usage</div></div>
+<span style="text-align:right;font:500 12.5px var(--font-mono)">$1,612.40</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">paid</span>
+<span style="font:11px var(--font-mono);color:var(--sx-muted);text-align:right">Sep 03</span>
+<i class="ph ph-download-simple" style="color:var(--sx-muted);justify-self:end"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:140px 1fr 110px 90px 90px 50px;padding:10px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">Aug 01, 2026</span>
+<div><div style="font-weight:500">INV-2026-08</div><div style="font:11px var(--font-mono);color:var(--sx-muted)">Growth · Jul usage</div></div>
+<span style="text-align:right;font:500 12.5px var(--font-mono)">$1,490.20</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">paid</span>
+<span style="font:11px var(--font-mono);color:var(--sx-muted);text-align:right">Aug 02</span>
+<i class="ph ph-download-simple" style="color:var(--sx-muted);justify-self:end"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:140px 1fr 110px 90px 90px 50px;padding:10px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">Jul 01, 2026</span>
+<div><div style="font-weight:500">INV-2026-07</div><div style="font:11px var(--font-mono);color:var(--sx-muted)">Growth · Jun usage · migration credit</div></div>
+<span style="text-align:right;font:500 12.5px var(--font-mono)">$940.00</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">paid</span>
+<span style="font:11px var(--font-mono);color:var(--sx-muted);text-align:right">Jul 04</span>
+<i class="ph ph-download-simple" style="color:var(--sx-muted);justify-self:end"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:140px 1fr 110px 90px 90px 50px;padding:10px 18px;align-items:center">
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">Jun 01, 2026</span>
+<div><div style="font-weight:500">INV-2026-06</div><div style="font:11px var(--font-mono);color:var(--sx-muted)">Pro · May usage · first invoice</div></div>
+<span style="text-align:right;font:500 12.5px var(--font-mono)">$284.10</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">paid</span>
+<span style="font:11px var(--font-mono);color:var(--sx-muted);text-align:right">Jun 02</span>
+<i class="ph ph-download-simple" style="color:var(--sx-muted);justify-self:end"></i>
+</div>
+
+</section>
+
+</div>
+
+<div style="height:24px"></div>
+</div>
+</div>
+</main>
+</div>
+
+</x-dc>
+</body>
+</html>

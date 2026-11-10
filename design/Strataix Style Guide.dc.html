@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:#0f1019;font-family:var(--font-body);color:#e9e9ed;font-size:13px}
+.sec{padding:40px 44px;display:flex;flex-direction:column;gap:22px;width:1440px;box-sizing:border-box}
+.anchor{font:600 10.5px var(--font-mono);padding:3px 7px;background:#292b31;color:#e9e9ed;border-radius:5px;text-decoration:none}
+.head{font:600 10px var(--font-mono);padding:3px 7px;background:#e9e9ed;color:#161826;border-radius:4px;text-decoration:none}
+.label{font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em}
+.card{background:#161826;border:1px solid #292b31;border-radius:10px;padding:28px 32px}
+.row{display:flex;gap:8px;align-items:baseline;font-size:12px;color:#9397ab}
+.row b{color:#e9e9ed;font-weight:500}
+.mono{font-family:var(--font-mono)}
+.sw{display:flex;flex-direction:column;gap:6px}
+.sw .chip{height:64px;border-radius:8px;border:1px solid rgba(255,255,255,.04)}
+.sw .name{font-size:12px;color:#e9e9ed}
+.sw .hex{font:11px var(--font-mono);color:#9397ab}
+</style>
+</helmet>
+
+<!-- 1. HEADER -->
+<section id="t1" class="sec">
+<div style="display:flex;align-items:baseline;gap:10px"><a href="#t1" class="head">1</a><span style="font-size:13px;font-weight:600">Strataix · UI Style Guide · tokens for color, type, spacing, radius, border, elevation, components</span></div>
+<div style="font-size:12.5px;color:#b2b6ca;max-width:820px;line-height:1.55">A single reference of everything used across Landing, Dashboard and Hi-fi screens. Treat the <span class="mono" style="color:#e9e9ed">--sx-*</span> variables as the source of truth; every new component should reach for them before introducing a new value.</div>
+</section>
+
+<!-- 2. COLOR -->
+<section id="t2" class="sec" style="padding-top:0">
+<div style="display:flex;align-items:baseline;gap:10px"><a href="#t2" class="head">2</a><span style="font-size:13px;font-weight:600">Color</span></div>
+
+<div id="2a" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#2a" class="anchor">2a</a><b>Surfaces · dark (default)</b></div>
+<div class="card">
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px">
+<div class="sw"><div class="chip" style="background:#08090e"></div><span class="name">--sx-bg</span><span class="hex">#08090e · app background</span></div>
+<div class="sw"><div class="chip" style="background:#0e1016"></div><span class="name">--sx-panel</span><span class="hex">#0e1016 · cards, sections</span></div>
+<div class="sw"><div class="chip" style="background:#161921"></div><span class="name">--sx-raised</span><span class="hex">#161921 · tooltips, hover</span></div>
+<div class="sw"><div class="chip" style="background:#1a1d26"></div><span class="name">--sx-line</span><span class="hex">#1a1d26 · default border</span></div>
+<div class="sw"><div class="chip" style="background:#262a35"></div><span class="name">--sx-line-2</span><span class="hex">#262a35 · emphatic border</span></div>
+</div>
+</div>
+</div>
+
+<div id="2b" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#2b" class="anchor">2b</a><b>Surfaces · light</b></div>
+<div class="card" style="background:#f6f6f8;border-color:#d8dae3;color:#1b1d29">
+<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px">
+<div class="sw"><div class="chip" style="background:#f0f1f5;border-color:#d8dae3"></div><span class="name" style="color:#1b1d29">--sx-bg</span><span class="hex" style="color:#4a4e62">neutral-100 · background</span></div>
+<div class="sw"><div class="chip" style="background:#fcfcfe;border-color:#d8dae3"></div><span class="name" style="color:#1b1d29">--sx-panel</span><span class="hex" style="color:#4a4e62">#fcfcfe · cards</span></div>
+<div class="sw"><div class="chip" style="background:#fcfcfe;border-color:#d8dae3"></div><span class="name" style="color:#1b1d29">--sx-raised</span><span class="hex" style="color:#4a4e62">#fcfcfe · overlays</span></div>
+<div class="sw"><div class="chip" style="background:#e4e6ed"></div><span class="name" style="color:#1b1d29">--sx-line</span><span class="hex" style="color:#4a4e62">neutral-200 · borders</span></div>
+<div class="sw"><div class="chip" style="background:#cdd0dc"></div><span class="name" style="color:#1b1d29">--sx-line-2</span><span class="hex" style="color:#4a4e62">neutral-300 · borders</span></div>
+</div>
+</div>
+</div>
+
+<div id="2c" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#2c" class="anchor">2c</a><b>Brand · primary &amp; secondary</b></div>
+<div class="card">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+<div class="sw"><div class="chip" style="background:#2f6fff"></div><span class="name">--sx-blue</span><span class="hex">#2f6fff · primary action, live, series 1</span></div>
+<div class="sw"><div class="chip" style="background:#8fb2ff"></div><span class="name">--sx-blue-text</span><span class="hex">#8fb2ff · text on blue tint</span></div>
+<div class="sw"><div class="chip" style="background:#17295e"></div><span class="name">--sx-blue-tint-2</span><span class="hex">#17295e · selection, pills</span></div>
+<div class="sw"><div class="chip" style="background:#0f1a3d"></div><span class="name">--sx-blue-tint</span><span class="hex">#0f1a3d · nav active bg</span></div>
+<div class="sw"><div class="chip" style="background:var(--color-accent)"></div><span class="name">--sx-violet</span><span class="hex">blurple · findings, series 2</span></div>
+<div class="sw"><div class="chip" style="background:var(--color-accent-900)"></div><span class="name">--sx-violet-tint</span><span class="hex">accent-900 · avatar, soft bg</span></div>
+<div class="sw"><div class="chip" style="background:var(--color-neutral-600)"></div><span class="name">neutral ramp</span><span class="hex">surfaces, muted text, series 3</span></div>
+<div class="sw"><div class="chip" style="background:linear-gradient(90deg,#2f6fff,var(--color-accent))"></div><span class="name">blue → violet</span><span class="hex">hero accents only, never fills</span></div>
+</div>
+</div>
+</div>
+
+<div id="2d" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#2d" class="anchor">2d</a><b>Semantic · status (marks &amp; deltas only, never fills)</b></div>
+<div class="card">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+<div class="sw"><div class="chip" style="background:oklch(0.7 0.15 25)"></div><span class="name">--sx-danger</span><span class="hex">oklch(.70 .15 25) · errors, overspend</span></div>
+<div class="sw"><div class="chip" style="background:oklch(0.8 0.12 80)"></div><span class="name">--sx-warn</span><span class="hex">oklch(.80 .12 80) · latency</span></div>
+<div class="sw"><div class="chip" style="background:oklch(0.76 0.12 165)"></div><span class="name">--sx-ok</span><span class="hex">oklch(.76 .12 165) · savings, healthy</span></div>
+</div>
+<div style="font-size:12px;color:#9397ab;line-height:1.5;max-width:720px;margin-top:14px">Status colours appear only on small marks, dots, and delta text — never as card fills or large backgrounds. Tints (<span class="mono" style="color:#e9e9ed">color-mix … 16%</span>) are the exception, used for narrow badges like "2 open".</div>
+</div>
+</div>
+
+<div id="2e" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#2e" class="anchor">2e</a><b>Text roles</b></div>
+<div class="card" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:40px;align-items:baseline"><span style="color:#e9e9ed;font-size:16px">Primary — #e9e9ed</span><span class="label">--sx-text · headings, values</span></div>
+<div style="display:flex;gap:40px;align-items:baseline"><span style="color:#9397ab;font-size:16px">Muted — #9397ab</span><span class="label">--sx-muted · labels, secondary</span></div>
+<div style="display:flex;gap:40px;align-items:baseline"><span style="color:#75798c;font-size:16px">Faint — #75798c</span><span class="label">--sx-faint · captions, axes</span></div>
+<div style="display:flex;gap:40px;align-items:baseline"><a style="color:#9dbaff;font-size:16px">Link — #9dbaff</a><span class="label">hover: #c6d5ff</span></div>
+</div>
+</div>
+
+<div id="2f" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#2f" class="anchor">2f</a><b>Data series (charts)</b></div>
+<div class="card">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+<div class="sw"><div class="chip" style="background:#2f6fff"></div><span class="name">--sx-s1 · series 1</span><span class="hex">Anthropic, primary line</span></div>
+<div class="sw"><div class="chip" style="background:var(--color-accent)"></div><span class="name">--sx-s2 · series 2</span><span class="hex">OpenAI, secondary line</span></div>
+<div class="sw"><div class="chip" style="background:var(--color-neutral-600)"></div><span class="name">--sx-s3 · series 3</span><span class="hex">Google · other, tail</span></div>
+</div>
+<div style="font-size:12px;color:#9397ab;margin-top:14px">Fill opacity .55 for areas, .70 for the top layer. Threshold lines dashed <span class="mono" style="color:#e9e9ed">stroke-dasharray:4 4</span> in <span class="mono" style="color:#e9e9ed">--sx-danger</span>.</div>
+</div>
+</div>
+</section>
+
+<!-- 3. TYPOGRAPHY -->
+<section id="t3" class="sec" style="padding-top:0">
+<div style="display:flex;align-items:baseline;gap:10px"><a href="#t3" class="head">3</a><span style="font-size:13px;font-weight:600">Typography</span></div>
+
+<div id="3a" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#3a" class="anchor">3a</a><b>Families &amp; roles</b></div>
+<div class="card" style="display:flex;flex-direction:column;gap:22px">
+<div>
+<div class="label" style="margin-bottom:8px">DISPLAY · MICHROMA · landing headlines, page titles, section eyebrows</div>
+<div style="font:400 40px/1.15 Michroma,sans-serif;letter-spacing:-.01em">The control plane for production AI.</div>
+<div style="font:400 11px Michroma,sans-serif;letter-spacing:.06em;color:#9397ab;margin-top:10px">OVERVIEW · ROUTES · GUARDRAILS</div>
+</div>
+<div>
+<div class="label" style="margin-bottom:8px">UI · IBM PLEX SANS 400 / 500 / 600 · all interface text, numbers (tabular)</div>
+<div style="font:500 24px/1.3 'IBM Plex Sans',sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.01em">$4,182 spend · 1.24M requests · p95 1.84s</div>
+<div style="font:600 14px 'IBM Plex Sans',sans-serif;margin-top:6px">Section title</div>
+<div style="font:400 13px 'IBM Plex Sans',sans-serif;color:#b2b6ca;margin-top:4px">Body text, default — 13px / 1.5 line height.</div>
+<div style="font:400 12px 'IBM Plex Sans',sans-serif;color:#9397ab;margin-top:4px">Secondary — 12px</div>
+<div style="font:400 11px 'IBM Plex Sans',sans-serif;color:#75798c;margin-top:4px">Caption — 11px</div>
+</div>
+<div>
+<div class="label" style="margin-bottom:8px">MONO · IBM PLEX MONO · ids, models, tokens, code, timestamps</div>
+<div style="font:400 14px 'IBM Plex Mono',monospace">req_01J9X7KQ2 · claude-sonnet-4 · 48,210 tok · 09:41:58.214</div>
+</div>
+</div>
+</div>
+
+<div id="3b" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#3b" class="anchor">3b</a><b>Scale (used across screens)</b></div>
+<div class="card">
+<div style="display:grid;grid-template-columns:72px 1fr 1fr 180px;gap:10px 20px;font-size:12px;align-items:baseline">
+<span class="label">size</span><span class="label">sample</span><span class="label">usage</span><span class="label">weight / family</span>
+
+<span class="mono" style="color:#e9e9ed">40</span><span style="font:400 40px Michroma,sans-serif">Headline</span><span style="color:#9397ab">hero on landing</span><span class="mono" style="color:#75798c">400 · Michroma</span>
+<span class="mono" style="color:#e9e9ed">24</span><span style="font:500 24px var(--font-body)">KPI value</span><span style="color:#9397ab">big numbers in cards</span><span class="mono" style="color:#75798c">500 · Plex Sans</span>
+<span class="mono" style="color:#e9e9ed">16</span><span style="font:500 16px var(--font-body)">Page header</span><span style="color:#9397ab">modal titles</span><span class="mono" style="color:#75798c">500 · Plex Sans</span>
+<span class="mono" style="color:#e9e9ed">14</span><span style="font:500 14px var(--font-body)">Section title</span><span style="color:#9397ab">card headings</span><span class="mono" style="color:#75798c">500 · Plex Sans</span>
+<span class="mono" style="color:#e9e9ed">13</span><span style="font:400 13px var(--font-body)">Body default</span><span style="color:#9397ab">table rows, nav items</span><span class="mono" style="color:#75798c">400 · Plex Sans</span>
+<span class="mono" style="color:#e9e9ed">12</span><span style="font:400 12px var(--font-body)">Secondary</span><span style="color:#9397ab">meta, legends</span><span class="mono" style="color:#75798c">400 · Plex Sans</span>
+<span class="mono" style="color:#e9e9ed">11.5</span><span style="font:400 11.5px var(--font-body)">Legend</span><span style="color:#9397ab">chart legends, chips</span><span class="mono" style="color:#75798c">400 · Plex Sans</span>
+<span class="mono" style="color:#e9e9ed">11</span><span style="font:400 11px var(--font-mono)">CAPTION · EYEBROW</span><span style="color:#9397ab">labels, axes, keyboard</span><span class="mono" style="color:#75798c">400 · Plex Mono</span>
+<span class="mono" style="color:#e9e9ed">10.5</span><span style="font:600 10.5px var(--font-mono)">ANCHOR</span><span style="color:#9397ab">section ids, badges</span><span class="mono" style="color:#75798c">600 · Plex Mono</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 4. SPACING -->
+<section id="t4" class="sec" style="padding-top:0">
+<div style="display:flex;align-items:baseline;gap:10px"><a href="#t4" class="head">4</a><span style="font-size:13px;font-weight:600">Spacing &amp; grid</span></div>
+
+<div id="4a" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#4a" class="anchor">4a</a><b>Spacing scale (px)</b></div>
+<div class="card">
+<div style="display:flex;gap:18px;align-items:flex-end">
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:2px;height:2px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">2</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:4px;height:4px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">4</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:6px;height:6px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">6</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:8px;height:8px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">8</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:10px;height:10px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">10</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:12px;height:12px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">12</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:14px;height:14px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">14</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:16px;height:16px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">16</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:20px;height:20px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">20</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:24px;height:24px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">24</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:32px;height:32px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">32</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:40px;height:40px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">40</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><div style="width:44px;height:44px;background:#2f6fff"></div><span class="mono" style="color:#75798c;font-size:11px">44</span></div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px;font-size:12px">
+<div><div class="label" style="margin-bottom:6px">Gaps</div><div style="color:#b2b6ca;line-height:1.7">Inline: <span class="mono" style="color:#e9e9ed">6–10</span><br>Card internal: <span class="mono" style="color:#e9e9ed">8–14</span><br>Grid gutter: <span class="mono" style="color:#e9e9ed">12</span><br>Section stack: <span class="mono" style="color:#e9e9ed">22</span><br>Between sections: <span class="mono" style="color:#e9e9ed">28–40</span></div></div>
+<div><div class="label" style="margin-bottom:6px">Padding</div><div style="color:#b2b6ca;line-height:1.7">Nav row: <span class="mono" style="color:#e9e9ed">6×9</span><br>Input / chip: <span class="mono" style="color:#e9e9ed">6×10</span><br>KPI card: <span class="mono" style="color:#e9e9ed">12×14</span><br>Chart card: <span class="mono" style="color:#e9e9ed">14×16</span><br>Content frame: <span class="mono" style="color:#e9e9ed">16×20</span><br>Section frame: <span class="mono" style="color:#e9e9ed">40×44</span></div></div>
+<div><div class="label" style="margin-bottom:6px">Fixed heights</div><div style="color:#b2b6ca;line-height:1.7">Topbar: <span class="mono" style="color:#e9e9ed">52</span><br>Sidebar: <span class="mono" style="color:#e9e9ed">216w</span><br>Canvas: <span class="mono" style="color:#e9e9ed">1440 × 900</span><br>Avatar: <span class="mono" style="color:#e9e9ed">22</span><br>Icon: <span class="mono" style="color:#e9e9ed">16</span></div></div>
+</div>
+</div>
+</div>
+
+<div id="4b" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#4b" class="anchor">4b</a><b>Dashboard grid · 12 cols</b></div>
+<div class="card">
+<div style="display:grid;grid-template-columns:repeat(12,1fr);gap:12px">
+<div style="grid-column:span 2;height:40px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">KPI · 2</div>
+<div style="grid-column:span 2;height:40px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">KPI · 2</div>
+<div style="grid-column:span 2;height:40px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">KPI · 2</div>
+<div style="grid-column:span 2;height:40px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">KPI · 2</div>
+<div style="grid-column:span 2;height:40px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">KPI · 2</div>
+<div style="grid-column:span 2;height:40px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">KPI · 2</div>
+<div style="grid-column:span 8;height:80px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">Hero chart · 8</div>
+<div style="grid-column:span 4;height:80px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">Side list · 4</div>
+<div style="grid-column:span 6;height:52px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">Chart · 6</div>
+<div style="grid-column:span 6;height:52px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">Chart · 6</div>
+<div style="grid-column:span 8;height:52px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">Table · 8</div>
+<div style="grid-column:span 4;height:52px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#75798c">Feed · 4</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 5. RADIUS / BORDER / ELEVATION -->
+<section id="t5" class="sec" style="padding-top:0">
+<div style="display:flex;align-items:baseline;gap:10px"><a href="#t5" class="head">5</a><span style="font-size:13px;font-weight:600">Shape · radius, border, elevation</span></div>
+
+<div id="5a" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#5a" class="anchor">5a</a><b>Border radius</b></div>
+<div class="card">
+<div style="display:flex;gap:24px;align-items:flex-end">
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:60px;background:#0e1016;border:1px solid #262a35;border-radius:2px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">2</span><span style="font-size:11px;color:#9397ab">micro marks</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:60px;background:#0e1016;border:1px solid #262a35;border-radius:4px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">4</span><span style="font-size:11px;color:#9397ab">keys, swatches</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:60px;background:#0e1016;border:1px solid #262a35;border-radius:5px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">5</span><span style="font-size:11px;color:#9397ab">anchor chips</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:60px;background:#0e1016;border:1px solid #262a35;border-radius:6px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">6</span><span style="font-size:11px;color:#9397ab">nav rows, segments</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:60px;background:#0e1016;border:1px solid #262a35;border-radius:8px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">8 · --radius-md</span><span style="font-size:11px;color:#9397ab">inputs, cards default</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:60px;background:#0e1016;border:1px solid #262a35;border-radius:10px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">10</span><span style="font-size:11px;color:#9397ab">section frames</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:60px;background:#0e1016;border:1px solid #262a35;border-radius:999px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">999</span><span style="font-size:11px;color:#9397ab">pills, badges</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:60px;background:#0e1016;border:1px solid #262a35;border-radius:50%"></div><span class="mono" style="color:#e9e9ed;font-size:11px">50%</span><span style="font-size:11px;color:#9397ab">avatars, dots</span></div>
+</div>
+</div>
+</div>
+
+<div id="5b" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#5b" class="anchor">5b</a><b>Border weights</b></div>
+<div class="card">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:60px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">1px · --sx-line</span><span style="font-size:11px;color:#9397ab">default card, table rows</span></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:60px;background:#0e1016;border:1px solid #262a35;border-radius:8px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">1px · --sx-line-2</span><span style="font-size:11px;color:#9397ab">inputs, chips, emphasis</span></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:60px;background:#0e1016;border:1px solid #2f6fff;border-radius:8px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">1px · --sx-blue</span><span style="font-size:11px;color:#9397ab">Live indicator, focus</span></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:60px;background:#0e1016;border:1px dashed #9397ab;border-radius:8px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">1px dashed</span><span style="font-size:11px;color:#9397ab">budget line, p99</span></div>
+</div>
+</div>
+</div>
+
+<div id="5c" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#5c" class="anchor">5c</a><b>Elevation</b></div>
+<div class="card" style="padding:40px 32px">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:160px;height:80px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">0 · panel</span><span style="font-size:11px;color:#9397ab">flat surfaces</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:160px;height:80px;background:#161921;border:1px solid #262a35;border-radius:8px"></div><span class="mono" style="color:#e9e9ed;font-size:11px">1 · raised</span><span style="font-size:11px;color:#9397ab">hover, segment active</span></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px"><div style="width:160px;height:80px;background:#161921;border:1px solid #262a35;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.5),0 1px 0 rgba(255,255,255,.02) inset"></div><span class="mono" style="color:#e9e9ed;font-size:11px">2 · overlay · --shadow-md</span><span style="font-size:11px;color:#9397ab">tooltips, popovers, menus</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 6. COMPONENTS -->
+<section id="t6" class="sec" style="padding-top:0">
+<div style="display:flex;align-items:baseline;gap:10px"><a href="#t6" class="head">6</a><span style="font-size:13px;font-weight:600">Components</span></div>
+
+<div id="6a" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#6a" class="anchor">6a</a><b>Buttons &amp; actions</b></div>
+<div class="card" style="display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+<button style="font:500 13px var(--font-body);padding:8px 14px;border-radius:8px;border:1px solid #2f6fff;background:#2f6fff;color:#fff;cursor:pointer">Primary</button>
+<button style="font:500 13px var(--font-body);padding:8px 14px;border-radius:8px;border:1px solid #262a35;background:transparent;color:#e9e9ed;cursor:pointer">Secondary</button>
+<button style="font:500 13px var(--font-body);padding:8px 14px;border-radius:8px;border:1px solid transparent;background:transparent;color:#9dbaff;cursor:pointer">Ghost / link</button>
+<button style="font:500 13px var(--font-body);padding:8px 14px;border-radius:8px;border:1px solid oklch(0.7 0.15 25);background:transparent;color:oklch(0.7 0.15 25);cursor:pointer">Danger</button>
+<button style="font:500 12px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid #262a35;background:transparent;color:#e9e9ed;cursor:pointer">Small 6×10</button>
+</div>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+<span style="display:flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid #262a35;border-radius:8px;font-size:13px"><i class="ph ph-cloud" style="color:#9397ab"></i>All providers<i class="ph ph-caret-down" style="color:#9397ab"></i></span>
+<span style="display:flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid #2f6fff;border-radius:8px;color:#8fb2ff;font-size:13px"><span style="width:6px;height:6px;border-radius:50%;background:#2f6fff;box-shadow:0 0 0 3px #17295e"></span>Live</span>
+<span style="display:flex;border:1px solid #262a35;border-radius:8px;overflow:hidden;font-size:11.5px"><span style="padding:6px 10px;font-family:var(--font-mono);background:#161921">1h</span><span style="padding:6px 10px;font-family:var(--font-mono);color:#9397ab">24h</span><span style="padding:6px 10px;font-family:var(--font-mono);color:#9397ab">7d</span><span style="padding:6px 10px;font-family:var(--font-mono);color:#9397ab">30d</span></span>
+</div>
+</div>
+</div>
+
+<div id="6b" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#6b" class="anchor">6b</a><b>Inputs</b></div>
+<div class="card" style="display:flex;flex-direction:column;gap:14px">
+<div style="width:320px;display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid #262a35;border-radius:8px;color:#9397ab"><i class="ph ph-magnifying-glass"></i><span style="flex:1;font-size:13px">Search requests, keys, routes</span><span style="font:11px var(--font-mono);padding:0 5px;border:1px solid #262a35;border-radius:4px">⌘K</span></div>
+<div style="width:320px;display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid #2f6fff;border-radius:8px;color:#e9e9ed"><i class="ph ph-magnifying-glass" style="color:#8fb2ff"></i><span style="flex:1;font-size:13px">claude-sonnet-4</span></div>
+<div style="width:320px;display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid oklch(0.7 0.15 25);border-radius:8px;color:oklch(0.7 0.15 25)"><i class="ph ph-warning-circle"></i><span style="flex:1;font-size:13px">Required</span></div>
+</div>
+</div>
+
+<div id="6c" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#6c" class="anchor">6c</a><b>Badges, chips, pills</b></div>
+<div class="card" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+<span style="font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px;background:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);color:oklch(0.7 0.15 25)">2 open</span>
+<span style="font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px;background:#17295e;color:#8fb2ff">live</span>
+<span style="font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px;background:color-mix(in srgb,oklch(0.76 0.12 165) 16%,transparent);color:oklch(0.76 0.12 165)">healthy</span>
+<span style="font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px;background:color-mix(in srgb,oklch(0.8 0.12 80) 16%,transparent);color:oklch(0.8 0.12 80)">warn</span>
+<span style="font:500 10px var(--font-mono);padding:3px 7px;background:#e9e9ed;color:#161826;border-radius:4px">1</span>
+<span style="font:600 10.5px var(--font-mono);padding:3px 7px;background:#292b31;color:#e9e9ed;border-radius:5px">1a</span>
+<span style="display:flex;align-items:center;gap:6px;font-size:12px"><span style="width:8px;height:8px;border-radius:50%;background:#2f6fff"></span>Anthropic</span>
+<span style="display:flex;align-items:center;gap:6px;font-size:12px"><span style="width:8px;height:8px;border-radius:50%;background:var(--color-accent)"></span>OpenAI</span>
+</div>
+</div>
+
+<div id="6d" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#6d" class="anchor">6d</a><b>KPI card</b></div>
+<div class="card">
+<div style="width:220px;background:#0e1016;border:1px solid #1a1d26;border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:6px;color:#9397ab;font-size:12px"><span style="flex:1">Spend</span><i class="ph ph-info" style="font-size:12px;color:#75798c"></i></div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px">
+<span style="font:500 24px/1.1 var(--font-body);font-variant-numeric:tabular-nums;letter-spacing:-.01em">$4,182</span>
+<svg width="72" height="24" viewBox="0 0 72 24" style="flex:none"><polyline points="0,18 5.5,16 11,17 16.5,13 22,15 27.5,12 33,11 38.5,9 44,10 49.5,7 55,6 60.5,5 66,4 72,2" fill="none" stroke="#2f6fff" stroke-width="1.5" stroke-linejoin="round"></polyline></svg>
+</div>
+<div style="font:500 11px var(--font-mono);color:oklch(0.7 0.15 25)">+12.0% <span style="color:#75798c;font-family:var(--font-body);font-weight:400">vs yesterday</span></div>
+</div>
+</div>
+</div>
+
+<div id="6e" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#6e" class="anchor">6e</a><b>Table row</b></div>
+<div class="card" style="padding:0;overflow:hidden">
+<div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:6px 16px;font-size:11px;color:#75798c;border-bottom:1px solid #1a1d26"><span>Route</span><span>Model</span><span style="text-align:right">Requests</span><span style="text-align:right">Tokens</span><span style="text-align:right">Cache</span><span style="text-align:right">Cost</span><span style="text-align:right">Δ vs yesterday</span></div>
+<div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:7px 16px;align-items:center;border-bottom:1px solid #1a1d26;font-variant-numeric:tabular-nums;font-size:13px"><span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.7 0.15 25)"></span>support/triage</span><span style="font:12px var(--font-mono);color:#9397ab">claude-sonnet-4</span><span style="text-align:right;font:12px var(--font-mono)">402k</span><span style="text-align:right;font:12px var(--font-mono)">41.2M</span><span style="text-align:right;font:12px var(--font-mono)">12%</span><span style="text-align:right;font:500 12px var(--font-mono)">$1,020</span><span style="text-align:right;font:12px var(--font-mono);color:oklch(0.7 0.15 25)">+$310 · +44%</span></div>
+<div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:7px 16px;align-items:center;background:#161921;font-variant-numeric:tabular-nums;font-size:13px"><span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:oklch(0.7 0.15 25)"></span>copilot/complete</span><span style="font:12px var(--font-mono);color:#9397ab">gpt-4o</span><span style="text-align:right;font:12px var(--font-mono)">377k</span><span style="text-align:right;font:12px var(--font-mono)">28.7M</span><span style="text-align:right;font:12px var(--font-mono)">71%</span><span style="text-align:right;font:500 12px var(--font-mono)">$860</span><span style="text-align:right;font:12px var(--font-mono);color:#2f6fff">+$92 · +12%</span></div>
+</div>
+</div>
+
+<div id="6f" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#6f" class="anchor">6f</a><b>Nav items</b></div>
+<div class="card" style="display:grid;grid-template-columns:repeat(3,220px);gap:14px">
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;background:#0f1a3d;color:#8fb2ff;font-weight:500"><i class="ph ph-squares-four" style="font-size:16px"></i><span style="flex:1">Overview</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:#e9e9ed"><i class="ph ph-list-dashes" style="font-size:16px"></i><span style="flex:1">Requests</span><span style="font:500 10.5px var(--font-mono);color:#9397ab">1.24M</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:#9397ab"><i class="ph ph-gear-six" style="font-size:16px"></i>Settings</div>
+</div>
+</div>
+
+<div id="6g" style="display:flex;flex-direction:column;gap:12px">
+<div class="row"><a href="#6g" class="anchor">6g</a><b>Alert / finding row</b></div>
+<div class="card" style="padding:0;overflow:hidden">
+<div style="display:flex;gap:10px;padding:10px 16px;border-top:1px solid #1a1d26;align-items:flex-start">
+<i class="ph ph-warning-circle" style="font-size:15px;margin-top:1px;color:oklch(0.7 0.15 25)"></i>
+<div style="flex:1;min-width:0"><div style="font-size:13px">Budget at 92% · team support</div><div style="font-size:11.5px;color:#9397ab">Projected to exceed on Nov 27</div></div>
+<span style="font:11px var(--font-mono);color:#75798c">4m</span>
+</div>
+<div style="display:flex;gap:10px;padding:10px 16px;border-top:1px solid #1a1d26;align-items:flex-start;background:#161921">
+<i class="ph ph-lightning" style="font-size:15px;margin-top:1px;color:var(--color-accent)"></i>
+<div style="flex:1;min-width:0"><div style="font-size:13px">Cache break on support/triage</div><div style="font-size:11.5px;color:#9397ab">System prompt reordered · 84% → 12%</div></div>
+<span style="font:11px var(--font-mono);color:#75798c">18m</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 7. ICONS -->
+<section id="t7" class="sec" style="padding-top:0">
+<div style="display:flex;align-items:baseline;gap:10px"><a href="#t7" class="head">7</a><span style="font-size:13px;font-weight:600">Iconography · Phosphor @2.1.1</span></div>
+<div class="card">
+<div style="display:grid;grid-template-columns:repeat(8,1fr);gap:18px;font-size:11.5px;color:#9397ab">
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-squares-four" style="font-size:20px;color:#e9e9ed"></i>squares-four</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-list-dashes" style="font-size:20px;color:#e9e9ed"></i>list-dashes</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-tree-structure" style="font-size:20px;color:#e9e9ed"></i>tree-structure</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-git-fork" style="font-size:20px;color:#e9e9ed"></i>git-fork</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-cloud" style="font-size:20px;color:#e9e9ed"></i>cloud</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-shield-check" style="font-size:20px;color:#e9e9ed"></i>shield-check</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-key" style="font-size:20px;color:#e9e9ed"></i>key</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-wallet" style="font-size:20px;color:#e9e9ed"></i>wallet</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-bell-simple" style="font-size:20px;color:#e9e9ed"></i>bell-simple</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-magnifying-glass" style="font-size:20px;color:#e9e9ed"></i>magnifying-glass</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-caret-up-down" style="font-size:20px;color:#e9e9ed"></i>caret-up-down</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-caret-down" style="font-size:20px;color:#e9e9ed"></i>caret-down</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-warning-circle" style="font-size:20px;color:oklch(0.7 0.15 25)"></i>warning-circle</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-lightning" style="font-size:20px;color:var(--color-accent)"></i>lightning</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-scissors" style="font-size:20px;color:var(--color-accent)"></i>scissors</div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:6px"><i class="ph ph-clock-countdown" style="font-size:20px;color:oklch(0.8 0.12 80)"></i>clock-countdown</div>
+</div>
+<div style="font-size:12px;color:#9397ab;line-height:1.5;margin-top:18px;max-width:720px">Weight: regular. Size: 16px inside controls and nav, 15px in alerts, 20px in reference. Icons always sit next to text with gap 8–10px; never stand alone to label an action.</div>
+</div>
+</section>
+
+<!-- 8. CHARTS -->
+<section id="t8" class="sec" style="padding-top:0;padding-bottom:60px">
+<div style="display:flex;align-items:baseline;gap:10px"><a href="#t8" class="head">8</a><span style="font-size:13px;font-weight:600">Data visualization</span></div>
+<div class="card" style="display:flex;flex-direction:column;gap:18px">
+<div style="font-size:12.5px;color:#b2b6ca;line-height:1.6;max-width:820px">Keep charts Plex-labelled, blue-forward, with status colours only on marks and thresholds. Grid lines use <span class="mono" style="color:#e9e9ed">color-mix(in srgb,var(--sx-text) 5%,transparent)</span>; axes are 10.5px Plex Mono in <span class="mono" style="color:#e9e9ed">--sx-faint</span>.</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<div>
+<div class="label" style="margin-bottom:8px">Stacked area · 3 series</div>
+<div style="height:160px;position:relative;border-bottom:1px solid #262a35;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:100% 33.33%">
+<svg viewBox="0 0 600 160" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="M0,140 L60,130 L120,120 L180,110 L240,100 L300,95 L360,90 L420,80 L480,75 L540,70 L600,65 L600,160 L0,160 Z" fill="var(--color-neutral-600)" fill-opacity=".55"></path>
+<path d="M0,110 L60,100 L120,92 L180,85 L240,76 L300,70 L360,66 L420,56 L480,52 L540,48 L600,44 L600,65 L540,70 L480,75 L420,80 L360,90 L300,95 L240,100 L180,110 L120,120 L60,130 L0,140 Z" fill="var(--color-accent)" fill-opacity=".55"></path>
+<path d="M0,80 L60,70 L120,62 L180,55 L240,46 L300,40 L360,34 L420,24 L480,18 L540,12 L600,8 L600,44 L540,48 L480,52 L420,56 L360,66 L300,70 L240,76 L180,85 L120,92 L60,100 L0,110 Z" fill="#2f6fff" fill-opacity=".7"></path>
+<line x1="0" x2="600" y1="30" y2="30" stroke="oklch(0.7 0.15 25)" stroke-dasharray="4 4"></line>
+</svg>
+</div>
+</div>
+<div>
+<div class="label" style="margin-bottom:8px">Multi-line · latency percentiles</div>
+<div style="height:160px;position:relative;border-bottom:1px solid #262a35;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:100% 33.33%">
+<svg viewBox="0 0 600 160" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="M0,130 L60,128 L120,125 L180,122 L240,118 L300,115 L360,112 L420,108 L480,105 L540,102 L600,100" fill="none" stroke="#2f6fff" stroke-width="1.5"></path>
+<path d="M0,85 L60,82 L120,78 L180,80 L240,72 L300,68 L360,62 L420,60 L480,55 L540,50 L600,46" fill="none" stroke="var(--color-accent)" stroke-width="1.5"></path>
+<path d="M0,40 L60,36 L120,30 L180,32 L240,26 L300,22 L360,18 L420,16 L480,14 L540,12 L600,10" fill="none" stroke="#9397ab" stroke-dasharray="3 3" stroke-width="1.2"></path>
+</svg>
+</div>
+</div>
+<div>
+<div class="label" style="margin-bottom:8px">Bars · traffic with errors</div>
+<div style="height:120px;display:flex;align-items:flex-end;gap:3px;border-bottom:1px solid #262a35">
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:2%;background:oklch(0.7 0.15 25);border-radius:1px 1px 0 0"></div><div style="height:38%;background:#2f6fff;opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:oklch(0.7 0.15 25);border-radius:1px 1px 0 0"></div><div style="height:48%;background:#2f6fff;opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:oklch(0.7 0.15 25);border-radius:1px 1px 0 0"></div><div style="height:56%;background:#2f6fff;opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:6%;background:oklch(0.7 0.15 25);border-radius:1px 1px 0 0"></div><div style="height:62%;background:#2f6fff;opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:oklch(0.7 0.15 25);border-radius:1px 1px 0 0"></div><div style="height:68%;background:#2f6fff;opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:oklch(0.7 0.15 25);border-radius:1px 1px 0 0"></div><div style="height:72%;background:#2f6fff;opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:oklch(0.7 0.15 25);border-radius:1px 1px 0 0"></div><div style="height:78%;background:#2f6fff;opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:oklch(0.7 0.15 25);border-radius:1px 1px 0 0"></div><div style="height:82%;background:#2f6fff;opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:oklch(0.7 0.15 25);border-radius:1px 1px 0 0"></div><div style="height:85%;background:#2f6fff;opacity:1"></div></div>
+</div>
+</div>
+<div>
+<div class="label" style="margin-bottom:8px">Sparkline · KPI</div>
+<div style="padding:20px 0"><svg width="140" height="40" viewBox="0 0 140 40"><polyline points="0,32 10,28 20,30 30,22 40,24 50,18 60,14 70,15 80,10 90,12 100,6 110,8 120,4 140,2" fill="none" stroke="#2f6fff" stroke-width="1.5" stroke-linejoin="round"></polyline></svg></div>
+</div>
+</div>
+</div>
+</section>
+
+</x-dc>
+</body>
+</html>

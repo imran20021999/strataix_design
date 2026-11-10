@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:13px}
+.nav{display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)}
+.nav i{font-size:16px}
+.nav .flex{flex:1}
+.nav .b{font:500 10.5px var(--font-mono);color:var(--sx-muted)}
+.nav.active{background:var(--sx-blue-tint);color:var(--sx-blue-text);font-weight:500}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.tag{font:500 11px var(--font-mono);padding:2px 7px;border-radius:4px;background:var(--sx-raised);color:var(--sx-muted);border:1px solid var(--sx-line-2)}
+</style>
+</helmet>
+
+<div style="width:1440px;height:900px;display:flex;overflow:hidden">
+
+<aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
+<div style="padding:4px 8px 18px"><img src="public/brand/wordmark-light.png" alt="Strataix" style="height:13px;display:block"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:8px;margin-bottom:14px">
+<span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span>
+<div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
+<div class="nav"><i class="ph ph-squares-four"></i><span class="flex">Overview</span></div>
+<div class="nav"><i class="ph ph-list-dashes"></i><span class="flex">Requests</span><span class="b">1.24M</span></div>
+<div class="nav"><i class="ph ph-tree-structure"></i><span class="flex">Sessions</span></div>
+<div class="nav"><i class="ph ph-git-fork"></i><span class="flex">Routes</span><span class="b">18</span></div>
+<div class="nav"><i class="ph ph-cloud"></i><span class="flex">Providers</span><span class="b">5</span></div>
+<div class="nav"><i class="ph ph-shield-check"></i><span class="flex">Guardrails</span></div>
+<div class="nav active"><i class="ph ph-key"></i><span class="flex">Keys</span><span class="b" style="color:var(--sx-blue-text)">7</span></div>
+<div class="nav"><i class="ph ph-wallet"></i><span class="flex">Budgets</span></div>
+<div class="nav"><i class="ph ph-bell-simple"></i><span class="flex">Alerts</span><span class="b">2</span></div>
+<div style="flex:1"></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px;color:var(--sx-muted)"><i class="ph ph-gear-six" style="font-size:16px"></i>Settings</div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span></div>
+</aside>
+
+<main style="flex:1;min-width:0;display:flex;flex-direction:column">
+<header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
+<span style="font:400 11px var(--font-display);letter-spacing:.06em">KEYS</span>
+<span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">7 active · 2 rotating</span>
+<div style="flex:1"></div>
+<div style="width:260px;display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:8px;color:var(--sx-muted)"><i class="ph ph-magnifying-glass"></i><span style="flex:1">Filter keys</span></div>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)"><i class="ph ph-download-simple"></i> Export</button>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff"><i class="ph ph-plus"></i> New key</button>
+</header>
+
+<div style="flex:1;overflow:auto;padding:18px 24px;display:flex;flex-direction:column;gap:18px">
+
+<!-- "just created" callout -->
+<div style="background:linear-gradient(90deg,var(--sx-blue-tint) 0%,var(--sx-panel) 60%);border:1px solid var(--sx-blue);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:14px">
+<i class="ph ph-check-circle" style="color:var(--sx-blue-text);font-size:18px"></i>
+<div style="flex:1">
+<div style="font-weight:500">Key created · sk_live_prod_ingest_f7c</div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">Copy the secret now — you won't be able to see it again.</div>
+</div>
+<div style="display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font:12.5px var(--font-mono);background:var(--sx-bg)">
+<span>sk_live_••••••••••••••••••••••••••••••••••b2c9</span>
+<i class="ph ph-eye" style="color:var(--sx-muted);cursor:pointer"></i>
+<i class="ph ph-copy" style="color:var(--sx-blue-text);cursor:pointer"></i>
+</div>
+<button style="font:500 12.5px var(--font-body);padding:6px 10px;border-radius:6px;border:1px solid transparent;background:transparent;color:var(--sx-muted)">Dismiss</button>
+</div>
+
+<!-- KPI row -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:12px 14px">
+<div style="font-size:12px;color:var(--sx-muted)">Active keys</div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums;margin-top:2px">7</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-muted);margin-top:2px">5 prod · 2 staging</div>
+</div>
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:12px 14px">
+<div style="font-size:12px;color:var(--sx-muted)">Rotations this quarter</div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums;margin-top:2px">4</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-ok);margin-top:2px">on schedule</div>
+</div>
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:12px 14px">
+<div style="font-size:12px;color:var(--sx-muted)">Expiring in 30 days</div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums;margin-top:2px;color:var(--sx-warn)">2</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-faint);margin-top:2px">rotate before Dec 06</div>
+</div>
+<div style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:12px 14px">
+<div style="font-size:12px;color:var(--sx-muted)">Revoked · 90d</div>
+<div style="font:500 22px var(--font-body);font-variant-numeric:tabular-nums;margin-top:2px">3</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-faint);margin-top:2px">audit log</div>
+</div>
+</div>
+
+<!-- Keys table -->
+<section style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;overflow:hidden">
+<div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 110px 90px 90px 90px 40px;padding:10px 18px;font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em;border-bottom:1px solid var(--sx-line)">
+<span>Name &amp; secret</span><span>Scopes</span><span>Routes · rate</span><span style="text-align:right">24h req</span><span style="text-align:right">Last used</span><span style="text-align:right">Rotates</span><span style="text-align:center">Status</span><span></span>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 110px 90px 90px 90px 40px;padding:12px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<div><div style="font-weight:500">Prod · Support</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted);margin-top:2px">sk_live_prod_support_a2f …7d81</div></div>
+<div style="display:flex;gap:4px;flex-wrap:wrap"><span class="tag">chat:read</span><span class="tag">chat:write</span><span class="tag">tools:read</span></div>
+<div style="font:11.5px var(--font-mono);color:var(--sx-muted)">support/* · 2k rpm</div>
+<span style="text-align:right;font:500 12px var(--font-mono)">698k</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">2s ago</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">in 42d</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">active</span>
+<i class="ph ph-dots-three-vertical" style="color:var(--sx-muted);justify-self:center"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 110px 90px 90px 90px 40px;padding:12px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<div><div style="font-weight:500">Prod · Copilot</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted);margin-top:2px">sk_live_prod_copilot_94c …1aa3</div></div>
+<div style="display:flex;gap:4px;flex-wrap:wrap"><span class="tag">chat:write</span><span class="tag">embed:read</span></div>
+<div style="font:11.5px var(--font-mono);color:var(--sx-muted)">copilot/* · 5k rpm</div>
+<span style="text-align:right;font:500 12px var(--font-mono)">377k</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">6s ago</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-warn)">in 8d</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-warn) 16%,transparent);color:var(--sx-warn)">rotating</span>
+<i class="ph ph-dots-three-vertical" style="color:var(--sx-muted);justify-self:center"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 110px 90px 90px 90px 40px;padding:12px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<div><div style="font-weight:500">Prod · Data pipeline</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted);margin-top:2px">sk_live_prod_data_7c1 …0f90</div></div>
+<div style="display:flex;gap:4px;flex-wrap:wrap"><span class="tag">chat:write</span><span class="tag">files:read</span><span class="tag">tools:*</span></div>
+<div style="font:11.5px var(--font-mono);color:var(--sx-muted)">data/* · 500 rpm</div>
+<span style="text-align:right;font:500 12px var(--font-mono)">118k</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">48s ago</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">in 51d</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">active</span>
+<i class="ph ph-dots-three-vertical" style="color:var(--sx-muted);justify-self:center"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 110px 90px 90px 90px 40px;padding:12px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<div><div style="font-weight:500">Prod · Ingest <span style="font-size:11px;color:var(--sx-blue-text);margin-left:6px">NEW</span></div><div style="font:11.5px var(--font-mono);color:var(--sx-muted);margin-top:2px">sk_live_prod_ingest_f7c …b2c9</div></div>
+<div style="display:flex;gap:4px;flex-wrap:wrap"><span class="tag">embed:write</span><span class="tag">files:write</span></div>
+<div style="font:11.5px var(--font-mono);color:var(--sx-muted)">ingest/* · 1k rpm</div>
+<span style="text-align:right;font:500 12px var(--font-mono)">0</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-faint)">—</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">in 90d</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">active</span>
+<i class="ph ph-dots-three-vertical" style="color:var(--sx-muted);justify-self:center"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 110px 90px 90px 90px 40px;padding:12px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<div><div style="font-weight:500">Prod · Agents</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted);margin-top:2px">sk_live_prod_agents_dd2 …5fe4</div></div>
+<div style="display:flex;gap:4px;flex-wrap:wrap"><span class="tag">chat:*</span><span class="tag">tools:*</span><span class="tag">mcp:*</span></div>
+<div style="font:11.5px var(--font-mono);color:var(--sx-muted)">agents/* · 200 rpm</div>
+<span style="text-align:right;font:500 12px var(--font-mono)">2,118</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">3m ago</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-warn)">in 23d</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">active</span>
+<i class="ph ph-dots-three-vertical" style="color:var(--sx-muted);justify-self:center"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 110px 90px 90px 90px 40px;padding:12px 18px;align-items:center;border-bottom:1px solid var(--sx-line)">
+<div><div style="font-weight:500">Staging · All</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted);margin-top:2px">sk_test_staging_all_e14 …8d20</div></div>
+<div style="display:flex;gap:4px;flex-wrap:wrap"><span class="tag">*:*</span></div>
+<div style="font:11.5px var(--font-mono);color:var(--sx-muted)">* · 100 rpm</div>
+<span style="text-align:right;font:500 12px var(--font-mono)">42k</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">11m ago</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">in 72d</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">active</span>
+<i class="ph ph-dots-three-vertical" style="color:var(--sx-muted);justify-self:center"></i>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr 1fr 1fr 110px 90px 90px 90px 40px;padding:12px 18px;align-items:center">
+<div><div style="font-weight:500">Dev · Imran laptop</div><div style="font:11.5px var(--font-mono);color:var(--sx-muted);margin-top:2px">sk_test_dev_imran_b19 …c0e5</div></div>
+<div style="display:flex;gap:4px;flex-wrap:wrap"><span class="tag">chat:*</span><span class="tag">tools:read</span></div>
+<div style="font:11.5px var(--font-mono);color:var(--sx-muted)">* · 50 rpm</div>
+<span style="text-align:right;font:500 12px var(--font-mono)">184</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">2h ago</span>
+<span style="text-align:right;font:500 11.5px var(--font-mono);color:var(--sx-muted)">in 60d</span>
+<span class="pill" style="justify-self:center;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)">active</span>
+<i class="ph ph-dots-three-vertical" style="color:var(--sx-muted);justify-self:center"></i>
+</div>
+
+</section>
+
+<!-- audit -->
+<section style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px;padding:14px 18px">
+<div style="display:flex;align-items:center;margin-bottom:10px"><span style="font-weight:500;font-size:14px;flex:1">Recent key activity</span><span style="font-size:11.5px;color:var(--sx-blue-text)">Full audit log <i class="ph ph-arrow-up-right"></i></span></div>
+<div style="display:flex;flex-direction:column;gap:2px">
+<div style="display:grid;grid-template-columns:90px 1fr 200px;padding:6px 0;font-size:12px;border-bottom:1px solid var(--sx-line)"><span style="font:11.5px var(--font-mono);color:var(--sx-muted)">14:28</span><span><b style="font-weight:500">created</b> · Prod · Ingest · by Imran</span><span style="font:11.5px var(--font-mono);color:var(--sx-faint);text-align:right">from 103.14.…</span></div>
+<div style="display:grid;grid-template-columns:90px 1fr 200px;padding:6px 0;font-size:12px;border-bottom:1px solid var(--sx-line)"><span style="font:11.5px var(--font-mono);color:var(--sx-muted)">yesterday</span><span><b style="font-weight:500">scope changed</b> · Prod · Agents · + mcp:*</span><span style="font:11.5px var(--font-mono);color:var(--sx-faint);text-align:right">by Imran</span></div>
+<div style="display:grid;grid-template-columns:90px 1fr 200px;padding:6px 0;font-size:12px;border-bottom:1px solid var(--sx-line)"><span style="font:11.5px var(--font-mono);color:var(--sx-muted)">Nov 3</span><span><b style="font-weight:500">rotated</b> · Prod · Data pipeline</span><span style="font:11.5px var(--font-mono);color:var(--sx-faint);text-align:right">auto · schedule</span></div>
+<div style="display:grid;grid-template-columns:90px 1fr 200px;padding:6px 0;font-size:12px"><span style="font:11.5px var(--font-mono);color:var(--sx-muted)">Nov 1</span><span><b style="font-weight:500;color:var(--sx-danger)">revoked</b> · legacy · sk_live_…a81e</span><span style="font:11.5px var(--font-mono);color:var(--sx-faint);text-align:right">by Imran · leak alert</span></div>
+</div>
+</section>
+
+</div>
+</main>
+</div>
+
+</x-dc>
+</body>
+</html>

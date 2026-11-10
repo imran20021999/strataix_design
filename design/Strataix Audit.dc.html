@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:13px}
+.nav{display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text)}
+.nav i{font-size:16px}
+.nav .flex{flex:1}
+.nav .b{font:500 10.5px var(--font-mono);color:var(--sx-muted)}
+.nav.active{background:var(--sx-blue-tint);color:var(--sx-blue-text);font-weight:500}
+.sub{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;font-size:13px;color:var(--sx-text)}
+.sub.a{background:var(--sx-raised);color:var(--sx-text);font-weight:500;border-left:2px solid var(--sx-blue);padding-left:8px}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.lab{font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em}
+.card{background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:10px}
+.av{width:22px;height:22px;border-radius:50%;font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center;flex:none}
+.chip{padding:3px 8px;border-radius:5px;font:11px var(--font-mono);background:var(--sx-raised);color:var(--sx-text);border:1px solid var(--sx-line-2)}
+.ev{display:grid;grid-template-columns:72px 28px 1fr 160px 90px;padding:10px 18px;align-items:center;border-bottom:1px solid var(--sx-line);font-size:12.5px}
+.ev .time{font:11.5px var(--font-mono);color:var(--sx-muted)}
+.ev .ip{font:11px var(--font-mono);color:var(--sx-faint);text-align:right}
+</style>
+</helmet>
+
+<div style="width:1440px;height:900px;display:flex;overflow:hidden">
+
+<aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
+<div style="padding:4px 8px 18px"><img src="public/brand/wordmark-light.png" style="height:13px"></div>
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:8px;margin-bottom:14px"><span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span><div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
+<div class="nav"><i class="ph ph-squares-four"></i><span class="flex">Overview</span></div>
+<div class="nav"><i class="ph ph-list-dashes"></i><span class="flex">Requests</span><span class="b">1.24M</span></div>
+<div class="nav"><i class="ph ph-tree-structure"></i><span class="flex">Sessions</span></div>
+<div class="nav"><i class="ph ph-git-fork"></i><span class="flex">Routes</span><span class="b">18</span></div>
+<div class="nav"><i class="ph ph-cloud"></i><span class="flex">Providers</span><span class="b">5</span></div>
+<div class="nav"><i class="ph ph-shield-check"></i><span class="flex">Guardrails</span></div>
+<div class="nav"><i class="ph ph-key"></i><span class="flex">Keys</span><span class="b">7</span></div>
+<div class="nav"><i class="ph ph-wallet"></i><span class="flex">Budgets</span></div>
+<div class="nav"><i class="ph ph-bell-simple"></i><span class="flex">Alerts</span><span class="b">2</span></div>
+<div style="flex:1"></div>
+<div class="nav active"><i class="ph ph-gear-six"></i><span class="flex">Settings</span></div>
+<div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span></div>
+</aside>
+
+<main style="flex:1;min-width:0;display:flex;flex-direction:column">
+<header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
+<span style="font:400 11px var(--font-display);letter-spacing:.06em">SETTINGS</span>
+<span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">Audit log</span>
+<div style="flex:1"></div>
+<div style="width:300px;display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:8px;color:var(--sx-muted)"><i class="ph ph-magnifying-glass"></i><span style="flex:1">Search actor, event, target…</span></div>
+<button style="font:500 12.5px var(--font-body);padding:7px 12px;border-radius:6px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text)"><i class="ph ph-download-simple"></i> Export JSON</button>
+</header>
+
+<div style="flex:1;min-height:0;display:flex">
+
+<div style="width:220px;flex:none;border-right:1px solid var(--sx-line);padding:18px 12px;display:flex;flex-direction:column;gap:4px">
+<div class="lab" style="padding:4px 10px 6px">ACCOUNT</div>
+<div class="sub"><i class="ph ph-user-circle" style="color:var(--sx-muted)"></i>Profile</div>
+<div class="sub"><i class="ph ph-palette" style="color:var(--sx-muted)"></i>Appearance</div>
+<div class="sub"><i class="ph ph-bell" style="color:var(--sx-muted)"></i>Notifications</div>
+<div class="sub"><i class="ph ph-keyboard" style="color:var(--sx-muted)"></i>Shortcuts</div>
+<div class="lab" style="padding:14px 10px 6px">ORGANIZATION</div>
+<div class="sub"><i class="ph ph-buildings" style="color:var(--sx-muted)"></i>General</div>
+<div class="sub"><i class="ph ph-users-three" style="color:var(--sx-muted)"></i><span style="flex:1">Members</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">14</span></div>
+<div class="sub"><i class="ph ph-shield-star" style="color:var(--sx-muted)"></i>Roles &amp; SSO</div>
+<div class="sub"><i class="ph ph-credit-card" style="color:var(--sx-muted)"></i>Billing &amp; plan</div>
+<div class="sub"><i class="ph ph-receipt" style="color:var(--sx-muted)"></i>Invoices</div>
+<div class="lab" style="padding:14px 10px 6px">PLATFORM</div>
+<div class="sub"><i class="ph ph-plugs-connected" style="color:var(--sx-muted)"></i>Integrations</div>
+<div class="sub"><i class="ph ph-webhooks-logo" style="color:var(--sx-muted)"></i>Webhooks</div>
+<div class="sub"><i class="ph ph-database" style="color:var(--sx-muted)"></i>Data retention</div>
+<div class="sub a"><i class="ph ph-file-text" style="color:var(--sx-blue-text)"></i>Audit log</div>
+</div>
+
+<div style="flex:1;min-width:0;overflow:auto;padding:22px 28px;display:flex;flex-direction:column;gap:14px">
+
+<!-- Hero strip -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px">
+<div class="card" style="padding:12px 14px"><div style="font-size:12px;color:var(--sx-muted)">Events · 30d</div><div style="font:500 22px var(--font-body);margin-top:2px">8,412</div><div style="font:500 11px var(--font-mono);color:var(--sx-muted);margin-top:2px">+6.2%</div></div>
+<div class="card" style="padding:12px 14px"><div style="font-size:12px;color:var(--sx-muted)">Actors · 30d</div><div style="font:500 22px var(--font-body);margin-top:2px">14</div><div style="font:500 11px var(--font-mono);color:var(--sx-muted);margin-top:2px">members + 3 automations</div></div>
+<div class="card" style="padding:12px 14px"><div style="font-size:12px;color:var(--sx-muted)">Sensitive events</div><div style="font:500 22px var(--font-body);margin-top:2px;color:var(--sx-warn)">42</div><div style="font:500 11px var(--font-mono);color:var(--sx-faint);margin-top:2px">rotations · deletes · role changes</div></div>
+<div class="card" style="padding:12px 14px"><div style="font-size:12px;color:var(--sx-muted)">Retention</div><div style="font:500 22px var(--font-body);margin-top:2px">365d</div><div style="font:500 11px var(--font-mono);color:var(--sx-ok);margin-top:2px">tamper-evident · SOC2</div></div>
+</div>
+
+<!-- Filters -->
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:6px 0">
+<span style="padding:5px 11px;border:1px solid var(--sx-blue);border-radius:999px;font-size:12px;color:var(--sx-blue-text);background:var(--sx-blue-tint)">Last 7 days</span>
+<span style="padding:5px 11px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:12px;color:var(--sx-muted)">Actor <i class="ph ph-caret-down"></i></span>
+<span style="padding:5px 11px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:12px;color:var(--sx-muted)">Category <i class="ph ph-caret-down"></i></span>
+<span style="padding:5px 11px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:12px;color:var(--sx-muted)">Target <i class="ph ph-caret-down"></i></span>
+<span style="padding:5px 11px;border:1px solid var(--sx-line-2);border-radius:999px;font-size:12px;color:var(--sx-muted)">Severity <i class="ph ph-caret-down"></i></span>
+<div style="flex:1"></div>
+<span style="font-size:11.5px;color:var(--sx-muted)">1,284 events · streaming</span>
+</div>
+
+<!-- Timeline -->
+<section class="card" style="padding:0;overflow:hidden">
+
+<div style="padding:9px 18px;background:var(--sx-bg);border-bottom:1px solid var(--sx-line);display:grid;grid-template-columns:72px 28px 1fr 160px 90px;font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.04em"><span>TIME</span><span></span><span>EVENT</span><span>TARGET</span><span style="text-align:right">IP · METHOD</span></div>
+
+<!-- group day header -->
+<div style="padding:8px 18px;background:var(--sx-raised);border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:8px">
+<i class="ph ph-calendar-blank" style="font-size:12px;color:var(--sx-muted)"></i>
+<span style="font:500 12px var(--font-body)">Today · Tue 10 Nov 2026</span>
+<span style="flex:1"></span>
+<span style="font:11px var(--font-mono);color:var(--sx-muted)">42 events</span>
+</div>
+
+<div class="ev">
+<span class="time">06:38:12</span>
+<span class="av" style="background:var(--sx-violet-tint);color:var(--sx-violet)">IM</span>
+<div style="min-width:0">
+<div><b style="font-weight:500">Imran</b> viewed <span class="chip">audit_log</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">session_01J9X8B1T · web</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">/settings/audit</span>
+<span class="ip">103.14.202.11 · GET</span>
+</div>
+
+<div class="ev">
+<span class="time">06:22:48</span>
+<span class="av" style="background:#2a3b1d;color:#b6e68a">PR</span>
+<div>
+<div><b style="font-weight:500">Priya</b> acknowledged alert <span class="chip">INC-241</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">severity: critical · note added</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">alerts/INC-241</span>
+<span class="ip">10.2.1.7 · PATCH</span>
+</div>
+
+<div class="ev">
+<span class="time">05:11:02</span>
+<span class="av" style="background:var(--sx-violet-tint);color:var(--sx-violet)">IM</span>
+<div>
+<div><b style="font-weight:500">Imran</b> created key <span class="chip">sk_live_prod_ingest_f7c…</span> <span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text);margin-left:4px">sensitive</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">scopes: embed:write, files:write · rate 1k rpm · rotates in 90d</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">keys</span>
+<span class="ip">103.14.202.11 · POST</span>
+</div>
+
+<div class="ev">
+<span class="time">03:47:19</span>
+<span class="av" style="background:var(--sx-raised);color:var(--sx-muted)"><i class="ph ph-robot" style="font-size:11px"></i></span>
+<div>
+<div><b style="font-weight:500">Auto-rotation</b> rotated key <span class="chip">sk_live_prod_data_7c1…</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">previous revoked · grace period 15m</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">keys</span>
+<span class="ip">internal · system</span>
+</div>
+
+<!-- yesterday -->
+<div style="padding:8px 18px;background:var(--sx-raised);border-bottom:1px solid var(--sx-line);border-top:1px solid var(--sx-line);display:flex;align-items:center;gap:8px">
+<i class="ph ph-calendar-blank" style="font-size:12px;color:var(--sx-muted)"></i>
+<span style="font:500 12px var(--font-body)">Yesterday · Mon 9 Nov 2026</span>
+<span style="flex:1"></span>
+<span style="font:11px var(--font-mono);color:var(--sx-muted)">118 events</span>
+</div>
+
+<div class="ev">
+<span class="time">22:04:32</span>
+<span class="av" style="background:#3b1d2a;color:#e68ab6">DP</span>
+<div>
+<div><b style="font-weight:500">Deepak</b> deployed route <span class="chip">support/triage</span> <span class="chip" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text);border-color:var(--sx-blue-tint-2)">v12</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">primary: claude-sonnet-4 · fallback: gpt-4o · diff +4 −2</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">routes/support/triage</span>
+<span class="ip">10.2.1.9 · PUT</span>
+</div>
+
+<div class="ev">
+<span class="time">18:12:08</span>
+<span class="av" style="background:var(--sx-violet-tint);color:var(--sx-violet)">IM</span>
+<div>
+<div><b style="font-weight:500">Imran</b> changed role of <span class="chip">deepak@acme.com</span>: Developer → <span style="color:var(--sx-warn)">Admin</span> <span class="pill" style="background:var(--sx-blue-tint-2);color:var(--sx-blue-text);margin-left:4px">sensitive</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">now has: budgets, policies, provider connect, invite</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">members/deepak</span>
+<span class="ip">103.14.202.11 · PATCH</span>
+</div>
+
+<div class="ev">
+<span class="time">14:58:41</span>
+<span class="av" style="background:#1d2a3b;color:#8ab6e6">NA</span>
+<div>
+<div><b style="font-weight:500">Nadia</b> updated budget cap <span class="chip">team · Data</span>: $12k → $15k</div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">overspend policy unchanged</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">budgets/team/data</span>
+<span class="ip">10.2.1.14 · PATCH</span>
+</div>
+
+<div class="ev" style="background:color-mix(in srgb,var(--sx-danger) 6%,transparent)">
+<span class="time">11:22:18</span>
+<span class="av" style="background:var(--sx-danger-tint);color:var(--sx-danger)"><i class="ph ph-warning-circle" style="font-size:11px"></i></span>
+<div>
+<div style="color:var(--sx-danger)"><b style="font-weight:500">Failed login</b> · 3 attempts · <span class="chip" style="background:var(--sx-danger-tint);color:var(--sx-danger);border-color:color-mix(in srgb,var(--sx-danger) 40%,transparent)">priya@acme.com</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">source: Lisbon, PT · unusual location · 2FA prompt sent</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">auth</span>
+<span class="ip">82.154.188.42 · POST</span>
+</div>
+
+<div class="ev">
+<span class="time">10:02:00</span>
+<span class="av" style="background:var(--sx-raised);color:var(--sx-muted)"><i class="ph ph-plug" style="font-size:11px"></i></span>
+<div>
+<div><b style="font-weight:500">Integration · Datadog</b> degraded · last successful sync 09:19 <span class="pill" style="background:color-mix(in srgb,var(--sx-warn) 16%,transparent);color:var(--sx-warn);margin-left:4px">auto-detected</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">4 errors in 10m · API key check queued</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">integrations/datadog</span>
+<span class="ip">system</span>
+</div>
+
+<!-- older -->
+<div style="padding:8px 18px;background:var(--sx-raised);border-bottom:1px solid var(--sx-line);border-top:1px solid var(--sx-line);display:flex;align-items:center;gap:8px">
+<i class="ph ph-calendar-blank" style="font-size:12px;color:var(--sx-muted)"></i>
+<span style="font:500 12px var(--font-body)">Sun 8 Nov 2026</span>
+<span style="flex:1"></span>
+<span style="font:11px var(--font-mono);color:var(--sx-muted)">86 events</span>
+</div>
+
+<div class="ev">
+<span class="time">16:40:12</span>
+<span class="av" style="background:var(--sx-violet-tint);color:var(--sx-violet)">IM</span>
+<div>
+<div><b style="font-weight:500">Imran</b> invited 3 members <span class="chip">arjun@acme.com</span> <span class="chip">sarah@acme.com</span> <span class="chip">leo@acme.com</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">expires in 7d · re-invite from Members</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">members/invite</span>
+<span class="ip">103.14.202.11 · POST</span>
+</div>
+
+<div class="ev" style="background:color-mix(in srgb,var(--sx-danger) 6%,transparent)">
+<span class="time">09:12:44</span>
+<span class="av" style="background:var(--sx-violet-tint);color:var(--sx-violet)">IM</span>
+<div>
+<div style="color:var(--sx-danger)"><b style="font-weight:500">Imran</b> revoked key <span class="chip" style="background:var(--sx-danger-tint);color:var(--sx-danger);border-color:color-mix(in srgb,var(--sx-danger) 40%,transparent)">sk_live_legacy_…a81e</span> <span class="pill" style="background:var(--sx-danger-tint);color:var(--sx-danger);margin-left:4px">destructive</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">reason: leak alert · verified by Imran · note "seen in public gist"</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">keys/sk_live_legacy</span>
+<span class="ip">103.14.202.11 · DELETE</span>
+</div>
+
+<div class="ev">
+<span class="time">08:22:07</span>
+<span class="av" style="background:#2a3b1d;color:#b6e68a">PR</span>
+<div>
+<div><b style="font-weight:500">Priya</b> connected provider <span class="chip">Fireworks AI</span></div>
+<div style="font-size:11.5px;color:var(--sx-muted);margin-top:2px">models enabled: llama-3.1-70b · mixtral-8x22b</div>
+</div>
+<span style="font:11.5px var(--font-mono);color:var(--sx-muted)">providers/fireworks</span>
+<span class="ip">10.2.1.7 · POST</span>
+</div>
+
+</section>
+
+<div style="height:24px"></div>
+</div>
+</div>
+</main>
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#efece6;font-family:Kalam,system-ui,sans-serif;color:#262626}
+a{color:#2f6bff}a:hover{color:#1f4fcc}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-grp{margin:36px 0 14px;display:flex;align-items:baseline;gap:14px}
+.dv-grp h2{margin:0;font:700 26px/1 Kalam,sans-serif}
+.dv-grp p{margin:0;font:12px/1.4 system-ui,sans-serif;color:rgba(0,0,0,.55);max-width:640px}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55);max-width:1180px}
+.dv-olabel b{color:#1a1a1a;font-weight:600}
+.dv-card{max-width:100%;background:#fffdf8;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:28px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+.b{border:1.5px solid #2a2a2a;border-radius:9px 13px 10px 14px/13px 9px 14px 10px;background:#fffdf8}
+.b2{border:1.2px solid #a19b90;border-radius:7px 10px 8px 11px/10px 7px 11px 8px;background:#fffdf8}
+.ph{background:repeating-linear-gradient(135deg,#ebe7de 0 6px,#f7f4ee 6px 12px);border:1.5px dashed #9a948a;border-radius:8px;display:flex;align-items:center;justify-content:center;text-align:center;font:11px/1.4 ui-monospace,Menlo,monospace;color:#6b665d;padding:8px;box-sizing:border-box}
+.ln{height:6px;border-radius:3px;background:#dcd7cd}
+.n{font-family:Caveat,cursive;color:#2f6bff;font-size:17px;line-height:1.05;font-weight:500}
+.mono{font-family:ui-monospace,Menlo,monospace}
+.lbl{font-size:11px;color:#6b665d;line-height:1.2}
+.chip{border:1.2px solid #2a2a2a;border-radius:999px;padding:0 9px;font-size:11px;line-height:20px;white-space:nowrap}
+.ico{width:12px;height:12px;border:1.4px solid currentColor;border-radius:3px;flex:none}
+.dot{width:8px;height:8px;border-radius:50%;flex:none}
+</style>
+</helmet>
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Strataix — first-pass wireframes · all screens · desktop + mobile</span></div>
+<p style="margin:0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.55);max-width:760px">Lo-fi structure only. Options vary on information density, navigation model and data-viz approach. Blue handwriting = interaction / motion notes. Hi-fi pass will apply the Nocturne system + the Strataix wordmark.</p>
+
+<!-- ================= DASHBOARD ================= -->
+<div class="dv-grp"><h2>Dashboard</h2><p>Leads with cost, then traffic &amp; latency. Three density / nav / viz takes.</p></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a"><div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a><b>Dense grid</b> · labeled sidebar · KPI strip + classic time-series panels. Max info per screen.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:780px">
+<div style="width:184px;border-right:1.5px solid #2a2a2a;padding:14px 10px;display:flex;flex-direction:column;gap:2px;flex:none">
+<div style="font:700 15px Kalam;letter-spacing:.28em;padding:0 8px 12px">STRAT<span style="color:#2f6bff">AI</span>X</div>
+<div class="b2" style="padding:5px 8px;font-size:12px;margin-bottom:10px;display:flex;justify-content:space-between"><span>acme · prod</span><span>▾</span></div>
+<sc-for list="{{ navDash }}" as="n" hint-placeholder-count="10"><div style="display:flex;gap:9px;align-items:center;padding:4px 8px;border-radius:6px;font-size:13px;background:{{ n.bg }};color:{{ n.c }}"><span class="ico"></span>{{ n.l }}</div></sc-for>
+<div style="flex:1"></div>
+<div style="display:flex;gap:9px;align-items:center;padding:4px 8px;font-size:13px"><span class="ico"></span>Settings</div>
+<div style="display:flex;gap:8px;align-items:center;padding:8px;font-size:12px"><span class="dot" style="width:22px;height:22px;border:1.4px solid #2a2a2a"></span>imran · admin</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;min-width:0">
+<div style="height:46px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1.5px solid #2a2a2a;flex:none">
+<span style="font-size:16px;font-weight:700">Overview</span><div style="flex:1"></div>
+<div class="b2" style="width:220px;padding:2px 8px;font-size:12px;color:#8a857c">Search requests, keys…  ⌘K</div>
+<span class="chip">All providers ▾</span><span class="chip">Last 24h ▾</span><span class="chip" style="border-color:#2f6bff;color:#2f6bff">● Live</span>
+</div>
+<div style="flex:1;padding:14px 16px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:min-content;gap:10px;overflow:hidden">
+<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6"><div class="b" style="padding:8px 10px;display:flex;flex-direction:column;gap:2px">
+<span class="lbl">{{ k.k }}</span><span style="font-size:22px;font-weight:700;line-height:1.1">{{ k.v }}</span>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:6px"><span class="lbl" style="color:{{ k.dc }}">{{ k.d }}</span>
+<div style="display:flex;align-items:flex-end;gap:2px;height:20px"><sc-for list="{{ k.sp }}" as="s" hint-placeholder-count="10"><div style="width:3px;background:#2a2a2a;height:{{ s.h }}"></div></sc-for></div></div>
+</div></sc-for>
+<div class="b" style="grid-column:span 4;padding:10px 12px;display:flex;flex-direction:column;gap:6px;height:230px;box-sizing:border-box">
+<div style="display:flex;align-items:center;gap:10px"><b style="font-size:14px">Spend over time</b><span class="lbl">stacked by provider</span><div style="flex:1"></div><span class="chip">Hour</span><span class="chip" style="background:#262626;color:#fffdf8">Day</span><span class="chip">Week</span></div>
+<div style="flex:1;display:flex;align-items:flex-end;gap:4px;border-bottom:1.3px solid #2a2a2a;border-left:1.3px solid #2a2a2a;padding:0 4px;position:relative">
+<sc-for list="{{ costBars }}" as="c" hint-placeholder-count="28"><div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%"><div style="height:{{ c.a }};background:#dcd7cd;border:1px solid #8a857c;border-bottom:0"></div><div style="height:{{ c.b }};background:#b9b3a8"></div><div style="height:{{ c.c }};background:#2f6bff"></div></div></sc-for>
+<div style="position:absolute;left:0;right:0;top:22%;border-top:1.5px dashed #d94a3a"></div><span class="n" style="position:absolute;right:8px;top:6%;color:#d94a3a">daily budget line</span>
+</div>
+<span class="n">hover = crosshair tooltip w/ provider split · drag = zoom range (syncs all panels)</span>
+</div>
+<div class="b" style="grid-column:span 2;padding:10px 12px;display:flex;flex-direction:column;gap:8px;height:230px;box-sizing:border-box">
+<b style="font-size:14px">Spend by model</b>
+<sc-for list="{{ modelSpend }}" as="m" hint-placeholder-count="5"><div style="display:grid;grid-template-columns:110px 1fr 54px;align-items:center;gap:8px;font-size:12px"><span class="mono" style="font-size:11px">{{ m.m }}</span><div style="height:10px;border:1.2px solid #2a2a2a;border-radius:3px"><div style="height:100%;background:#2a2a2a;width:{{ m.w }}"></div></div><span style="text-align:right">{{ m.v }}</span></div></sc-for>
+<span class="lbl" style="margin-top:auto">→ view all 14 models</span>
+</div>
+<div class="b" style="grid-column:span 3;padding:10px 12px;display:flex;flex-direction:column;gap:6px;height:170px;box-sizing:border-box">
+<div style="display:flex;gap:10px;align-items:center"><b style="font-size:14px">Latency</b><span class="lbl">p50 · p95 · p99</span></div>
+<div style="flex:1;border-bottom:1.3px solid #2a2a2a;border-left:1.3px solid #2a2a2a;display:flex;flex-direction:column;justify-content:space-around;padding:6px 0">
+<div style="height:0;border-top:2px solid #2f6bff;transform:rotate(-1.5deg);width:96%"></div><div style="height:0;border-top:2px dashed #2a2a2a;transform:rotate(2deg);width:96%"></div><div style="height:0;border-top:1.5px dotted #2a2a2a;transform:rotate(-.6deg);width:96%"></div></div>
+</div>
+<div class="b" style="grid-column:span 3;padding:10px 12px;display:flex;flex-direction:column;gap:6px;height:170px;box-sizing:border-box">
+<div style="display:flex;gap:10px;align-items:center"><b style="font-size:14px">Traffic by provider</b><span class="lbl">req/min</span></div>
+<div style="flex:1;display:flex;align-items:flex-end;gap:3px;border-bottom:1.3px solid #2a2a2a"><sc-for list="{{ traffic }}" as="t" hint-placeholder-count="40"><div style="flex:1;background:#2a2a2a;opacity:.75;height:{{ t.h }}"></div></sc-for></div>
+</div>
+<div class="b" style="grid-column:span 4;padding:10px 12px;display:flex;flex-direction:column;gap:5px">
+<div style="display:flex;align-items:center;gap:10px"><b style="font-size:14px">Top cost drivers</b><span class="lbl">route × model, 24h</span><div style="flex:1"></div><span class="lbl">sort: Δ cost ▾</span></div>
+<div style="display:grid;grid-template-columns:1.4fr 1fr .8fr .8fr .6fr;font-size:11px;color:#6b665d;border-bottom:1.2px solid #2a2a2a;padding-bottom:3px"><span>Route</span><span>Model</span><span>Tokens</span><span>Cost</span><span>Δ</span></div>
+<sc-for list="{{ drivers }}" as="d" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:1.4fr 1fr .8fr .8fr .6fr;font-size:12px;border-bottom:1px dashed #cfcac0;padding:2px 0"><span>{{ d.r }}</span><span class="mono" style="font-size:11px">{{ d.m }}</span><span>{{ d.t }}</span><span>{{ d.c }}</span><span style="color:{{ d.dc }}">{{ d.d }}</span></div></sc-for>
+</div>
+<div class="b" style="grid-column:span 2;padding:10px 12px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;align-items:center"><b style="font-size:14px">Active alerts</b><div style="flex:1"></div><span class="chip">3</span></div>
+<sc-for list="{{ alerts }}" as="a" hint-placeholder-count="3"><div style="display:flex;gap:8px;align-items:center;font-size:12px"><span class="dot" style="background:{{ a.c }}"></span><span style="flex:1">{{ a.t }}</span><span class="lbl">{{ a.time }}</span></div></sc-for>
+</div>
+</div></div></div></div></div>
+
+<div class="dv-opt" id="1b"><div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a><b>Command center</b> · icon rail + saved-views panel · budget burn hero, live request tail, latency heatmap, findings feed.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:780px">
+<div style="width:52px;border-right:1.5px solid #2a2a2a;display:flex;flex-direction:column;align-items:center;gap:14px;padding:14px 0;flex:none">
+<div style="font:700 14px Kalam;color:#2f6bff">S</div>
+<sc-for list="{{ rail }}" as="r" hint-placeholder-count="9"><div style="width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:{{ r.bg }};color:{{ r.c }}"><span class="ico" style="width:14px;height:14px"></span></div></sc-for>
+</div>
+<div style="width:196px;border-right:1.5px solid #2a2a2a;padding:14px 12px;display:flex;flex-direction:column;gap:6px;flex:none;background:#f8f5ef">
+<b style="font-size:14px">Overview</b><span class="lbl" style="margin-top:6px">SAVED VIEWS</span>
+<div style="padding:4px 8px;border-radius:6px;background:#e6ecff;color:#2f6bff;font-size:13px">Org-wide · 24h</div>
+<div style="padding:4px 8px;font-size:13px">Support agent</div><div style="padding:4px 8px;font-size:13px">Batch / nightly</div><div style="padding:4px 8px;font-size:13px">Copilot · IDE</div>
+<div style="padding:4px 8px;font-size:13px;color:#8a857c">+ save current view</div>
+<span class="lbl" style="margin-top:10px">PINNED BUDGETS</span>
+<sc-for list="{{ budgets }}" as="g" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:3px;padding:2px 8px"><div style="display:flex;justify-content:space-between;font-size:12px"><span>{{ g.n }}</span><span class="lbl">{{ g.p }}</span></div><div style="height:6px;border:1.2px solid #2a2a2a;border-radius:3px"><div style="height:100%;width:{{ g.p }};background:{{ g.c }}"></div></div></div></sc-for>
+<span class="n" style="margin-top:auto">views = filters + layout,<br>shareable by URL</span>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;min-width:0;padding:16px;gap:12px">
+<div style="display:flex;gap:12px">
+<div class="b" style="flex:1.4;padding:12px 16px;display:flex;gap:22px;align-items:center">
+<div><span class="lbl">Month-to-date spend</span><div style="font-size:40px;font-weight:700;line-height:1">$62,410</div><span class="lbl">of $90,000 · forecast <b style="color:#d94a3a">$94.2k</b> ↗</span></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="height:16px;border:1.5px solid #2a2a2a;border-radius:4px;position:relative"><div style="height:100%;width:69%;background:#2a2a2a"></div><div style="position:absolute;left:69%;width:35%;top:0;bottom:0;background:repeating-linear-gradient(135deg,#d94a3a55 0 4px,transparent 4px 8px)"></div><div style="position:absolute;left:96%;top:-6px;bottom:-6px;border-left:2px solid #d94a3a"></div></div>
+<div style="display:flex;justify-content:space-between" class="lbl"><span>Nov 1</span><span>today</span><span>budget</span></div></div>
+</div>
+<div class="b" style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);padding:10px 14px;gap:8px">
+<div><span class="lbl">Requests/min</span><div style="font-size:24px;font-weight:700">862</div></div>
+<div><span class="lbl">p95</span><div style="font-size:24px;font-weight:700">1.84s</div></div>
+<div><span class="lbl">Saved by cache</span><div style="font-size:24px;font-weight:700;color:#2f6bff">$1.9k</div></div>
+</div>
+</div>
+<div style="display:flex;gap:12px;flex:1;min-height:0">
+<div class="b" style="flex:1.3;display:flex;flex-direction:column;padding:10px 12px;gap:4px;min-width:0">
+<div style="display:flex;align-items:center;gap:8px"><b style="font-size:14px">Live tail</b><span class="dot" style="background:#2f6bff"></span><span class="lbl">streaming · 862/min</span><div style="flex:1"></div><span class="chip">❚❚ pause</span></div>
+<div style="display:grid;grid-template-columns:82px 1.2fr 1fr 44px 56px 56px;font-size:11px;color:#6b665d;border-bottom:1.2px solid #2a2a2a;padding:3px 0"><span>time</span><span>route</span><span>model</span><span>status</span><span>latency</span><span>cost</span></div>
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="12"><div class="mono" style="display:grid;grid-template-columns:82px 1.2fr 1fr 44px 56px 56px;font-size:10.5px;padding:2px 0;border-bottom:1px dashed #e0dbd1;color:{{ r.sc }}"><span>{{ r.t }}</span><span>{{ r.route }}</span><span>{{ r.m }}</span><span>{{ r.s }}</span><span>{{ r.lat }}</span><span>{{ r.cost }}</span></div></sc-for>
+<span class="n">new rows slide in from top (150ms), errors flash red once</span>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;min-width:0">
+<div class="b" style="padding:10px 12px;display:flex;flex-direction:column;gap:5px">
+<div style="display:flex;align-items:center;gap:8px"><b style="font-size:14px">p95 heatmap</b><span class="lbl">provider × hour</span></div>
+<sc-for list="{{ heat }}" as="h" hint-placeholder-count="5"><div style="display:flex;align-items:center;gap:6px"><span style="width:66px;font-size:11px">{{ h.p }}</span><div style="flex:1;display:grid;grid-template-columns:repeat(24,1fr);gap:2px"><sc-for list="{{ h.cells }}" as="c" hint-placeholder-count="24"><div style="height:14px;border-radius:2px;background:{{ c.bg }}"></div></sc-for></div></div></sc-for>
+<span class="n">click a cell → requests table, pre-filtered</span>
+</div>
+<div class="b" style="padding:10px 12px;display:flex;flex-direction:column;gap:8px;flex:1">
+<b style="font-size:14px">Findings</b>
+<sc-for list="{{ findings }}" as="f" hint-placeholder-count="3"><div class="b2" style="padding:6px 10px;display:flex;gap:10px;align-items:center"><span class="chip" style="border-color:#2f6bff;color:#2f6bff">{{ f.tag }}</span><span style="font-size:12px;flex:1">{{ f.t }}</span><span style="font-size:12px;font-weight:700">{{ f.v }}</span></div></sc-for>
+</div>
+</div>
+</div>
+</div></div></div></div>
+
+<div class="dv-opt" id="1c"><div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a><b>Cost attribution</b> · sidebar grouped by pillar (Observe / Control / Protect) · answers “why did spend change?” with a delta waterfall + treemap.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:780px">
+<div style="width:184px;border-right:1.5px solid #2a2a2a;padding:14px 10px;display:flex;flex-direction:column;gap:2px;flex:none">
+<div style="font:700 15px Kalam;letter-spacing:.28em;padding:0 8px 10px">STRAT<span style="color:#2f6bff">AI</span>X</div>
+<div class="b2" style="padding:4px 8px;font-size:12px;color:#8a857c;margin-bottom:8px">Jump to…  ⌘K</div>
+<sc-for list="{{ navGroups }}" as="g" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:1px;margin-bottom:8px"><span class="lbl" style="padding:4px 8px;letter-spacing:.08em">{{ g.g }}</span><sc-for list="{{ g.items }}" as="n" hint-placeholder-count="3"><div style="display:flex;gap:9px;align-items:center;padding:3px 8px;border-radius:6px;font-size:13px;background:{{ n.bg }};color:{{ n.c }}"><span class="ico"></span>{{ n.l }}</div></sc-for></div></sc-for>
+<div style="flex:1"></div><span class="n" style="padding:0 8px">groups mirror the product pillars</span>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;min-width:0">
+<div style="height:46px;display:flex;align-items:center;gap:10px;padding:0 16px;border-bottom:1.5px solid #2a2a2a;flex:none">
+<span style="font-size:16px;font-weight:700">Cost</span><span class="lbl">/ yesterday → today</span><div style="flex:1"></div><span class="chip">Compare: day over day ▾</span><span class="chip">Group: team ▾</span>
+</div>
+<div style="flex:1;padding:16px;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:12px;grid-template-rows:auto 1fr">
+<div class="b" style="padding:12px 16px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:baseline;gap:12px"><b style="font-size:16px">Why did spend change?</b><span style="font-size:22px;font-weight:700">$3,734 → $4,182</span><span style="color:#d94a3a">+$448</span></div>
+<div style="height:200px;display:flex;align-items:flex-end;gap:14px;border-bottom:1.3px solid #2a2a2a;padding:0 8px">
+<sc-for list="{{ waterfall }}" as="w" hint-placeholder-count="7"><div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px"><span style="font-size:11px;font-weight:700;color:{{ w.c }}">{{ w.v }}</span><div style="width:100%;height:{{ w.h }};margin-bottom:{{ w.mb }};background:{{ w.bg }};border:1.4px solid #2a2a2a;border-radius:3px"></div></div></sc-for>
+</div>
+<div style="display:flex;gap:14px;padding:0 8px"><sc-for list="{{ waterfall }}" as="w" hint-placeholder-count="7"><span style="flex:1;text-align:center;font-size:11px;line-height:1.15">{{ w.l }}</span></sc-for></div>
+<span class="n">each bar is a finding — click opens the exact change + affected requests</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{ provMini }}" as="p" hint-placeholder-count="4"><div class="b" style="padding:8px 12px;display:flex;align-items:center;gap:10px"><div style="width:84px"><b style="font-size:13px">{{ p.p }}</b><div class="lbl">{{ p.r }} req · p95 {{ p.l }}</div></div><div style="flex:1;display:flex;align-items:flex-end;gap:2px;height:30px"><sc-for list="{{ p.sp }}" as="s" hint-placeholder-count="16"><div style="flex:1;background:#2a2a2a;height:{{ s.h }}"></div></sc-for></div></div></sc-for>
+</div>
+<div class="b" style="grid-column:span 2;padding:12px 16px;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:10px"><b style="font-size:14px">Where it goes</b><span class="lbl">team → app → route, sized by spend</span><div style="flex:1"></div><span class="lbl">breadcrumb: All / Support /</span></div>
+<div style="flex:1;display:grid;grid-template-columns:2.2fr 1.4fr 1fr .8fr;grid-template-rows:1fr 1fr;gap:4px;min-height:210px">
+<div class="b2" style="grid-row:span 2;padding:8px;background:#e6ecff;border-color:#2f6bff"><b>Support</b><div class="lbl">$1,840 · 44%</div><div style="display:grid;grid-template-columns:1.5fr 1fr;gap:4px;margin-top:8px;height:70%"><div class="b2" style="padding:5px;font-size:11px">triage-agent<br>$1,020</div><div style="display:grid;gap:4px"><div class="b2" style="padding:5px;font-size:11px">summarize · $510</div><div class="b2" style="padding:5px;font-size:11px">kb-search · $310</div></div></div></div>
+<div class="b2" style="grid-row:span 2;padding:8px"><b>Copilot</b><div class="lbl">$1,120 · 27%</div></div>
+<div class="b2" style="padding:8px"><b>Data</b><div class="lbl">$640</div></div>
+<div class="b2" style="padding:8px"><b>Sales</b><div class="lbl">$310</div></div>
+<div class="b2" style="padding:8px"><b>Batch</b><div class="lbl">$190</div></div>
+<div class="b2" style="padding:8px;color:#8a857c">other · $82</div>
+</div>
+<span class="n">click tile to drill in (zoom transition, 250ms) · ⌥-click = filter whole app</span>
+</div>
+</div></div></div></div></div>
+
+<div class="dv-opt" id="1d"><div class="dv-olabel"><a class="dv-oid" href="#1d">1d</a><b>Mobile</b> · swipeable KPI cards, spend chart, alerts first.</div>
+<div class="dv-card" style="width:360px;background:transparent;border:0;box-shadow:none"><div class="b" style="height:760px;border-radius:30px;display:flex;flex-direction:column;overflow:hidden">
+<div style="height:30px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:11px;flex:none"><span>9:41</span><span>▮▮▮</span></div>
+<div style="padding:4px 18px 10px;display:flex;align-items:center;gap:8px"><b style="font-size:20px">Overview</b><div style="flex:1"></div><span class="chip">prod ▾</span><span class="chip">24h</span></div>
+<div style="display:flex;gap:10px;padding:0 18px;overflow:hidden">
+<div class="b" style="flex:none;width:230px;padding:12px"><span class="lbl">Spend · today</span><div style="font-size:30px;font-weight:700">$4,182</div><span class="lbl" style="color:#d94a3a">+12% vs yday</span><div style="display:flex;align-items:flex-end;gap:3px;height:40px;margin-top:8px"><sc-for list="{{ sparkA }}" as="s" hint-placeholder-count="14"><div style="flex:1;background:#2a2a2a;height:{{ s.h }}"></div></sc-for></div></div>
+<div class="b" style="flex:none;width:230px;padding:12px"><span class="lbl">Requests</span><div style="font-size:30px;font-weight:700">1.24M</div></div>
+</div>
+<div style="display:flex;gap:5px;justify-content:center;padding:8px"><span class="dot" style="background:#2a2a2a"></span><span class="dot" style="border:1.2px solid #2a2a2a"></span><span class="dot" style="border:1.2px solid #2a2a2a"></span><span class="dot" style="border:1.2px solid #2a2a2a"></span></div>
+<div style="padding:0 18px;display:flex;flex-direction:column;gap:10px;flex:1">
+<div class="b" style="padding:10px 12px"><b style="font-size:14px">Alerts</b><sc-for list="{{ alerts }}" as="a" hint-placeholder-count="3"><div style="display:flex;gap:8px;align-items:center;font-size:12px;padding:6px 0;border-bottom:1px dashed #e0dbd1"><span class="dot" style="background:{{ a.c }}"></span><span style="flex:1">{{ a.t }}</span><span class="lbl">{{ a.time }}</span></div></sc-for></div>
+<div class="b" style="padding:10px 12px"><div style="display:flex"><b style="font-size:14px">p95 latency</b><div style="flex:1"></div><b>1.84s</b></div><div style="height:50px;display:flex;align-items:flex-end;gap:2px;margin-top:6px"><sc-for list="{{ traffic }}" as="t" hint-placeholder-count="40"><div style="flex:1;background:#b9b3a8;height:{{ t.h }}"></div></sc-for></div></div>
+<div class="b" style="padding:10px 12px;display:flex;gap:10px;align-items:center"><span class="chip" style="border-color:#2f6bff;color:#2f6bff">Finding</span><span style="font-size:12px">Cache break · support-agent</span></div>
+</div>
+<div style="height:60px;border-top:1.5px solid #2a2a2a;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;text-align:center;font-size:11px;flex:none"><div style="color:#2f6bff">▣<br>Overview</div><div>☰<br>Requests</div><div>◔<br>Alerts</div><div>⋯<br>More</div></div>
+</div></div></div>
+
+</div>
+
+<!-- ================= REQUESTS LIST ================= -->
+<div class="dv-grp"><h2>Requests / traces</h2><p>The workhorse table. Built for millions of rows: virtualized, query bar, facets, column picker.</p></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1e"><div class="dv-olabel"><a class="dv-oid" href="#1e">1e</a><b>Explorer table</b> · facets left, query bar + volume histogram, dense virtualized table, row → side drawer.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:780px">
+<div style="width:52px;border-right:1.5px solid #2a2a2a;display:flex;flex-direction:column;align-items:center;gap:14px;padding:14px 0;flex:none"><div style="font:700 14px Kalam;color:#2f6bff">S</div><sc-for list="{{ railReq }}" as="r" hint-placeholder-count="9"><div style="width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:{{ r.bg }};color:{{ r.c }}"><span class="ico" style="width:14px;height:14px"></span></div></sc-for></div>
+<div style="width:200px;border-right:1.5px solid #2a2a2a;padding:12px;display:flex;flex-direction:column;gap:12px;flex:none;overflow:hidden">
+<b style="font-size:14px">Filters</b>
+<sc-for list="{{ facets }}" as="f" hint-placeholder-count="5"><div style="display:flex;flex-direction:column;gap:3px"><span class="lbl" style="letter-spacing:.06em">{{ f.n }}</span><sc-for list="{{ f.v }}" as="v" hint-placeholder-count="3"><div style="display:flex;align-items:center;gap:6px;font-size:12px"><span style="width:10px;height:10px;border:1.3px solid #2a2a2a;border-radius:2px;background:{{ v.bg }}"></span><span style="flex:1">{{ v.l }}</span><span class="lbl">{{ v.c }}</span></div></sc-for></div></sc-for>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;min-width:0">
+<div style="padding:12px 16px 8px;display:flex;flex-direction:column;gap:8px;border-bottom:1.5px solid #2a2a2a">
+<div style="display:flex;align-items:center;gap:8px"><b style="font-size:16px">Requests</b><span class="lbl">1,240,882 in range</span><div style="flex:1"></div><span class="chip">Columns ▾</span><span class="chip">Density ▾</span><span class="chip">Export</span><span class="chip">Save view</span></div>
+<div class="b" style="padding:4px 10px;display:flex;gap:6px;align-items:center"><span class="mono" style="font-size:12px"><span style="color:#2f6bff">model:</span>claude-* <span style="color:#2f6bff">status:</span>error <span style="color:#2f6bff">latency:</span>&gt;2s <span style="color:#2f6bff">route:</span>support/*</span><div style="flex:1"></div><span class="chip">Last 24h ▾</span></div>
+<div style="height:52px;display:flex;align-items:flex-end;gap:2px;position:relative"><sc-for list="{{ hist }}" as="h" hint-placeholder-count="60"><div style="flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%"><div style="height:{{ h.e }};background:#d94a3a"></div><div style="height:{{ h.h }};background:#b9b3a8"></div></div></sc-for><div style="position:absolute;left:58%;width:14%;top:0;bottom:0;background:#2f6bff22;border-left:1.5px solid #2f6bff;border-right:1.5px solid #2f6bff"></div></div>
+<span class="n">brush histogram to set time range · red = errors</span>
+</div>
+<div style="display:grid;grid-template-columns:24px 92px 1.3fr 1.1fr 62px 70px 70px 62px 60px 1fr;font-size:11px;color:#6b665d;padding:6px 16px;border-bottom:1.2px solid #2a2a2a"><span>☐</span><span>time ↓</span><span>route</span><span>model</span><span>status</span><span>tok in</span><span>tok out</span><span>latency</span><span>cost</span><span>flags</span></div>
+<div style="flex:1;overflow:hidden">
+<sc-for list="{{ rowsLong }}" as="r" hint-placeholder-count="20"><div class="mono" style="display:grid;grid-template-columns:24px 92px 1.3fr 1.1fr 62px 70px 70px 62px 60px 1fr;font-size:10.5px;padding:4px 16px;border-bottom:1px dashed #e0dbd1;align-items:center;background:{{ r.bg }};color:{{ r.sc }}"><span>☐</span><span>{{ r.t }}</span><span>{{ r.route }}</span><span>{{ r.m }}</span><span>{{ r.s }}</span><span>{{ r.tin }}</span><span>{{ r.tout }}</span><span>{{ r.lat }}</span><span>{{ r.cost }}</span><span style="font-family:Kalam;color:#2f6bff">{{ r.flag }}</span></div></sc-for>
+</div>
+<div style="padding:6px 16px;border-top:1.2px solid #2a2a2a;display:flex;gap:10px;align-items:center" class="lbl"><span>virtualized · keyboard j/k to move, enter to open</span><div style="flex:1"></div><span class="n" style="font-size:15px">selected row opens a 480px drawer, table stays visible</span></div>
+</div></div></div></div>
+
+<div class="dv-opt" id="1f"><div class="dv-olabel"><a class="dv-oid" href="#1f">1f</a><b>Sessions + split pane</b> · grouped by agent session / trace, nested spans, live preview on the right.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:780px">
+<div style="width:184px;border-right:1.5px solid #2a2a2a;padding:14px 10px;display:flex;flex-direction:column;gap:2px;flex:none">
+<div style="font:700 15px Kalam;letter-spacing:.28em;padding:0 8px 12px">STRAT<span style="color:#2f6bff">AI</span>X</div>
+<sc-for list="{{ navReq }}" as="n" hint-placeholder-count="10"><div style="display:flex;gap:9px;align-items:center;padding:4px 8px;border-radius:6px;font-size:13px;background:{{ n.bg }};color:{{ n.c }}"><span class="ico"></span>{{ n.l }}</div></sc-for>
+</div>
+<div style="width:500px;border-right:1.5px solid #2a2a2a;display:flex;flex-direction:column;flex:none">
+<div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px;border-bottom:1.5px solid #2a2a2a">
+<div style="display:flex;gap:8px;align-items:center"><b style="font-size:16px">Sessions</b><div style="flex:1"></div><div style="display:flex;border:1.2px solid #2a2a2a;border-radius:6px;overflow:hidden;font-size:11px"><span style="padding:1px 8px">Requests</span><span style="padding:1px 8px;background:#262626;color:#fffdf8">Sessions</span></div></div>
+<div class="b2" style="padding:3px 8px;font-size:12px;color:#8a857c">Filter… agent:triage has:tool_call</div>
+<div style="display:flex;gap:6px"><span class="chip">errors only</span><span class="chip">guardrail hit</span><span class="chip">&gt; $0.50</span></div>
+</div>
+<div style="flex:1;overflow:hidden">
+<sc-for list="{{ sessions }}" as="s" hint-placeholder-count="6"><div style="padding:8px 14px;border-bottom:1px dashed #cfcac0;display:flex;flex-direction:column;gap:4px;background:{{ s.bg }}">
+<div style="display:flex;gap:8px;align-items:center"><span style="font-size:12px">{{ s.open }}</span><b style="font-size:13px">{{ s.n }}</b><span class="lbl">{{ s.id }}</span><div style="flex:1"></div><span class="lbl">{{ s.calls }} calls · {{ s.cost }} · {{ s.dur }}</span></div>
+<div style="height:8px;display:flex;gap:2px;margin-left:18px"><sc-for list="{{ s.segs }}" as="g" hint-placeholder-count="5"><div style="height:100%;border-radius:2px;width:{{ g.w }};background:{{ g.bg }}"></div></sc-for></div>
+<sc-if value="{{ s.expanded }}" hint-placeholder-val="{{ false }}"><div style="margin-left:18px;display:flex;flex-direction:column;gap:2px;margin-top:4px"><sc-for list="{{ spans }}" as="p" hint-placeholder-count="4"><div class="mono" style="font-size:10.5px;display:flex;gap:8px;padding:2px 6px;border-left:1.5px solid #2a2a2a"><span style="width:14px">{{ p.i }}</span><span style="flex:1">{{ p.n }}</span><span>{{ p.d }}</span></div></sc-for></div></sc-if>
+</div></sc-for>
+</div>
+</div>
+<div style="flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0">
+<div style="display:flex;align-items:center;gap:8px"><b style="font-size:15px">triage-agent · sess_8f2c</b><span class="chip" style="border-color:#d94a3a;color:#d94a3a">1 error</span><div style="flex:1"></div><span class="chip">Open full ↗</span></div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"><div class="b2" style="padding:6px 8px"><span class="lbl">Cost</span><div style="font-weight:700">$0.84</div></div><div class="b2" style="padding:6px 8px"><span class="lbl">Tokens</span><div style="font-weight:700">212k</div></div><div class="b2" style="padding:6px 8px"><span class="lbl">Duration</span><div style="font-weight:700">38.2s</div></div><div class="b2" style="padding:6px 8px"><span class="lbl">Cache hit</span><div style="font-weight:700">12%</div></div></div>
+<b style="font-size:13px">Timeline</b>
+<div style="display:flex;flex-direction:column;gap:4px"><sc-for list="{{ wf }}" as="w" hint-placeholder-count="8"><div style="display:grid;grid-template-columns:150px 1fr;gap:8px;align-items:center;font-size:11px"><span class="mono" style="font-size:10.5px">{{ w.n }}</span><div style="position:relative;height:12px"><div style="position:absolute;top:0;bottom:0;border-radius:3px;left:{{ w.l }};width:{{ w.w }};background:{{ w.bg }};border:1.2px solid #2a2a2a"></div></div></div></sc-for></div>
+<div class="b" style="padding:10px;display:flex;flex-direction:column;gap:6px;flex:1"><b style="font-size:13px">Last message</b><div class="ln" style="width:90%"></div><div class="ln" style="width:76%"></div><div class="ln" style="width:84%"></div><div class="ln" style="width:40%"></div><span class="n" style="margin-top:auto">preview updates on hover (debounced) — no click needed</span></div>
+</div>
+</div></div></div>
+
+<div class="dv-opt" id="1g"><div class="dv-olabel"><a class="dv-oid" href="#1g">1g</a><b>Mobile</b> · card rows, sticky filter chips, pull to refresh.</div>
+<div class="dv-card" style="width:360px;background:transparent;border:0;box-shadow:none"><div class="b" style="height:760px;border-radius:30px;display:flex;flex-direction:column;overflow:hidden">
+<div style="height:30px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:11px;flex:none"><span>9:41</span><span>▮▮▮</span></div>
+<div style="padding:4px 18px 8px;display:flex;flex-direction:column;gap:8px;border-bottom:1.5px solid #2a2a2a"><div style="display:flex;align-items:center"><b style="font-size:20px">Requests</b><div style="flex:1"></div><span class="chip">⇅ Sort</span></div><div class="b2" style="padding:4px 10px;font-size:12px;color:#8a857c">Search route, model, id…</div><div style="display:flex;gap:6px;overflow:hidden"><span class="chip" style="background:#262626;color:#fffdf8">Errors</span><span class="chip">&gt;2s</span><span class="chip">Guardrail</span><span class="chip">claude-*</span></div></div>
+<div style="flex:1;overflow:hidden;padding:8px 14px;display:flex;flex-direction:column;gap:8px">
+<sc-for list="{{ rowsShort }}" as="r" hint-placeholder-count="6"><div class="b2" style="padding:8px 10px;display:flex;flex-direction:column;gap:3px"><div style="display:flex;gap:8px;align-items:center"><span class="dot" style="background:{{ r.sc }}"></span><b style="font-size:13px">{{ r.route }}</b><div style="flex:1"></div><span class="lbl">{{ r.t }}</span></div><div class="mono" style="font-size:10.5px;display:flex;gap:10px;color:#6b665d"><span>{{ r.m }}</span><span>{{ r.lat }}</span><span>{{ r.cost }}</span></div></div></sc-for>
+</div>
+<div style="height:60px;border-top:1.5px solid #2a2a2a;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;text-align:center;font-size:11px;flex:none"><div>▣<br>Overview</div><div style="color:#2f6bff">☰<br>Requests</div><div>◔<br>Alerts</div><div>⋯<br>More</div></div>
+</div></div></div>
+
+</div>
+
+<!-- ================= DETAIL ================= -->
+<div class="dv-grp"><h2>Request detail</h2><p>One request through the gateway: what came in, what the gateway changed, what went out, what it cost.</p></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1h"><div class="dv-olabel"><a class="dv-oid" href="#1h">1h</a><b>Waterfall + tabs</b> · span timeline is the hero, metadata rail on the right. Familiar APM pattern.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:780px">
+<div style="width:52px;border-right:1.5px solid #2a2a2a;display:flex;flex-direction:column;align-items:center;gap:14px;padding:14px 0;flex:none"><div style="font:700 14px Kalam;color:#2f6bff">S</div><sc-for list="{{ railReq }}" as="r" hint-placeholder-count="9"><div style="width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:{{ r.bg }};color:{{ r.c }}"><span class="ico" style="width:14px;height:14px"></span></div></sc-for></div>
+<div style="flex:1;display:flex;flex-direction:column;min-width:0">
+<div style="padding:12px 18px;border-bottom:1.5px solid #2a2a2a;display:flex;flex-direction:column;gap:8px">
+<span class="lbl">Requests / support/triage /</span>
+<div style="display:flex;align-items:center;gap:10px"><b class="mono" style="font-size:16px">req_01J9X…7KQ2</b><span class="chip" style="border-color:#d94a3a;color:#d94a3a">429 → retried → 200</span><span class="chip">claude-sonnet-4</span><div style="flex:1"></div><span class="chip">↻ Replay</span><span class="chip">Copy cURL</span><span class="chip">← → prev/next</span></div>
+<div style="display:flex;gap:26px;font-size:12px"><span><span class="lbl">Latency</span> <b>2.41s</b></span><span><span class="lbl">TTFT</span> <b>620ms</b></span><span><span class="lbl">Tokens</span> <b>48,210 → 812</b></span><span><span class="lbl">Cost</span> <b>$0.146</b></span><span><span class="lbl">Cache</span> <b>miss</b></span><span><span class="lbl">Guardrails</span> <b style="color:#2f6bff">2 actions</b></span></div>
+<div style="display:flex;gap:18px;font-size:13px;margin-bottom:-9px"><span style="border-bottom:2.5px solid #2f6bff;padding-bottom:5px;color:#2f6bff">Timeline</span><span>Request</span><span>Response</span><span>Guardrails</span><span>Cost</span><span>Raw JSON</span></div>
+</div>
+<div style="flex:1;padding:14px 18px;display:flex;flex-direction:column;gap:6px">
+<div style="display:grid;grid-template-columns:220px 1fr 70px;font-size:11px;color:#6b665d;border-bottom:1.2px solid #2a2a2a;padding-bottom:4px"><span>span</span><div style="display:flex;justify-content:space-between"><span>0</span><span>0.6s</span><span>1.2s</span><span>1.8s</span><span>2.4s</span></div><span style="text-align:right">dur</span></div>
+<sc-for list="{{ wf }}" as="w" hint-placeholder-count="8"><div style="display:grid;grid-template-columns:220px 1fr 70px;align-items:center;font-size:12px;padding:3px 0;border-bottom:1px dashed #e0dbd1"><span style="padding-left:{{ w.ind }}">{{ w.n }}</span><div style="position:relative;height:14px"><div style="position:absolute;top:0;bottom:0;border-radius:3px;left:{{ w.l }};width:{{ w.w }};background:{{ w.bg }};border:1.2px solid #2a2a2a"></div></div><span class="mono" style="text-align:right;font-size:11px">{{ w.d }}</span></div></sc-for>
+<span class="n">click a span → its payload + gateway decision expands inline below</span>
+<div class="b" style="padding:10px 12px;display:flex;flex-direction:column;gap:6px;margin-top:6px">
+<div style="display:flex;gap:8px;align-items:center"><b style="font-size:13px">guardrail.input · pii-redact</b><span class="chip" style="border-color:#2f6bff;color:#2f6bff">modified</span></div>
+<div class="mono" style="font-size:11px;display:grid;grid-template-columns:1fr 1fr;gap:12px"><div class="b2" style="padding:6px 8px">…customer <s style="color:#d94a3a">jane@acme.com</s> called about…</div><div class="b2" style="padding:6px 8px">…customer <span style="color:#2f6bff">[EMAIL_1]</span> called about…</div></div>
+</div>
+</div>
+</div>
+<div style="width:260px;border-left:1.5px solid #2a2a2a;padding:14px;display:flex;flex-direction:column;gap:10px;flex:none;background:#f8f5ef">
+<b style="font-size:14px">Attributes</b>
+<sc-for list="{{ attrs }}" as="a" hint-placeholder-count="8"><div style="display:flex;flex-direction:column"><span class="lbl">{{ a.k }}</span><span class="mono" style="font-size:11.5px">{{ a.v }}</span></div></sc-for>
+<b style="font-size:14px;margin-top:6px">Tags</b><div style="display:flex;flex-wrap:wrap;gap:5px"><span class="chip">user:4412</span><span class="chip">ticket:88213</span><span class="chip">+ add</span></div>
+</div>
+</div></div></div>
+
+<div class="dv-opt" id="1i"><div class="dv-olabel"><a class="dv-oid" href="#1i">1i</a><b>Inspector · in → gateway → out</b> · three columns tell the gateway story; token anatomy bar shows where the 48k went.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:780px">
+<div style="width:184px;border-right:1.5px solid #2a2a2a;padding:14px 10px;display:flex;flex-direction:column;gap:2px;flex:none">
+<div style="font:700 15px Kalam;letter-spacing:.28em;padding:0 8px 12px">STRAT<span style="color:#2f6bff">AI</span>X</div>
+<sc-for list="{{ navReq }}" as="n" hint-placeholder-count="10"><div style="display:flex;gap:9px;align-items:center;padding:4px 8px;border-radius:6px;font-size:13px;background:{{ n.bg }};color:{{ n.c }}"><span class="ico"></span>{{ n.l }}</div></sc-for>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;min-width:0;padding:14px 18px;gap:12px">
+<div style="display:flex;align-items:center;gap:10px"><span class="lbl">← Requests</span><b class="mono" style="font-size:15px">req_01J9X…7KQ2</b><span class="chip">support/triage</span><span class="chip">claude-sonnet-4</span><div style="flex:1"></div><span style="font-size:13px"><b>$0.146</b> · 2.41s · 200</span></div>
+<div class="b" style="padding:10px 14px;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;align-items:center;gap:10px"><b style="font-size:13px">Token anatomy</b><span class="lbl">48,210 input tokens</span><div style="flex:1"></div><span class="n">hover a segment to highlight it in the prompt below</span></div>
+<div style="display:flex;height:26px;border:1.5px solid #2a2a2a;border-radius:5px;overflow:hidden;font-size:11px">
+<div style="width:9%;background:#dcd7cd;padding:4px 6px;border-right:1.2px solid #2a2a2a">sys</div><div style="width:62%;background:repeating-linear-gradient(135deg,#d94a3a33 0 5px,transparent 5px 10px);padding:4px 6px;border-right:1.2px solid #2a2a2a;color:#d94a3a">tool definitions · 29.9k · 31 of 34 never called</div><div style="width:22%;background:#b9b3a8;padding:4px 6px;border-right:1.2px solid #2a2a2a">history</div><div style="width:7%;background:#2f6bff;color:#fffdf8;padding:4px 6px">user</div>
+</div>
+</div>
+<div style="flex:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;min-height:0">
+<div class="b" style="padding:10px 12px;display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:center"><b style="font-size:14px">① Incoming</b><div style="flex:1"></div><span class="lbl">from agent</span></div>
+<sc-for list="{{ msgs }}" as="m" hint-placeholder-count="4"><div class="b2" style="padding:6px 8px;display:flex;flex-direction:column;gap:4px"><span class="lbl">{{ m.r }}</span><div class="ln" style="width:{{ m.a }}"></div><div class="ln" style="width:{{ m.b }}"></div></div></sc-for></div>
+<div class="b" style="padding:10px 12px;display:flex;flex-direction:column;gap:8px;border-color:#2f6bff;border-width:2px"><div style="display:flex;align-items:center"><b style="font-size:14px;color:#2f6bff">② Gateway actions</b></div>
+<sc-for list="{{ actions }}" as="a" hint-placeholder-count="5"><div style="display:flex;gap:8px;align-items:flex-start;font-size:12px"><span style="width:16px;height:16px;border-radius:50%;border:1.4px solid #2a2a2a;flex:none;display:flex;align-items:center;justify-content:center;font-size:10px;background:{{ a.bg }}">{{ a.i }}</span><div style="flex:1"><b>{{ a.t }}</b><div class="lbl">{{ a.d }}</div></div></div></sc-for>
+<span class="n" style="margin-top:auto">each action links to the policy that fired</span></div>
+<div class="b" style="padding:10px 12px;display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:center"><b style="font-size:14px">③ Response</b><div style="flex:1"></div><span class="lbl">from anthropic · 812 tok</span></div>
+<div class="b2" style="padding:6px 8px;display:flex;flex-direction:column;gap:4px"><span class="lbl">assistant</span><div class="ln" style="width:94%"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:70%"></div></div>
+<div class="b2" style="padding:6px 8px;display:flex;flex-direction:column;gap:4px"><span class="lbl">tool_call · lookup_order</span><div class="mono" style="font-size:10.5px">{ "order_id": "A-2231" }</div></div>
+<div class="b2" style="padding:6px 8px;font-size:12px;display:flex;gap:6px;align-items:center"><span class="dot" style="background:#2f6bff"></span>output guardrail: pass</div>
+</div>
+</div>
+</div></div></div></div>
+
+<div class="dv-opt" id="1j"><div class="dv-olabel"><a class="dv-oid" href="#1j">1j</a><b>Mobile</b> · summary up top, sections as accordions.</div>
+<div class="dv-card" style="width:360px;background:transparent;border:0;box-shadow:none"><div class="b" style="height:760px;border-radius:30px;display:flex;flex-direction:column;overflow:hidden">
+<div style="height:30px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:11px;flex:none"><span>9:41</span><span>▮▮▮</span></div>
+<div style="padding:4px 18px 10px;display:flex;flex-direction:column;gap:6px;border-bottom:1.5px solid #2a2a2a"><span class="lbl">‹ Requests</span><b class="mono" style="font-size:15px">req_01J9X…7KQ2</b><div style="display:flex;gap:6px"><span class="chip">200</span><span class="chip">claude-sonnet-4</span></div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px"><div class="b2" style="padding:8px"><span class="lbl">Cost</span><div style="font-size:20px;font-weight:700">$0.146</div></div><div class="b2" style="padding:8px"><span class="lbl">Latency</span><div style="font-size:20px;font-weight:700">2.41s</div></div><div class="b2" style="padding:8px"><span class="lbl">Tokens in</span><div style="font-size:20px;font-weight:700">48.2k</div></div><div class="b2" style="padding:8px"><span class="lbl">Guardrails</span><div style="font-size:20px;font-weight:700;color:#2f6bff">2</div></div></div>
+<div style="padding:0 16px;display:flex;flex-direction:column;gap:8px;flex:1">
+<div class="b" style="padding:10px 12px"><div style="display:flex"><b style="font-size:14px">Timeline</b><div style="flex:1"></div>▾</div><div style="display:flex;flex-direction:column;gap:3px;margin-top:6px"><sc-for list="{{ wf }}" as="w" hint-placeholder-count="8"><div style="position:relative;height:9px"><div style="position:absolute;top:0;bottom:0;border-radius:2px;left:{{ w.l }};width:{{ w.w }};background:{{ w.bg }};border:1px solid #2a2a2a"></div></div></sc-for></div></div>
+<div class="b" style="padding:10px 12px;display:flex"><b style="font-size:14px">Gateway actions · 5</b><div style="flex:1"></div>▸</div>
+<div class="b" style="padding:10px 12px;display:flex"><b style="font-size:14px">Request</b><div style="flex:1"></div>▸</div>
+<div class="b" style="padding:10px 12px;display:flex"><b style="font-size:14px">Response</b><div style="flex:1"></div>▸</div>
+<div class="b" style="padding:10px 12px;display:flex"><b style="font-size:14px">Attributes</b><div style="flex:1"></div>▸</div>
+</div>
+<div style="padding:12px 16px;display:flex;gap:8px;border-top:1.5px solid #2a2a2a"><div class="b" style="flex:1;text-align:center;padding:10px;font-size:13px">Share</div><div class="b" style="flex:1;text-align:center;padding:10px;font-size:13px;border-color:#2f6bff;color:#2f6bff">Replay</div></div>
+</div></div></div>
+
+</div>
+
+<!-- ================= ONBOARDING ================= -->
+<div class="dv-grp"><h2>Sign-in &amp; onboarding</h2><p>Goal: first request through the gateway in under 5 minutes. One base-URL swap.</p></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1k"><div class="dv-olabel"><a class="dv-oid" href="#1k">1k</a><b>Split sign-in</b> · form left, live gateway animation right (same visual as the landing hero).</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:720px">
+<div style="width:480px;padding:40px 56px;display:flex;flex-direction:column;gap:14px;flex:none">
+<div style="font:700 17px Kalam;letter-spacing:.28em">STRAT<span style="color:#2f6bff">AI</span>X</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px">
+<b style="font-size:30px;line-height:1.1">Sign in to your control plane</b>
+<span class="lbl" style="font-size:13px">New here? <u>Create a workspace</u></span>
+<div class="b" style="padding:10px;text-align:center;font-size:14px">Continue with GitHub</div>
+<div class="b" style="padding:10px;text-align:center;font-size:14px">Continue with Google</div>
+<div class="b" style="padding:10px;text-align:center;font-size:14px">SSO (SAML / OIDC)</div>
+<div style="display:flex;align-items:center;gap:10px" class="lbl"><div style="flex:1;border-top:1.2px solid #cfcac0"></div>or<div style="flex:1;border-top:1.2px solid #cfcac0"></div></div>
+<div style="display:flex;flex-direction:column;gap:4px"><span class="lbl">Work email</span><div class="b2" style="padding:8px 10px;font-size:13px;color:#8a857c">you@company.com</div></div>
+<div class="b" style="padding:10px;text-align:center;font-size:14px;border-color:#2f6bff;color:#2f6bff;border-width:2px">Send magic link →</div>
+</div>
+<span class="lbl">SOC 2 in progress · data stays in your region</span>
+</div>
+<div style="flex:1;border-left:1.5px solid #2a2a2a;padding:28px;display:flex;flex-direction:column;gap:12px;background:#f3f0ea">
+<div class="ph" style="flex:1">GATEWAY FLOW ANIMATION<br>agents → control plane → providers<br>(reuse GatewayFlow canvas from site)</div>
+<div style="display:flex;gap:10px"><div class="b2" style="flex:1;padding:8px 10px"><b>45k → 7k</b><div class="lbl">tokens / turn</div></div><div class="b2" style="flex:1;padding:8px 10px"><b>7% → 84%</b><div class="lbl">cache hit rate</div></div><div class="b2" style="flex:1;padding:8px 10px"><b>1</b><div class="lbl">endpoint to swap</div></div></div>
+<span class="n">dots stream continuously; slows on hover</span>
+</div>
+</div></div></div>
+
+<div class="dv-opt" id="1l"><div class="dv-olabel"><a class="dv-oid" href="#1l">1l</a><b>Setup checklist</b> · post-sign-up: 3 steps, code snippet, live “waiting for first request” listener.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:720px">
+<div style="width:280px;border-right:1.5px solid #2a2a2a;padding:28px 22px;display:flex;flex-direction:column;gap:16px;flex:none;background:#f8f5ef">
+<div style="font:700 15px Kalam;letter-spacing:.28em">STRAT<span style="color:#2f6bff">AI</span>X</div>
+<b style="font-size:18px;margin-top:12px">Set up acme</b>
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="4"><div style="display:flex;gap:10px;align-items:flex-start"><span style="width:22px;height:22px;border-radius:50%;border:1.5px solid {{ s.bc }};background:{{ s.bg }};color:{{ s.fc }};display:flex;align-items:center;justify-content:center;font-size:11px;flex:none">{{ s.i }}</span><div><b style="font-size:13px;color:{{ s.tc }}">{{ s.t }}</b><div class="lbl">{{ s.d }}</div></div></div></sc-for>
+<div style="flex:1"></div><span class="lbl">Skip to dashboard →</span>
+</div>
+<div style="flex:1;padding:36px 48px;display:flex;flex-direction:column;gap:16px;min-width:0">
+<span class="lbl">STEP 2 OF 4</span>
+<b style="font-size:28px;line-height:1.1">Point your traffic at one endpoint</b>
+<span style="font-size:14px;max-width:560px;color:#4a4740">OpenAI-compatible — swap the base URL, keep your SDK and your provider keys.</span>
+<div class="b" style="display:flex;flex-direction:column">
+<div style="display:flex;gap:16px;padding:8px 14px;border-bottom:1.5px solid #2a2a2a;font-size:13px"><span style="color:#2f6bff;border-bottom:2px solid #2f6bff">Python</span><span>Node</span><span>cURL</span><span>LangChain</span><span>Vercel AI SDK</span><div style="flex:1"></div><span class="chip">Copy</span></div>
+<div class="mono" style="padding:14px 16px;font-size:12.5px;line-height:1.7;background:#f3f0ea">client = OpenAI(<br>&nbsp;&nbsp;<span style="background:#2f6bff22;color:#2f6bff">base_url="https://gw.strataix.in/v1",</span><br>&nbsp;&nbsp;api_key="sx_live_••••••••3f9a",<br>)</div>
+</div>
+<div class="b" style="padding:14px 16px;display:flex;align-items:center;gap:14px;border-style:dashed">
+<span style="width:12px;height:12px;border-radius:50%;background:#2f6bff;box-shadow:0 0 0 6px #2f6bff22"></span>
+<div style="flex:1"><b style="font-size:14px">Waiting for your first request…</b><div class="lbl">We’ll show it here the moment it lands.</div></div>
+<span class="chip">Send a test request</span>
+</div>
+<span class="n">on arrival: row animates in, confetti-free — just a check + “View it in Requests →”</span>
+<div style="flex:1"></div>
+<div style="display:flex;gap:10px"><div class="b" style="padding:8px 16px;font-size:13px">Back</div><div class="b" style="padding:8px 16px;font-size:13px;border-color:#2f6bff;color:#2f6bff;border-width:2px">Continue</div></div>
+</div>
+</div></div></div>
+
+<div class="dv-opt" id="1m"><div class="dv-olabel"><a class="dv-oid" href="#1m">1m</a><b>Mobile</b> · sign-in; setup continues on desktop via emailed link.</div>
+<div class="dv-card" style="width:360px;background:transparent;border:0;box-shadow:none"><div class="b" style="height:720px;border-radius:30px;display:flex;flex-direction:column;overflow:hidden">
+<div style="height:30px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:11px;flex:none"><span>9:41</span><span>▮▮▮</span></div>
+<div class="ph" style="height:200px;margin:8px 16px;flex:none">gateway animation<br>(cropped, loops)</div>
+<div style="padding:12px 22px;display:flex;flex-direction:column;gap:10px;flex:1">
+<div style="font:700 15px Kalam;letter-spacing:.28em">STRAT<span style="color:#2f6bff">AI</span>X</div>
+<b style="font-size:24px;line-height:1.1">Sign in to your control plane</b>
+<div class="b" style="padding:11px;text-align:center;font-size:14px">Continue with GitHub</div>
+<div class="b" style="padding:11px;text-align:center;font-size:14px">Continue with Google</div>
+<div class="b2" style="padding:10px;font-size:13px;color:#8a857c">you@company.com</div>
+<div class="b" style="padding:11px;text-align:center;font-size:14px;border-color:#2f6bff;color:#2f6bff;border-width:2px">Send magic link →</div>
+<div style="flex:1"></div><span class="lbl" style="text-align:center">SSO · Create a workspace</span>
+</div>
+</div></div></div>
+
+</div>
+
+<!-- ================= SETTINGS ================= -->
+<div class="dv-grp"><h2>Settings &amp; policy</h2><p>Keys, providers, routes, budgets and guardrail policies — the “control” half of the control plane.</p></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1n"><div class="dv-olabel"><a class="dv-oid" href="#1n">1n</a><b>Sub-nav + tables</b> · settings sections on the left; virtual keys shown with spend vs budget and rate limits inline.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:720px">
+<div style="width:52px;border-right:1.5px solid #2a2a2a;display:flex;flex-direction:column;align-items:center;gap:14px;padding:14px 0;flex:none"><div style="font:700 14px Kalam;color:#2f6bff">S</div><sc-for list="{{ railSet }}" as="r" hint-placeholder-count="9"><div style="width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:{{ r.bg }};color:{{ r.c }}"><span class="ico" style="width:14px;height:14px"></span></div></sc-for></div>
+<div style="width:200px;border-right:1.5px solid #2a2a2a;padding:14px 12px;display:flex;flex-direction:column;gap:2px;flex:none;background:#f8f5ef">
+<b style="font-size:15px;margin-bottom:8px">Settings</b>
+<sc-for list="{{ setNav }}" as="s" hint-placeholder-count="10"><div style="padding:4px 8px;border-radius:6px;font-size:13px;background:{{ s.bg }};color:{{ s.c }}">{{ s.l }}</div></sc-for>
+</div>
+<div style="flex:1;padding:20px 24px;display:flex;flex-direction:column;gap:12px;min-width:0">
+<div style="display:flex;align-items:center;gap:10px"><b style="font-size:20px">API keys</b><span class="lbl">virtual keys map to your provider keys; budgets &amp; limits apply per key</span><div style="flex:1"></div><div class="b" style="padding:4px 12px;font-size:13px;border-color:#2f6bff;color:#2f6bff">+ Create key</div></div>
+<div style="display:flex;gap:8px"><div class="b2" style="padding:3px 8px;font-size:12px;color:#8a857c;width:240px">Search keys…</div><span class="chip">Team ▾</span><span class="chip">Status ▾</span></div>
+<div style="display:grid;grid-template-columns:1.3fr 1fr .8fr 1.6fr 1fr .8fr 40px;font-size:11px;color:#6b665d;border-bottom:1.2px solid #2a2a2a;padding-bottom:4px"><span>Name</span><span>Key</span><span>Team</span><span>Spend / budget (month)</span><span>Rate limit</span><span>Last used</span><span></span></div>
+<sc-for list="{{ keys }}" as="k" hint-placeholder-count="7"><div style="display:grid;grid-template-columns:1.3fr 1fr .8fr 1.6fr 1fr .8fr 40px;font-size:12px;align-items:center;padding:6px 0;border-bottom:1px dashed #cfcac0"><b style="font-weight:400">{{ k.n }}</b><span class="mono" style="font-size:11px">{{ k.k }}</span><span>{{ k.t }}</span><div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:8px;border:1.2px solid #2a2a2a;border-radius:3px"><div style="height:100%;width:{{ k.p }};background:{{ k.c }}"></div></div><span class="lbl" style="width:84px">{{ k.s }}</span></div><span class="mono" style="font-size:11px">{{ k.r }}</span><span class="lbl">{{ k.u }}</span><span>⋯</span></div></sc-for>
+<span class="n">row click → side sheet: scopes, allowed models, budget alerts, rotate / revoke</span>
+</div>
+</div></div></div>
+
+<div class="dv-opt" id="1o"><div class="dv-olabel"><a class="dv-oid" href="#1o">1o</a><b>Policy builder</b> · guardrail rules as readable when/then sentences, with a test-against-real-traffic panel.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;height:720px">
+<div style="width:184px;border-right:1.5px solid #2a2a2a;padding:14px 10px;display:flex;flex-direction:column;gap:2px;flex:none">
+<div style="font:700 15px Kalam;letter-spacing:.28em;padding:0 8px 12px">STRAT<span style="color:#2f6bff">AI</span>X</div>
+<sc-for list="{{ navPol }}" as="n" hint-placeholder-count="10"><div style="display:flex;gap:9px;align-items:center;padding:4px 8px;border-radius:6px;font-size:13px;background:{{ n.bg }};color:{{ n.c }}"><span class="ico"></span>{{ n.l }}</div></sc-for>
+</div>
+<div style="flex:1;padding:18px 22px;display:flex;flex-direction:column;gap:12px;min-width:0">
+<span class="lbl">Guardrails / policies /</span>
+<div style="display:flex;align-items:center;gap:10px"><b style="font-size:20px">support-agent · input &amp; output</b><span class="chip" style="border-color:#2f6bff;color:#2f6bff">● enforcing</span><div style="flex:1"></div><span class="chip">Version 7 ▾</span><span class="chip">Shadow mode</span></div>
+<sc-for list="{{ rules }}" as="r" hint-placeholder-count="4"><div class="b" style="padding:10px 12px;display:flex;gap:10px;align-items:center">
+<span class="lbl" style="width:16px">⋮⋮</span>
+<div style="flex:1;font-size:13px;display:flex;flex-wrap:wrap;gap:6px;align-items:center"><span class="lbl">WHEN</span><span class="chip">{{ r.w }}</span><span class="lbl">{{ r.op }}</span><span class="chip">{{ r.c }}</span><span class="lbl">THEN</span><span class="chip" style="border-color:{{ r.ac }};color:{{ r.ac }}">{{ r.a }}</span></div>
+<span class="lbl">{{ r.hits }}</span><span style="width:28px;height:16px;border:1.4px solid #2a2a2a;border-radius:9px;position:relative"><span style="position:absolute;top:2px;left:13px;width:10px;height:10px;border-radius:50%;background:#2a2a2a"></span></span>
+</div></sc-for>
+<div class="b2" style="padding:10px;text-align:center;font-size:13px;border-style:dashed">+ Add rule</div>
+<span class="n">drag to reorder — first match wins. Edits create a draft version; diff before publish.</span>
+</div>
+<div style="width:320px;border-left:1.5px solid #2a2a2a;padding:18px;display:flex;flex-direction:column;gap:10px;flex:none;background:#f8f5ef">
+<b style="font-size:15px">Test against traffic</b>
+<span class="lbl">Replay the draft over the last 24h of support/* requests</span>
+<div class="b" style="padding:10px;display:flex;flex-direction:column;gap:6px"><div style="display:flex;justify-content:space-between;font-size:13px"><span>Would block</span><b>41</b></div><div style="display:flex;justify-content:space-between;font-size:13px"><span>Would redact</span><b>1,208</b></div><div style="display:flex;justify-content:space-between;font-size:13px"><span>Added latency p95</span><b>+18ms</b></div></div>
+<span class="lbl">SAMPLE MATCHES</span>
+<sc-for list="{{ rowsShort }}" as="r" hint-placeholder-count="5"><div class="b2 mono" style="padding:5px 8px;font-size:10.5px;display:flex;gap:8px"><span>{{ r.t }}</span><span style="flex:1">{{ r.route }}</span><span style="color:#2f6bff">redact</span></div></sc-for>
+<div style="flex:1"></div><div class="b" style="padding:8px;text-align:center;font-size:13px;border-color:#2f6bff;color:#2f6bff;border-width:2px">Publish v8</div>
+</div>
+</div></div></div>
+
+<div class="dv-opt" id="1p"><div class="dv-olabel"><a class="dv-oid" href="#1p">1p</a><b>Mobile</b> · settings list; mobile is read + toggle, deep editing stays desktop.</div>
+<div class="dv-card" style="width:360px;background:transparent;border:0;box-shadow:none"><div class="b" style="height:720px;border-radius:30px;display:flex;flex-direction:column;overflow:hidden">
+<div style="height:30px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:11px;flex:none"><span>9:41</span><span>▮▮▮</span></div>
+<div style="padding:4px 18px 12px"><b style="font-size:20px">Settings</b></div>
+<div style="padding:0 16px;display:flex;flex-direction:column;gap:14px;flex:1">
+<div class="b" style="display:flex;flex-direction:column"><sc-for list="{{ setMobA }}" as="s" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:10px;padding:11px 12px;border-bottom:1px dashed #cfcac0;font-size:14px"><span class="ico"></span><span style="flex:1">{{ s.l }}</span><span class="lbl">{{ s.v }}</span><span>›</span></div></sc-for></div>
+<div class="b" style="display:flex;flex-direction:column"><sc-for list="{{ setMobB }}" as="s" hint-placeholder-count="4"><div style="display:flex;align-items:center;gap:10px;padding:11px 12px;border-bottom:1px dashed #cfcac0;font-size:14px"><span class="ico"></span><span style="flex:1">{{ s.l }}</span><span class="lbl">{{ s.v }}</span><span>›</span></div></sc-for></div>
+<div class="b" style="padding:11px 12px;display:flex;align-items:center;font-size:14px"><span style="flex:1">Push alerts</span><span style="width:34px;height:20px;border:1.5px solid #2f6bff;border-radius:11px;position:relative;background:#2f6bff22"><span style="position:absolute;top:3px;left:16px;width:11px;height:11px;border-radius:50%;background:#2f6bff"></span></span></div>
+</div>
+<div style="height:60px;border-top:1.5px solid #2a2a2a;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;text-align:center;font-size:11px;flex:none"><div>▣<br>Overview</div><div>☰<br>Requests</div><div>◔<br>Alerts</div><div style="color:#2f6bff">⋯<br>More</div></div>
+</div></div></div>
+
+</div>
+
+<!-- ================= LANDING ================= -->
+<div class="dv-grp"><h2>Marketing landing page</h2><p>Copy from the current site. Minimal and smooth — motion carries the story. Blue notes describe scroll / parallax behaviour.</p></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1q"><div class="dv-olabel"><a class="dv-oid" href="#1q">1q</a><b>Cinematic hero</b> · full-bleed live gateway, parallax depth layers, sticky “findings” scroller.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;flex-direction:column">
+<div style="height:56px;display:flex;align-items:center;gap:24px;padding:0 40px;border-bottom:1.2px solid #cfcac0"><div style="font:700 16px Kalam;letter-spacing:.28em">STRAT<span style="color:#2f6bff">AI</span>X</div><div style="flex:1"></div><span style="font-size:13px">Blog</span><span style="font-size:13px">Roadmap</span><div class="b" style="padding:3px 12px;font-size:13px;border-color:#2f6bff;color:#2f6bff">Join waitlist</div></div>
+<div style="position:relative;height:620px;padding:70px 40px;display:flex;flex-direction:column;gap:18px;overflow:hidden">
+<div class="ph" style="position:absolute;inset:40px 40px 40px 520px;border-radius:16px">LIVE GATEWAY FLOW · full-bleed canvas<br>agents → control plane (pulsing ring of 7 controls) → providers<br>layer z=−1, moves 0.4× scroll</div>
+<span class="chip" style="align-self:flex-start;position:relative">● Pre-release · building in the open</span>
+<b style="font-size:58px;line-height:1;max-width:520px;position:relative">The <span style="color:#2f6bff">control plane</span> for production AI.</b>
+<span style="font-size:15px;max-width:440px;color:#4a4740;position:relative">Strataix sits in front of your providers, records every request, and surfaces the quiet waste — then cuts it.</span>
+<div style="display:flex;gap:8px;position:relative"><div class="b2" style="padding:8px 12px;width:220px;font-size:13px;color:#8a857c">you@company.com</div><div class="b" style="padding:8px 14px;font-size:13px;border-color:#2f6bff;color:#2f6bff;border-width:2px">Join waitlist</div></div>
+<span class="n" style="position:relative;max-width:420px">headline words rise + unblur in sequence (60ms stagger); canvas fades up behind</span>
+<div style="position:absolute;left:40px;right:40px;bottom:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px"><div style="border-top:1.5px solid #2a2a2a;padding-top:8px"><b style="font-size:22px">1</b> <span class="lbl">gateway — one log, one event stream</span></div><div style="border-top:1.5px solid #2a2a2a;padding-top:8px"><b style="font-size:22px">1</b> <span class="lbl">lane first — observability, in service of cost</span></div><div style="border-top:1.5px solid #2a2a2a;padding-top:8px"><b style="font-size:22px">0</b> <span class="lbl">lock-in — OpenAI-compatible, your keys</span></div></div>
+</div>
+<div style="padding:18px 40px;display:flex;align-items:center;gap:30px;border-top:1.2px solid #cfcac0;border-bottom:1.2px solid #cfcac0"><span class="lbl">Works with the providers you already use</span><span>OpenAI</span><span>Anthropic</span><span>Google</span><span>Mistral</span><span>Open source</span><div style="flex:1"></div><span class="n">slow infinite marquee</span></div>
+<div style="padding:70px 40px;display:grid;grid-template-columns:400px 1fr;gap:50px">
+<div style="display:flex;flex-direction:column;gap:12px"><span class="lbl">01 — What the log reveals</span><b style="font-size:32px;line-height:1.1">Three kinds of waste that only show up in the request stream.</b><span class="n">left column is sticky; right cards scroll past it</span></div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<sc-for list="{{ landFindings }}" as="f" hint-placeholder-count="3"><div class="b" style="padding:18px 22px;display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center"><div><span class="chip">{{ f.tag }}</span><div style="font-size:34px;font-weight:700;margin-top:8px">{{ f.big }}</div><span class="lbl">{{ f.unit }}</span></div><div style="display:flex;flex-direction:column;gap:6px"><div class="ln" style="width:96%"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:60%"></div></div></div></sc-for>
+<span class="n">numbers count up as each card crosses 50% viewport</span>
+</div></div>
+<div style="padding:60px 40px;background:#f3f0ea;display:flex;flex-direction:column;gap:24px">
+<span class="lbl">02 — How it works</span><b style="font-size:32px;line-height:1.1;max-width:640px">One endpoint. One log. The findings fall out of it.</b>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px"><sc-for list="{{ landSteps }}" as="s" hint-placeholder-count="3"><div class="b" style="padding:16px;display:flex;flex-direction:column;gap:8px"><span class="mono" style="color:#2f6bff">{{ s.n }}</span><b style="font-size:17px">{{ s.t }}</b><div class="ph" style="height:120px">{{ s.v }}</div></div></sc-for></div>
+<span class="n">a single dot travels across the three cards as you scroll (horizontal pin)</span>
+</div>
+<div style="padding:80px 40px;display:flex;flex-direction:column;align-items:flex-start;gap:14px"><b style="font-size:40px;line-height:1.05;max-width:700px">One email when we have a finding worth sharing.</b><div style="display:flex;gap:8px"><div class="b2" style="padding:8px 12px;width:260px;font-size:13px;color:#8a857c">you@company.com</div><div class="b" style="padding:8px 14px;font-size:13px;border-color:#2f6bff;color:#2f6bff;border-width:2px">Join waitlist</div></div></div>
+<div style="padding:22px 40px;border-top:1.2px solid #cfcac0;display:flex;gap:20px" class="lbl"><span>© Strataix Technology (OPC) Pvt. Ltd.</span><div style="flex:1"></div><span>LinkedIn</span><span>GitHub</span><span>X</span></div>
+</div></div></div>
+
+<div class="dv-opt" id="1r"><div class="dv-olabel"><a class="dv-oid" href="#1r">1r</a><b>The request’s journey</b> · scroll-driven: one request descends through stacked “strata” (cost → guardrails → security → log). Plays on the name.</div>
+<div class="dv-card" style="width:1180px"><div style="display:flex;flex-direction:column">
+<div style="height:56px;display:flex;align-items:center;gap:24px;padding:0 40px"><div style="font:700 16px Kalam;letter-spacing:.28em">STRAT<span style="color:#2f6bff">AI</span>X</div><div style="flex:1"></div><span style="font-size:13px">Blog</span><span style="font-size:13px">Roadmap</span><div class="b" style="padding:3px 12px;font-size:13px;border-color:#2f6bff;color:#2f6bff">Join waitlist</div></div>
+<div style="height:520px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:0 40px">
+<b style="font-size:66px;line-height:1;max-width:820px">The <span style="color:#2f6bff">control plane</span> for production AI.</b>
+<span style="font-size:15px;max-width:540px;color:#4a4740">One gateway, one log, every finding attributable.</span>
+<div style="display:flex;gap:8px"><div class="b2" style="padding:8px 12px;width:220px;font-size:13px;color:#8a857c">you@company.com</div><div class="b" style="padding:8px 14px;font-size:13px;border-color:#2f6bff;color:#2f6bff;border-width:2px">Join waitlist</div></div>
+<div style="width:2px;height:70px;background:linear-gradient(#2a2a2a,transparent);margin-top:20px"></div>
+<span class="n">a glowing “request” dot sits here, then falls with the scroll ↓</span>
+</div>
+<div style="position:relative;display:grid;grid-template-columns:440px 1fr;border-top:1.5px solid #2a2a2a">
+<div style="padding:40px;display:flex;flex-direction:column;gap:12px;border-right:1.5px dashed #cfcac0">
+<span class="lbl">STICKY · swaps per layer</span>
+<b style="font-size:30px;line-height:1.1">Layer 2 · Guardrails</b>
+<div class="ln" style="width:92%"></div><div class="ln" style="width:84%"></div><div class="ln" style="width:56%"></div>
+<div style="display:flex;gap:6px;margin-top:10px"><sc-for list="{{ strata }}" as="s" hint-placeholder-count="5"><span style="height:4px;flex:1;border-radius:2px;background:{{ s.dot }}"></span></sc-for></div>
+<span class="n" style="margin-top:14px">progress ticks fill as the dot passes each layer</span>
+</div>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ strata }}" as="s" hint-placeholder-count="5"><div style="height:150px;border-bottom:1.5px solid #2a2a2a;position:relative;display:flex;align-items:center;padding:0 40px;gap:24px;background:{{ s.bg }}">
+<span class="mono" style="font-size:12px;width:24px">{{ s.n }}</span><div style="flex:1"><b style="font-size:20px">{{ s.t }}</b><div class="lbl" style="font-size:12px">{{ s.d }}</div></div>
+<div class="ph" style="width:240px;height:100px">{{ s.v }}</div>
+</div></sc-for>
+<div style="position:absolute;left:calc(440px + 50%);top:225px;width:18px;height:18px;border-radius:50%;background:#2f6bff;box-shadow:0 0 0 8px #2f6bff22,0 0 24px #2f6bff"></div>
+</div>
+</div>
+<div style="padding:24px 40px;display:flex;gap:10px;align-items:center"><span class="n">layers parallax at different rates (0.9× → 0.6×) so the stack feels deep; each layer’s visual animates the action on the dot (redact, re-route, cache-hit)</span></div>
+<div style="padding:60px 40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;border-top:1.2px solid #cfcac0">
+<sc-for list="{{ landFindings }}" as="f" hint-placeholder-count="3"><div style="display:flex;flex-direction:column;gap:6px"><span class="lbl">{{ f.tag }}</span><b style="font-size:38px">{{ f.big }}</b><span class="lbl">{{ f.unit }}</span></div></sc-for>
+</div>
+<div style="padding:70px 40px;background:#262626;color:#fffdf8;display:flex;flex-direction:column;gap:14px"><b style="font-size:38px;line-height:1.05;max-width:700px">One email when we have a finding worth sharing.</b><div style="display:flex;gap:8px"><div style="padding:8px 12px;width:260px;font-size:13px;border:1.5px solid #fffdf8;border-radius:8px;opacity:.7">you@company.com</div><div style="padding:8px 14px;font-size:13px;border:2px solid #7fa3ff;color:#7fa3ff;border-radius:8px">Join waitlist</div></div><span class="n" style="color:#7fa3ff">the request dot lands here — becomes the cursor in the email field</span></div>
+</div></div></div>
+
+<div class="dv-opt" id="1s"><div class="dv-olabel"><a class="dv-oid" href="#1s">1s</a><b>Mobile landing</b> · same story vertically; parallax reduced, strata become swipe cards.</div>
+<div class="dv-card" style="width:360px;background:transparent;border:0;box-shadow:none"><div class="b" style="border-radius:30px;display:flex;flex-direction:column;overflow:hidden">
+<div style="height:30px;display:flex;justify-content:space-between;align-items:center;padding:0 22px;font-size:11px;flex:none"><span>9:41</span><span>▮▮▮</span></div>
+<div style="height:48px;display:flex;align-items:center;padding:0 18px"><div style="font:700 14px Kalam;letter-spacing:.28em">STRAT<span style="color:#2f6bff">AI</span>X</div><div style="flex:1"></div><span style="font-size:18px">≡</span></div>
+<div style="padding:24px 20px;display:flex;flex-direction:column;gap:14px">
+<span class="chip" style="align-self:flex-start">● Pre-release</span>
+<b style="font-size:36px;line-height:1.02">The <span style="color:#2f6bff">control plane</span> for production AI.</b>
+<span style="font-size:13px;color:#4a4740">Strataix sits in front of your providers, records every request, and surfaces the quiet waste — then cuts it.</span>
+<div class="b2" style="padding:10px;font-size:13px;color:#8a857c">you@company.com</div>
+<div class="b" style="padding:10px;text-align:center;font-size:14px;border-color:#2f6bff;color:#2f6bff;border-width:2px">Join waitlist</div>
+</div>
+<div class="ph" style="height:200px;margin:0 16px">gateway flow · vertical<br>agents top → providers bottom</div>
+<div style="padding:28px 20px 10px;display:flex;flex-direction:column;gap:8px"><span class="lbl">01 — What the log reveals</span><b style="font-size:22px;line-height:1.1">Three kinds of waste that only show up in the request stream.</b></div>
+<div style="display:flex;gap:10px;padding:0 16px 8px;overflow:hidden"><sc-for list="{{ landFindings }}" as="f" hint-placeholder-count="3"><div class="b" style="flex:none;width:240px;padding:14px"><span class="chip">{{ f.tag }}</span><div style="font-size:28px;font-weight:700;margin-top:6px">{{ f.big }}</div><span class="lbl">{{ f.unit }}</span></div></sc-for></div>
+<span class="n" style="padding:0 20px 20px">horizontal snap-scroll cards</span>
+<div style="padding:30px 20px;background:#262626;color:#fffdf8;display:flex;flex-direction:column;gap:12px"><b style="font-size:24px;line-height:1.1">One email when we have a finding worth sharing.</b><div style="padding:10px;font-size:13px;border:1.5px solid #fffdf8;border-radius:8px;opacity:.7">you@company.com</div></div>
+</div></div></div>
+
+</div>
+
+<p class="dv-next">Try next: “take <a class="dv-oid" href="#1b">1b</a> nav with <a class="dv-oid" href="#1a">1a</a> density” · “go hi-fi on <a class="dv-oid" href="#1e">1e</a> + <a class="dv-oid" href="#1i">1i</a> in the Nocturne system” · “prototype the <a class="dv-oid" href="#1r">1r</a> scroll story”</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const A = '#2f6bff', R = '#d94a3a', INK = '#262626';
+    const rnd = (i, s) => { const x = Math.sin(i * 12.9898 + s * 78.233) * 43758.5453; return x - Math.floor(x); };
+    const bars = (n, s, min = 20) => Array.from({ length: n }, (_, i) => ({ h: Math.round(min + rnd(i, s) * (100 - min)) + '%' }));
+    const navList = ['Overview', 'Requests', 'Sessions', 'Routes', 'Providers', 'Guardrails', 'Keys', 'Budgets', 'Alerts'];
+    const nav = (active) => navList.map(l => ({ l, bg: l === active ? '#e6ecff' : 'transparent', c: l === active ? A : INK }));
+    const rail = (ai) => Array.from({ length: 9 }, (_, i) => ({ bg: i === ai ? '#e6ecff' : 'transparent', c: i === ai ? A : INK }));
+    const routes = ['support/triage', 'copilot/complete', 'support/summarize', 'data/extract', 'sales/email', 'batch/classify', 'support/kb-search'];
+    const models = ['claude-sonnet-4', 'gpt-4o', 'gemini-2.5-pro', 'gpt-4o-mini', 'llama-3.1-70b'];
+    const flags = ['', '', 'cache hit', '', 'PII redacted', '', 'retry ×2', '', 'tools pruned', ''];
+    const mkRows = (n) => Array.from({ length: n }, (_, i) => {
+      const err = i === 2 || i === 9 || i === 15;
+      return {
+        t: `09:4${Math.floor(i / 6)}:${String(58 - i * 3 % 60).padStart(2, '0')}.${String(Math.round(rnd(i, 3) * 999)).padStart(3, '0')}`,
+        route: routes[i % routes.length], m: models[(i * 3) % models.length],
+        s: err ? (i === 9 ? '500' : '429') : '200', sc: err ? R : INK, bg: i === 4 ? '#e6ecff' : 'transparent',
+        tin: (Math.round(rnd(i, 5) * 48000) + 800).toLocaleString(), tout: Math.round(rnd(i, 6) * 1600 + 40).toLocaleString(),
+        lat: (rnd(i, 7) * 3 + 0.3).toFixed(2) + 's', cost: '$' + (rnd(i, 8) * 0.2).toFixed(3), flag: flags[i % flags.length]
+      };
+    });
+    const spark = (s) => bars(10, s, 25);
+    const hv = (v) => v < .5 ? '#ece8df' : v < .75 ? '#b9b3a8' : v < .9 ? '#6f6a61' : A;
+    return {
+      navDash: nav('Overview'), navReq: nav('Requests'), navPol: nav('Guardrails'),
+      rail: rail(0), railReq: rail(1), railSet: rail(8),
+      navGroups: [
+        { g: 'OBSERVE', items: [['Overview', 1], ['Cost'], ['Requests'], ['Sessions']] },
+        { g: 'CONTROL', items: [['Routes'], ['Providers'], ['Keys'], ['Budgets']] },
+        { g: 'PROTECT', items: [['Guardrails'], ['Alerts'], ['Audit log']] }
+      ].map(g => ({ g: g.g, items: g.items.map(([l]) => ({ l, bg: l === 'Cost' ? '#e6ecff' : 'transparent', c: l === 'Cost' ? A : INK })) })),
+      kpis: [
+        { k: 'Spend · today', v: '$4,182', d: '+12% vs yday', dc: R },
+        { k: 'Requests', v: '1.24M', d: '+4%', dc: '#6b665d' },
+        { k: 'p95 latency', v: '1.84s', d: '−80ms', dc: A },
+        { k: 'Error rate', v: '0.92%', d: '+0.1pt', dc: R },
+        { k: 'Cache hit', v: '61%', d: '+9pt', dc: A },
+        { k: 'Guardrail actions', v: '312', d: '38 PII', dc: '#6b665d' }
+      ].map((k, i) => ({ ...k, sp: spark(i + 1) })),
+      sparkA: bars(14, 9, 30),
+      costBars: Array.from({ length: 28 }, (_, i) => { const t = 35 + rnd(i, 2) * 45; return { a: (t * .25).toFixed(0) + '%', b: (t * .3).toFixed(0) + '%', c: (t * .45).toFixed(0) + '%' }; }),
+      traffic: bars(40, 4, 25),
+      hist: Array.from({ length: 60 }, (_, i) => ({ h: Math.round(20 + rnd(i, 11) * 70) + '%', e: (rnd(i, 12) > .85 ? Math.round(rnd(i, 13) * 25) : 2) + '%' })),
+      modelSpend: [
+        { m: 'claude-sonnet-4', v: '$1,620', w: '78%' }, { m: 'gpt-4o', v: '$1,104', w: '54%' },
+        { m: 'gemini-2.5-pro', v: '$712', w: '34%' }, { m: 'gpt-4o-mini', v: '$402', w: '20%' }, { m: 'llama-3.1-70b', v: '$344', w: '16%' }
+      ],
+      drivers: [
+        { r: 'support/triage', m: 'claude-sonnet-4', t: '41.2M', c: '$1,020', d: '+$310', dc: R },
+        { r: 'copilot/complete', m: 'gpt-4o', t: '28.7M', c: '$860', d: '+$92', dc: R },
+        { r: 'data/extract', m: 'gemini-2.5-pro', t: '12.1M', c: '$640', d: '−$40', dc: A },
+        { r: 'support/summarize', m: 'gpt-4o-mini', t: '30.3M', c: '$510', d: '+$18', dc: R }
+      ],
+      alerts: [
+        { t: 'Budget 90% · team-support', time: '4m', c: R },
+        { t: 'p95 > 3s · gemini-2.5-pro', time: '22m', c: '#b9b3a8' },
+        { t: 'Cache hit dropped 31pt', time: '1h', c: A }
+      ],
+      budgets: [{ n: 'Support', p: '92%', c: R }, { n: 'Copilot', p: '64%', c: INK }, { n: 'Data', p: '41%', c: INK }],
+      rows: mkRows(13), rowsLong: mkRows(22), rowsShort: mkRows(7),
+      heat: ['OpenAI', 'Anthropic', 'Google', 'Mistral', 'Self-hosted'].map((p, pi) => ({ p, cells: Array.from({ length: 24 }, (_, i) => ({ bg: hv(rnd(i, pi + 20)) })) })),
+      findings: [
+        { tag: 'Tool pruning', t: '31 of 34 tools never called · support/triage', v: '−29.9k tok' },
+        { tag: 'Cache break', t: 'System prompt reordered Tue 14:02', v: '84% → 7%' },
+        { tag: 'Retry loop', t: 'copilot/complete retries on 429', v: '+$92/day' }
+      ],
+      waterfall: [
+        { l: 'Yesterday', v: '$3,734', h: '62%', mb: '0', bg: '#dcd7cd', c: INK },
+        { l: 'Model swap → sonnet', v: '+$410', h: '7%', mb: '0', bg: R, c: R },
+        { l: 'Longer context', v: '+$220', h: '4%', mb: '0', bg: R, c: R },
+        { l: 'Retry loop', v: '+$180', h: '3%', mb: '0', bg: R, c: R },
+        { l: 'Cache fix', v: '−$300', h: '5%', mb: '0', bg: A, c: A },
+        { l: 'Volume', v: '−$62', h: '1%', mb: '0', bg: A, c: A },
+        { l: 'Today', v: '$4,182', h: '70%', mb: '0', bg: INK, c: INK }
+      ],
+      provMini: [['OpenAI', '512k', '1.6s'], ['Anthropic', '398k', '2.1s'], ['Google', '210k', '1.9s'], ['Mistral', '120k', '0.9s']].map(([p, r, l], i) => ({ p, r, l, sp: bars(16, i + 30, 20) })),
+      facets: [
+        { n: 'STATUS', v: [['2xx', '1.23M'], ['4xx', '9.2k', 1], ['5xx', '1.1k', 1]] },
+        { n: 'PROVIDER', v: [['OpenAI', '512k'], ['Anthropic', '398k', 1], ['Google', '210k']] },
+        { n: 'MODEL', v: [['claude-sonnet-4', '301k', 1], ['gpt-4o', '288k'], ['gpt-4o-mini', '224k']] },
+        { n: 'ROUTE', v: [['support/*', '402k', 1], ['copilot/*', '377k'], ['data/*', '118k']] },
+        { n: 'GUARDRAIL', v: [['redacted', '1.2k'], ['blocked', '312'], ['none', '1.23M']] },
+        { n: 'KEY', v: [['sx_support', '402k'], ['sx_copilot', '377k']] }
+      ].map(f => ({ n: f.n, v: f.v.map(([l, c, on]) => ({ l, c, bg: on ? INK : 'transparent' })) })),
+      sessions: [
+        { n: 'triage-agent', id: 'sess_8f2c', calls: 14, cost: '$0.84', dur: '38.2s', expanded: true },
+        { n: 'triage-agent', id: 'sess_8f1a', calls: 9, cost: '$0.41', dur: '21.0s' },
+        { n: 'copilot', id: 'sess_77d0', calls: 32, cost: '$0.22', dur: '4m 10s' },
+        { n: 'extractor', id: 'sess_6c19', calls: 3, cost: '$0.09', dur: '6.4s' },
+        { n: 'triage-agent', id: 'sess_5b02', calls: 11, cost: '$0.66', dur: '29.8s' },
+        { n: 'sales-writer', id: 'sess_4a77', calls: 5, cost: '$0.12', dur: '9.1s' },
+        { n: 'copilot', id: 'sess_3e10', calls: 18, cost: '$0.15', dur: '2m 02s' }
+      ].map((s, si) => ({ ...s, open: s.expanded ? '▾' : '▸', bg: s.expanded ? '#e6ecff' : 'transparent',
+        segs: Array.from({ length: 5 }, (_, i) => ({ w: Math.round(8 + rnd(i, si + 40) * 18) + '%', bg: (si === 0 && i === 2) ? R : i % 2 ? '#b9b3a8' : INK })) })),
+      spans: [{ i: '1', n: 'llm · claude-sonnet-4 · plan', d: '2.1s' }, { i: '2', n: 'tool · lookup_order', d: '0.3s' }, { i: '3', n: 'llm · claude-sonnet-4 · 429 → retry', d: '4.8s' }, { i: '4', n: 'llm · gpt-4o-mini · summarize', d: '0.9s' }],
+      wf: [
+        { n: 'gateway.receive', l: '0%', w: '2%', d: '12ms', bg: '#dcd7cd', ind: '0' },
+        { n: 'auth · key lookup', l: '2%', w: '2%', d: '9ms', bg: '#dcd7cd', ind: '12px' },
+        { n: 'guardrail.input', l: '4%', w: '4%', d: '41ms', bg: A, ind: '12px' },
+        { n: 'cache.lookup', l: '8%', w: '2%', d: '6ms', bg: '#dcd7cd', ind: '12px' },
+        { n: 'provider · attempt 1 (429)', l: '10%', w: '18%', d: '430ms', bg: R, ind: '12px' },
+        { n: 'provider · attempt 2', l: '30%', w: '62%', d: '1.49s', bg: INK, ind: '12px' },
+        { n: 'guardrail.output', l: '92%', w: '5%', d: '58ms', bg: A, ind: '12px' },
+        { n: 'log.write', l: '97%', w: '3%', d: '4ms', bg: '#dcd7cd', ind: '12px' }
+      ],
+      attrs: [['Key', 'sx_support_prod'], ['Team', 'support'], ['Route', 'support/triage'], ['Provider', 'anthropic'], ['Region', 'ap-south-1'], ['Session', 'sess_8f2c'], ['User', 'user:4412'], ['Received', '2026-11-06 09:41:58.214']].map(([k, v]) => ({ k, v })),
+      msgs: [{ r: 'system · 4.3k tok', a: '92%', b: '60%' }, { r: 'tools · 34 definitions · 29.9k tok', a: '96%', b: '88%' }, { r: 'history · 12 turns · 10.6k tok', a: '84%', b: '72%' }, { r: 'user', a: '70%', b: '30%' }],
+      actions: [
+        { i: '✓', t: 'Auth + budget check', d: 'support: 92% of month used', bg: 'transparent' },
+        { i: '✎', t: 'PII redacted · 2 fields', d: 'policy: support-pii v7', bg: '#e6ecff' },
+        { i: '✂', t: 'Tool pruning (suggested)', d: '31 unused tools · would save 29.9k tok', bg: '#e6ecff' },
+        { i: '↻', t: 'Retry on 429', d: 'backoff 400ms → attempt 2', bg: 'transparent' },
+        { i: '✓', t: 'Output guardrail pass', d: 'toxicity · jailbreak · schema', bg: 'transparent' }
+      ],
+      steps: [
+        { i: '✓', t: 'Create workspace', d: 'acme · ap-south-1', done: 1 },
+        { i: '2', t: 'Swap base URL', d: 'one line in your client', cur: 1 },
+        { i: '3', t: 'Add provider keys', d: 'OpenAI, Anthropic, …' },
+        { i: '4', t: 'Set a budget', d: 'optional · alert at 80%' }
+      ].map(s => ({ ...s, bc: s.cur ? A : INK, bg: s.done ? INK : s.cur ? '#e6ecff' : 'transparent', fc: s.done ? '#fffdf8' : s.cur ? A : INK, tc: s.cur ? A : INK })),
+      setNav: ['General', 'Members & roles', 'API keys', 'Providers', 'Routes & fallbacks', 'Budgets', 'Guardrail policies', 'Alerts & webhooks', 'Data retention', 'Billing'].map(l => ({ l, bg: l === 'API keys' ? '#e6ecff' : 'transparent', c: l === 'API keys' ? A : INK })),
+      keys: [
+        ['support-prod', 'sx_live_••3f9a', 'support', 92, '$9.2k / $10k', '600 rpm', '2s ago'],
+        ['copilot-prod', 'sx_live_••a01c', 'copilot', 64, '$19.2k / $30k', '2,000 rpm', '1s ago'],
+        ['data-pipeline', 'sx_live_••7d22', 'data', 41, '$4.1k / $10k', '300 rpm', '3m ago'],
+        ['sales-assist', 'sx_live_••c9e0', 'sales', 18, '$0.9k / $5k', '120 rpm', '12m ago'],
+        ['batch-nightly', 'sx_live_••41b7', 'data', 77, '$3.8k / $5k', 'burst', '6h ago'],
+        ['staging', 'sx_test_••0e5f', 'eng', 5, '$52 / $1k', '60 rpm', '1d ago'],
+        ['legacy-bot', 'sx_live_••88aa', 'support', 0, 'revoked', '—', '41d ago']
+      ].map(([n, k, t, p, s, r, u]) => ({ n, k, t, p: p + '%', s, r, u, c: p > 85 ? R : INK })),
+      rules: [
+        { w: 'input', op: 'contains', c: 'PII (email, phone, card)', a: 'Redact', hits: '1.2k / 24h', ac: A },
+        { w: 'input', op: 'matches', c: 'prompt-injection classifier > 0.8', a: 'Block', hits: '41 / 24h', ac: R },
+        { w: 'output', op: 'fails', c: 'JSON schema: ticket_v2', a: 'Retry once', hits: '18 / 24h', ac: INK },
+        { w: 'cost', op: 'exceeds', c: '$0.50 per request', a: 'Downgrade → gpt-4o-mini', hits: '6 / 24h', ac: A }
+      ],
+      setMobA: [{ l: 'API keys', v: '7' }, { l: 'Providers', v: '4' }, { l: 'Budgets', v: '3' }, { l: 'Guardrail policies', v: '5' }],
+      setMobB: [{ l: 'Members', v: '12' }, { l: 'Alerts & webhooks', v: '' }, { l: 'Billing', v: '' }, { l: 'Sign out', v: '' }],
+      landFindings: [
+        { tag: 'Tool pruning', big: '45k → 7k', unit: 'tokens / turn' },
+        { tag: 'Cache-break detection', big: '7% → 84%', unit: 'cache hit rate' },
+        { tag: 'Quiet 10× bills', big: 'day-over-day', unit: 'cost deltas, by cause' }
+      ],
+      landSteps: [
+        { n: '01', t: 'Point your traffic at one endpoint', v: 'code: base_url swap' },
+        { n: '02', t: 'The log fills up on its own', v: 'event stream ticking' },
+        { n: '03', t: 'Act on what the log reveals', v: 'before / after diff' }
+      ],
+      strata: [
+        { n: 'L1', t: 'Cost', d: 'budgets, attribution, cheaper-model routing', v: 'meter ticks down' },
+        { n: 'L2', t: 'Guardrails', d: 'PII redaction, injection defense, schema checks', v: 'text gets redacted' },
+        { n: 'L3', t: 'Security', d: 'virtual keys, scopes, rate limits', v: 'key → lock' },
+        { n: 'L4', t: 'Routing', d: 'fallbacks, retries, provider choice', v: 'path forks' },
+        { n: 'L5', t: 'Observability', d: 'every request in one log', v: 'row lands in log' }
+      ].map((s, i) => ({ ...s, bg: i === 1 ? '#e6ecff' : i % 2 ? '#f8f5ef' : '#fffdf8', dot: i <= 1 ? A : '#dcd7cd' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- Strataix · table row · request log pattern -->
+<!-- Note: tabular-nums + Plex Mono for numeric columns -->
+
+<div class="border border-sx-line rounded-lg bg-sx-panel overflow-hidden">
+
+  <!-- header -->
+  <div class="grid grid-cols-[1.5fr_1.2fr_.8fr_.9fr_.8fr_.9fr_1.1fr] px-4 py-1.5 text-[11px] text-sx-faint uppercase tracking-wider font-mono border-b border-sx-line">
+    <span>Route</span><span>Model</span>
+    <span class="text-right">Requests</span><span class="text-right">Tokens</span>
+    <span class="text-right">Cache</span><span class="text-right">Cost</span>
+    <span class="text-right">Δ vs yesterday</span>
+  </div>
+
+  <!-- row (hover highlights to --sx-raised) -->
+  <div class="grid grid-cols-[1.5fr_1.2fr_.8fr_.9fr_.8fr_.9fr_1.1fr] px-4 py-2 items-center border-b border-sx-line sx-num text-[13px] hover:bg-sx-raised">
+    <span class="flex items-center gap-2">
+      <span class="w-1.5 h-1.5 rounded-full" style="background:var(--color-sx-danger)"></span>
+      support/triage
+    </span>
+    <span class="font-mono text-xs text-sx-muted">claude-sonnet-4</span>
+    <span class="text-right font-mono text-xs">402k</span>
+    <span class="text-right font-mono text-xs">41.2M</span>
+    <span class="text-right font-mono text-xs">12%</span>
+    <span class="text-right font-mono text-xs font-medium">$1,020</span>
+    <span class="text-right font-mono text-xs text-sx-danger">+$310 · +44%</span>
+  </div>
+
+</div>

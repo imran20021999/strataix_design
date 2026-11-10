@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
+<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+}
+body{margin:0;background:#0f1019;font-family:var(--font-body);color:var(--sx-text);font-size:13px}
+.head{font:600 10px var(--font-mono);padding:3px 7px;background:#e9e9ed;color:#161826;border-radius:4px;text-decoration:none}
+.anchor{font:600 10.5px var(--font-mono);padding:3px 7px;background:#292b31;color:#e9e9ed;border-radius:5px}
+.screen{width:600px;height:420px;background:var(--sx-bg);border:1px solid var(--sx-line-2);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.step-dot{width:24px;height:24px;border-radius:50%;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 11px var(--font-mono);display:flex;align-items:center;justify-content:center}
+.step-dot.done{background:var(--sx-ok);color:#06241a}
+.step-dot.cur{background:var(--sx-blue);color:#fff;box-shadow:0 0 0 4px var(--sx-blue-tint)}
+.step-dot.todo{background:var(--sx-line-2);color:var(--sx-muted)}
+.lab{font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.06em}
+.btn-p{font:500 12.5px var(--font-body);padding:8px 14px;border-radius:8px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff;cursor:pointer}
+.btn-s{font:500 12.5px var(--font-body);padding:8px 14px;border-radius:8px;border:1px solid var(--sx-line-2);background:transparent;color:var(--sx-text);cursor:pointer}
+.row{display:flex;align-items:baseline;gap:10px}
+</style>
+</helmet>
+
+<!-- Header -->
+<section style="padding:40px 44px 0;width:1440px;box-sizing:border-box">
+<div class="row"><a href="#t1" class="head">1</a><span style="font-size:13px;font-weight:600">Strataix · Onboarding flow · first run after sign-up</span></div>
+<div style="font-size:12.5px;color:#b2b6ca;max-width:820px;line-height:1.55;margin-top:14px">Six steps, one skippable (invite teammates). Progress bar at the top of each screen; back is always available except on sign-in. Target time to "first request flowing": <b style="font-weight:500">under 4 minutes</b>.</div>
+</section>
+
+<!-- Stepper -->
+<section style="padding:22px 44px 0;width:1440px;box-sizing:border-box">
+<div style="background:#161826;border:1px solid #292b31;border-radius:10px;padding:18px 22px;display:flex;align-items:center;gap:14px">
+<span class="step-dot done"><i class="ph ph-check" style="font-size:12px"></i></span><span style="font-size:12.5px;font-weight:500">Account</span>
+<span style="flex:1;height:2px;background:var(--sx-ok)"></span>
+<span class="step-dot done"><i class="ph ph-check" style="font-size:12px"></i></span><span style="font-size:12.5px;font-weight:500">Org</span>
+<span style="flex:1;height:2px;background:var(--sx-ok)"></span>
+<span class="step-dot cur">3</span><span style="font-size:12.5px;font-weight:500;color:var(--sx-blue-text)">Provider</span>
+<span style="flex:1;height:2px;background:var(--sx-line-2)"></span>
+<span class="step-dot todo">4</span><span style="font-size:12.5px;color:var(--sx-muted)">Key</span>
+<span style="flex:1;height:2px;background:var(--sx-line-2)"></span>
+<span class="step-dot todo">5</span><span style="font-size:12.5px;color:var(--sx-muted)">Install SDK</span>
+<span style="flex:1;height:2px;background:var(--sx-line-2)"></span>
+<span class="step-dot todo">6</span><span style="font-size:12.5px;color:var(--sx-muted)">First request</span>
+</div>
+</section>
+
+<!-- STEP 1 -->
+<section style="padding:30px 44px 0;width:1440px;box-sizing:border-box">
+<div class="row"><a class="anchor">1a</a><b style="font-weight:500">Account</b><span style="font-size:11.5px;color:var(--sx-muted)">email + SSO</span></div>
+<div style="display:flex;gap:28px;margin-top:14px">
+<div class="screen">
+<div style="padding:20px 24px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<img src="public/brand/wordmark-light.png" style="height:14px">
+<div style="flex:1"></div>
+<span style="font-size:11.5px;color:var(--sx-muted)">Already have one? <span style="color:var(--sx-blue-text)">Sign in</span></span>
+</div>
+<div style="flex:1;padding:36px 48px;display:flex;flex-direction:column;gap:18px;justify-content:center">
+<div>
+<div style="font:400 24px Michroma,sans-serif;letter-spacing:-.01em">Create your account</div>
+<div style="font-size:12.5px;color:var(--sx-muted);margin-top:6px">Free while you're testing. Billed only when you move to production.</div>
+</div>
+<button class="btn-s" style="width:100%;justify-content:center;display:flex;align-items:center;gap:8px"><i class="ph ph-google-logo"></i> Continue with Google</button>
+<button class="btn-s" style="width:100%;justify-content:center;display:flex;align-items:center;gap:8px"><i class="ph ph-github-logo"></i> Continue with GitHub</button>
+<div style="display:flex;align-items:center;gap:10px"><span style="flex:1;height:1px;background:var(--sx-line)"></span><span style="font:10.5px var(--font-mono);color:var(--sx-faint)">OR</span><span style="flex:1;height:1px;background:var(--sx-line)"></span></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span class="lab">Work email</span><div style="padding:8px 12px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:13px;color:var(--sx-muted)">you@company.com</div></div>
+<button class="btn-p" style="width:100%">Send login link</button>
+</div>
+</div>
+
+<div class="screen">
+<div style="padding:20px 24px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<img src="public/brand/wordmark-light.png" style="height:14px">
+<div style="flex:1"></div>
+<span style="font-size:11.5px;color:var(--sx-muted)">Step 1 of 6</span>
+</div>
+<div style="flex:1;padding:28px 36px;display:flex;flex-direction:column;gap:14px">
+<div>
+<div style="font:400 20px Michroma,sans-serif;letter-spacing:-.01em">Welcome · let's get a bit of context</div>
+<div style="font-size:12.5px;color:var(--sx-muted);margin-top:6px">We'll use this to default your routes and budget sensibly.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:6px"><span class="lab">Your name</span><div style="padding:8px 12px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:13px">Arshath Imran</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span class="lab">What do you build?</span><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><span style="padding:8px 10px;border:1px solid var(--sx-blue);border-radius:6px;font-size:12.5px;color:var(--sx-blue-text);background:var(--sx-blue-tint);text-align:center">Customer AI</span><span style="padding:8px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:12.5px;color:var(--sx-muted);text-align:center">Dev tools</span><span style="padding:8px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:12.5px;color:var(--sx-muted);text-align:center">Agents</span><span style="padding:8px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:12.5px;color:var(--sx-muted);text-align:center">Data</span><span style="padding:8px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:12.5px;color:var(--sx-muted);text-align:center">Internal tools</span><span style="padding:8px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:12.5px;color:var(--sx-muted);text-align:center">Other</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span class="lab">Monthly LLM spend today</span><div style="display:flex;gap:6px"><span style="flex:1;padding:8px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:12.5px;color:var(--sx-muted);text-align:center">&lt; $500</span><span style="flex:1;padding:8px 10px;border:1px solid var(--sx-blue);border-radius:6px;font-size:12.5px;color:var(--sx-blue-text);background:var(--sx-blue-tint);text-align:center">$500 – $5k</span><span style="flex:1;padding:8px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:12.5px;color:var(--sx-muted);text-align:center">$5k – $50k</span><span style="flex:1;padding:8px 10px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:12.5px;color:var(--sx-muted);text-align:center">$50k+</span></div></div>
+<div style="flex:1"></div>
+<div style="display:flex;gap:10px"><button class="btn-s" style="flex:1">Skip</button><button class="btn-p" style="flex:1">Continue</button></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STEP 2 -->
+<section style="padding:30px 44px 0;width:1440px;box-sizing:border-box">
+<div class="row"><a class="anchor">2a</a><b style="font-weight:500">Org · environment · pick a region</b></div>
+<div style="display:flex;gap:28px;margin-top:14px">
+<div class="screen">
+<div style="padding:20px 24px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<img src="public/brand/wordmark-light.png" style="height:14px"><div style="flex:1"></div><span style="font-size:11.5px;color:var(--sx-muted)">Step 2 of 6</span>
+</div>
+<div style="flex:1;padding:28px 36px;display:flex;flex-direction:column;gap:14px">
+<div style="font:400 20px Michroma,sans-serif;letter-spacing:-.01em">Name your organization</div>
+<div style="display:flex;flex-direction:column;gap:6px"><span class="lab">Org name</span><div style="padding:8px 12px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:13px">Acme</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span class="lab">URL slug</span><div style="padding:8px 12px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:13px;color:var(--sx-muted);font-family:var(--font-mono)">strataix.in/acme</div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span class="lab">Region · data residency</span>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+<div style="padding:10px;border:1px solid var(--sx-blue);border-radius:6px;background:var(--sx-blue-tint)"><div style="font-size:12.5px;font-weight:500;color:var(--sx-blue-text)">us-east-1</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">Virginia · default</div></div>
+<div style="padding:10px;border:1px solid var(--sx-line-2);border-radius:6px"><div style="font-size:12.5px">eu-west-1</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">Ireland · GDPR</div></div>
+<div style="padding:10px;border:1px solid var(--sx-line-2);border-radius:6px"><div style="font-size:12.5px">ap-south-1</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">Mumbai</div></div>
+</div></div>
+<div style="flex:1"></div>
+<div style="display:flex;gap:10px"><button class="btn-s" style="flex:1">Back</button><button class="btn-p" style="flex:1">Create org</button></div>
+</div>
+</div>
+
+<div class="screen">
+<div style="padding:20px 24px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<img src="public/brand/wordmark-light.png" style="height:14px"><div style="flex:1"></div><span style="font-size:11.5px;color:var(--sx-muted)">Step 2b · optional</span>
+</div>
+<div style="flex:1;padding:28px 36px;display:flex;flex-direction:column;gap:14px">
+<div><div style="font:400 20px Michroma,sans-serif;letter-spacing:-.01em">Invite your team</div><div style="font-size:12.5px;color:var(--sx-muted);margin-top:6px">You can always do this later from Settings → Members.</div></div>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:12.5px">
+<div style="display:flex;gap:8px;align-items:center"><div style="flex:1;padding:8px 12px;border:1px solid var(--sx-line-2);border-radius:6px;font-family:var(--font-mono);color:var(--sx-muted)">priya@acme.com</div><div style="padding:8px 12px;border:1px solid var(--sx-line-2);border-radius:6px;display:flex;align-items:center;gap:6px">Admin<i class="ph ph-caret-down" style="color:var(--sx-muted)"></i></div></div>
+<div style="display:flex;gap:8px;align-items:center"><div style="flex:1;padding:8px 12px;border:1px solid var(--sx-line-2);border-radius:6px;font-family:var(--font-mono);color:var(--sx-muted)">deepak@acme.com</div><div style="padding:8px 12px;border:1px solid var(--sx-line-2);border-radius:6px;display:flex;align-items:center;gap:6px">Developer<i class="ph ph-caret-down" style="color:var(--sx-muted)"></i></div></div>
+<div style="display:flex;gap:8px;align-items:center"><div style="flex:1;padding:8px 12px;border:1px solid var(--sx-line-2);border-radius:6px;color:var(--sx-faint)">Add another…</div></div>
+</div>
+<div style="padding:10px 12px;background:var(--sx-raised);border-radius:6px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--sx-muted)"><i class="ph ph-info"></i> Everyone with <b style="font-weight:500;color:var(--sx-text)">@acme.com</b> can request access automatically</div>
+<div style="flex:1"></div>
+<div style="display:flex;gap:10px"><button class="btn-s" style="flex:1">Skip</button><button class="btn-p" style="flex:1">Send invites</button></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STEP 3 -->
+<section style="padding:30px 44px 0;width:1440px;box-sizing:border-box">
+<div class="row"><a class="anchor">3a</a><b style="font-weight:500">Connect your first provider · current step</b></div>
+<div style="display:flex;gap:28px;margin-top:14px">
+<div class="screen">
+<div style="padding:20px 24px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<img src="public/brand/wordmark-light.png" style="height:14px"><div style="flex:1"></div><span style="font-size:11.5px;color:var(--sx-muted)">Step 3 of 6</span>
+</div>
+<div style="flex:1;padding:28px 36px;display:flex;flex-direction:column;gap:14px">
+<div><div style="font:400 20px Michroma,sans-serif;letter-spacing:-.01em">Pick a provider</div><div style="font-size:12.5px;color:var(--sx-muted);margin-top:6px">You can add more later. Strataix never sees your keys — they're stored in a per-org secret vault and used only to proxy your traffic.</div></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div style="padding:12px;border:1px solid var(--sx-blue);border-radius:8px;background:var(--sx-blue-tint);display:flex;align-items:center;gap:10px"><span style="width:28px;height:28px;border-radius:6px;background:#1a1a1a;color:#e9e9ed;font:600 12px var(--font-body);display:flex;align-items:center;justify-content:center">A</span><div><div style="font-weight:500">Anthropic</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">claude-sonnet-4, opus, haiku</div></div></div>
+<div style="padding:12px;border:1px solid var(--sx-line-2);border-radius:8px;display:flex;align-items:center;gap:10px"><span style="width:28px;height:28px;border-radius:6px;background:#0e5c43;color:#e9e9ed;font:600 12px var(--font-body);display:flex;align-items:center;justify-content:center">O</span><div><div style="font-weight:500">OpenAI</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">gpt-4o, 4o-mini, o1</div></div></div>
+<div style="padding:12px;border:1px solid var(--sx-line-2);border-radius:8px;display:flex;align-items:center;gap:10px"><span style="width:28px;height:28px;border-radius:6px;background:#1a73e8;color:#fff;font:600 12px var(--font-body);display:flex;align-items:center;justify-content:center">G</span><div><div style="font-weight:500">Google AI</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">gemini-2.5</div></div></div>
+<div style="padding:12px;border:1px solid var(--sx-line-2);border-radius:8px;display:flex;align-items:center;gap:10px"><span style="width:28px;height:28px;border-radius:6px;background:#5c1f8e;color:#fff;font:600 12px var(--font-body);display:flex;align-items:center;justify-content:center">F</span><div><div style="font-weight:500">Fireworks</div><div style="font:11px var(--font-mono);color:var(--sx-muted);margin-top:2px">llama, mixtral</div></div></div>
+</div>
+<div style="font:11.5px var(--font-mono);color:var(--sx-faint);text-align:center">8 more providers · Bedrock · Azure · Cloudflare…</div>
+<div style="flex:1"></div>
+<div style="display:flex;gap:10px"><button class="btn-s" style="flex:1">Back</button><button class="btn-p" style="flex:1">Continue · Anthropic</button></div>
+</div>
+</div>
+
+<div class="screen">
+<div style="padding:20px 24px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<span style="width:20px;height:20px;border-radius:5px;background:#1a1a1a;color:#e9e9ed;font:600 11px var(--font-body);display:flex;align-items:center;justify-content:center">A</span>
+<span style="font-weight:500">Anthropic</span><div style="flex:1"></div><span style="font-size:11.5px;color:var(--sx-muted)">Step 3 · paste key</span>
+</div>
+<div style="flex:1;padding:28px 36px;display:flex;flex-direction:column;gap:14px">
+<div><div style="font:400 18px Michroma,sans-serif;letter-spacing:-.01em">Paste your Anthropic key</div><div style="font-size:12.5px;color:var(--sx-muted);margin-top:4px">Create one at <span style="font-family:var(--font-mono);color:var(--sx-blue-text)">console.anthropic.com/settings/keys</span></div></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span class="lab">Secret</span><div style="padding:8px 12px;border:1px solid var(--sx-ok);border-radius:6px;font:13px var(--font-mono);display:flex;align-items:center;gap:8px"><span style="flex:1">sk-ant-api03-••••••••••••••••••••••••••••••</span><i class="ph ph-check-circle" style="color:var(--sx-ok)"></i></div><span style="font-size:11px;color:var(--sx-ok);font-family:var(--font-mono)">Verified · 11 models available</span></div>
+<div style="display:flex;flex-direction:column;gap:6px"><span class="lab">Label</span><div style="padding:8px 12px;border:1px solid var(--sx-line-2);border-radius:6px;font-size:13px">Anthropic · production</div></div>
+<div style="padding:10px 12px;background:var(--sx-raised);border-radius:6px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--sx-muted)"><i class="ph ph-lock-key"></i> Stored encrypted · never visible to teammates · you can rotate any time</div>
+<div style="flex:1"></div>
+<div style="display:flex;gap:10px"><button class="btn-s" style="flex:1">Back</button><button class="btn-p" style="flex:1">Connect provider</button></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STEP 4-6 -->
+<section style="padding:30px 44px 60px;width:1440px;box-sizing:border-box">
+<div class="row"><a class="anchor">4a</a><b style="font-weight:500">Issue your first key · install SDK · fire a request</b></div>
+<div style="display:flex;gap:28px;margin-top:14px;flex-wrap:wrap">
+
+<div class="screen">
+<div style="padding:20px 24px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<img src="public/brand/wordmark-light.png" style="height:14px"><div style="flex:1"></div><span style="font-size:11.5px;color:var(--sx-muted)">Step 4 of 6</span>
+</div>
+<div style="flex:1;padding:28px 36px;display:flex;flex-direction:column;gap:14px">
+<div><div style="font:400 20px Michroma,sans-serif;letter-spacing:-.01em">Your first key</div><div style="font-size:12.5px;color:var(--sx-muted);margin-top:4px">This one is pre-named <span style="font-family:var(--font-mono);color:var(--sx-text)">Dev · getting started</span> — you can rename or revoke any time.</div></div>
+<div style="padding:14px;border:1px solid var(--sx-blue);border-radius:8px;background:var(--sx-blue-tint);display:flex;flex-direction:column;gap:8px">
+<div style="font:11px var(--font-mono);color:var(--sx-blue-text);text-transform:uppercase;letter-spacing:.06em">SECRET · COPY NOW</div>
+<div style="font:13px var(--font-mono);display:flex;align-items:center;gap:8px"><span style="flex:1">sk_live_dev_gs_f7c9b2a04e1d</span><button style="font:500 11px var(--font-body);padding:4px 8px;border-radius:5px;border:1px solid var(--sx-blue);background:var(--sx-blue);color:#fff;cursor:pointer">Copy</button></div>
+<div style="font-size:11.5px;color:var(--sx-muted)"><i class="ph ph-warning"></i> We won't be able to show this again</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px">
+<div><span class="lab">Scopes</span><div style="margin-top:4px">chat:write · tools:read</div></div>
+<div><span class="lab">Rate limit</span><div style="margin-top:4px">500 rpm</div></div>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;gap:10px"><button class="btn-s" style="flex:1">I'll copy later</button><button class="btn-p" style="flex:1">Copied · continue</button></div>
+</div>
+</div>
+
+<div class="screen">
+<div style="padding:20px 24px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<img src="public/brand/wordmark-light.png" style="height:14px"><div style="flex:1"></div><span style="font-size:11.5px;color:var(--sx-muted)">Step 5 of 6</span>
+</div>
+<div style="flex:1;padding:24px 32px;display:flex;flex-direction:column;gap:12px">
+<div><div style="font:400 18px Michroma,sans-serif;letter-spacing:-.01em">Install &amp; fire a request</div><div style="font-size:12.5px;color:var(--sx-muted);margin-top:4px">Point your existing Anthropic / OpenAI SDK at Strataix — no code changes.</div></div>
+<div style="display:flex;border:1px solid var(--sx-line-2);border-radius:6px;overflow:hidden;font:11.5px var(--font-mono);width:fit-content">
+<span style="padding:5px 10px;background:var(--sx-raised)">Python</span><span style="padding:5px 10px;color:var(--sx-muted)">Node</span><span style="padding:5px 10px;color:var(--sx-muted)">cURL</span><span style="padding:5px 10px;color:var(--sx-muted)">Go</span>
+</div>
+<div style="background:#050609;border:1px solid var(--sx-line);border-radius:6px;padding:12px 14px;font:11.5px/1.6 var(--font-mono);color:#b2b6ca;flex:1;overflow:auto">
+<span style="color:var(--sx-faint)"># pip install anthropic</span><br>
+<span style="color:var(--sx-violet)">from</span> anthropic <span style="color:var(--sx-violet)">import</span> Anthropic<br><br>
+client = Anthropic(<br>
+&nbsp;&nbsp;base_url=<span style="color:var(--sx-ok)">"https://gateway.strataix.in/v1"</span>,<br>
+&nbsp;&nbsp;api_key=<span style="color:var(--sx-ok)">"sk_live_dev_gs_f7c9…"</span>,<br>
+)<br><br>
+msg = client.messages.create(<br>
+&nbsp;&nbsp;model=<span style="color:var(--sx-ok)">"claude-sonnet-4"</span>,<br>
+&nbsp;&nbsp;max_tokens=<span style="color:var(--sx-blue-text)">1024</span>,<br>
+&nbsp;&nbsp;messages=[{<span style="color:var(--sx-ok)">"role"</span>:<span style="color:var(--sx-ok)">"user"</span>,<span style="color:var(--sx-ok)">"content"</span>:<span style="color:var(--sx-ok)">"ping"</span>}],<br>
+)<br>
+print(msg.content[0].text)
+</div>
+<div style="display:flex;gap:8px;align-items:center;font-size:12px;color:var(--sx-muted)"><i class="ph ph-copy" style="color:var(--sx-blue-text)"></i><span style="color:var(--sx-blue-text)">Copy snippet</span><div style="flex:1"></div><span class="lab">Waiting for first request…</span><span style="width:8px;height:8px;border-radius:50%;background:var(--sx-blue);animation:pulse 1.4s infinite"></span></div>
+</div>
+</div>
+
+<div class="screen">
+<div style="padding:20px 24px;border-bottom:1px solid var(--sx-line);display:flex;align-items:center;gap:10px">
+<img src="public/brand/wordmark-light.png" style="height:14px"><div style="flex:1"></div><span class="pill" style="background:color-mix(in srgb,var(--sx-ok) 16%,transparent);color:var(--sx-ok)"><i class="ph ph-check-circle"></i> request received</span>
+</div>
+<div style="flex:1;padding:28px 36px;display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center;text-align:center">
+<div style="width:72px;height:72px;border-radius:50%;background:color-mix(in srgb,var(--sx-ok) 16%,transparent);display:flex;align-items:center;justify-content:center"><i class="ph ph-check" style="font-size:32px;color:var(--sx-ok)"></i></div>
+<div><div style="font:400 22px Michroma,sans-serif;letter-spacing:-.01em">You're live.</div><div style="font-size:12.5px;color:var(--sx-muted);margin-top:6px;max-width:360px">Your first request ran in <b style="font-weight:500;color:var(--sx-text)">842ms</b> through <span style="font-family:var(--font-mono);color:var(--sx-text)">claude-sonnet-4</span>, cost <b style="font-weight:500;color:var(--sx-text)">$0.004</b>, and is already in your Requests log.</div></div>
+<div style="display:flex;flex-direction:column;gap:6px;width:100%;max-width:280px;align-items:flex-start;padding:10px 12px;border:1px solid var(--sx-line-2);border-radius:6px;font:11.5px var(--font-mono);color:var(--sx-muted)">
+<div><i class="ph ph-check" style="color:var(--sx-ok)"></i> req_01J9X9BA2 · 842ms · $0.004</div>
+<div><i class="ph ph-check" style="color:var(--sx-ok)"></i> auto-route created · chat/default</div>
+<div><i class="ph ph-check" style="color:var(--sx-ok)"></i> budget set · $100 soft cap</div>
+</div>
+<div style="display:flex;gap:10px;width:100%;max-width:300px"><button class="btn-s" style="flex:1">See the request</button><button class="btn-p" style="flex:1">Open dashboard</button></div>
+</div>
+</div>
+
+</div>
+</section>
+
+</x-dc>
+</body>
+</html>

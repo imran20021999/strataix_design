@@ -1,0 +1,113 @@
+/* ============================================================
+   Strataix · Design tokens
+   Source of truth for color, type, spacing, radius, elevation.
+
+   Drop-in for Tailwind v4: import this file in your globals.css
+   AFTER `@import "tailwindcss";`. The @theme block emits utility
+   classes (bg-sx-blue, text-sx-muted, border-sx-line, …).
+
+   Not on Tailwind v4? The :root variables still apply — use them
+   as plain CSS custom properties: `color: var(--sx-text)`.
+   ============================================================ */
+
+@theme {
+  /* ─── typography ─── */
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-michroma), var(--font-plex-sans), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* ─── surfaces · dark (default) ─── */
+  --color-sx-bg: #08090e;
+  --color-sx-panel: #0e1016;
+  --color-sx-raised: #161921;
+  --color-sx-line: #1a1d26;
+  --color-sx-line-2: #262a35;
+
+  /* ─── text · dark ─── */
+  --color-sx-text: #e9e9ed;
+  --color-sx-muted: #9397ab;
+  --color-sx-faint: #75798c;
+
+  /* ─── brand ─── */
+  --color-sx-blue: #2f6fff;
+  --color-sx-blue-text: #8fb2ff;
+  --color-sx-blue-tint: #0f1a3d;
+  --color-sx-blue-tint-2: #17295e;
+
+  --color-sx-violet: #7b61ff;
+  --color-sx-violet-text: #b6a6ff;
+  --color-sx-violet-tint: #1e1b3d;
+
+  /* ─── semantic (oklch — same perceived weight across themes) ─── */
+  --color-sx-danger: oklch(0.70 0.15 25);
+  --color-sx-warn:   oklch(0.80 0.12 80);
+  --color-sx-ok:     oklch(0.76 0.12 165);
+
+  /* ─── radii ─── */
+  --radius-sx-sm: 4px;
+  --radius-sx-md: 6px;
+  --radius-sx-lg: 8px;
+  --radius-sx-xl: 10px;
+  --radius-sx-2xl: 14px;
+  --radius-sx-full: 999px;
+}
+
+/* ─── light theme ─── */
+:root[data-theme="light"] {
+  --color-sx-bg: #f6f6f8;
+  --color-sx-panel: #fcfcfe;
+  --color-sx-raised: #f1f2f6;
+  --color-sx-line: #e4e6ed;
+  --color-sx-line-2: #cdd0dc;
+
+  --color-sx-text: #1b1d29;
+  --color-sx-muted: #4a4e62;
+  --color-sx-faint: #75798c;
+
+  --color-sx-blue: #1a5fff;
+  --color-sx-blue-text: #1a4fd6;
+  --color-sx-blue-tint: #e6edff;
+  --color-sx-blue-tint-2: #cfdcff;
+
+  --color-sx-violet: #5c4bd9;
+  --color-sx-violet-text: #4336ac;
+  --color-sx-violet-tint: #ede9ff;
+
+  --color-sx-danger: oklch(0.55 0.17 25);
+  --color-sx-warn:   oklch(0.62 0.13 70);
+  --color-sx-ok:     oklch(0.55 0.12 165);
+}
+
+/* ─── global typographic defaults ─── */
+:root {
+  color-scheme: dark;
+  --sx-maxw: 1440px;
+}
+:root[data-theme="light"] { color-scheme: light; }
+
+body {
+  background: var(--color-sx-bg);
+  color: var(--color-sx-text);
+  font-family: var(--font-sans);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.01em; }
+code, kbd, samp, pre { font-family: var(--font-mono); }
+
+/* Numeric data should always use tabular figures — tables, KPIs, prices. */
+.sx-num { font-variant-numeric: tabular-nums; }
+
+/* ─── focus ring · one ring for all interactive elements ─── */
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-sx-blue);
+  outline-offset: 2px;
+  border-radius: var(--radius-sx-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</content>
+</invoke>
