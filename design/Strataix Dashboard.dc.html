@@ -1,196 +1,361 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
-<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Strataix · Dashboard · Overview</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 <style>
-:root,[data-sx-theme="dark"]{--font-body:"IBM Plex Sans",system-ui,sans-serif;--font-heading:"IBM Plex Sans",system-ui,sans-serif;--font-display:"Michroma","IBM Plex Sans",sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,monospace;
---sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;--sx-line:#1a1d26;--sx-line-2:#262a35;--sx-text:var(--color-text);--sx-muted:var(--color-neutral-400);--sx-faint:var(--color-neutral-600);
---sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;--sx-violet:var(--color-accent);--sx-violet-tint:var(--color-accent-900);--sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);--sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);--sx-grid:color-mix(in srgb,var(--color-text) 5%,transparent);--sx-s1:#2f6fff;--sx-s2:var(--color-accent);--sx-s3:var(--color-neutral-600)}
-[data-sx-theme="light"]{--sx-bg:var(--color-neutral-100);--sx-panel:#fcfcfe;--sx-raised:#fcfcfe;--sx-line:var(--color-neutral-200);--sx-line-2:var(--color-neutral-300);--sx-text:#1b1d29;--sx-muted:var(--color-neutral-600);--sx-faint:var(--color-neutral-500);
---sx-blue:#1a5fff;--sx-blue-text:#1a4fd6;--sx-blue-tint:#e6edff;--sx-blue-tint-2:#cfdcff;--sx-violet:var(--color-accent-600);--sx-violet-tint:var(--color-accent-100);--sx-danger:oklch(0.55 0.17 25);--sx-danger-tint:color-mix(in srgb,oklch(0.55 0.17 25) 10%,transparent);--sx-ok:oklch(0.55 0.12 165);--sx-warn:oklch(0.62 0.13 70);--sx-grid:color-mix(in srgb,#1b1d29 7%,transparent);--sx-s1:#1a5fff;--sx-s2:var(--color-accent-500);--sx-s3:var(--color-neutral-400)}
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:#7b61ff;--sx-violet-tint:#1e1b3d;
+  --sx-danger:oklch(0.7 0.15 25);--sx-danger-tint:color-mix(in srgb,oklch(0.7 0.15 25) 16%,transparent);
+  --sx-ok:oklch(0.76 0.12 165);--sx-warn:oklch(0.8 0.12 80);
+  --sx-grid:color-mix(in srgb,#e9e9ed 5%,transparent);
+}
+body{margin:0;background:var(--sx-bg);font-family:var(--font-body);color:var(--sx-text);font-size:13px;line-height:1.5}
+.nav-row{display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;color:var(--sx-text);cursor:pointer}
+.nav-row i{font-size:16px}
+.nav-row.active{background:var(--sx-blue-tint);color:var(--sx-blue-text);font-weight:500}
+.nav-row:hover:not(.active){background:var(--sx-raised)}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
 </style>
-</helmet>
-<div data-sx-theme="{{ theme }}" style="width:1440px;height:900px;display:flex;background:var(--sx-bg);color:var(--sx-text);font-family:var(--font-body);font-size:13px;overflow:hidden">
+</head>
+<body>
 
+<div style="width:1440px;height:900px;display:flex;overflow:hidden">
+
+<!-- SIDEBAR -->
 <aside style="width:216px;flex:none;border-right:1px solid var(--sx-line);display:flex;flex-direction:column;padding:16px 12px;gap:2px;background:var(--sx-bg)">
-<div style="padding:4px 8px 18px"><img src="{{ wordmark }}" alt="Strataix" style="height:13px;display:block"></div>
-<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:var(--radius-md);margin-bottom:14px;cursor:pointer">
+<div style="padding:4px 8px 18px"><img src="../public/brand/wordmark-light.png" alt="Strataix" style="height:13px;display:block"></div>
+
+<div style="display:flex;align-items:center;gap:8px;padding:7px 9px;border:1px solid var(--sx-line-2);border-radius:6px;margin-bottom:14px;cursor:pointer">
 <span style="width:18px;height:18px;border-radius:5px;background:var(--sx-blue-tint-2);color:var(--sx-blue-text);font:600 10px var(--font-body);display:flex;align-items:center;justify-content:center">A</span>
-<div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div><i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i></div>
-<sc-for list="{{ nav }}" as="n" hint-placeholder-count="9"><div style="display:flex;align-items:center;gap:10px;padding:6px 9px;border-radius:6px;cursor:pointer;background:{{ n.bg }};color:{{ n.c }};font-weight:{{ n.fw }}" style-hover="background:var(--sx-panel)"><i class="ph {{ n.i }}" style="font-size:16px"></i><span style="flex:1">{{ n.l }}</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">{{ n.badge }}</span></div></sc-for>
+<div style="flex:1;line-height:1.2"><div style="font-weight:500">acme</div><div style="font-size:11px;color:var(--sx-muted)">production</div></div>
+<i class="ph ph-caret-up-down" style="color:var(--sx-muted)"></i>
+</div>
+
+<div class="nav-row active"><i class="ph ph-squares-four"></i><span style="flex:1">Overview</span></div>
+<div class="nav-row"><i class="ph ph-list-dashes"></i><span style="flex:1">Requests</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">1.24M</span></div>
+<div class="nav-row"><i class="ph ph-tree-structure"></i><span style="flex:1">Sessions</span></div>
+<div class="nav-row"><i class="ph ph-git-fork"></i><span style="flex:1">Routes</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">18</span></div>
+<div class="nav-row"><i class="ph ph-cloud"></i><span style="flex:1">Providers</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">5</span></div>
+<div class="nav-row"><i class="ph ph-shield-check"></i><span style="flex:1">Guardrails</span></div>
+<div class="nav-row"><i class="ph ph-key"></i><span style="flex:1">Keys</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">7</span></div>
+<div class="nav-row"><i class="ph ph-wallet"></i><span style="flex:1">Budgets</span></div>
+<div class="nav-row"><i class="ph ph-bell-simple"></i><span style="flex:1">Alerts</span><span style="font:500 10.5px var(--font-mono);color:var(--sx-muted)">2</span></div>
+
 <div style="flex:1"></div>
-<div style="padding:10px;border:1px solid var(--sx-line-2);border-radius:var(--radius-md);display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
+
+<div style="padding:10px;border:1px solid var(--sx-line-2);border-radius:6px;display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
 <div style="display:flex;justify-content:space-between;font-size:11.5px"><span style="color:var(--sx-muted)">November budget</span><span style="font-family:var(--font-mono)">69%</span></div>
 <div style="height:4px;border-radius:2px;background:var(--sx-line-2);overflow:hidden"><div style="width:69%;height:100%;background:var(--sx-blue)"></div></div>
-<div style="font-size:11px;color:var(--sx-muted)">$62.4k of $90k · forecast <span style="color:var(--sx-danger)">$94.2k</span></div></div>
+<div style="font-size:11px;color:var(--sx-muted)">$62.4k of $90k · forecast <span style="color:var(--sx-danger)">$94.2k</span></div>
+</div>
+
 <div style="display:flex;align-items:center;gap:10px;padding:6px 9px;color:var(--sx-muted)"><i class="ph ph-gear-six" style="font-size:16px"></i>Settings</div>
 <div style="display:flex;align-items:center;gap:10px;padding:6px 9px"><span style="width:22px;height:22px;border-radius:50%;background:var(--sx-violet-tint);color:var(--sx-violet);font-size:10px;font-weight:600;display:flex;align-items:center;justify-content:center">IM</span><span style="flex:1">Imran</span><i class="ph ph-dots-three" style="color:var(--sx-muted)"></i></div>
 </aside>
 
+<!-- MAIN -->
 <main style="flex:1;min-width:0;display:flex;flex-direction:column">
+
+<!-- top bar -->
 <header style="height:52px;flex:none;display:flex;align-items:center;gap:10px;padding:0 20px;border-bottom:1px solid var(--sx-line)">
 <span style="font:400 11px var(--font-display);letter-spacing:.06em">OVERVIEW</span>
 <span style="color:var(--sx-faint)">/</span><span style="color:var(--sx-muted)">All traffic</span>
 <div style="flex:1"></div>
-<div style="width:280px;display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:var(--radius-md);color:var(--sx-muted)"><i class="ph ph-magnifying-glass"></i><span style="flex:1">Search requests, keys, routes</span><span style="font:11px var(--font-mono);padding:0 5px;border:1px solid var(--sx-line-2);border-radius:4px">⌘K</span></div>
-<div style="display:flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:var(--radius-md)"><i class="ph ph-cloud" style="color:var(--sx-muted)"></i>All providers<i class="ph ph-caret-down" style="color:var(--sx-muted)"></i></div>
-<div style="display:flex;border:1px solid var(--sx-line-2);border-radius:var(--radius-md);overflow:hidden"><sc-for list="{{ ranges }}" as="r" hint-placeholder-count="4"><span style="padding:6px 10px;font-family:var(--font-mono);font-size:11.5px;background:{{ r.bg }};color:{{ r.c }}">{{ r.l }}</span></sc-for></div>
-<div style="display:flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid var(--sx-blue);border-radius:var(--radius-md);color:var(--sx-blue-text)"><span style="width:6px;height:6px;border-radius:50%;background:var(--sx-blue);box-shadow:0 0 0 3px var(--sx-blue-tint-2)"></span>Live</div>
+<div style="width:280px;display:flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:6px;color:var(--sx-muted)">
+<i class="ph ph-magnifying-glass"></i>
+<span style="flex:1">Search requests, keys, routes</span>
+<span style="font:11px var(--font-mono);padding:0 5px;border:1px solid var(--sx-line-2);border-radius:4px">⌘K</span>
+</div>
+<div style="display:flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--sx-line-2);border-radius:6px"><i class="ph ph-cloud" style="color:var(--sx-muted)"></i>All providers<i class="ph ph-caret-down" style="color:var(--sx-muted)"></i></div>
+<div style="display:flex;border:1px solid var(--sx-line-2);border-radius:6px;overflow:hidden">
+<span style="padding:6px 10px;font-family:var(--font-mono);font-size:11.5px;color:var(--sx-muted)">1h</span>
+<span style="padding:6px 10px;font-family:var(--font-mono);font-size:11.5px;background:var(--sx-raised)">24h</span>
+<span style="padding:6px 10px;font-family:var(--font-mono);font-size:11.5px;color:var(--sx-muted)">7d</span>
+<span style="padding:6px 10px;font-family:var(--font-mono);font-size:11.5px;color:var(--sx-muted)">30d</span>
+</div>
+<div style="display:flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid var(--sx-blue);border-radius:6px;color:var(--sx-blue-text)">
+<span style="width:6px;height:6px;border-radius:50%;background:var(--sx-blue);box-shadow:0 0 0 3px var(--sx-blue-tint-2)"></span>Live
+</div>
 </header>
 
+<!-- GRID -->
 <div style="flex:1;min-height:0;padding:16px 20px 20px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto minmax(0,1.25fr) minmax(0,1fr) minmax(0,1fr);gap:12px">
 
-<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6"><div style="grid-column:span 2;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);padding:12px 14px;display:flex;flex-direction:column;gap:4px">
-<div style="display:flex;align-items:center;gap:6px;color:var(--sx-muted);font-size:12px"><span style="flex:1">{{ k.k }}</span><i class="ph ph-info" style="font-size:12px;color:var(--sx-faint)"></i></div>
+<!-- KPIs x6 -->
+<div style="grid-column:span 2;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:6px;color:var(--sx-muted);font-size:12px"><span style="flex:1">Spend</span><i class="ph ph-info" style="font-size:12px;color:var(--sx-faint)"></i></div>
 <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px">
-<span style="font:500 24px/1.1 var(--font-body);font-variant-numeric:tabular-nums;letter-spacing:-.01em">{{ k.v }}</span>
-<svg width="72" height="24" viewBox="0 0 72 24" style="flex:none"><polyline points="{{ k.pts }}" fill="none" stroke="{{ k.stroke }}" stroke-width="1.5" stroke-linejoin="round"></polyline></svg></div>
-<div style="font:500 11px var(--font-mono);color:{{ k.dc }}">{{ k.d }} <span style="color:var(--sx-faint);font-family:var(--font-body);font-weight:400">vs yesterday</span></div>
-</div></sc-for>
+<span style="font:500 24px/1.1 var(--font-body);font-variant-numeric:tabular-nums;letter-spacing:-.01em">$4,182</span>
+<svg width="72" height="24" viewBox="0 0 72 24"><polyline points="0,18.9 5.5,16.3 11,16.9 16.5,13.3 22,14.8 27.5,11.5 33,10.1 38.5,8.6 44,9.8 49.5,6.6 55,5.7 60.5,4.3 66,3.4 72,1.8" fill="none" stroke="var(--sx-blue)" stroke-width="1.5" stroke-linejoin="round"></polyline></svg>
+</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-danger)">+12.0% <span style="color:var(--sx-faint);font-family:var(--font-body);font-weight:400">vs yesterday</span></div>
+</div>
 
-<section style="grid-column:span 8;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:0">
+<div style="grid-column:span 2;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:6px;color:var(--sx-muted);font-size:12px"><span style="flex:1">Requests</span><i class="ph ph-info" style="font-size:12px;color:var(--sx-faint)"></i></div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px">
+<span style="font:500 24px/1.1 var(--font-body);font-variant-numeric:tabular-nums;letter-spacing:-.01em">1.24M</span>
+<svg width="72" height="24" viewBox="0 0 72 24"><polyline points="0,20 5.5,17 11,18 16.5,14 22,16 27.5,13 33,12 38.5,10 44,11 49.5,8 55,7 60.5,5 66,4 72,3" fill="none" stroke="var(--sx-muted)" stroke-width="1.5"></polyline></svg>
+</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-muted)">+4.1% <span style="color:var(--sx-faint);font-family:var(--font-body);font-weight:400">vs yesterday</span></div>
+</div>
+
+<div style="grid-column:span 2;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:6px;color:var(--sx-muted);font-size:12px"><span style="flex:1">p95 latency</span><i class="ph ph-info" style="font-size:12px;color:var(--sx-faint)"></i></div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px">
+<span style="font:500 24px/1.1 var(--font-body);font-variant-numeric:tabular-nums;letter-spacing:-.01em">1.84s</span>
+<svg width="72" height="24" viewBox="0 0 72 24"><polyline points="0,10 5.5,12 11,10 16.5,13 22,10 27.5,12 33,11 38.5,14 44,12 49.5,13 55,15 60.5,14 66,16 72,15" fill="none" stroke="var(--sx-muted)" stroke-width="1.5"></polyline></svg>
+</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-ok)">−80ms <span style="color:var(--sx-faint);font-family:var(--font-body);font-weight:400">vs yesterday</span></div>
+</div>
+
+<div style="grid-column:span 2;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:6px;color:var(--sx-muted);font-size:12px"><span style="flex:1">Error rate</span><i class="ph ph-info" style="font-size:12px;color:var(--sx-faint)"></i></div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px">
+<span style="font:500 24px/1.1 var(--font-body);font-variant-numeric:tabular-nums;letter-spacing:-.01em">0.92%</span>
+<svg width="72" height="24" viewBox="0 0 72 24"><polyline points="0,18 5.5,17 11,17 16.5,15 22,16 27.5,14 33,13 38.5,12 44,13 49.5,11 55,10 60.5,9 66,10 72,8" fill="none" stroke="var(--sx-muted)" stroke-width="1.5"></polyline></svg>
+</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-danger)">+0.10pt <span style="color:var(--sx-faint);font-family:var(--font-body);font-weight:400">vs yesterday</span></div>
+</div>
+
+<div style="grid-column:span 2;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:6px;color:var(--sx-muted);font-size:12px"><span style="flex:1">Cache hit rate</span><i class="ph ph-info" style="font-size:12px;color:var(--sx-faint)"></i></div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px">
+<span style="font:500 24px/1.1 var(--font-body);font-variant-numeric:tabular-nums;letter-spacing:-.01em">61.4%</span>
+<svg width="72" height="24" viewBox="0 0 72 24"><polyline points="0,20 5.5,18 11,17 16.5,15 22,14 27.5,12 33,11 38.5,9 44,10 49.5,7 55,6 60.5,5 66,4 72,3" fill="none" stroke="var(--sx-muted)" stroke-width="1.5"></polyline></svg>
+</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-ok)">+9.2pt <span style="color:var(--sx-faint);font-family:var(--font-body);font-weight:400">vs yesterday</span></div>
+</div>
+
+<div style="grid-column:span 2;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:6px;color:var(--sx-muted);font-size:12px"><span style="flex:1">Guardrail actions</span><i class="ph ph-info" style="font-size:12px;color:var(--sx-faint)"></i></div>
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px">
+<span style="font:500 24px/1.1 var(--font-body);font-variant-numeric:tabular-nums;letter-spacing:-.01em">312</span>
+<svg width="72" height="24" viewBox="0 0 72 24"><polyline points="0,18 5.5,16 11,17 16.5,14 22,15 27.5,12 33,13 38.5,10 44,11 49.5,8 55,9 60.5,6 66,7 72,4" fill="none" stroke="var(--sx-muted)" stroke-width="1.5"></polyline></svg>
+</div>
+<div style="font:500 11px var(--font-mono);color:var(--sx-muted)">+38 <span style="color:var(--sx-faint);font-family:var(--font-body);font-weight:400">vs yesterday</span></div>
+</div>
+
+<!-- Spend chart · 8 cols -->
+<section style="grid-column:span 8;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:0">
 <div style="display:flex;align-items:center;gap:14px">
 <span style="font-weight:500;font-size:14px">Spend</span>
 <span style="font:500 13px var(--font-mono)">$4,182.40</span>
-<div style="display:flex;gap:12px;font-size:11.5px;color:var(--sx-muted)"><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-s1)"></span>Anthropic</span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-s2)"></span>OpenAI</span><span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-s3)"></span>Google · other</span><span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1px dashed var(--sx-danger)"></span>Hourly budget</span></div>
-<div style="flex:1"></div>
-<div style="display:flex;border:1px solid var(--sx-line-2);border-radius:6px;overflow:hidden;font-size:11.5px"><span style="padding:3px 9px;background:var(--sx-raised)">Provider</span><span style="padding:3px 9px;color:var(--sx-muted)">Model</span><span style="padding:3px 9px;color:var(--sx-muted)">Team</span></div>
+<div style="display:flex;gap:12px;font-size:11.5px;color:var(--sx-muted)">
+<span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-blue)"></span>Anthropic</span>
+<span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-violet)"></span>OpenAI</span>
+<span style="display:flex;align-items:center;gap:5px"><span style="width:8px;height:8px;border-radius:2px;background:#4a5068"></span>Google · other</span>
+<span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1px dashed var(--sx-danger)"></span>Hourly budget</span>
 </div>
+<div style="flex:1"></div>
+<div style="display:flex;border:1px solid var(--sx-line-2);border-radius:6px;overflow:hidden;font-size:11.5px">
+<span style="padding:3px 9px;background:var(--sx-raised)">Provider</span>
+<span style="padding:3px 9px;color:var(--sx-muted)">Model</span>
+<span style="padding:3px 9px;color:var(--sx-muted)">Team</span>
+</div>
+</div>
+
 <div style="flex:1;min-height:0;display:flex;gap:8px">
-<div style="display:flex;flex-direction:column;justify-content:space-between;font:10.5px var(--font-mono);color:var(--sx-faint);padding-bottom:16px;text-align:right;width:30px"><span>$300</span><span>$200</span><span>$100</span><span>$0</span></div>
+<div style="display:flex;flex-direction:column;justify-content:space-between;font:10.5px var(--font-mono);color:var(--sx-faint);padding-bottom:16px;text-align:right;width:30px">
+<span>$300</span><span>$200</span><span>$100</span><span>$0</span>
+</div>
 <div style="flex:1;display:flex;flex-direction:column;min-width:0">
 <div style="flex:1;position:relative;border-bottom:1px solid var(--sx-line-2);background-image:linear-gradient(var(--sx-grid) 1px,transparent 1px);background-size:100% 33.33%">
 <svg viewBox="0 0 600 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
-<path d="{{ area3 }}" fill="var(--sx-s3)" fill-opacity=".55"></path>
-<path d="{{ area2 }}" fill="var(--sx-s2)" fill-opacity=".55"></path>
-<path d="{{ area1 }}" fill="var(--sx-s1)" fill-opacity=".7"></path>
-<path d="{{ top1 }}" fill="none" stroke="var(--sx-s1)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
-<line x1="0" x2="600" y1="38" y2="38" stroke="var(--sx-danger)" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"></line>
-<line x1="462" x2="462" y1="0" y2="200" stroke="var(--sx-text)" stroke-opacity=".35" vector-effect="non-scaling-stroke"></line>
+<!-- stacked area: bottom = Google/other, middle = OpenAI, top = Anthropic -->
+<path d="M0,192 L13,190 L26,189 L38,186 L51,185 L64,182 L77,181 L89,180 L102,180 L115,179 L128,178 L140,178 L153,178 L166,177 L179,177 L191,177 L204,176 L217,176 L230,175 L242,175 L255,175 L268,174 L281,174 L294,173 L306,173 L319,172 L332,172 L345,171 L357,171 L370,171 L383,170 L396,170 L408,170 L421,170 L434,170 L447,169 L460,169 L472,169 L485,168 L498,168 L511,167 L523,167 L536,167 L549,166 L562,166 L574,166 L587,165 L600,165 L600,200 L0,200 Z" fill="#4a5068" fill-opacity=".55"></path>
+<path d="M0,170 L13,167 L26,165 L38,160 L51,158 L64,152 L77,150 L89,145 L102,144 L115,141 L128,138 L140,137 L153,135 L166,132 L179,130 L191,128 L204,127 L217,125 L230,122 L242,121 L255,120 L268,117 L281,116 L294,115 L306,113 L319,112 L332,110 L345,109 L357,108 L370,106 L383,105 L396,104 L408,103 L421,102 L434,100 L447,99 L460,98 L472,97 L485,96 L498,95 L511,95 L523,94 L536,94 L549,93 L562,93 L574,92 L587,91 L600,91 L600,165 L587,165 L574,166 L562,166 L549,166 L536,167 L523,167 L511,167 L498,168 L485,168 L472,169 L460,169 L447,169 L434,170 L421,170 L408,170 L396,170 L383,170 L370,171 L357,171 L345,171 L332,172 L319,172 L306,173 L294,173 L281,174 L268,174 L255,175 L242,175 L230,175 L217,176 L204,176 L191,177 L179,177 L166,177 L153,178 L140,178 L128,178 L115,179 L102,180 L89,180 L77,181 L64,182 L51,185 L38,186 L26,189 L13,190 L0,192 Z" fill="var(--sx-violet)" fill-opacity=".55"></path>
+<path d="M0,130 L13,122 L26,116 L38,106 L51,100 L64,92 L77,86 L89,78 L102,74 L115,68 L128,64 L140,60 L153,58 L166,54 L179,52 L191,50 L204,48 L217,46 L230,43 L242,41 L255,40 L268,36 L281,34 L294,32 L306,29 L319,28 L332,26 L345,24 L357,22 L370,20 L383,19 L396,17 L408,15 L421,14 L434,12 L447,10 L460,9 L472,42 L485,46 L498,44 L511,42 L523,40 L536,37 L549,35 L562,33 L574,31 L587,29 L600,26 L600,91 L587,91 L574,92 L562,93 L549,93 L536,94 L523,94 L511,95 L498,95 L485,96 L472,97 L460,98 L447,99 L434,100 L421,102 L408,103 L396,104 L383,105 L370,106 L357,108 L345,109 L332,110 L319,112 L306,113 L294,115 L281,116 L268,117 L255,120 L242,121 L230,122 L217,125 L204,127 L191,128 L179,130 L166,132 L153,135 L140,137 L128,138 L115,141 L102,144 L89,145 L77,150 L64,152 L51,158 L38,160 L26,165 L13,167 L0,170 Z" fill="var(--sx-blue)" fill-opacity=".7"></path>
+<path d="M0,130 L13,122 L26,116 L38,106 L51,100 L64,92 L77,86 L89,78 L102,74 L115,68 L128,64 L140,60 L153,58 L166,54 L179,52 L191,50 L204,48 L217,46 L230,43 L242,41 L255,40 L268,36 L281,34 L294,32 L306,29 L319,28 L332,26 L345,24 L357,22 L370,20 L383,19 L396,17 L408,15 L421,14 L434,12 L447,10 L460,9 L472,42 L485,46 L498,44 L511,42 L523,40 L536,37 L549,35 L562,33 L574,31 L587,29 L600,26" fill="none" stroke="var(--sx-blue)" stroke-width="1.5"></path>
+<line x1="0" x2="600" y1="38" y2="38" stroke="var(--sx-danger)" stroke-dasharray="4 4"></line>
+<line x1="462" x2="462" y1="0" y2="200" stroke="var(--sx-text)" stroke-opacity=".35"></line>
 </svg>
-<div style="position:absolute;left:calc(77% + 10px);top:14px;background:var(--sx-raised);box-shadow:var(--shadow-md);border-radius:var(--radius-md);padding:9px 11px;display:flex;flex-direction:column;gap:4px;font-size:11.5px;min-width:170px">
+
+<!-- tooltip -->
+<div style="position:absolute;left:calc(77% + 10px);top:14px;background:var(--sx-raised);box-shadow:0 10px 30px rgba(0,0,0,.5);border-radius:6px;padding:9px 11px;display:flex;flex-direction:column;gap:4px;font-size:11.5px;min-width:170px;border:1px solid var(--sx-line-2)">
 <span style="font:11px var(--font-mono);color:var(--sx-muted)">Nov 6 · 14:00</span>
-<div style="display:flex;justify-content:space-between;gap:12px"><span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:2px;background:var(--sx-s1)"></span>Anthropic</span><span style="font-family:var(--font-mono)">$142.10</span></div>
-<div style="display:flex;justify-content:space-between;gap:12px"><span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:2px;background:var(--sx-s2)"></span>OpenAI</span><span style="font-family:var(--font-mono)">$88.42</span></div>
-<div style="display:flex;justify-content:space-between;gap:12px"><span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:2px;background:var(--sx-s3)"></span>Google · other</span><span style="font-family:var(--font-mono)">$31.90</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:2px;background:var(--sx-blue)"></span>Anthropic</span><span style="font-family:var(--font-mono)">$142.10</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:2px;background:var(--sx-violet)"></span>OpenAI</span><span style="font-family:var(--font-mono)">$88.42</span></div>
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:2px;background:#4a5068"></span>Google · other</span><span style="font-family:var(--font-mono)">$31.90</span></div>
 <div style="border-top:1px solid var(--sx-line-2);padding-top:4px;display:flex;justify-content:space-between"><span style="color:var(--sx-muted)">Over budget</span><span style="font-family:var(--font-mono);color:var(--sx-danger)">+$22.42</span></div>
 </div>
 </div>
 <div style="display:flex;justify-content:space-between;font:10.5px var(--font-mono);color:var(--sx-faint);padding-top:5px"><span>Nov 5 18:00</span><span>00:00</span><span>06:00</span><span>12:00</span><span>now</span></div>
-</div></div>
-</section>
-
-<section style="grid-column:span 4;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:0">
-<div style="display:flex;align-items:center"><span style="font-weight:500;font-size:14px;flex:1">Spend by model</span><span style="font-size:11.5px;color:var(--sx-muted)">14 models</span></div>
-<div style="display:grid;grid-template-columns:1fr 64px 52px;font-size:11px;color:var(--sx-faint);padding-bottom:2px"><span>Model</span><span style="text-align:right">Cost</span><span style="text-align:right">Δ</span></div>
-<sc-for list="{{ models }}" as="m" hint-placeholder-count="6"><div style="display:flex;flex-direction:column;gap:5px">
-<div style="display:grid;grid-template-columns:1fr 64px 52px;align-items:baseline"><span style="font:12px var(--font-mono)">{{ m.m }}</span><span style="text-align:right;font:12px var(--font-mono)">{{ m.v }}</span><span style="text-align:right;font:11px var(--font-mono);color:{{ m.dc }}">{{ m.d }}</span></div>
-<div style="height:3px;border-radius:2px;background:var(--sx-line)"><div style="height:100%;border-radius:2px;width:{{ m.w }};background:{{ m.bar }}"></div></div>
-</div></sc-for>
-</section>
-
-<section style="grid-column:span 6;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-height:0">
-<div style="display:flex;align-items:center;gap:14px"><span style="font-weight:500;font-size:14px">Latency</span><div style="display:flex;gap:12px;font-size:11.5px;color:var(--sx-muted)"><span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1.5px solid var(--sx-blue)"></span>p50 0.92s</span><span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1.5px solid var(--sx-violet)"></span>p95 1.84s</span><span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1.5px dashed var(--sx-muted)"></span>p99 3.10s</span></div></div>
-<div style="flex:1;position:relative;border-bottom:1px solid var(--sx-line-2);background-image:linear-gradient(var(--sx-grid) 1px,transparent 1px);background-size:100% 33.33%">
-<svg viewBox="0 0 600 120" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
-<path d="{{ p99 }}" fill="none" stroke="var(--sx-muted)" stroke-dasharray="3 3" stroke-width="1.2" vector-effect="non-scaling-stroke"></path>
-<path d="{{ p95 }}" fill="none" stroke="var(--sx-violet)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
-<path d="{{ p50 }}" fill="none" stroke="var(--sx-blue)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
-</svg></div>
-</section>
-
-<section style="grid-column:span 6;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-height:0">
-<div style="display:flex;align-items:center;gap:14px"><span style="font-weight:500;font-size:14px">Traffic</span><span style="font:12px var(--font-mono);color:var(--sx-muted)">862 req/min</span><div style="flex:1"></div><span style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--sx-muted)"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-danger)"></span>errors 0.92%</span></div>
-<div style="flex:1;display:flex;align-items:flex-end;gap:3px;border-bottom:1px solid var(--sx-line-2)">
-<sc-for list="{{ traffic }}" as="t" hint-placeholder-count="48"><div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:{{ t.e }};background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:{{ t.h }};background:var(--sx-blue);opacity:{{ t.o }}"></div></div></sc-for>
+</div>
 </div>
 </section>
 
-<section style="grid-column:span 8;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);display:flex;flex-direction:column;min-height:0;overflow:hidden">
-<div style="display:flex;align-items:center;gap:10px;padding:12px 16px 8px"><span style="font-weight:500;font-size:14px">Top cost drivers</span><span style="font-size:11.5px;color:var(--sx-muted)">route × model · 24h</span><div style="flex:1"></div><span style="font-size:12px;color:var(--sx-blue-text);display:flex;align-items:center;gap:4px">Open in Requests<i class="ph ph-arrow-up-right"></i></span></div>
-<div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:6px 16px;font-size:11px;color:var(--sx-faint);border-bottom:1px solid var(--sx-line)"><span>Route</span><span>Model</span><span style="text-align:right">Requests</span><span style="text-align:right">Tokens</span><span style="text-align:right">Cache</span><span style="text-align:right">Cost</span><span style="text-align:right">Δ vs yesterday</span></div>
-<sc-for list="{{ drivers }}" as="d" hint-placeholder-count="4"><div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:7px 16px;align-items:center;border-bottom:1px solid var(--sx-line);font-variant-numeric:tabular-nums" style-hover="background:var(--sx-raised)">
-<span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:{{ d.dot }}"></span>{{ d.r }}</span><span style="font:12px var(--font-mono);color:var(--sx-muted)">{{ d.m }}</span><span style="text-align:right;font:12px var(--font-mono)">{{ d.q }}</span><span style="text-align:right;font:12px var(--font-mono)">{{ d.t }}</span><span style="text-align:right;font:12px var(--font-mono)">{{ d.ch }}</span><span style="text-align:right;font:500 12px var(--font-mono)">{{ d.c }}</span><span style="text-align:right;font:12px var(--font-mono);color:{{ d.dc }}">{{ d.d }}</span></div></sc-for>
+<!-- Spend by model · 4 cols -->
+<section style="grid-column:span 4;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-height:0">
+<div style="display:flex;align-items:center"><span style="font-weight:500;font-size:14px;flex:1">Spend by model</span><span style="font-size:11.5px;color:var(--sx-muted)">14 models</span></div>
+<div style="display:grid;grid-template-columns:1fr 64px 52px;font-size:11px;color:var(--sx-faint);padding-bottom:2px"><span>Model</span><span style="text-align:right">Cost</span><span style="text-align:right">Δ</span></div>
+
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="display:grid;grid-template-columns:1fr 64px 52px;align-items:baseline"><span style="font:12px var(--font-mono)">claude-sonnet-4</span><span style="text-align:right;font:12px var(--font-mono)">$1,620</span><span style="text-align:right;font:11px var(--font-mono);color:var(--sx-danger)">+$410</span></div>
+<div style="height:3px;border-radius:2px;background:var(--sx-line)"><div style="height:100%;border-radius:2px;width:78%;background:var(--sx-blue)"></div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="display:grid;grid-template-columns:1fr 64px 52px;align-items:baseline"><span style="font:12px var(--font-mono)">gpt-4o</span><span style="text-align:right;font:12px var(--font-mono)">$1,104</span><span style="text-align:right;font:11px var(--font-mono);color:var(--sx-danger)">+$92</span></div>
+<div style="height:3px;border-radius:2px;background:var(--sx-line)"><div style="height:100%;border-radius:2px;width:54%;background:var(--sx-muted)"></div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="display:grid;grid-template-columns:1fr 64px 52px;align-items:baseline"><span style="font:12px var(--font-mono)">gemini-2.5-pro</span><span style="text-align:right;font:12px var(--font-mono)">$712</span><span style="text-align:right;font:11px var(--font-mono);color:var(--sx-ok)">−$40</span></div>
+<div style="height:3px;border-radius:2px;background:var(--sx-line)"><div style="height:100%;border-radius:2px;width:34%;background:var(--sx-muted)"></div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="display:grid;grid-template-columns:1fr 64px 52px;align-items:baseline"><span style="font:12px var(--font-mono)">gpt-4o-mini</span><span style="text-align:right;font:12px var(--font-mono)">$402</span><span style="text-align:right;font:11px var(--font-mono);color:var(--sx-danger)">+$18</span></div>
+<div style="height:3px;border-radius:2px;background:var(--sx-line)"><div style="height:100%;border-radius:2px;width:20%;background:var(--sx-muted)"></div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="display:grid;grid-template-columns:1fr 64px 52px;align-items:baseline"><span style="font:12px var(--font-mono)">llama-3.1-70b</span><span style="text-align:right;font:12px var(--font-mono)">$344</span><span style="text-align:right;font:11px var(--font-mono);color:var(--sx-ok)">−$22</span></div>
+<div style="height:3px;border-radius:2px;background:var(--sx-line)"><div style="height:100%;border-radius:2px;width:16%;background:var(--sx-muted)"></div></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:5px">
+<div style="display:grid;grid-template-columns:1fr 64px 52px;align-items:baseline"><span style="font:12px var(--font-mono)">mistral-large</span><span style="text-align:right;font:12px var(--font-mono)">$212</span><span style="text-align:right;font:11px var(--font-mono);color:var(--sx-muted)">±$0</span></div>
+<div style="height:3px;border-radius:2px;background:var(--sx-line)"><div style="height:100%;border-radius:2px;width:10%;background:var(--sx-muted)"></div></div>
+</div>
 </section>
 
-<section style="grid-column:span 4;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-md);display:flex;flex-direction:column;min-height:0;overflow:hidden">
-<div style="display:flex;align-items:center;gap:8px;padding:12px 16px 8px"><span style="font-weight:500;font-size:14px;flex:1">Alerts &amp; findings</span><span style="font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px;background:var(--sx-danger-tint);color:var(--sx-danger)">2 open</span></div>
-<sc-for list="{{ alerts }}" as="a" hint-placeholder-count="4"><div style="display:flex;gap:10px;padding:8px 16px;border-top:1px solid var(--sx-line);align-items:flex-start" style-hover="background:var(--sx-raised)">
-<i class="ph {{ a.i }}" style="font-size:15px;margin-top:1px;color:{{ a.c }}"></i>
-<div style="flex:1;min-width:0"><div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ a.t }}</div><div style="font-size:11.5px;color:var(--sx-muted)">{{ a.s }}</div></div>
-<span style="font:11px var(--font-mono);color:var(--sx-faint)">{{ a.time }}</span></div></sc-for>
+<!-- Latency · 6 cols -->
+<section style="grid-column:span 6;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-height:0">
+<div style="display:flex;align-items:center;gap:14px">
+<span style="font-weight:500;font-size:14px">Latency</span>
+<div style="display:flex;gap:12px;font-size:11.5px;color:var(--sx-muted)">
+<span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1.5px solid var(--sx-blue)"></span>p50 0.92s</span>
+<span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1.5px solid var(--sx-violet)"></span>p95 1.84s</span>
+<span style="display:flex;align-items:center;gap:5px"><span style="width:12px;border-top:1.5px dashed var(--sx-muted)"></span>p99 3.10s</span>
+</div>
+</div>
+<div style="flex:1;position:relative;border-bottom:1px solid var(--sx-line-2);background-image:linear-gradient(var(--sx-grid) 1px,transparent 1px);background-size:100% 33.33%">
+<svg viewBox="0 0 600 120" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">
+<path d="M0,36 L10,37 L20,34 L30,38 L41,33 L51,36 L61,35 L71,34 L82,37 L92,35 L102,34 L112,32 L122,36 L133,33 L143,35 L153,30 L163,34 L173,32 L184,36 L194,33 L204,30 L214,34 L224,32 L235,29 L245,33 L255,30 L265,35 L275,32 L286,30 L296,27 L306,33 L316,30 L326,35 L337,32 L347,30 L357,34 L367,30 L377,27 L388,32 L398,30 L408,26 L418,28 L428,24 L439,20 L449,24 L459,28 L469,24 L479,20 L490,16 L500,20 L510,16 L520,20 L530,24 L541,22 L551,18 L561,16 L571,20 L581,17 L592,16 L600,15" fill="none" stroke="var(--sx-muted)" stroke-dasharray="3 3" stroke-width="1.2"></path>
+<path d="M0,62 L10,64 L20,61 L30,65 L41,60 L51,63 L61,62 L71,61 L82,64 L92,62 L102,61 L112,59 L122,63 L133,60 L143,62 L153,57 L163,61 L173,59 L184,63 L194,60 L204,57 L214,61 L224,59 L235,56 L245,60 L255,57 L265,62 L275,59 L286,57 L296,54 L306,60 L316,57 L326,62 L337,59 L347,57 L357,61 L367,57 L377,54 L388,59 L398,57 L408,53 L418,55 L428,51 L439,47 L449,51 L459,55 L469,51 L479,47 L490,43 L500,47 L510,43 L520,47 L530,51 L541,49 L551,45 L561,43 L571,47 L581,44 L592,43 L600,42" fill="none" stroke="var(--sx-violet)" stroke-width="1.5"></path>
+<path d="M0,86 L10,88 L20,85 L30,89 L41,84 L51,87 L61,86 L71,85 L82,88 L92,86 L102,85 L112,83 L122,87 L133,84 L143,86 L153,81 L163,85 L173,83 L184,87 L194,84 L204,81 L214,85 L224,83 L235,80 L245,84 L255,81 L265,86 L275,83 L286,81 L296,78 L306,84 L316,81 L326,86 L337,83 L347,81 L357,85 L367,81 L377,78 L388,83 L398,81 L408,77 L418,79 L428,75 L439,71 L449,75 L459,79 L469,75 L479,71 L490,67 L500,71 L510,67 L520,71 L530,75 L541,73 L551,69 L561,67 L571,71 L581,68 L592,67 L600,66" fill="none" stroke="var(--sx-blue)" stroke-width="1.5"></path>
+</svg>
+</div>
+</section>
+
+<!-- Traffic · 6 cols -->
+<section style="grid-column:span 6;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-height:0">
+<div style="display:flex;align-items:center;gap:14px">
+<span style="font-weight:500;font-size:14px">Traffic</span>
+<span style="font:12px var(--font-mono);color:var(--sx-muted)">862 req/min</span>
+<div style="flex:1"></div>
+<span style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--sx-muted)"><span style="width:8px;height:8px;border-radius:2px;background:var(--sx-danger)"></span>errors 0.92%</span>
+</div>
+<div style="flex:1;display:flex;align-items:flex-end;gap:3px;border-bottom:1px solid var(--sx-line-2)">
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:48%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:51%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:7%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:46%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:55%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:58%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:62%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:67%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:71%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:8%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:74%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:78%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:80%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:82%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:85%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:5%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:88%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:90%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:92%;background:var(--sx-blue);opacity:.75"></div></div>
+<div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="height:1%;background:var(--sx-danger);border-radius:1px 1px 0 0"></div><div style="height:94%;background:var(--sx-blue);opacity:1"></div></div>
+</div>
+</section>
+
+<!-- Top cost drivers · 8 cols -->
+<section style="grid-column:span 8;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;display:flex;flex-direction:column;min-height:0;overflow:hidden">
+<div style="display:flex;align-items:center;gap:10px;padding:12px 16px 8px">
+<span style="font-weight:500;font-size:14px">Top cost drivers</span>
+<span style="font-size:11.5px;color:var(--sx-muted)">route × model · 24h</span>
+<div style="flex:1"></div>
+<span style="font-size:12px;color:var(--sx-blue-text);display:flex;align-items:center;gap:4px">Open in Requests<i class="ph ph-arrow-up-right"></i></span>
+</div>
+<div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:6px 16px;font-size:11px;color:var(--sx-faint);border-bottom:1px solid var(--sx-line)">
+<span>Route</span><span>Model</span><span style="text-align:right">Requests</span><span style="text-align:right">Tokens</span><span style="text-align:right">Cache</span><span style="text-align:right">Cost</span><span style="text-align:right">Δ vs yesterday</span>
+</div>
+
+<div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:7px 16px;align-items:center;border-bottom:1px solid var(--sx-line);font-variant-numeric:tabular-nums">
+<span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--sx-danger)"></span>support/triage</span>
+<span style="font:12px var(--font-mono);color:var(--sx-muted)">claude-sonnet-4</span>
+<span style="text-align:right;font:12px var(--font-mono)">402k</span>
+<span style="text-align:right;font:12px var(--font-mono)">41.2M</span>
+<span style="text-align:right;font:12px var(--font-mono)">12%</span>
+<span style="text-align:right;font:500 12px var(--font-mono)">$1,020</span>
+<span style="text-align:right;font:12px var(--font-mono);color:var(--sx-danger)">+$310 · +44%</span>
+</div>
+<div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:7px 16px;align-items:center;border-bottom:1px solid var(--sx-line);font-variant-numeric:tabular-nums">
+<span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--sx-danger)"></span>copilot/complete</span>
+<span style="font:12px var(--font-mono);color:var(--sx-muted)">gpt-4o</span>
+<span style="text-align:right;font:12px var(--font-mono)">377k</span>
+<span style="text-align:right;font:12px var(--font-mono)">28.7M</span>
+<span style="text-align:right;font:12px var(--font-mono)">71%</span>
+<span style="text-align:right;font:500 12px var(--font-mono)">$860</span>
+<span style="text-align:right;font:12px var(--font-mono);color:var(--sx-blue)">+$92 · +12%</span>
+</div>
+<div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:7px 16px;align-items:center;border-bottom:1px solid var(--sx-line);font-variant-numeric:tabular-nums">
+<span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--sx-ok)"></span>data/extract</span>
+<span style="font:12px var(--font-mono);color:var(--sx-muted)">gemini-2.5-pro</span>
+<span style="text-align:right;font:12px var(--font-mono)">118k</span>
+<span style="text-align:right;font:12px var(--font-mono)">12.1M</span>
+<span style="text-align:right;font:12px var(--font-mono)">64%</span>
+<span style="text-align:right;font:500 12px var(--font-mono)">$640</span>
+<span style="text-align:right;font:12px var(--font-mono);color:var(--sx-blue)">−$40 · −6%</span>
+</div>
+<div style="display:grid;grid-template-columns:1.5fr 1.2fr .8fr .9fr .8fr .9fr 1.1fr;padding:7px 16px;align-items:center;font-variant-numeric:tabular-nums">
+<span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:var(--sx-danger)"></span>support/summarize</span>
+<span style="font:12px var(--font-mono);color:var(--sx-muted)">gpt-4o-mini</span>
+<span style="text-align:right;font:12px var(--font-mono)">296k</span>
+<span style="text-align:right;font:12px var(--font-mono)">30.3M</span>
+<span style="text-align:right;font:12px var(--font-mono)">58%</span>
+<span style="text-align:right;font:500 12px var(--font-mono)">$510</span>
+<span style="text-align:right;font:12px var(--font-mono);color:var(--sx-blue)">+$18 · +4%</span>
+</div>
+</section>
+
+<!-- Alerts · 4 cols -->
+<section style="grid-column:span 4;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:6px;display:flex;flex-direction:column;min-height:0;overflow:hidden">
+<div style="display:flex;align-items:center;gap:8px;padding:12px 16px 8px">
+<span style="font-weight:500;font-size:14px;flex:1">Alerts &amp; findings</span>
+<span class="pill" style="background:var(--sx-danger-tint);color:var(--sx-danger)">2 open</span>
+</div>
+<div style="display:flex;gap:10px;padding:8px 16px;border-top:1px solid var(--sx-line);align-items:flex-start">
+<i class="ph ph-warning-circle" style="font-size:15px;margin-top:1px;color:var(--sx-danger)"></i>
+<div style="flex:1;min-width:0"><div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Budget at 92% · team support</div><div style="font-size:11.5px;color:var(--sx-muted)">Projected to exceed on Nov 27</div></div>
+<span style="font:11px var(--font-mono);color:var(--sx-faint)">4m</span>
+</div>
+<div style="display:flex;gap:10px;padding:8px 16px;border-top:1px solid var(--sx-line);align-items:flex-start">
+<i class="ph ph-lightning" style="font-size:15px;margin-top:1px;color:var(--sx-violet)"></i>
+<div style="flex:1;min-width:0"><div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Cache break on support/triage</div><div style="font-size:11.5px;color:var(--sx-muted)">System prompt reordered · 84% → 12%</div></div>
+<span style="font:11px var(--font-mono);color:var(--sx-faint)">18m</span>
+</div>
+<div style="display:flex;gap:10px;padding:8px 16px;border-top:1px solid var(--sx-line);align-items:flex-start">
+<i class="ph ph-scissors" style="font-size:15px;margin-top:1px;color:var(--sx-violet)"></i>
+<div style="flex:1;min-width:0"><div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">31 unused tools loaded every turn</div><div style="font-size:11.5px;color:var(--sx-muted)">Prune to save ~29.9k tokens / call</div></div>
+<span style="font:11px var(--font-mono);color:var(--sx-faint)">1h</span>
+</div>
+<div style="display:flex;gap:10px;padding:8px 16px;border-top:1px solid var(--sx-line);align-items:flex-start">
+<i class="ph ph-clock-countdown" style="font-size:15px;margin-top:1px;color:var(--sx-warn)"></i>
+<div style="flex:1;min-width:0"><div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">p95 &gt; 3s · gemini-2.5-pro</div><div style="font-size:11.5px;color:var(--sx-muted)">Resolved after fallback to gpt-4o</div></div>
+<span style="font:11px var(--font-mono);color:var(--sx-faint)">2h</span>
+</div>
 </section>
 
 </div>
 </main>
 </div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark' | 'light'&quot;}}">
-class Component extends DCLogic {
-  renderVals() {
-    const theme = this.props.theme ?? 'dark';
-    const rnd = (i, s) => { const x = Math.sin(i * 12.9898 + s * 78.233) * 43758.5453; return x - Math.floor(x); };
-    const wave = (i, s, a, b) => a + b * (0.5 + 0.5 * Math.sin(i / 4 + s)) + rnd(i, s) * b * 0.35;
-    const N = 48, W = 600, H = 200;
-    const x = i => (i / (N - 1)) * W;
-    const s1 = [], s2 = [], s3 = [];
-    for (let i = 0; i < N; i++) { const day = 0.55 + 0.45 * Math.sin((i - 10) / 7.6); s1.push(day * wave(i, 1, 40, 30) + (i > 36 ? 22 : 0)); s2.push(day * wave(i, 2, 30, 18)); s3.push(day * wave(i, 3, 12, 8)); }
-    const cum = (arrs) => arrs[0].map((_, i) => arrs.reduce((s, a) => s + a[i], 0));
-    const y = v => H - v * 0.62;
-    const line = (vals) => vals.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');
-    const area = (top, bot) => line(top) + top.map((_, i) => `L${x(N - 1 - i).toFixed(1)},${y(bot[N - 1 - i]).toFixed(1)}`).join('') + 'Z';
-    const zero = Array(N).fill(0), c3 = s3, c2 = cum([s3, s2]), c1 = cum([s3, s2, s1]);
-    const L = 60, lx = i => (i / (L - 1)) * 600;
-    const lat = (base, amp, s) => Array.from({ length: L }, (_, i) => `${i ? 'L' : 'M'}${lx(i).toFixed(1)},${(120 - (base + amp * rnd(i, s) + (i > 40 && i < 46 ? amp * 1.4 : 0))).toFixed(1)}`).join('');
-    const spark = (s, up) => Array.from({ length: 14 }, (_, i) => `${(i / 13 * 72).toFixed(1)},${(20 - (up ? i * 0.7 : (13 - i) * 0.5) - rnd(i, s) * 8).toFixed(1)}`).join(' ');
-    const D = 'var(--sx-danger)', G = 'var(--sx-ok)', M = 'var(--sx-muted)', B = 'var(--sx-blue)';
-    const navDef = [['Overview', 'ph-squares-four'], ['Requests', 'ph-list-dashes', '1.24M'], ['Sessions', 'ph-tree-structure'], ['Routes', 'ph-git-fork', '18'], ['Providers', 'ph-cloud', '5'], ['Guardrails', 'ph-shield-check'], ['Keys', 'ph-key', '7'], ['Budgets', 'ph-wallet'], ['Alerts', 'ph-bell-simple', '2']];
-    return {
-      theme,
-      wordmark: theme === 'light' ? 'public/brand/wordmark-dark.png' : 'public/brand/wordmark-light.png',
-      nav: navDef.map(([l, i, badge], k) => ({ l, i, badge: badge || '', bg: k === 0 ? 'var(--sx-blue-tint)' : 'transparent', c: k === 0 ? 'var(--sx-blue-text)' : 'var(--sx-text)', fw: k === 0 ? 500 : 400 })),
-      ranges: ['1h', '24h', '7d', '30d'].map(l => ({ l, bg: l === '24h' ? 'var(--sx-raised)' : 'transparent', c: l === '24h' ? 'var(--sx-text)' : 'var(--sx-muted)' })),
-      kpis: [
-        { k: 'Spend', v: '$4,182', d: '+12.0%', dc: D, up: 1 },
-        { k: 'Requests', v: '1.24M', d: '+4.1%', dc: M, up: 1 },
-        { k: 'p95 latency', v: '1.84s', d: '−80ms', dc: G },
-        { k: 'Error rate', v: '0.92%', d: '+0.10pt', dc: D, up: 1 },
-        { k: 'Cache hit rate', v: '61.4%', d: '+9.2pt', dc: G, up: 1 },
-        { k: 'Guardrail actions', v: '312', d: '+38', dc: M, up: 1 }
-      ].map((k, i) => ({ ...k, pts: spark(i + 2, k.up), stroke: i === 0 ? B : 'var(--sx-muted)' })),
-      area1: area(c1, c2), area2: area(c2, c3), area3: area(c3, zero), top1: line(c1),
-      p50: lat(30, 10, 5), p95: lat(58, 16, 6), p99: lat(84, 22, 7),
-      traffic: Array.from({ length: 48 }, (_, i) => { const v = 30 + 55 * (0.55 + 0.45 * Math.sin((i - 10) / 7.6)) * (0.8 + rnd(i, 9) * 0.25); const e = rnd(i, 10) > 0.88 ? 4 + rnd(i, 11) * 8 : 0.8; return { h: v.toFixed(1) + '%', e: e.toFixed(1) + '%', o: i === 47 ? 1 : 0.75 }; }),
-      models: [
-        ['claude-sonnet-4', '$1,620', '78%', '+$410', D], ['gpt-4o', '$1,104', '54%', '+$92', D], ['gemini-2.5-pro', '$712', '34%', '−$40', G],
-        ['gpt-4o-mini', '$402', '20%', '+$18', D], ['llama-3.1-70b', '$344', '16%', '−$22', G], ['mistral-large', '$212', '10%', '±$0', M]
-      ].map(([m, v, w, d, dc], i) => ({ m, v, w, d, dc, bar: i === 0 ? B : 'var(--sx-muted)' })),
-      drivers: [
-        ['support/triage', 'claude-sonnet-4', '402k', '41.2M', '12%', '$1,020', '+$310 · +44%', D, D],
-        ['copilot/complete', 'gpt-4o', '377k', '28.7M', '71%', '$860', '+$92 · +12%', D, B],
-        ['data/extract', 'gemini-2.5-pro', '118k', '12.1M', '64%', '$640', '−$40 · −6%', G, B],
-        ['support/summarize', 'gpt-4o-mini', '296k', '30.3M', '58%', '$510', '+$18 · +4%', D, B]
-      ].map(([r, m, q, t, ch, c, d, dc, dot]) => ({ r, m, q, t, ch, c, d, dc, dot })),
-      alerts: [
-        { i: 'ph-warning-circle', c: D, t: 'Budget at 92% · team support', s: 'Projected to exceed on Nov 27', time: '4m' },
-        { i: 'ph-lightning', c: 'var(--sx-violet)', t: 'Cache break on support/triage', s: 'System prompt reordered · 84% → 12%', time: '18m' },
-        { i: 'ph-scissors', c: 'var(--sx-violet)', t: '31 unused tools loaded every turn', s: 'Prune to save ~29.9k tokens / call', time: '1h' },
-        { i: 'ph-clock-countdown', c: 'var(--sx-warn)', t: 'p95 > 3s · gemini-2.5-pro', s: 'Resolved after fallback to gpt-4o', time: '2h' }
-      ]
-    };
-  }
-}
-</script>
+
 </body>
 </html>

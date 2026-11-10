@@ -1,440 +1,473 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<title>Strataix · the control plane for production AI</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+<style>
+:root{
+  --font-body:"IBM Plex Sans",system-ui,sans-serif;
+  --font-display:"Michroma","IBM Plex Sans",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;
+  --sx-line:#1a1d26;--sx-line-2:#262a35;
+  --sx-text:#e9e9ed;--sx-muted:#9397ab;--sx-faint:#75798c;
+  --sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;
+  --sx-violet:#7b61ff;--sx-violet-text:#b6a6ff;--sx-violet-tint:#1e1b3d;
+  --sx-danger:oklch(0.70 0.15 25);--sx-warn:oklch(0.80 0.12 80);--sx-ok:oklch(0.76 0.12 165);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--sx-bg);color:var(--sx-text);font-family:var(--font-body);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+::selection{background:var(--sx-blue-tint-2)}
+a{color:inherit;text-decoration:none}
+.cont{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.btn-p{display:inline-flex;align-items:center;gap:7px;font:500 13.5px var(--font-body);padding:10px 16px;border-radius:8px;background:var(--sx-blue);color:#fff;border:1px solid var(--sx-blue);cursor:pointer}
+.btn-s{display:inline-flex;align-items:center;gap:7px;font:500 13.5px var(--font-body);padding:10px 16px;border-radius:8px;background:transparent;color:var(--sx-text);border:1px solid var(--sx-line-2);cursor:pointer}
+.eyebrow{font:400 11px var(--font-mono);color:var(--sx-blue-text);text-transform:uppercase;letter-spacing:.16em;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:1px;background:currentColor;opacity:.6}
+.pill{font:500 11px var(--font-mono);padding:1px 7px;border-radius:999px}
+.mono{font-family:var(--font-mono)}
+.card{background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:12px}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(8,9,14,.72);border-bottom:1px solid var(--sx-line)}
+nav{display:flex;align-items:center;gap:28px;height:64px;font-size:13.5px}
+nav a.lnk{color:var(--sx-muted)}
+nav a.lnk:hover,nav a.lnk.active{color:var(--sx-text)}
+
+/* hero */
+.hero{padding:70px 0 40px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-220px;left:50%;transform:translateX(-50%);width:760px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(47,111,255,.5),transparent 65%);filter:blur(90px);z-index:-1;pointer-events:none}
+.hero::after{content:"";position:absolute;top:-180px;right:14%;width:500px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(123,97,255,.35),transparent 65%);filter:blur(90px);z-index:-1;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:48px;align-items:center}
+.hero h1{font:400 clamp(44px,6vw,72px)/1.03 var(--font-display);letter-spacing:-.02em;margin:22px 0 0;max-width:16ch}
+.hero h1 .grad{background:linear-gradient(110deg,var(--sx-blue-text),var(--sx-violet-text));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{color:#b2b6ca;font-size:18px;margin-top:22px;max-width:60ch;line-height:1.55}
+.hero .sub b{color:var(--sx-text);font-weight:500}
+.cta-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.pill-live{display:inline-flex;align-items:center;gap:8px;font:500 11.5px var(--font-mono);padding:5px 12px;border-radius:999px;background:var(--sx-panel);border:1px solid var(--sx-line-2);color:var(--sx-muted)}
+.pill-live .dot{width:7px;height:7px;border-radius:50%;background:var(--sx-ok);box-shadow:0 0 10px var(--sx-ok)}
+@media (max-width:980px){.hero-grid{grid-template-columns:1fr}}
+
+/* hero visual · gateway diagram */
+.gw{background:linear-gradient(180deg,rgba(22,25,33,.66),rgba(14,16,22,.66));border:1px solid rgba(47,111,255,.18);border-radius:16px;padding:22px;backdrop-filter:blur(16px);position:relative;box-shadow:0 30px 80px -40px rgba(0,0,0,.8)}
+.gw .gw-h{display:flex;align-items:center;gap:12px;margin-bottom:18px;font:11px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.12em}
+.gw .gw-flow{display:grid;grid-template-columns:1fr 34px 1.5fr 34px 1fr;align-items:center}
+.gw .col{display:flex;flex-direction:column;gap:8px}
+.gw .n{border:1px solid var(--sx-line-2);background:var(--sx-raised);border-radius:9px;padding:10px 12px;font-size:12.5px;display:flex;align-items:center;gap:8px}
+.gw .n .d{width:7px;height:7px;border-radius:2px;background:var(--sx-faint);flex:none}
+.gw .col.right .n .d{background:var(--sx-blue)}
+.gw .col-l{font:10.5px var(--font-mono);color:var(--sx-faint);text-transform:uppercase;letter-spacing:.14em;text-align:center;margin-bottom:4px}
+.gw .core{border:1px solid rgba(47,111,255,.4);border-radius:12px;background:linear-gradient(180deg,rgba(47,111,255,.1),rgba(47,111,255,.03));padding:14px 12px;box-shadow:0 0 0 1px rgba(47,111,255,.1),0 24px 60px -30px rgba(47,111,255,.5)}
+.gw .core-t{font:11px var(--font-mono);color:var(--sx-blue-text);text-transform:uppercase;letter-spacing:.12em;text-align:center;margin-bottom:10px}
+.gw .lanes{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.gw .lc{display:flex;align-items:center;gap:7px;font-size:11.5px;color:var(--sx-muted);background:rgba(255,255,255,.02);border:1px solid var(--sx-line);border-radius:6px;padding:6px 8px}
+.gw .lc .ld{width:5px;height:5px;border-radius:50%;background:var(--sx-blue);flex:none}
+.gw .lc.ship .ld{background:var(--sx-ok);box-shadow:0 0 6px var(--sx-ok)}
+.gw .lc.wide{grid-column:1/-1}
+.gw .conn{position:relative;align-self:center;height:2px;margin:0 4px;background:linear-gradient(90deg,transparent,var(--sx-line-2) 25%,var(--sx-line-2) 75%,transparent)}
+.gw .conn::after{content:"";position:absolute;top:50%;left:0;width:7px;height:7px;border-radius:50%;background:var(--sx-blue);box-shadow:0 0 10px 2px var(--sx-blue);transform:translateY(-50%);animation:flow 2.4s linear infinite}
+.gw .gw-f{margin-top:18px;padding-top:14px;border-top:1px solid var(--sx-line);display:flex;gap:22px;font-size:12.5px;color:var(--sx-muted);flex-wrap:wrap}
+.gw .gw-f b{color:var(--sx-text);font-weight:500}
+.gw .gw-f .em{color:var(--sx-ok)}
+@keyframes flow{0%{left:0;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:100%;opacity:0}}
+
+/* hero finding */
+.finding{display:flex;align-items:center;gap:12px;margin-top:22px;padding:12px 16px;border:1px solid rgba(47,111,255,.22);border-radius:12px;background:linear-gradient(90deg,rgba(47,111,255,.12),transparent 65%),var(--sx-panel)}
+.finding .tag{font:500 10.5px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--sx-blue-text);padding:4px 8px;border-radius:5px;background:var(--sx-blue-tint);border:1px solid rgba(47,111,255,.3);white-space:nowrap}
+.finding .body{color:var(--sx-muted);font-size:13.5px;line-height:1.55}
+.finding .body b{color:var(--sx-text);font-weight:500}
+
+/* hero strip */
+.strip{display:flex;margin-top:40px;border:1px solid var(--sx-line);border-radius:14px;background:linear-gradient(180deg,var(--sx-panel),#0b0d13);overflow:hidden}
+.strip .p{flex:1;padding:16px 20px;border-left:1px solid var(--sx-line)}
+.strip .p:first-child{border-left:none}
+.strip .pv{font:700 30px/1 var(--font-display);letter-spacing:-.02em;background:linear-gradient(135deg,var(--sx-blue-text),var(--sx-violet-text));-webkit-background-clip:text;background-clip:text;color:transparent;display:block}
+.strip .pl{display:block;color:var(--sx-muted);font-size:12.5px;margin-top:8px;line-height:1.4}
+
+/* section */
+section.sect{padding:64px 0;position:relative}
+section.sect::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--sx-line-2) 18%,var(--sx-line-2) 82%,transparent);opacity:.7}
+.sec-h{max-width:62ch}
+.sec-h h2{font:600 clamp(26px,3.3vw,34px)/1.15 var(--font-body);letter-spacing:-.02em;margin:14px 0 0}
+.sec-h p{color:var(--sx-muted);font-size:16.5px;margin-top:14px;line-height:1.55}
+.sec-h .em{color:var(--sx-text)}
+
+/* findings · 3-up */
+.findings{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+.f{border:1px solid var(--sx-line);background:var(--sx-panel);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px;transition:transform .18s,border-color .18s}
+.f:hover{transform:translateY(-3px);border-color:var(--sx-line-2)}
+.f .ftag{font:500 11px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--sx-blue-text)}
+.f .fs{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.f .fb{font:700 32px/1 var(--font-display);letter-spacing:-.02em;background:linear-gradient(120deg,var(--sx-blue-text),var(--sx-violet-text));-webkit-background-clip:text;background-clip:text;color:transparent}
+.f .fu{color:var(--sx-faint);font-size:12.5px}
+.f .fd{color:var(--sx-muted);font-size:13.5px;line-height:1.6;margin-top:auto}
+@media (max-width:900px){.findings{grid-template-columns:1fr}}
+
+/* layers / controls grid */
+.controls{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:36px}
+.ctl{grid-column:span 2;border:1px solid var(--sx-line);background:var(--sx-panel);border-radius:14px;padding:22px;position:relative;overflow:hidden;transition:transform .18s,border-color .18s,background .18s}
+.ctl:hover{transform:translateY(-3px);border-color:var(--sx-line-2);background:var(--sx-raised)}
+.ctl .edge{position:absolute;top:0;left:0;right:0;height:3px;opacity:.85}
+.ctl.ship .edge{background:var(--sx-ok)}
+.ctl.next .edge{background:linear-gradient(90deg,var(--sx-blue),var(--sx-blue-text))}
+.ctl.res .edge{background:var(--sx-line-2)}
+.ctl-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.ctl .ic{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(47,111,255,.24),rgba(123,97,255,.12));border:1px solid rgba(47,111,255,.2);color:var(--sx-blue-text)}
+.badge{font:500 9.5px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;padding:3px 7px;border-radius:5px;flex:none;white-space:nowrap}
+.badge.ship{color:var(--sx-ok);background:color-mix(in srgb,var(--sx-ok) 12%,transparent);border:1px solid color-mix(in srgb,var(--sx-ok) 25%,transparent)}
+.badge.next{color:var(--sx-blue-text);background:var(--sx-blue-tint);border:1px solid rgba(47,111,255,.3)}
+.badge.res{color:var(--sx-faint);background:rgba(255,255,255,.03);border:1px solid var(--sx-line)}
+.ctl h3{margin:0;font-size:16px;font-weight:600}
+.ctl p{color:var(--sx-muted);font-size:13.5px;margin-top:8px;line-height:1.55}
+.ctl-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.ctl-tags span{font:500 10.5px var(--font-mono);color:var(--sx-muted);background:var(--sx-raised);border:1px solid var(--sx-line);border-radius:5px;padding:2px 7px}
+@media (max-width:900px){.controls{grid-template-columns:repeat(2,1fr)}.ctl{grid-column:span 1}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+.step{border:1px solid var(--sx-line);background:var(--sx-panel);border-radius:14px;padding:24px;transition:transform .18s,border-color .18s}
+.step:hover{transform:translateY(-3px);border-color:var(--sx-line-2)}
+.step .num{display:block;font:700 32px/1 var(--font-display);letter-spacing:-.02em;margin-bottom:14px;background:linear-gradient(135deg,var(--sx-blue-text),var(--sx-violet-text));-webkit-background-clip:text;background-clip:text;color:transparent}
+.step h3{font-size:16px;font-weight:600;margin:0}
+.step p{color:var(--sx-muted);font-size:13.5px;margin-top:8px;line-height:1.6}
+@media (max-width:900px){.steps{grid-template-columns:1fr}}
+
+/* now block */
+.now{margin-top:36px;border:1px solid var(--sx-line);border-radius:16px;overflow:hidden;background:linear-gradient(180deg,var(--sx-panel),#0b0d13);display:grid;grid-template-columns:1.1fr 1fr}
+.now .l{padding:30px;border-right:1px solid var(--sx-line)}
+.now .r{padding:30px;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.now h2{font-size:22px;font-weight:600;margin:12px 0 0;letter-spacing:-.01em}
+.now p{color:var(--sx-muted);font-size:15px;margin-top:12px;line-height:1.6}
+.now p b{color:var(--sx-text);font-weight:500}
+.sc{border:1px solid var(--sx-line);background:var(--sx-panel);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.sc .sct{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.sc .big{font:600 28px/1 var(--font-display)}
+.sc .tag{font:500 10.5px var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--sx-faint)}
+.sc .lbl{color:var(--sx-muted);font-size:13px}
+.sc .meter{height:3px;border-radius:999px;background:var(--sx-line);overflow:hidden;margin-top:2px}
+.sc .meter .fill{display:block;height:100%}
+.sc.ship .big{color:var(--sx-ok)}.sc.ship .meter .fill{background:var(--sx-ok);width:100%}
+.sc.next .big{color:var(--sx-blue-text)}.sc.next .meter .fill{background:linear-gradient(90deg,var(--sx-blue),var(--sx-blue-text));width:55%}
+.sc.res .big{color:var(--sx-muted)}.sc.res .meter .fill{background:var(--sx-line-2);width:20%}
+@media (max-width:900px){.now{grid-template-columns:1fr}.now .l{border-right:none;border-bottom:1px solid var(--sx-line)}}
+
+/* providers band */
+.prov-band{display:flex;align-items:center;gap:30px;flex-wrap:wrap;padding:28px 0 0}
+.prov-label{font:500 11.5px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--sx-faint)}
+.prov{font:600 17px var(--font-display);letter-spacing:-.01em;color:var(--sx-text);opacity:.6;transition:opacity .15s}
+.prov:hover{opacity:1}
+
+/* cta band */
+.cta{margin-top:40px;border:1px solid rgba(47,111,255,.25);border-radius:20px;padding:52px 36px;text-align:center;background:radial-gradient(120% 160% at 50% 0%,rgba(47,111,255,.14),transparent 60%),linear-gradient(180deg,var(--sx-panel),#0b0d13);backdrop-filter:blur(12px)}
+.cta h2{font:600 clamp(26px,3.5vw,34px)/1.1 var(--font-body);letter-spacing:-.02em;margin:0 auto;max-width:20ch}
+.cta p{color:var(--sx-muted);font-size:16px;margin:14px auto 0;max-width:54ch}
+.cta .cta-row{justify-content:center;margin-top:26px}
+
+/* footer */
+footer{border-top:1px solid var(--sx-line);margin-top:48px;padding:40px 0 24px;background:linear-gradient(180deg,transparent,#0b0d13)}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:28px}
+.foot-brand img{height:16px;display:block;margin-bottom:10px}
+.foot-brand p{color:var(--sx-muted);font-size:13px;margin:8px 0 0;max-width:34ch;line-height:1.55}
+.foot-col{display:flex;flex-direction:column;gap:9px}
+.foot-h{font:500 11px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--sx-faint);margin-bottom:2px}
+.foot-col a{color:var(--sx-muted);font-size:13.5px;width:fit-content}
+.foot-col a:hover{color:var(--sx-text)}
+.foot-base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:32px;padding-top:20px;border-top:1px solid var(--sx-line);color:var(--sx-faint);font-size:12.5px}
+@media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="stylesheet" href="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/styles.css">
-<script src="_ds/nocturne-34583fc6-877e-4204-999c-608a0f46e010/_ds_bundle.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=Michroma&display=swap" rel="stylesheet">
-<style>
-:root{--font-body:"IBM Plex Sans",system-ui,sans-serif;--font-display:"Michroma","IBM Plex Sans",sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,monospace;--sx-bg:#08090e;--sx-panel:#0e1016;--sx-raised:#161921;--sx-line:#1a1d26;--sx-line-2:#262a35;--sx-text:var(--color-text);--sx-muted:var(--color-neutral-400);--sx-faint:var(--color-neutral-600);--sx-blue:#2f6fff;--sx-blue-text:#8fb2ff;--sx-blue-tint:#0f1a3d;--sx-blue-tint-2:#17295e;--sx-violet:var(--color-accent);--sx-ok:oklch(0.76 0.12 165)}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--sx-bg);color:var(--sx-text);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
-a{color:var(--sx-blue-text);text-decoration:none}a:hover{color:var(--color-neutral-100)}
-::selection{background:var(--sx-blue-tint-2)}
-</style>
-</helmet>
-<div ref="{{ rootRef }}" style="background:var(--sx-bg);color:var(--sx-text);overflow-x:clip;font-size:16px">
 
-<nav ref="{{ navRef }}" style="position:fixed;top:0;left:0;right:0;z-index:20;transition:background .3s,border-color .3s,backdrop-filter .3s;border-bottom:1px solid transparent">
-<div style="max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,56px);height:64px;display:flex;align-items:center;gap:clamp(14px,3vw,32px)">
-<a href="#top" style="display:flex"><img src="public/brand/wordmark-light.png" alt="Strataix" style="height:14px"></a>
+<header>
+<div class="cont">
+<nav>
+<a href="#" style="display:flex;align-items:center"><img src="../public/brand/wordmark-light.png" alt="Strataix" style="height:14px"></a>
 <div style="flex:1"></div>
-<a href="#layers" style="color:var(--sx-muted);font-size:14px" style-hover="color:var(--sx-text)">Product</a>
-<a href="#roadmap" style="color:var(--sx-muted);font-size:14px" style-hover="color:var(--sx-text)">Roadmap</a>
-<a href="#blog" style="color:var(--sx-muted);font-size:14px" style-hover="color:var(--sx-text)">Blog</a>
-<a href="#waitlist" style="font-size:14px;color:var(--sx-blue-text);border:1px solid var(--sx-blue);border-radius:var(--radius-md);padding:7px 14px;transition:background .2s" style-hover="background:var(--sx-blue-tint)">Join waitlist</a>
-</div>
+<a class="lnk" href="#product">Product</a>
+<a class="lnk" href="#how">How it works</a>
+<a class="lnk" href="Strataix Pricing.dc.html">Pricing</a>
+<a class="lnk" href="Strataix Docs.dc.html">Docs</a>
+<a class="lnk" href="Strataix Changelog.dc.html">Changelog</a>
+<a class="btn-s" href="#" style="padding:6px 12px">Sign in</a>
+<a class="btn-p" href="#cta">Start free <i class="ph ph-arrow-right"></i></a>
 </nav>
-
-<header id="top" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 0 40px;overflow:hidden">
-<div ref="{{ glowRef }}" style="position:absolute;inset:-20% -10% 0 30%;background:radial-gradient(closest-side,color-mix(in srgb,var(--sx-blue) 22%,transparent),transparent 70%);opacity:.55;pointer-events:none;will-change:transform"></div>
-<div ref="{{ gridRef }}" style="position:absolute;inset:0;background-image:radial-gradient(color-mix(in srgb,var(--sx-text) 14%,transparent) 1px,transparent 1px);background-size:28px 28px;-webkit-mask-image:radial-gradient(ellipse 60% 55% at 70% 45%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 60% 55% at 70% 45%,#000 20%,transparent 75%);pointer-events:none;will-change:transform"></div>
-<div ref="{{ canvasWrapRef }}" style="position:absolute;top:8%;bottom:10%;right:0;width:min(62%,900px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%);mask-image:linear-gradient(90deg,transparent,#000 22%);will-change:transform"><canvas ref="{{ canvasRef }}" style="width:100%;height:100%;display:block" aria-label="Request traffic flowing from your agents through the Strataix control plane out to model providers"></canvas></div>
-
-<div ref="{{ heroCopyRef }}" style="position:relative;max-width:1240px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 clamp(20px,5vw,56px);will-change:transform,opacity">
-<div style="max-width:640px;display:flex;flex-direction:column;gap:26px">
-<span data-word="0" style="align-self:flex-start;display:flex;align-items:center;gap:9px;font:500 12px var(--font-mono);letter-spacing:.04em;color:var(--sx-muted);border:1px solid var(--sx-line-2);border-radius:999px;padding:6px 13px 6px 11px;background:color-mix(in srgb,var(--sx-bg) 60%,transparent)"><span style="width:6px;height:6px;border-radius:50%;background:var(--sx-blue);box-shadow:0 0 10px var(--sx-blue)"></span>Pre-release · building in the open</span>
-<h1 style="margin:0;font:400 clamp(34px,5.4vw,68px)/1.12 var(--font-display);letter-spacing:-.02em;display:flex;flex-wrap:wrap;column-gap:.32em">
-<span data-word="1">The</span><span data-word="2" style="color:var(--sx-blue-text)">control</span><span data-word="3" style="color:var(--sx-blue-text)">plane</span><span data-word="4">for</span><span data-word="5">production</span><span data-word="6">AI.</span></h1>
-<p data-word="7" style="margin:0;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:var(--sx-muted);font-weight:300;max-width:560px;text-wrap:pretty">Strataix sits in front of your providers, records every request, and surfaces the quiet waste — tool definitions you never use, broken prefix caches, drifted context — then cuts it. One gateway, one log, every finding attributable.</p>
-<div data-word="8" style="display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border:1px solid var(--sx-line-2);border-radius:var(--radius-md);background:color-mix(in srgb,var(--sx-panel) 80%,transparent);backdrop-filter:blur(6px);max-width:520px">
-<span style="font:500 11px var(--font-mono);color:var(--sx-violet);white-space:nowrap;padding-top:2px;letter-spacing:.04em">FIRST-WEEK FINDING</span>
-<span style="font-size:14px;line-height:1.5;color:var(--sx-muted)"><b style="color:var(--sx-text);font-weight:500">45,000 tokens per turn</b> in tool definitions your agents never call.</span></div>
-<form data-word="9" onSubmit="{{ onJoin }}" style="display:flex;gap:8px;flex-wrap:wrap;max-width:520px">
-<input type="email" placeholder="you@company.com" required="required" style="flex:1;min-width:220px;background:color-mix(in srgb,var(--sx-panel) 85%,transparent);border:1px solid var(--sx-line-2);border-radius:var(--radius-md);padding:12px 14px;color:var(--sx-text);font:15px var(--font-body);outline:none" style-focus="border-color:var(--sx-blue)">
-<button type="submit" style="background:transparent;border:1px solid var(--sx-blue);color:var(--sx-blue-text);border-radius:var(--radius-md);padding:12px 20px;font:500 15px var(--font-body);cursor:pointer;transition:background .2s" style-hover="background:var(--sx-blue-tint)">{{ joinLabel }}</button>
-</form>
-<div data-word="10" style="display:flex;gap:22px;flex-wrap:wrap;font-size:14px"><a href="#roadmap">See the roadmap →</a><a href="#waitlist" style="color:var(--sx-muted)" style-hover="color:var(--sx-text)">Have more to share? Write us →</a></div>
-</div>
-</div>
-
-<div style="position:relative;max-width:1240px;width:100%;box-sizing:border-box;margin:72px auto 0;padding:0 clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
-<sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3"><div data-reveal="" style="display:flex;gap:14px;align-items:baseline;padding-top:14px;border-top:1px solid var(--sx-line-2)"><span style="font:400 26px var(--font-display);color:var(--sx-text)">{{ p.v }}</span><span style="font-size:14px;color:var(--sx-muted);line-height:1.4">{{ p.l }}</span></div></sc-for>
 </div>
 </header>
 
-<section style="border-top:1px solid var(--sx-line);border-bottom:1px solid var(--sx-line);padding:22px 0;display:flex;align-items:center;gap:32px;overflow:hidden">
-<span style="flex:none;padding-left:clamp(20px,5vw,56px);font:500 11px var(--font-mono);letter-spacing:.08em;color:var(--sx-faint);text-transform:uppercase;max-width:180px;line-height:1.5">Works with the providers you already use</span>
-<div style="flex:1;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)">
-<div ref="{{ marqueeRef }}" style="display:flex;gap:64px;width:max-content;will-change:transform"><sc-for list="{{ providers }}" as="p" hint-placeholder-count="10"><span style="font:400 20px var(--font-body);color:var(--sx-muted);white-space:nowrap;letter-spacing:-.01em">{{ p }}</span></sc-for></div>
+<!-- HERO -->
+<section class="hero">
+<div class="cont">
+<div class="hero-grid">
+
+<div>
+<span class="pill-live"><span class="dot"></span>v2.14 · canary promotions shipped</span>
+<h1>The control plane for <span class="grad">production AI.</span></h1>
+<p class="sub">Strataix sits in front of Anthropic, OpenAI, Google and others — records every request, surfaces the quiet waste, and <b>cuts it</b>. Routing, guardrails, budgets and traces in one gateway.</p>
+
+<div class="cta-row">
+<a class="btn-p" href="#cta">Start free · 4-min setup <i class="ph ph-arrow-right"></i></a>
+<a class="btn-s" href="Strataix Docs.dc.html">Read the docs</a>
+</div>
+
+<div class="finding">
+<span class="tag">LIVE FINDING</span>
+<div class="body"><b>Cache hit 84% → 12%</b> on support/triage after a prompt reorder · restoring saves <b>~$860/day</b>.</div>
+</div>
+</div>
+
+<!-- hero diagram -->
+<div class="gw">
+<div class="gw-h"><span style="flex:1">Gateway · 24h flow</span><span class="pill-live"><span class="dot"></span>live</span></div>
+<div class="gw-flow">
+<div class="col">
+<span class="col-l">YOUR APP</span>
+<div class="n"><span class="d"></span>support/triage</div>
+<div class="n"><span class="d"></span>copilot/complete</div>
+<div class="n"><span class="d"></span>data/extract</div>
+<div class="n"><span class="d"></span>chat/assistant</div>
+</div>
+<div class="conn"></div>
+<div class="core">
+<div class="core-t">STRATAIX · GATEWAY</div>
+<div class="lanes">
+<div class="lc ship"><span class="ld"></span>route</div>
+<div class="lc ship"><span class="ld"></span>guardrail</div>
+<div class="lc ship"><span class="ld"></span>cache</div>
+<div class="lc ship"><span class="ld"></span>fallback</div>
+<div class="lc"><span class="ld"></span>budget</div>
+<div class="lc"><span class="ld"></span>trace</div>
+<div class="lc wide"><span class="ld"></span>replay · A/B · audit</div>
+</div>
+</div>
+<div class="conn"></div>
+<div class="col right">
+<span class="col-l">PROVIDERS · 5</span>
+<div class="n"><span class="d"></span>Anthropic</div>
+<div class="n"><span class="d"></span>OpenAI</div>
+<div class="n"><span class="d"></span>Google AI</div>
+<div class="n"><span class="d"></span>Fireworks</div>
+<div class="n"><span class="d"></span>Mistral</div>
+</div>
+</div>
+<div class="gw-f">
+<span><b>1.24M</b> requests · 24h</span>
+<span><b>$4,182</b> spend</span>
+<span><b>p95 1.84s</b></span>
+<span class="em"><b>61.4%</b> cache hit</span>
+</div>
+</div>
+
+</div>
+
+<!-- hero strip -->
+<div class="strip">
+<div class="p"><span class="pv">1.24M</span><span class="pl">requests routed · 24h</span></div>
+<div class="p"><span class="pv">5</span><span class="pl">providers behind one API</span></div>
+<div class="p"><span class="pv">61%</span><span class="pl">of calls served from cache</span></div>
+<div class="p"><span class="pv">99.95%</span><span class="pl">gateway uptime · 30d</span></div>
+</div>
+
+<!-- providers -->
+<div class="prov-band">
+<span class="prov-label">WORKS WITH YOUR PROVIDERS</span>
+<a class="prov">Anthropic</a>
+<a class="prov">OpenAI</a>
+<a class="prov">Google AI</a>
+<a class="prov">Fireworks</a>
+<a class="prov">Mistral</a>
+<a class="prov">AWS Bedrock</a>
+<a class="prov">Azure OpenAI</a>
+</div>
+
 </div>
 </section>
 
-<section id="layers" ref="{{ strataRef }}" style="position:relative;height:640vh">
-<div style="position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden">
-<div style="max-width:1240px;width:100%;box-sizing:border-box;margin:0 auto;padding:clamp(64px,10vh,72px) clamp(20px,5vw,56px) 16px;display:flex;flex-wrap:wrap;gap:clamp(16px,4vh,72px) clamp(24px,5vw,72px);align-items:center;max-height:100vh">
-<div style="flex:1 1 340px;max-width:460px;display:flex;flex-direction:column;gap:clamp(8px,1.8vh,18px)">
-<span style="font:500 12px var(--font-mono);letter-spacing:.08em;color:var(--sx-faint)">ONE REQUEST · EVERY LAYER</span>
-<div style="display:flex;align-items:baseline;gap:14px"><span style="font:400 14px var(--font-mono);color:var(--sx-blue-text)">{{ cur.n }}</span><h2 style="margin:0;font:400 clamp(24px,2.8vw,36px)/1.2 var(--font-display);letter-spacing:-.01em">{{ cur.t }}</h2></div>
-<span style="align-self:flex-start;font:500 11px var(--font-mono);letter-spacing:.05em;padding:4px 10px;border-radius:999px;border:1px solid {{ cur.sb }};color:{{ cur.sc }}">{{ cur.s }}</span>
-<p style="margin:0;font-size:clamp(14px,2vh,17px);line-height:1.55;color:var(--sx-muted);font-weight:300;min-height:4.7em;text-wrap:pretty">{{ cur.d }}</p>
-<div style="display:flex;gap:6px"><sc-for list="{{ ticks }}" as="t" hint-placeholder-count="6"><span style="flex:1;height:2px;border-radius:1px;background:{{ t.bg }};transition:background .4s"></span></sc-for></div>
+<!-- 01 · FINDINGS -->
+<section class="sect" id="findings">
+<div class="cont">
+<div class="sec-h">
+<span class="eyebrow">01 · WHAT THE LOG REVEALS</span>
+<h2>Every request tells you something. Most teams throw that log away.</h2>
+<p>Three findings surfaced from one week on <span class="em">acme</span> · all solvable by changing config, not code.</p>
 </div>
-<div style="flex:1 1 380px;position:relative;display:flex;flex-direction:column;gap:clamp(4px,1vh,8px);padding-left:44px">
-<div style="position:absolute;left:14px;top:0;bottom:0;width:1px;background:linear-gradient(transparent,var(--sx-line-2) 8%,var(--sx-line-2) 92%,transparent)"></div>
-<div ref="{{ trailRef }}" style="position:absolute;left:14px;top:0;width:1px;height:0;background:linear-gradient(transparent,var(--sx-blue))"></div>
-<div ref="{{ dotRef }}" style="position:absolute;left:8px;top:0;width:13px;height:13px;border-radius:50%;background:var(--sx-blue);box-shadow:0 0 0 5px color-mix(in srgb,var(--sx-blue) 22%,transparent),0 0 28px 6px color-mix(in srgb,var(--sx-blue) 60%,transparent);z-index:2"></div>
-<sc-for list="{{ layers }}" as="l" hint-placeholder-count="6"><div style="position:relative;height:clamp(34px,6.5vh,76px);border-radius:var(--radius-md);border:1px solid {{ l.bc }};background:{{ l.bg }};display:flex;align-items:center;gap:16px;padding:0 18px;transition:all .45s cubic-bezier(.2,.7,.2,1);transform:{{ l.tf }};opacity:{{ l.op }}">
-<span style="font:400 11px var(--font-mono);color:var(--sx-faint);width:20px">{{ l.n }}</span>
-<span style="font-size:15px;font-weight:500;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ l.t }}</span>
-<span style="font:400 11.5px var(--font-mono);color:{{ l.rc }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:56%">{{ l.r }}</span>
-</div></sc-for>
+
+<div class="findings">
+<div class="f">
+<span class="ftag">CACHE BREAK</span>
+<div class="fs"><span class="fb">$860</span><span class="fu">/day recoverable</span></div>
+<div class="fd">A prompt reorder on <span class="mono" style="color:var(--sx-text)">support/triage</span> dropped hit rate 84% → 12%. Order restored in one commit.</div>
+</div>
+<div class="f">
+<span class="ftag">OVER-TOOLED</span>
+<div class="fs"><span class="fb">29.9k</span><span class="fu">tokens per call pruned</span></div>
+<div class="fd">31 unused tools were loaded every turn on copilot/complete. Pruning them saves ~28% of every input.</div>
+</div>
+<div class="f">
+<span class="ftag">CANARY WIN</span>
+<div class="fs"><span class="fb">17%</span><span class="fu">p95 faster · 7% cheaper</span></div>
+<div class="fd">A sonnet-4-5 canary beat the baseline on both metrics. Promoted with one click.</div>
 </div>
 </div>
 </div>
 </section>
 
-<section style="max-width:1240px;margin:0 auto;padding:clamp(80px,12vw,160px) clamp(20px,5vw,56px) clamp(60px,8vw,100px)">
-<div data-reveal="" style="display:flex;flex-direction:column;gap:18px;max-width:760px;margin-bottom:56px">
-<span style="font:500 12px var(--font-mono);letter-spacing:.08em;color:var(--sx-faint)">01 — WHAT THE LOG REVEALS</span>
-<h2 style="margin:0;font:400 clamp(26px,3.2vw,42px)/1.2 var(--font-display);letter-spacing:-.01em;text-wrap:balance">Three kinds of waste that only show up in the request stream.</h2>
-<p style="margin:0;font-size:17px;line-height:1.65;color:var(--sx-muted);font-weight:300;text-wrap:pretty">Finance tools reconcile the <em style="color:var(--sx-text)">invoice</em>. They don’t see the tool you’re loading on every turn, the cache you broke last Tuesday, or the retry loop that quietly doubled a bill. Observability does — if it’s built for agents, not pages.</p>
+<!-- 02 · PRODUCT LAYERS -->
+<section class="sect" id="product">
+<div class="cont">
+<div class="sec-h">
+<span class="eyebrow">02 · THE CONTROL PLANE</span>
+<h2>One gateway. Six layers of control.</h2>
+<p>Everything you'd otherwise rebuild in-house — routing, guardrails, budgets, traces, keys, audit — already here.</p>
 </div>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
-<sc-for list="{{ findings }}" as="f" hint-placeholder-count="3"><div data-reveal="" data-delay="{{ f.delay }}" style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-lg);padding:26px;display:flex;flex-direction:column;gap:18px;transition:border-color .3s,transform .3s" style-hover="border-color:var(--sx-line-2);transform:translateY(-3px)">
-<span style="font:500 11px var(--font-mono);letter-spacing:.06em;color:var(--sx-violet);text-transform:uppercase">{{ f.tag }}</span>
-<div style="display:flex;flex-direction:column;gap:4px"><span style="font:400 clamp(26px,2.6vw,34px)/1.1 var(--font-display);letter-spacing:-.02em">{{ f.big }}</span><span style="font:13px var(--font-mono);color:var(--sx-faint)">{{ f.unit }}</span></div>
-<div style="display:flex;flex-direction:column;gap:7px">
-<div style="display:flex;align-items:center;gap:10px"><span style="font:11px var(--font-mono);color:var(--sx-faint);width:44px">{{ f.al }}</span><div style="flex:1;height:6px;border-radius:3px;background:var(--sx-line)"><div data-grow="{{ f.aw }}" style="height:100%;width:0;border-radius:3px;background:var(--color-neutral-600);transition:width 1.2s cubic-bezier(.2,.7,.2,1)"></div></div></div>
-<div style="display:flex;align-items:center;gap:10px"><span style="font:11px var(--font-mono);color:var(--sx-blue-text);width:44px">{{ f.bl }}</span><div style="flex:1;height:6px;border-radius:3px;background:var(--sx-line)"><div data-grow="{{ f.bw }}" style="height:100%;width:0;border-radius:3px;background:var(--sx-blue);box-shadow:0 0 12px color-mix(in srgb,var(--sx-blue) 60%,transparent);transition:width 1.2s .25s cubic-bezier(.2,.7,.2,1)"></div></div></div>
+
+<div class="controls">
+
+<div class="ctl ship" style="grid-column:span 3">
+<div class="edge"></div>
+<div class="ctl-top"><div class="ic"><i class="ph ph-git-fork"></i></div><span class="badge ship">Shipping</span></div>
+<h3>Routes · primary + fallbacks + A/B</h3>
+<p>Point your SDK at Strataix. Define a route with a primary model and ordered fallbacks on 5xx / 429 / timeout. Promote a canary with one click.</p>
+<div class="ctl-tags"><span>5xx fallback</span><span>timeout retry</span><span>A/B split</span><span>canary promote</span></div>
 </div>
-<p style="margin:0;font-size:15px;line-height:1.6;color:var(--sx-muted);font-weight:300">{{ f.body }}</p>
-</div></sc-for>
+
+<div class="ctl ship" style="grid-column:span 3">
+<div class="edge"></div>
+<div class="ctl-top"><div class="ic"><i class="ph ph-shield-check"></i></div><span class="badge ship">Shipping</span></div>
+<h3>Guardrails · policy before it leaves your network</h3>
+<p>PII redaction, prompt-injection detection, toxicity, secret-leak detection — each as a toggle per route. Applied with +14ms p95.</p>
+<div class="ctl-tags"><span>PII redact</span><span>prompt injection</span><span>toxicity</span><span>secrets</span></div>
+</div>
+
+<div class="ctl ship">
+<div class="edge"></div>
+<div class="ctl-top"><div class="ic"><i class="ph ph-wallet"></i></div><span class="badge ship">Shipping</span></div>
+<h3>Budgets</h3>
+<p>Caps by team, route or key. Warn → page → downgrade → hard stop on a ladder you set.</p>
+</div>
+
+<div class="ctl ship">
+<div class="edge"></div>
+<div class="ctl-top"><div class="ic"><i class="ph ph-tree-structure"></i></div><span class="badge ship">Shipping</span></div>
+<h3>Traces</h3>
+<p>Every tool call and LLM call as a span. Replay with new inputs. OTel export.</p>
+</div>
+
+<div class="ctl next">
+<div class="edge"></div>
+<div class="ctl-top"><div class="ic"><i class="ph ph-key"></i></div><span class="badge next">Next</span></div>
+<h3>Keys · leak detection</h3>
+<p>Fingerprint-matched against public GitHub + npm. Auto-revoke on hit.</p>
+</div>
+
+<div class="ctl res">
+<div class="edge"></div>
+<div class="ctl-top"><div class="ic"><i class="ph ph-chats"></i></div><span class="badge res">Researching</span></div>
+<h3>MCP studio</h3>
+<p>Browse installed MCP connectors, test tool calls, expose them per route.</p>
+</div>
+
+</div>
 </div>
 </section>
 
-<section style="max-width:1240px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,5vw,56px)">
-<div data-reveal="" style="display:flex;flex-direction:column;gap:18px;max-width:760px;margin-bottom:56px">
-<span style="font:500 12px var(--font-mono);letter-spacing:.08em;color:var(--sx-faint)">02 — HOW IT WORKS</span>
-<h2 style="margin:0;font:400 clamp(26px,3.2vw,42px)/1.2 var(--font-display);letter-spacing:-.01em;text-wrap:balance">One endpoint. One log. The findings fall out of it.</h2>
-<p style="margin:0;font-size:17px;line-height:1.65;color:var(--sx-muted);font-weight:300;text-wrap:pretty">The gateway is in front of your providers; the log is the gateway’s own byproduct. Everything else — the cost cuts, the guardrails, the audit evidence — is built on reading it well.</p>
+<!-- 03 · HOW IT WORKS -->
+<section class="sect" id="how">
+<div class="cont">
+<div class="sec-h">
+<span class="eyebrow">03 · HOW IT WORKS</span>
+<h2>Point your SDK at a different URL. Everything else stays yours.</h2>
+<p>Keep your Anthropic / OpenAI SDKs. Keep your enterprise discounts. Keep your code. Strataix adds the dashboard, the routing, and the guardrails around them.</p>
 </div>
-<div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,4vw,48px)">
-<sc-for list="{{ steps }}" as="s" hint-placeholder-count="3"><div data-reveal="" data-delay="{{ s.delay }}" style="display:flex;flex-direction:column;gap:14px;padding-top:22px;border-top:1px solid var(--sx-line-2);position:relative">
-<span style="position:absolute;top:-1px;left:0;width:40px;height:1px;background:var(--sx-blue)"></span>
-<span style="font:400 13px var(--font-mono);color:var(--sx-blue-text)">{{ s.n }}</span>
-<h3 style="margin:0;font-size:20px;font-weight:500;line-height:1.3">{{ s.t }}</h3>
-<p style="margin:0;font-size:15px;line-height:1.6;color:var(--sx-muted);font-weight:300">{{ s.d }}</p>
-</div></sc-for>
+
+<div class="steps">
+<div class="step">
+<span class="num">01</span>
+<h3>Connect providers</h3>
+<p>Paste your Anthropic / OpenAI / Google key once. Stored encrypted, scoped per environment. We proxy at their list price.</p>
 </div>
-<div data-reveal="" style="margin-top:56px;background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-lg);overflow:hidden;max-width:760px">
-<div style="display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--sx-line)"><span style="width:9px;height:9px;border-radius:50%;background:var(--sx-line-2)"></span><span style="width:9px;height:9px;border-radius:50%;background:var(--sx-line-2)"></span><span style="width:9px;height:9px;border-radius:50%;background:var(--sx-line-2)"></span><span style="flex:1"></span><span style="font:12px var(--font-mono);color:var(--sx-faint)">agent.py</span></div>
-<pre style="margin:0;padding:20px 22px;font:14px/1.75 var(--font-mono);color:var(--sx-muted);overflow-x:auto">client = OpenAI(
-    <span style="color:var(--sx-blue-text);background:var(--sx-blue-tint);border-radius:3px;padding:1px 4px">base_url="https://gateway.strataix.in/v1",</span>
-    api_key=os.environ["OPENAI_API_KEY"],
-)</pre>
+<div class="step">
+<span class="num">02</span>
+<h3>Issue a Strataix key</h3>
+<p>Narrow scopes, per-route rate limits, 90-day rotation. Point your existing SDK at <span class="mono" style="color:var(--sx-text)">gateway.strataix.in/v1</span>.</p>
+</div>
+<div class="step">
+<span class="num">03</span>
+<h3>Ship the dashboard</h3>
+<p>Your first request lands in the log in &lt;1s. Open a route, add a budget, turn on guardrails — then forget you installed it.</p>
+</div>
+</div>
 </div>
 </section>
 
-<section id="roadmap" style="max-width:1240px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,5vw,56px);display:flex;flex-wrap:wrap;gap:clamp(32px,6vw,80px)">
-<div data-reveal="" style="flex:1 1 380px;display:flex;flex-direction:column;gap:18px">
-<span style="font:500 12px var(--font-mono);letter-spacing:.08em;color:var(--sx-faint)">03 — RIGHT NOW</span>
-<h2 style="margin:0;font:400 clamp(26px,3.2vw,42px)/1.2 var(--font-display);letter-spacing:-.01em;text-wrap:balance">We’re building the gateway and the log. Nothing else, yet.</h2>
-<p style="margin:0;font-size:17px;line-height:1.65;color:var(--sx-muted);font-weight:300;text-wrap:pretty">A control plane that enforces policy is downstream of a log that proves it. We’re building the log first — and the gateway it has to sit in — because the cost findings above fall out of the same stream the guardrails will read.</p>
-<p style="margin:0;font-size:14px;line-height:1.6;color:var(--sx-faint)">Rate limiting, guardrails, injection defense, compliance evidence, and agent evaluation are on the roadmap in that order. We don’t move a lane up until the code does.</p>
-<a href="#roadmap" style="align-self:flex-start;margin-top:8px;font-size:15px;border:1px solid var(--sx-line-2);color:var(--sx-text);border-radius:var(--radius-md);padding:10px 16px" style-hover="border-color:var(--sx-blue);color:var(--sx-blue-text)">See the full roadmap →</a>
+<!-- 04 · HONESTY BLOCK -->
+<section class="sect" id="now">
+<div class="cont">
+<div class="sec-h">
+<span class="eyebrow">04 · WHAT'S SHIPPED, WHAT'S NEXT</span>
+<h2>We're honest about what's here and what isn't.</h2>
+<p>Strataix is a small, focused product. Below is the state of each core capability today.</p>
 </div>
-<div style="flex:1 1 340px;display:flex;flex-direction:column;gap:12px">
-<sc-for list="{{ status }}" as="s" hint-placeholder-count="3"><div data-reveal="" data-delay="{{ s.delay }}" style="background:var(--sx-panel);border:1px solid var(--sx-line);border-radius:var(--radius-lg);padding:20px 22px;display:flex;flex-direction:column;gap:12px">
-<div style="display:flex;align-items:center;gap:14px"><span style="font:400 32px var(--font-display)">{{ s.big }}</span><span style="font:500 11px var(--font-mono);letter-spacing:.05em;padding:3px 9px;border-radius:999px;border:1px solid {{ s.c }};color:{{ s.c }}">{{ s.tag }}</span></div>
-<span style="font-size:14px;color:var(--sx-muted);line-height:1.5">{{ s.lbl }}</span>
-<div style="height:3px;border-radius:2px;background:var(--sx-line)"><div data-grow="{{ s.w }}" style="height:100%;width:0;border-radius:2px;background:{{ s.c }};transition:width 1.4s cubic-bezier(.2,.7,.2,1)"></div></div>
-</div></sc-for>
+
+<div class="now">
+<div class="l">
+<span class="eyebrow">NOVEMBER 2026</span>
+<h2>Routing, guardrails, budgets and traces are in production on 5 providers.</h2>
+<p>Key leak detection ships this month. MCP studio is a research track — we're prototyping with 3 design partners before we commit to an API.</p>
+<p>Not here yet: mobile dashboard, SIEM export, HIPAA attestations. If any of those block you, <b><a href="mailto:hello@strataix.in" style="color:var(--sx-blue-text)">write to us</a></b> and we'll scope it with you.</p>
+</div>
+<div class="r">
+<div class="sc ship"><div class="sct"><span class="tag">SHIPPED</span><span class="big">13</span></div><div class="lbl">routing · guardrails · budgets · traces · audit · SSO · Slack · webhooks · keys · providers · billing · alerts · settings</div><div class="meter"><span class="fill"></span></div></div>
+<div class="sc next"><div class="sct"><span class="tag">NEXT</span><span class="big">4</span></div><div class="lbl">leak detection · dashboards v2 · Datadog metrics · prompt management</div><div class="meter"><span class="fill"></span></div></div>
+<div class="sc res"><div class="sct"><span class="tag">RESEARCHING</span><span class="big">3</span></div><div class="lbl">MCP studio · Agent SDK traces · on-prem</div><div class="meter"><span class="fill"></span></div></div>
+</div>
+</div>
 </div>
 </section>
 
-<section id="waitlist" style="position:relative;overflow:hidden;border-top:1px solid var(--sx-line)">
-<div ref="{{ ctaGlowRef }}" style="position:absolute;left:-10%;right:-10%;top:30%;height:120%;background:radial-gradient(closest-side,color-mix(in srgb,var(--sx-blue) 20%,transparent),transparent 70%);pointer-events:none;will-change:transform"></div>
-<div data-reveal="" style="position:relative;max-width:1240px;margin:0 auto;padding:clamp(90px,12vw,170px) clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:22px;align-items:flex-start">
-<h2 style="margin:0;font:400 clamp(28px,4vw,52px)/1.15 var(--font-display);letter-spacing:-.02em;max-width:900px;text-wrap:balance">One email when we have a finding worth sharing.</h2>
-<p style="margin:0;font-size:17px;line-height:1.65;color:var(--sx-muted);font-weight:300;max-width:580px">No marketing, no cadence — just a note the first time the log reveals something a team should see. Early teams help shape what gets built.</p>
-<form onSubmit="{{ onJoin }}" style="display:flex;gap:8px;flex-wrap:wrap;width:100%;max-width:520px;margin-top:6px">
-<input type="email" placeholder="you@company.com" required="required" style="flex:1;min-width:220px;background:var(--sx-panel);border:1px solid var(--sx-line-2);border-radius:var(--radius-md);padding:12px 14px;color:var(--sx-text);font:15px var(--font-body);outline:none" style-focus="border-color:var(--sx-blue)">
-<button type="submit" style="background:transparent;border:1px solid var(--sx-blue);color:var(--sx-blue-text);border-radius:var(--radius-md);padding:12px 20px;font:500 15px var(--font-body);cursor:pointer" style-hover="background:var(--sx-blue-tint)">{{ joinLabel }}</button>
-</form>
+<!-- 05 · CTA -->
+<section class="sect" id="cta">
+<div class="cont">
+<div class="cta">
+<h2>Ship with the providers you choose. Keep the one gateway in front.</h2>
+<p>Free for the first 50k requests a month, forever. No card. First request flowing in under 4 minutes.</p>
+<div class="cta-row">
+<a class="btn-p" href="#" style="padding:12px 20px">Start free <i class="ph ph-arrow-right"></i></a>
+<a class="btn-s" href="#" style="padding:12px 20px">Book a 20-min demo</a>
+</div>
+</div>
 </div>
 </section>
 
-<footer id="blog" style="border-top:1px solid var(--sx-line)">
-<div style="max-width:1240px;margin:0 auto;padding:36px clamp(20px,5vw,56px);display:flex;flex-wrap:wrap;gap:20px 32px;align-items:center">
-<img src="public/brand/wordmark-light.png" alt="Strataix" style="height:11px;opacity:.8">
-<span style="font-size:13px;color:var(--sx-faint)">Strategic AI × Technology</span>
-<div style="flex:1"></div>
-<div style="display:flex;gap:22px;font-size:13px"><a href="#blog" style="color:var(--sx-muted)">Blog</a><a href="#roadmap" style="color:var(--sx-muted)">Roadmap</a><a href="https://www.linkedin.com/company/strataix-technology/" style="color:var(--sx-muted)">LinkedIn</a><a href="https://github.com/imran20021999" style="color:var(--sx-muted)">GitHub</a><a href="mailto:admin@strataix.in" style="color:var(--sx-muted)">admin@strataix.in</a></div>
-<span style="width:100%;font-size:12px;color:var(--sx-faint)">© Strataix Technology (OPC) Pvt. Ltd.</span>
+<!-- FOOTER -->
+<footer>
+<div class="cont">
+<div class="foot-grid">
+<div class="foot-brand">
+<img src="../public/brand/wordmark-light.png" alt="Strataix">
+<p>The control plane for production AI. Strataix Inc · strataix.in</p>
+</div>
+<div class="foot-col">
+<span class="foot-h">PRODUCT</span>
+<a>Overview</a><a href="Strataix Pricing.dc.html">Pricing</a><a href="Strataix Changelog.dc.html">Changelog</a><a>Status</a>
+</div>
+<div class="foot-col">
+<span class="foot-h">DEVELOPERS</span>
+<a href="Strataix Docs.dc.html">Docs</a><a>API reference</a><a>SDKs</a><a>GitHub</a>
+</div>
+<div class="foot-col">
+<span class="foot-h">COMPANY</span>
+<a>About</a><a>Security</a><a>Privacy</a><a>Contact</a>
+</div>
+</div>
+<div class="foot-base">
+<span>© 2026 Strataix Inc · Chennai, India</span>
+<span class="mono">v2.14 · live</span>
+</div>
 </div>
 </footer>
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;heroAnim&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;gate&quot;,&quot;strata&quot;,&quot;flow&quot;],&quot;default&quot;:&quot;gate&quot;,&quot;tsType&quot;:&quot;'gate' | 'strata' | 'flow'&quot;}}">
-class Component extends DCLogic {
-  state = { active: 0, joined: false };
-  rootRef = React.createRef(); navRef = React.createRef(); canvasRef = React.createRef(); canvasWrapRef = React.createRef();
-  heroCopyRef = React.createRef(); glowRef = React.createRef(); gridRef = React.createRef(); marqueeRef = React.createRef();
-  strataRef = React.createRef(); dotRef = React.createRef(); trailRef = React.createRef(); ctaGlowRef = React.createRef();
 
-  layers = [
-    { n: '01', t: 'Gateway', s: 'Building now', r: 'POST /v1/chat/completions', d: 'One OpenAI-compatible endpoint in front of every provider. Swap your base URL — your agents, copilots, and batch jobs don’t change.' },
-    { n: '02', t: 'Observability', s: 'Building now', r: '48,210 tok · 2.41s · $0.146', d: 'Every request traced in one event stream: tokens, latency, errors, cost, tool calls. The findings fall out of the log.' },
-    { n: '03', t: 'Cost', s: 'On the roadmap', r: 'tools 34 → 6 · −29.9k tok', d: 'Prune a tool, fix a cache key, pin a model. Every cut attributed to a specific finding, with the before/after in the same stream.' },
-    { n: '04', t: 'Rate limits & guardrails', s: 'On the roadmap', r: '600 rpm · [EMAIL_1] redacted', d: 'Limits per key and team, PII redaction and output checks — enforced in the request path, read from the same log.' },
-    { n: '05', t: 'Security', s: 'On the roadmap', r: 'injection score 0.04 · pass', d: 'Prompt-injection defense and scoped keys, sitting where every request already passes.' },
-    { n: '06', t: 'Compliance & evaluation', s: 'On the roadmap', r: 'evidence logged · eval 0.92', d: 'Audit evidence and agent evaluation, built on the record the gateway already keeps.' }
-  ];
-
-  componentDidMount() {
-    this.onScroll = this.onScroll.bind(this);
-    window.addEventListener('scroll', this.onScroll, { passive: true });
-    window.addEventListener('resize', this.onScroll);
-    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    this.introHero(); this.setupReveal(); this.startCanvas(); this.onScroll();
-  }
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onScroll);
-    cancelAnimationFrame(this.raf); this.io && this.io.disconnect(); this.ro && this.ro.disconnect();
-  }
-
-  introHero() {
-    const root = this.rootRef.current; if (!root) return;
-    root.querySelectorAll('[data-word]').forEach(el => {
-      const i = +el.getAttribute('data-word');
-      if (this.reduced) return;
-      el.style.opacity = '0'; el.style.transform = 'translateY(0.45em)'; el.style.filter = 'blur(10px)';
-      el.style.transition = 'opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1), filter .9s cubic-bezier(.2,.7,.2,1)';
-      setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; }, 120 + i * 75);
-    });
-  }
-
-  setupReveal() {
-    const root = this.rootRef.current; if (!root) return;
-    const els = root.querySelectorAll('[data-reveal]');
-    const show = (el) => {
-      el.style.opacity = '1'; el.style.transform = 'none';
-      el.querySelectorAll('[data-grow]').forEach(b => { b.style.width = b.getAttribute('data-grow'); });
-    };
-    if (this.reduced || !('IntersectionObserver' in window)) { els.forEach(show); return; }
-    els.forEach(el => {
-      const d = +(el.getAttribute('data-delay') || 0);
-      el.style.opacity = '0'; el.style.transform = 'translateY(28px)';
-      el.style.transition = `opacity 1s cubic-bezier(.2,.7,.2,1) ${d}ms, transform 1s cubic-bezier(.2,.7,.2,1) ${d}ms, border-color .3s`;
-    });
-    this.io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { show(e.target); this.io.unobserve(e.target); } }), { threshold: 0.15 });
-    els.forEach(el => this.io.observe(el));
-  }
-
-  onScroll() {
-    const y = window.scrollY || 0, vh = window.innerHeight;
-    const nav = this.navRef.current;
-    if (nav) {
-      const on = y > 24;
-      nav.style.background = on ? 'color-mix(in srgb, #08090e 72%, transparent)' : 'transparent';
-      nav.style.backdropFilter = on ? 'blur(14px)' : 'none';
-      nav.style.borderBottomColor = on ? '#1a1d26' : 'transparent';
-    }
-    if (!this.reduced) {
-      const t = (r, v) => r.current && (r.current.style.transform = v);
-      t(this.canvasWrapRef, `translate3d(0,${y * 0.38}px,0)`);
-      t(this.glowRef, `translate3d(0,${y * 0.55}px,0)`);
-      t(this.gridRef, `translate3d(0,${y * 0.22}px,0)`);
-      if (this.heroCopyRef.current) { this.heroCopyRef.current.style.transform = `translate3d(0,${y * 0.14}px,0)`; this.heroCopyRef.current.style.opacity = String(Math.max(0, 1 - y / (vh * 0.85))); }
-      const cg = this.ctaGlowRef.current;
-      if (cg) { const r = cg.parentElement.getBoundingClientRect(); cg.style.transform = `translate3d(0,${(r.top - vh) * -0.18}px,0)`; }
-    }
-    const s = this.strataRef.current;
-    if (s) {
-      const r = s.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - vh)));
-      const col = this.dotRef.current && this.dotRef.current.parentElement;
-      if (col) {
-        const h = col.getBoundingClientRect().height;
-        const top = p * (h - 13);
-        this.dotRef.current.style.transform = `translate3d(0,${top}px,0)`;
-        if (this.trailRef.current) this.trailRef.current.style.height = (top + 6) + 'px';
-      }
-      const a = Math.min(this.layers.length - 1, Math.floor(p * this.layers.length));
-      if (a !== this.state.active) this.setState({ active: a });
-    }
-  }
-
-  startCanvas() {
-    const canvas = this.canvasRef.current; if (!canvas) return;
-    const ctx = canvas.getContext('2d'); if (!ctx) return;
-    const BLUE = [47, 111, 255], VIO = [145, 132, 217], FG = '#e9e9ed', MUTED = '#9397ab';
-    const rgba = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
-    const glow = (c, size) => { const g = document.createElement('canvas'); g.width = g.height = size; const x = g.getContext('2d'); const gr = x.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2); gr.addColorStop(0, rgba(c, 1)); gr.addColorStop(.4, rgba(c, .4)); gr.addColorStop(1, rgba(c, 0)); x.fillStyle = gr; x.fillRect(0, 0, size, size); return g; };
-    const gB = glow(BLUE, 40), gV = glow(VIO, 40), gH = glow(BLUE, 160);
-    const SRC = ['Agents', 'Copilots', 'Batch jobs'], PRV = ['OpenAI', 'Anthropic', 'Google · OSS'];
-    let w = 0, h = 0, dpr = 1;
-    let labels = true, copyOff = 0;
-    const resize = () => { const r = canvas.getBoundingClientRect(); w = r.width; h = r.height;
-      const copy = this.heroCopyRef.current && this.heroCopyRef.current.firstElementChild;
-      const copyRight = copy ? copy.getBoundingClientRect().right : 0;
-      const overlap = r.left + Math.max(90, w * .2) - 110 < copyRight;
-      labels = !overlap; copyOff = copyRight - r.left;
-      if (this.canvasWrapRef.current) this.canvasWrapRef.current.style.opacity = overlap ? '0.32' : '1'; dpr = Math.min(window.devicePixelRatio || 1, 2); canvas.width = Math.max(1, w * dpr); canvas.height = Math.max(1, h * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
-    resize(); this.ro = new ResizeObserver(resize); this.ro.observe(canvas);
-    const q = (a, c, b, t) => { const u = 1 - t; return { x: u * u * a.x + 2 * u * t * c.x + t * t * b.x, y: u * u * a.y + 2 * u * t * c.y + t * t * b.y }; };
-    const pk = Array.from({ length: 46 }, () => ({ ph: 0, si: (Math.random() * 3) | 0, pi: (Math.random() * 3) | 0, p: Math.random(), v: .004 + Math.random() * .004 }));
-    const drawFlow = (t) => {
-      ctx.clearRect(0, 0, w, h);
-      const padL = Math.max(90, w * .2), padR = Math.max(70, w * .14), ys = [.26, .5, .74];
-      const src = ys.map(f => ({ x: padL, y: h * f })), prv = ys.map(f => ({ x: w - padR, y: h * f })), hub = { x: w * .56, y: h * .5 };
-      const rr = Math.max(26, Math.min(w * .06, 46));
-      const cin = a => ({ x: (a.x + hub.x) / 2, y: a.y * .72 + hub.y * .28 }), cout = b => ({ x: (hub.x + b.x) / 2, y: hub.y * .28 + b.y * .72 });
-      ctx.lineWidth = 1;
-      src.forEach(a => { const c = cin(a); ctx.strokeStyle = rgba(BLUE, .2); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.quadraticCurveTo(c.x, c.y, hub.x, hub.y); ctx.stroke(); });
-      prv.forEach(b => { const c = cout(b); ctx.strokeStyle = rgba(VIO, .2); ctx.beginPath(); ctx.moveTo(hub.x, hub.y); ctx.quadraticCurveTo(c.x, c.y, b.x, b.y); ctx.stroke(); });
-      const pulse = .5 + .5 * Math.sin(t * .0022);
-      ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = .5 * (.7 + .3 * pulse);
-      const gs = rr * (4.4 + .8 * pulse); ctx.drawImage(gH, hub.x - gs / 2, hub.y - gs / 2, gs, gs);
-      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
-      for (let i = 0; i < 7; i++) { const a = i / 7 * Math.PI * 2 - Math.PI / 2 + t * .00012; const tw = .6 + .4 * Math.sin(t * .004 + i * 1.3); ctx.beginPath(); ctx.arc(hub.x + Math.cos(a) * rr, hub.y + Math.sin(a) * rr, 2.6, 0, Math.PI * 2); ctx.fillStyle = rgba(i % 2 ? VIO : BLUE, .5 + .5 * tw); ctx.fill(); }
-      ctx.beginPath(); ctx.arc(hub.x, hub.y, 5.5, 0, Math.PI * 2); ctx.fillStyle = FG; ctx.fill();
-      ctx.beginPath(); ctx.arc(hub.x, hub.y, rr, 0, Math.PI * 2); ctx.strokeStyle = rgba(BLUE, .35 + .3 * pulse); ctx.stroke();
-      const node = (p, label, right) => { ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = .5; ctx.drawImage(gB, p.x - 16, p.y - 16, 32, 32); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.beginPath(); ctx.arc(p.x, p.y, 7.5, 0, Math.PI * 2); ctx.strokeStyle = rgba(BLUE, .5); ctx.stroke(); ctx.beginPath(); ctx.arc(p.x, p.y, 4.5, 0, Math.PI * 2); ctx.fillStyle = rgba([109, 151, 255], .95); ctx.fill(); if (labels && w > 380) { ctx.fillStyle = MUTED; ctx.font = '400 13px "IBM Plex Sans", sans-serif'; ctx.textAlign = right ? 'right' : 'left'; ctx.textBaseline = 'middle'; ctx.fillText(label, p.x + (right ? -16 : 16), p.y); } };
-      src.forEach((p, i) => node(p, SRC[i], true)); prv.forEach((p, i) => node(p, PRV[i], false));
-      if (labels) { ctx.fillStyle = rgba([143, 178, 255], 1); ctx.font = '400 9.5px Michroma, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('CONTROL PLANE', hub.x, hub.y + rr + 20); }
-      ctx.globalCompositeOperation = 'lighter';
-      pk.forEach(k => {
-        if (!this.reduced) { k.p += k.v; if (k.p >= 1) { k.p = 0; if (k.ph === 0) { k.ph = 1; k.pi = (Math.random() * 3) | 0; } else { k.ph = 0; k.si = (Math.random() * 3) | 0; k.v = .004 + Math.random() * .004; } } }
-        let pos, sp; if (k.ph === 0) { const a = src[k.si]; pos = q(a, cin(a), hub, k.p); sp = gB; } else { const b = prv[k.pi]; pos = q(hub, cout(b), b, k.p); sp = gV; }
-        const f = Math.sin(k.p * Math.PI), sz = 13 * (.7 + .5 * f); ctx.globalAlpha = .9 * (.3 + .7 * f); ctx.drawImage(sp, pos.x - sz / 2, pos.y - sz / 2, sz, sz);
-      });
-      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
-    };
-    const RED = [232, 112, 100], LINE = '#262a35', PANEL = 'rgba(14,16,22,0.92)', BT = [143, 178, 255];
-    const rrect = (x, y, ww, hh, r) => { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + ww, y, x + ww, y + hh, r); ctx.arcTo(x + ww, y + hh, x, y + hh, r); ctx.arcTo(x, y + hh, x, y, r); ctx.arcTo(x, y, x + ww, y, r); ctx.closePath(); };
-    const KINDS = [
-      { k: 'pass', a: 'gpt-4o · 1.2k tok', b: '$0.004 · 410ms', c: BLUE },
-      { k: 'redact', a: 'email: jane@acme.com', b: 'email: [EMAIL_1]', c: VIO },
-      { k: 'pass', a: 'claude · 3.4k tok', b: '$0.011 · 920ms', c: BLUE },
-      { k: 'prune', a: 'tools ×34 · 45k tok', b: 'tools ×6 · 7k tok', c: VIO },
-      { k: 'block', a: 'ignore previous instr…', b: 'blocked · injection', c: RED },
-      { k: 'pass', a: 'gemini · 860 tok', b: 'cache hit · $0', c: BLUE }
-    ];
-    const gpk = []; for (let l = 0; l < 6; l++) for (let j = 0; j < 2; j++) gpk.push({ l, p: -(l * .37 % 1) - j * 1.25, v: .0034 + (l % 3) * .0004, kind: (l * 2 + j * 3) % KINDS.length, prov: (l + j) % 3, flash: 0 });
-    const drawGate = (t) => {
-      ctx.clearRect(0, 0, w, h);
-      const pxr = w - Math.max(100, w * .12), x0 = labels ? Math.max(w * .02, Math.min(copyOff + 24, w * .3)) : w * .02, gx = x0 + (pxr - x0) * .56, top = h * .1, bot = h * .9, laneY = i => h * (.2 + i * .12);
-      const prv = [.3, .5, .7].map(f => ({ x: pxr, y: h * f }));
-      // gate
-      ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = .35 + .1 * Math.sin(t * .002);
-      ctx.drawImage(gH, gx - h * .35, h * .15, h * .7, h * .7); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
-      [-7, 7].forEach(dx => { const g = ctx.createLinearGradient(0, top, 0, bot); g.addColorStop(0, rgba(BLUE, 0)); g.addColorStop(.2, rgba(BLUE, .8)); g.addColorStop(.8, rgba(BLUE, .8)); g.addColorStop(1, rgba(BLUE, 0)); ctx.strokeStyle = g; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(gx + dx, top); ctx.lineTo(gx + dx, bot); ctx.stroke(); });
-      for (let y = top + 10; y < bot - 10; y += 9) { ctx.fillStyle = rgba(BLUE, .18); ctx.fillRect(gx - 4, y, 8, 1); }
-      if (labels) { ctx.fillStyle = rgba(BT, 1); ctx.font = '400 9.5px Michroma, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('STRATAIX GATEWAY', gx, bot + 16); }
-      // lanes
-      for (let i = 0; i < 6; i++) { ctx.strokeStyle = rgba([147, 151, 171], .08); ctx.lineWidth = 1; ctx.setLineDash([2, 6]); ctx.beginPath(); ctx.moveTo(x0, laneY(i)); ctx.lineTo(gx - 10, laneY(i)); ctx.stroke(); }
-      ctx.setLineDash([]);
-      prv.forEach(b => { for (let i = 0; i < 6; i++) { const a = { x: gx + 10, y: laneY(i) }; ctx.strokeStyle = rgba(BLUE, .05); ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.bezierCurveTo(a.x + (b.x - a.x) * .5, a.y, a.x + (b.x - a.x) * .5, b.y, b.x, b.y); ctx.stroke(); } });
-      const PN = ['OpenAI', 'Anthropic', 'Google · OSS'];
-      prv.forEach((p, i) => { ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = .5; ctx.drawImage(gB, p.x - 16, p.y - 16, 32, 32); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; ctx.beginPath(); ctx.arc(p.x, p.y, 4.5, 0, Math.PI * 2); ctx.fillStyle = rgba([109, 151, 255], .95); ctx.fill(); if (w > 380) { ctx.fillStyle = MUTED; ctx.font = '400 13px "IBM Plex Sans", sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(PN[i], p.x + 14, p.y); } });
-      ctx.font = '400 10.5px "IBM Plex Mono", monospace'; ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
-      gpk.forEach(k => {
-        const K = KINDS[k.kind];
-        if (!this.reduced) { const prev = k.p; k.p += k.v; if (prev < 1 && k.p >= 1) k.flash = 1; if (k.p > 2.2) { k.p = -0.15 - Math.random() * .3; k.kind = (k.kind + 1 + ((Math.random() * 3) | 0)) % KINDS.length; k.prov = (Math.random() * 3) | 0; } }
-        k.flash *= .94;
-        const y0 = laneY(k.l);
-        if (k.flash > .02) { ctx.globalCompositeOperation = 'lighter'; ctx.globalAlpha = k.flash; ctx.fillStyle = rgba(K.c, .9); ctx.fillRect(gx - 7, y0 - 9, 14, 18); ctx.drawImage(K.c === RED ? glowR : (K.c === VIO ? gV : gB), gx - 30, y0 - 30, 60, 60); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; }
-        if (k.p < 0) return;
-        let x, y, label, stroke, txt, alpha = 1;
-        if (k.p < 1) { const e = k.p; x = x0 + (gx - 14 - x0) * e; y = y0; label = K.a; stroke = LINE; txt = MUTED; alpha = Math.min(1, e * 6); }
-        else if (K.k === 'block') { const e = k.p - 1; x = gx - 14 - e * 30; y = y0; label = K.b; stroke = rgba(RED, .9); txt = rgba(RED, 1); alpha = Math.max(0, 1 - e * 2.2); }
-        else { const e = Math.min(1, (k.p - 1) / 1.05), b = prv[k.prov], a = { x: gx + 14, y: y0 }, u = 1 - e, cx = a.x + (b.x - a.x) * .5;
-          x = u * u * u * a.x + 3 * u * u * e * cx + 3 * u * e * e * cx + e * e * e * b.x; y = u * u * u * a.y + 3 * u * u * e * a.y + 3 * u * e * e * b.y + e * e * e * b.y;
-          label = K.b; stroke = rgba(K.c, .85); txt = rgba(K.c === BLUE ? BT : (K.c === VIO ? [196, 188, 245] : RED), 1); alpha = Math.max(0, Math.min(1, (1 - e) * 4)); }
-        if (alpha <= 0) return;
-        const tw = ctx.measureText(label).width + 16, ph = 20, px = k.p < 1 || K.k === 'block' ? x - tw : x, py = y - ph / 2;
-        let pxx = px;
-        if (k.p < 1) { pxx = x0 + Math.max(0, gx - 14 - tw - x0) * k.p; alpha = Math.min(1, k.p * 8); }
-        if (alpha <= 0) return;
-        ctx.globalAlpha = alpha; rrect(pxx, py, tw, ph, 5); ctx.fillStyle = PANEL; ctx.fill(); ctx.strokeStyle = stroke; ctx.lineWidth = 1; ctx.stroke(); ctx.fillStyle = txt; ctx.fillText(label, pxx + 8, y + .5); ctx.globalAlpha = 1;
-      });
-    };
-    const glowR = glow(RED, 40);
-    const sPk = Array.from({ length: 4 }, (_, i) => ({ p: -i * .3, jx: 0 })), ripples = [];
-    const PL = ['GATEWAY', 'OBSERVABILITY', 'COST', 'GUARDRAILS', 'SECURITY'];
-    const drawStrata = (t) => {
-      ctx.clearRect(0, 0, w, h);
-      const cx = w * .54, hw = Math.min(w * .3, 250), hh = hw * .34, n = PL.length, y0 = h * .2, gap = (h * .62) / (n - 1);
-      const py = i => y0 + i * gap + Math.sin(t * .0009 + i * .9) * 4;
-      if (labels) { ctx.font = '400 11px "IBM Plex Mono", monospace'; ctx.fillStyle = MUTED; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('your agents', cx, h * .05); ctx.fillText('providers', cx, h * .97); }
-      for (let i = n - 1; i >= 0; i--) {
-        const y = py(i), hot = sPk.some(k => { const ky = h * .08 + k.p * h * .86; return Math.abs(ky - y) < gap * .45 && k.p > 0; });
-        ctx.beginPath(); ctx.moveTo(cx, y - hh); ctx.lineTo(cx + hw, y); ctx.lineTo(cx, y + hh); ctx.lineTo(cx - hw, y); ctx.closePath();
-        const g = ctx.createLinearGradient(cx - hw, y, cx + hw, y); g.addColorStop(0, 'rgba(22,25,33,0.55)'); g.addColorStop(1, hot ? 'rgba(23,41,94,0.75)' : 'rgba(14,16,22,0.75)');
-        ctx.fillStyle = g; ctx.fill(); ctx.strokeStyle = hot ? rgba(BLUE, .9) : rgba([147, 151, 171], .28); ctx.lineWidth = 1; ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(cx - hw, y); ctx.lineTo(cx - hw, y + 5); ctx.lineTo(cx, y + hh + 5); ctx.lineTo(cx + hw, y + 5); ctx.lineTo(cx + hw, y); ctx.strokeStyle = rgba([147, 151, 171], .12); ctx.stroke();
-        if (labels) { ctx.font = '400 9.5px Michroma, sans-serif'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillStyle = hot ? rgba(BT, 1) : MUTED; ctx.fillText(`0${i + 1}  ${PL[i]}`, cx + hw + 18, y); ctx.strokeStyle = hot ? rgba(BLUE, .6) : rgba([147, 151, 171], .2); ctx.beginPath(); ctx.moveTo(cx + hw + 4, y); ctx.lineTo(cx + hw + 12, y); ctx.stroke(); }
-      }
-      for (let i = ripples.length - 1; i >= 0; i--) { const r = ripples[i]; r.a += .016; if (r.a >= 1) { ripples.splice(i, 1); continue; } const s = r.a; ctx.beginPath(); ctx.ellipse(cx, py(r.i), hw * s * .95, hh * s * .95, 0, 0, Math.PI * 2); ctx.strokeStyle = rgba(r.i % 2 ? VIO : BLUE, (1 - s) * .8); ctx.lineWidth = 1.2; ctx.stroke(); }
-      ctx.globalCompositeOperation = 'lighter';
-      sPk.forEach(k => {
-        const prev = k.p; if (!this.reduced) k.p += .0026; if (k.p > 1.05) k.p = -.1;
-        if (k.p < 0) return;
-        const yy = h * .08 + k.p * h * .86, prevY = h * .08 + prev * h * .86;
-        for (let i = 0; i < n; i++) { const Y = py(i); if (prevY < Y && yy >= Y) ripples.push({ i, a: 0 }); }
-        const tg = ctx.createLinearGradient(0, yy - 80, 0, yy); tg.addColorStop(0, rgba(BLUE, 0)); tg.addColorStop(1, rgba(BLUE, .7)); ctx.strokeStyle = tg; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(cx, Math.max(0, yy - 80)); ctx.lineTo(cx, yy); ctx.stroke();
-        ctx.globalAlpha = 1; ctx.drawImage(gB, cx - 14, yy - 14, 28, 28); ctx.beginPath(); ctx.arc(cx, yy, 2.5, 0, Math.PI * 2); ctx.fillStyle = FG; ctx.fill();
-      });
-      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
-    };
-    const draw = (t) => { const m = this.props.heroAnim ?? 'gate'; if (m === 'flow') drawFlow(t); else if (m === 'strata') drawStrata(t); else drawGate(t); };
-    let off = 0, last = 0;
-    const loop = (ts) => {
-      draw(ts);
-      const m = this.marqueeRef.current;
-      if (m && !this.reduced) { const dt = last ? Math.min(50, ts - last) : 16; off += dt * 0.03; const half = m.scrollWidth / 2; if (half > 0 && off >= half) off -= half; m.style.transform = `translate3d(${-off}px,0,0)`; }
-      last = ts; this.raf = requestAnimationFrame(loop);
-    };
-    draw(1000);
-    if (!this.reduced) this.raf = requestAnimationFrame(loop);
-  }
-
-  renderVals() {
-    const a = this.state.active, L = this.layers;
-    const cur = L[a], building = cur.s === 'Building now';
-    const provs = ['OpenAI', 'Anthropic', 'Google', 'Mistral', 'Open source'];
-    return {
-      rootRef: this.rootRef, navRef: this.navRef, canvasRef: this.canvasRef, canvasWrapRef: this.canvasWrapRef, heroCopyRef: this.heroCopyRef,
-      glowRef: this.glowRef, gridRef: this.gridRef, marqueeRef: this.marqueeRef, strataRef: this.strataRef, dotRef: this.dotRef, trailRef: this.trailRef, ctaGlowRef: this.ctaGlowRef,
-      joinLabel: this.state.joined ? 'You’re on the list ✓' : 'Join waitlist',
-      onJoin: (e) => { e.preventDefault(); this.setState({ joined: true }); },
-      pillars: [{ v: '1', l: 'gateway — one log, one event stream' }, { v: '1', l: 'lane first — observability, in service of cost' }, { v: '0', l: 'lock-in — OpenAI-compatible, your keys' }],
-      providers: [...provs, ...provs],
-      cur: { ...cur, sc: building ? 'var(--sx-blue-text)' : 'var(--sx-muted)', sb: building ? 'var(--sx-blue)' : 'var(--sx-line-2)' },
-      ticks: L.map((_, i) => ({ bg: i <= a ? 'var(--sx-blue)' : 'var(--sx-line-2)' })),
-      layers: L.map((l, i) => ({ ...l,
-        bc: i === a ? 'var(--sx-blue)' : 'var(--sx-line)',
-        bg: i === a ? 'color-mix(in srgb, var(--sx-blue-tint) 70%, var(--sx-panel))' : 'var(--sx-panel)',
-        tf: i === a ? 'translateX(10px) scale(1.015)' : 'none',
-        op: i < a ? '.55' : '1',
-        rc: i === a ? 'var(--sx-blue-text)' : 'var(--sx-faint)' })),
-      findings: [
-        { tag: 'Tool pruning', big: '45k → 7k', unit: 'tokens / turn', al: 'before', aw: '100%', bl: 'after', bw: '16%', delay: 0, body: 'Tool definitions you never call, loaded on every call. The log sees which tools your agents actually invoke — and quietly drops the rest.' },
-        { tag: 'Cache-break detection', big: '7% → 84%', unit: 'cache hit rate', al: 'before', aw: '7%', bl: 'after', bw: '84%', delay: 120, body: 'A moved system-prompt chunk, a reordered tool list, a drifted timestamp — anything that silently breaks prefix caching. We flag the exact edit that did it.' },
-        { tag: 'Quiet 10× bills', big: 'day-over-day', unit: 'cost deltas, by cause', al: 'mon', aw: '10%', bl: 'tue', bw: '100%', delay: 240, body: 'A model swap. A longer context. A retry loop. The cost delta is attributed to the specific change that produced it, not an invoice line.' }
-      ],
-      steps: [
-        { n: '01', t: 'Point your traffic at one endpoint', delay: 0, d: 'Swap your base URL for the Strataix gateway — OpenAI-compatible, so your agents, copilots, and batch jobs don’t change. No SDK rewrite, no lock-in.' },
-        { n: '02', t: 'The log fills up on its own', delay: 120, d: 'Every request traced in one event stream: tokens, latency, errors, cost, tool calls. The findings fall out of the log — you don’t configure them.' },
-        { n: '03', t: 'Act on what the log reveals', delay: 240, d: 'The cuts are concrete and reversible: prune a tool, fix a cache key, pin a model. Every change is attributed to a specific finding, with the before/after in the same stream.' }
-      ],
-      status: [
-        { big: '1', tag: 'Building now', lbl: 'The gateway + observability — the log everything else reads.', w: '28%', c: 'var(--sx-blue)', delay: 0 },
-        { big: '6', tag: 'On the roadmap', lbl: 'Rate limiting, guardrails, security, compliance, cost actions, eval.', w: '72%', c: 'var(--sx-violet)', delay: 120 },
-        { big: '0', tag: 'Shipped', lbl: 'Nothing yet. We’ll say so until that changes.', w: '0%', c: 'var(--sx-muted)', delay: 240 }
-      ]
-    };
-  }
-}
-</script>
 </body>
 </html>
