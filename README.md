@@ -3,15 +3,17 @@
 Design source of truth for [Strataix](https://strataix.in) — tokens, canvas
 pages, voice & tone, icons.
 
-**This repo is read-only reference.** You do not deploy it. Other repos
-(`strataix_web`, the forthcoming dashboard app) import its tokens and read
-its canvas pages when implementing UI.
+**Also published** at [canvas.strataix.in](https://canvas.strataix.in) —
+GitHub Pages auto-deploys the repo on every push to `main` so anyone can
+browse the designs without cloning. Consuming repos (`strataix_web`, the
+forthcoming dashboard app) import `tokens.css` into their build and read
+`design/*.dc.html` as layout reference.
 
 ## What's in here
 
 ```
 strataix_design/
-├── tokens.css          # the source of truth for color, type, radius
+├── tokens.css          # color · type · spacing · radius · shadow · dark + light
 ├── fonts.ts            # Next.js font setup for Plex Sans / Plex Mono / Michroma
 ├── CLAUDE.md           # instructions for Claude Code
 ├── design/             # 29 canvas pages as read-only HTML snapshots

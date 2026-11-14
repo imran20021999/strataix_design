@@ -2,16 +2,24 @@
    Strataix · Design tokens
    Source of truth for color, type, spacing, radius, elevation.
 
-   Drop-in for Tailwind v4: import this file in your globals.css
-   AFTER `@import "tailwindcss";`. The @theme block emits utility
-   classes (bg-sx-blue, text-sx-muted, border-sx-line, …).
+   Two naming conventions coexist on purpose:
 
-   Not on Tailwind v4? The :root variables still apply — use them
-   as plain CSS custom properties: `color: var(--sx-text)`.
+   1. `--color-sx-*`, `--radius-sx-lg`, `--font-sans` inside @theme
+      — Tailwind v4 reads these to emit utilities (bg-sx-muted,
+      rounded-sx-lg, font-sans).
+
+   2. `--sx-*`, `--radius-md`, `--font-body`, `--shadow-md` as plain
+      custom properties — this is what the `design/*.dc.html`
+      snapshots use inline. They alias the @theme values so the
+      snapshots stay in sync automatically.
+
+   Using the Tailwind utilities (`bg-sx-muted`) and copying inline
+   snippets from design/ (`style="color:var(--sx-muted)"`) both
+   resolve to the same color.
    ============================================================ */
 
 @theme {
-  /* ─── typography ─── */
+  /* ─── typography (Tailwind reads --font-*) ─── */
   --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-michroma), var(--font-plex-sans), ui-sans-serif, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -38,22 +46,120 @@
   --color-sx-violet-text: #b6a6ff;
   --color-sx-violet-tint: #1e1b3d;
 
-  /* ─── semantic (oklch — same perceived weight across themes) ─── */
+  /* ─── semantic ─── */
   --color-sx-danger: oklch(0.70 0.15 25);
   --color-sx-warn:   oklch(0.80 0.12 80);
   --color-sx-ok:     oklch(0.76 0.12 165);
 
-  /* ─── radii ─── */
+  /* ─── radius · Tailwind utilities (rounded-sx-*) ─── */
   --radius-sx-sm: 4px;
   --radius-sx-md: 6px;
   --radius-sx-lg: 8px;
   --radius-sx-xl: 10px;
   --radius-sx-2xl: 14px;
   --radius-sx-full: 999px;
+
+  /* ─── spacing scale · what snapshots use (p-2, gap-6, etc.) ─── */
+  --spacing-sx-0: 0;
+  --spacing-sx-1: 2px;
+  --spacing-sx-2: 4px;
+  --spacing-sx-3: 6px;
+  --spacing-sx-4: 8px;
+  --spacing-sx-5: 10px;
+  --spacing-sx-6: 12px;
+  --spacing-sx-7: 14px;
+  --spacing-sx-8: 16px;
+  --spacing-sx-10: 20px;
+  --spacing-sx-11: 22px;
+  --spacing-sx-12: 24px;
+  --spacing-sx-14: 28px;
+  --spacing-sx-16: 32px;
+  --spacing-sx-20: 40px;
+
+  /* ─── shadows · overlay elevation ─── */
+  --shadow-sx-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sx-md: 0 4px 14px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.02) inset;
+  --shadow-sx-lg: 0 20px 50px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  --shadow-sx-xl: 0 30px 80px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
 }
 
-/* ─── light theme ─── */
+/* ============================================================
+   Plain-name aliases · what the design/*.dc.html snapshots use
+   ============================================================ */
+:root {
+  color-scheme: dark;
+  --sx-maxw: 1440px;
+
+  /* fonts */
+  --font-body: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+
+  /* surfaces */
+  --sx-bg: var(--color-sx-bg);
+  --sx-panel: var(--color-sx-panel);
+  --sx-raised: var(--color-sx-raised);
+  --sx-line: var(--color-sx-line);
+  --sx-line-2: var(--color-sx-line-2);
+
+  /* text */
+  --sx-text: var(--color-sx-text);
+  --sx-muted: var(--color-sx-muted);
+  --sx-faint: var(--color-sx-faint);
+
+  /* brand */
+  --sx-blue: var(--color-sx-blue);
+  --sx-blue-text: var(--color-sx-blue-text);
+  --sx-blue-tint: var(--color-sx-blue-tint);
+  --sx-blue-tint-2: var(--color-sx-blue-tint-2);
+  --sx-violet: var(--color-sx-violet);
+  --sx-violet-text: var(--color-sx-violet-text);
+  --sx-violet-tint: var(--color-sx-violet-tint);
+
+  /* semantic */
+  --sx-danger: var(--color-sx-danger);
+  --sx-warn:   var(--color-sx-warn);
+  --sx-ok:     var(--color-sx-ok);
+
+  /* radius · the names snapshots use */
+  --radius-sm: 4px;
+  --radius-md: 8px;    /* matches snapshots (card / input / button) */
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-full: 999px;
+
+  /* shadows · the names snapshots use */
+  --shadow-sm: var(--shadow-sx-sm);
+  --shadow-md: var(--shadow-sx-md);
+  --shadow-lg: var(--shadow-sx-lg);
+  --shadow-xl: var(--shadow-sx-xl);
+
+  /* spacing · snapshots use literal px, these are for Tailwind-style authoring */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7: 14px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-11: 22px;
+  --space-12: 24px;
+  --space-14: 28px;
+  --space-16: 32px;
+  --space-20: 40px;
+}
+
+/* ============================================================
+   Light theme · defined but NOT drawn in the design/*.dc.html
+   snapshots. The snapshots are dark-only. When implementing a
+   page, match the dark snapshot's layout and let CSS-var values
+   below take over when <html data-theme="light"> is set.
+   ============================================================ */
 :root[data-theme="light"] {
+  color-scheme: light;
+
   --color-sx-bg: #f6f6f8;
   --color-sx-panel: #fcfcfe;
   --color-sx-raised: #f1f2f6;
@@ -76,15 +182,15 @@
   --color-sx-danger: oklch(0.55 0.17 25);
   --color-sx-warn:   oklch(0.62 0.13 70);
   --color-sx-ok:     oklch(0.55 0.12 165);
+
+  --shadow-sx-md: 0 4px 14px rgba(27, 29, 41, 0.08), 0 1px 0 rgba(27, 29, 41, 0.04) inset;
+  --shadow-sx-lg: 0 20px 50px rgba(27, 29, 41, 0.12), 0 1px 0 rgba(27, 29, 41, 0.05) inset;
+
+  --shadow-md: var(--shadow-sx-md);
+  --shadow-lg: var(--shadow-sx-lg);
 }
 
 /* ─── global typographic defaults ─── */
-:root {
-  color-scheme: dark;
-  --sx-maxw: 1440px;
-}
-:root[data-theme="light"] { color-scheme: light; }
-
 body {
   background: var(--color-sx-bg);
   color: var(--color-sx-text);
@@ -103,11 +209,9 @@ code, kbd, samp, pre { font-family: var(--font-mono); }
 :where(button, a, input, select, textarea, [tabindex]):focus-visible {
   outline: 2px solid var(--color-sx-blue);
   outline-offset: 2px;
-  border-radius: var(--radius-sx-md);
+  border-radius: var(--radius-md);
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
-</content>
-</invoke>
