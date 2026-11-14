@@ -90,10 +90,14 @@
   color-scheme: dark;
   --sx-maxw: 1440px;
 
-  /* fonts */
+  /* fonts · only --font-body needs an alias.
+     --font-display and --font-mono are already emitted into :root by
+     @theme under those exact names, so the snapshots read them directly.
+     Do NOT re-declare them as `var(--font-display)` / `var(--font-mono)`
+     — a custom property that references itself is invalid at
+     computed-value time, and headings / mono text silently fall back to
+     the browser default serif. */
   --font-body: var(--font-sans);
-  --font-display: var(--font-display);
-  --font-mono: var(--font-mono);
 
   /* surfaces */
   --sx-bg: var(--color-sx-bg);
